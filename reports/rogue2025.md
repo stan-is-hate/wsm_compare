@@ -140,3 +140,4 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 ## Winner Flip Analysis
 
 **M. Hooper** wins under every scoring system tested. No flip.
+

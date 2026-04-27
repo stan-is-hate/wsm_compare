@@ -150,3 +150,4 @@ This comp produces **different winners** under different scoring systems:
 
 - **M. Hooper** wins under: WSM Linear, F1 2003-2009, MotoGP
 - **R. Nel** wins under: F1 2010-present, F1 1991-2002, F1 1961-1990
+

@@ -57,3 +57,13 @@ Under each scoring system, who wins how many comps?
 - **F1 1991-2002:** L. Hatton (2), M. Hooper (1), H. Björnsson (1), R. Nel (1)
 - **F1 1961-1990:** M. Hooper (2), H. Björnsson (1), L. Hatton (1), R. Nel (1)
 - **MotoGP:** M. Hooper (3), H. Björnsson (1), L. Hatton (1)
+
+## Methodological Notes
+
+- **Scale length follows the comp's full roster**, including DNS athletes. A comp with 10 athletes uses a 10-position scale, regardless of how many actually competed in any given event. DNS athletes always score 0 but conceptually occupy positions at the bottom of the field.
+- **Tie averaging:** athletes sharing a placement string (e.g. all marked `T2`) split the points for the positions they collectively consume. 3 athletes at T2 → positions 2, 3, 4 → each gets `(scale[1] + scale[2] + scale[3]) / 3`.
+- **Scale truncation in big fields:** systems with short scales (F1 1991-2002 has only 6 positions; F1 2003-2009 has 8) zero-pad in larger fields. In a 16-athlete comp under F1 1991-2002, positions 7-16 all score 0. This means the linear ordering at the tail is lost — useful to know if a comp's mid-pack matters.
+- **Scale truncation in small fields:** systems with long scales (F1 2010+, MotoGP — both 10 positions) get sliced to fit smaller fields. A 9-athlete comp under F1 2010+ uses `[25, 18, 15, 12, 10, 8, 6, 4, 2]` — the last `1` is dropped. This mildly steepens the system.
+- **Event names with markdown-special characters** (pipes `|`, brackets) will break the rendered tables. Use underscores or plain text in CSV column headers.
+- **No-lift / withdrew rules vary across comps.** WSM 2026 treats a `(No lift)` on max events as DNS (0 pts). SMOE 2024 treats no-lifts as competing-but-last. The CSVs here encode whichever interpretation matches the comp's published totals; cross-comp comparison should account for this.
+

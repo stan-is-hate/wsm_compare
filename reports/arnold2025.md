@@ -150,3 +150,4 @@ This comp produces **different winners** under different scoring systems:
 
 - **M. Hooper** wins under: WSM Linear, F1 2010-present, F1 2003-2009, F1 1961-1990, MotoGP
 - **L. Hatton** wins under: F1 1991-2002
+
