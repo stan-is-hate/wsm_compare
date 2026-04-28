@@ -6,3 +6,6 @@ __pycache__/
 venv/
 .idea/
 .vscode/
+
+# Process docs (specs, plans, brainstorming notes) — local only
+docs/

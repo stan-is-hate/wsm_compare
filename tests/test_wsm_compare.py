@@ -365,6 +365,38 @@ class IntegrationTests(unittest.TestCase):
         self.assertEqual(totals["L. Hatton"], 49, "Hatton Arnold 2025 total should be 49")
         self.assertEqual(totals["H. Björnsson"], 42.5, "Björnsson Arnold 2025 total should be 42.5")
 
+    def test_all_comps_wsm_linear_winner_pinned(self):
+        """Pins the WSM Linear winner+points for every CSV in comps/.
+
+        If a refactor changes any of these, the test fails. To update intentionally,
+        edit the EXPECTED dict below.
+        """
+        EXPECTED = {
+            "arnold2024":         ("M. Hooper", 52),
+            "arnold2024_w":       ("A. Jardine", 45),
+            "arnold2025":         ("M. Hooper", 51.5),
+            "arnold2025_w":       ("I. Carrasquillo", 60.5),
+            "arnold2026":         ("M. Hooper", 36),
+            "arnold2026_w":       ("O. Liashchuk", 50.5),
+            "rogue2024":          ("M. Hooper", 54),
+            "rogue2024_w":        ("I. Carrasquillo", 53),
+            "rogue2025":          ("M. Hooper", 46),
+            "rogue2025_w":        ("I. Carrasquillo", 50),
+            "smoe2024":           ("M. Hooper", 117),
+            "smoe2025":           ("E. Singleton", 93.5),
+            "wsm2025_finals":     ("R. Nel", 47),
+            "wsm2026_finals":     ("M. Hooper", 54),
+        }
+        for comp_name, (expected_winner, expected_pts) in EXPECTED.items():
+            with self.subTest(comp=comp_name):
+                totals, _, _ = self._totals(f"{comp_name}.csv", WSM_LINEAR)
+                sorted_totals = sorted(totals.items(), key=lambda x: -x[1])
+                actual_winner, actual_pts = sorted_totals[0]
+                self.assertEqual(actual_winner, expected_winner,
+                                 f"{comp_name} winner changed")
+                self.assertEqual(actual_pts, expected_pts,
+                                 f"{comp_name} winner pts changed")
+
 
 class GroupModeTests(unittest.TestCase):
     """Group-stage CSV handling: load_comp groups dict, qualifiers, subset re-ranking."""
