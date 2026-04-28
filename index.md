@@ -4,8 +4,10 @@ description: Strongman competitions re-scored under different real-world scoring
 ---
 
 # WSM Compare
+People often argue what would happen if strongman used a different scoring system.
+We re-scored 15 real strongman competitions (Arnold, Rogue, SMOE, WSM — both men's and women's) under 7 real-world scoring systems (current strongman, multiple eras of F1, MotoGP, plus a custom MotoGP variant) to see what would actually happen.
 
-We re-scored 15 real strongman competitions (Arnold, Rogue, SMOE, WSM — both men's and women's) under 7 real-world scoring systems (current strongman, multiple eras of F1, MotoGP, plus a custom MotoGP variant) to see how the winners differ when the scoring philosophy changes.
+**Of course** this is **not fair**. If athletes knew the scoring system was different, their whole approach would be different and results won't be the same. Keep that in mind when browsing this data, because while it's a fun little "what-if", it doesn't work like that in reality.
 
 Data sourced from [Strongman Archives](https://strongmanarchives.com/). Math verified against official published totals.
 
@@ -13,33 +15,19 @@ Data sourced from [Strongman Archives](https://strongmanarchives.com/). Math ver
 
 Counts of who wins each men's comp under each system, across 9 men's comps over 3 years:
 
-| Scoring system | M. Hooper | Other winners |
-|---|---|---|
-| WSM Linear (current) | **7 / 9** | E. Singleton, R. Nel |
-| F1 2003-2009 | **7 / 9** | L. Hatton, T. Stoltman |
-| MotoGP | **7 / 9** | L. Hatton, T. Stoltman |
-| MotoGP Extended | **7 / 9** | L. Hatton, T. Stoltman |
-| F1 2010-present | **6 / 9** | L. Hatton, T. Stoltman, R. Nel |
-| F1 1961-1990 | **5 / 9** | H. Björnsson, L. Hatton, T. Stoltman, R. Nel |
-| F1 1991-2002 | **4 / 9** | L. Hatton (2), H. Björnsson, T. Stoltman, R. Nel |
+Bold = actual real-world winner (under current WSM Linear scoring). `x/7` = how many of the 7 tested scoring systems crowned that athlete.
 
-The same winner emerges under most reasonable systems. The two F1 systems with the steepest top end and shortest tail (1961-1990 and 1991-2002, both top-6-only) produce the most reshuffling.
-
-## Comps where the scoring system flips the winner
-
-5 of the 9 men's comps have at least one alternate winner depending on the system used:
-
-| Comp | Winner under WSM Linear | Alternate winner | Systems where alternate wins |
-|---|---|---|---|
-| **WSM 2026 finals** | M. Hooper (54) | R. Nel | F1 2010+, F1 1991-02, F1 1961-90 |
-| **WSM 2025 finals** | R. Nel (47) | T. Stoltman | every other system tested |
-| **SMOE 2024** | M. Hooper (117) | H. Björnsson | F1 1991-02, F1 1961-90 only |
-| **SMOE 2025** | E. Singleton (93.5) | L. Hatton | every other system tested |
-| **Arnold 2025** | M. Hooper (51.5) | L. Hatton | F1 1991-2002 only |
-
-The remaining 4 men's comps (Arnold 2024, Arnold 2026, Rogue 2024, Rogue 2025) produce the same winner under all 7 systems.
-
-See [the full cross-comp summary]({{ '/reports/_summary.html' | relative_url }}) for every winner under every system.
+| Comp | Winners under different systems |
+|---|---|
+| WSM 2026 | **M. Hooper (4/7)**, R. Nel (3/7) |
+| WSM 2025 | **R. Nel (1/7)**, T. Stoltman (6/7) |
+| Arnold 2026 | **M. Hooper (7/7)** |
+| Arnold 2025 | **M. Hooper (6/7)**, L. Hatton (1/7) |
+| Arnold 2024 | **M. Hooper (7/7)** |
+| Rogue 2025 | **M. Hooper (7/7)** |
+| Rogue 2024 | **M. Hooper (7/7)** |
+| SMOE 2025 | **E. Singleton (1/7)**, L. Hatton (6/7) |
+| SMOE 2024 | **M. Hooper (5/7)**, H. Björnsson (2/7) |
 
 ## Browse individual comp reports
 
@@ -54,6 +42,18 @@ Each report shows full standings under all 7 scoring systems, podium-by-system, 
 ### Women's
 - **Arnold Strongman Classic:** [2026]({{ '/reports/arnold2026_w.html' | relative_url }}) · [2025]({{ '/reports/arnold2025_w.html' | relative_url }}) · [2024]({{ '/reports/arnold2024_w.html' | relative_url }})
 - **Rogue Invitational:** [2025]({{ '/reports/rogue2025_w.html' | relative_url }}) · [2024]({{ '/reports/rogue2024_w.html' | relative_url }})
+
+## Findings
+
+A few patterns:
+
+- **4 of 9 men's comps are uncontroversial** — same winner under all 7 systems. Arnold 2024, Arnold 2026, Rogue 2024, Rogue 2025 all give M. Hooper the trophy regardless of scoring philosophy.
+
+- **In the comps Hooper won under current WSM scoring, he also wins under most other systems.** The systems that take wins away from him are the steepest top-6-only F1 variants (F1 1961-1990 and F1 1991-2002), where mid-pack consistency scores zero and event wins matter most. Hooper is a "place 2nd-3rd in everything" athlete, not a "win 3 events outright" athlete — flatter scales reward his style.
+
+- **The biggest reshuffling is at the close finals.** WSM 2025 (Nel by 0.5 pts) and SMOE 2025 (Singleton by 0.5 pts) each have actual winners who only prevail under 1 of 7 systems. Under every steeper system, the runner-up takes it. SMOE 2024 also flipped under 2 systems despite Hooper's clean 9-pt margin.
+
+- **WSM 2026 sits in the middle** — Hooper won by 2 pts but only takes 4 of 7 systems. Nel wins under any system with a 1.39x or higher 1st/2nd ratio.
 
 ## Scoring systems tested
 
