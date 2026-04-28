@@ -128,21 +128,21 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 
 ### MotoGP Extended
 
-_MotoGP-style top, but tail extends to 1 for last (steeper bottom half)._
+_MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 
-**Scale:** `[25, 20, 16, 13, 11, 9, 7, 5, 3]` — **1st/2nd ratio:** 1.25x
+**Scale:** `[25, 20, 16, 13, 11, 10, 9, 8, 7]` — **1st/2nd ratio:** 1.25x
 
 | # | Athlete | Country | Deadlift 18in | Mons Meg | Overhead | Power Drive | Viking Press | Yoke Escalator | **Total** |
 |---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 25 | 25 | 20 | 20 | 20 | 9 | **119** |
-| 2 | T. Mitchell | USA | 14.5 | 9 | 25 | 7 | 25 | 20 | **100.5** |
-| 3 | T. Stoltman | UK | 8 | 11 | 11 | 25 | 9 | 13 | **77** |
-| 4 | L. Hatton | USA | 14.5 | 20 | 16 | 3 | 16 | 5 | **74.5** |
-| 5 | T. Evans | USA | 8 | 3 | 13 | 13 | 11 | 16 | **64** |
-| 6 | B. Johnson | USA | 8 | 13 | 9 | 9 | 13 | 11 | **63** |
-| 7 | A. Andrade | USA | 20 | 5 | 7 | 11 | 7 | 7 | **57** |
-| 8 | R. Nel | RSA | 8 | 16 | 5 | 16 | 5 | 3 | **53** |
-| 9 | P. Haynes | UK | 3 | 7 | 0 | 5 | 3 | 25 | **43** |
+| 1 | M. Hooper | CAN | 25 | 25 | 20 | 20 | 20 | 10 | **120** |
+| 2 | T. Mitchell | USA | 14.5 | 10 | 25 | 9 | 25 | 20 | **103.5** |
+| 3 | L. Hatton | USA | 14.5 | 20 | 16 | 7 | 16 | 8 | **81.5** |
+| 4 | T. Stoltman | UK | 9.5 | 11 | 11 | 25 | 10 | 13 | **79.5** |
+| 5 | T. Evans | USA | 9.5 | 7 | 13 | 13 | 11 | 16 | **69.5** |
+| 6 | B. Johnson | USA | 9.5 | 13 | 10 | 10 | 13 | 11 | **66.5** |
+| 7 | A. Andrade | USA | 20 | 8 | 9 | 11 | 9 | 9 | **66** |
+| 8 | R. Nel | RSA | 9.5 | 16 | 8 | 16 | 8 | 7 | **64.5** |
+| 9 | P. Haynes | UK | 7 | 9 | 0 | 8 | 7 | 25 | **56** |
 
 ## Podium Per System
 
@@ -154,7 +154,7 @@ _MotoGP-style top, but tail extends to 1 for last (steeper bottom half)._
 | F1 1991-2002 | 1.67x | M. Hooper (39) | T. Mitchell (30.5) | T. Stoltman (18.8) |
 | F1 1961-1990 | 1.50x | M. Hooper (37) | T. Mitchell (28.5) | T. Stoltman (17.8) |
 | MotoGP | 1.25x | M. Hooper (120) | T. Mitchell (103.5) | L. Hatton (81.5) |
-| MotoGP Extended | 1.25x | M. Hooper (119) | T. Mitchell (100.5) | T. Stoltman (77) |
+| MotoGP Extended | 1.25x | M. Hooper (120) | T. Mitchell (103.5) | L. Hatton (81.5) |
 
 ## Winner Flip Analysis
 

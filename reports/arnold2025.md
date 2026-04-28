@@ -135,22 +135,22 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 
 ### MotoGP Extended
 
-_MotoGP-style top, but tail extends to 1 for last (steeper bottom half)._
+_MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 
-**Scale:** `[25, 20, 16, 13, 11, 9, 7, 5, 3, 1]` — **1st/2nd ratio:** 1.25x
+**Scale:** `[25, 20, 16, 13, 11, 10, 9, 8, 7, 6]` — **1st/2nd ratio:** 1.25x
 
 | # | Athlete | Country | Deadlift | Overhead | Timber Carry | Big Jerk | Timber Trial | Stone Shoulder | **Total** |
 |---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
 | 1 | M. Hooper | CAN | 20 | 16 | 25 | 18 | 20 | 13.3 | **112.3** |
-| 2 | L. Hatton | USA | 7 | 25 | 20 | 25 | 13 | 20 | **110** |
-| 3 | H. Björnsson | ISL | 25 | 11 | 11 | 10 | 25 | 9 | **91** |
-| 4 | A. Andrade | USA | 9 | 13 | 13 | 10 | 7 | 25 | **77** |
-| 5 | T. Mitchell | USA | 13 | 20 | 1 | 18 | 9 | 13.3 | **74.3** |
-| 6 | E. Singleton | USA | 11 | 7 | 16 | 10 | 11 | 6 | **61** |
-| 7 | T. Stoltman | UK | 5 | 9 | 5 | 10 | 16 | 13.3 | **58.3** |
-| 8 | B. Thompson | USA | 16 | 5 | 3 | 4 | 3 | 0 | **31** |
-| 9 | N. Guardione | USA | 3 | 3 | 7 | 4 | 5 | 6 | **28** |
-| 10 | M. Boudreault | CAN | 0 | 1 | 9 | 0 | 0 | 0 | **10** |
+| 2 | L. Hatton | USA | 9 | 25 | 20 | 25 | 13 | 20 | **112** |
+| 3 | H. Björnsson | ISL | 25 | 11 | 11 | 10.8 | 25 | 10 | **92.8** |
+| 4 | A. Andrade | USA | 10 | 13 | 13 | 10.8 | 9 | 25 | **80.8** |
+| 5 | T. Mitchell | USA | 13 | 20 | 6 | 18 | 10 | 13.3 | **80.3** |
+| 6 | E. Singleton | USA | 11 | 9 | 16 | 10.8 | 11 | 8.5 | **66.2** |
+| 7 | T. Stoltman | UK | 8 | 10 | 8 | 10.8 | 16 | 13.3 | **66.1** |
+| 8 | N. Guardione | USA | 7 | 7 | 9 | 7.5 | 8 | 8.5 | **47** |
+| 9 | B. Thompson | USA | 16 | 8 | 7 | 7.5 | 7 | 0 | **45.5** |
+| 10 | M. Boudreault | CAN | 0 | 6 | 10 | 0 | 0 | 0 | **16** |
 
 ## Podium Per System
 
@@ -162,7 +162,7 @@ _MotoGP-style top, but tail extends to 1 for last (steeper bottom half)._
 | F1 1991-2002 | 1.67x | L. Hatton (35) | M. Hooper (34) | H. Björnsson (26.5) |
 | F1 1961-1990 | 1.50x | M. Hooper (33) | L. Hatton (33) | H. Björnsson (24.5) |
 | MotoGP | 1.25x | M. Hooper (112.3) | L. Hatton (112) | H. Björnsson (92.8) |
-| MotoGP Extended | 1.25x | M. Hooper (112.3) | L. Hatton (110) | H. Björnsson (91) |
+| MotoGP Extended | 1.25x | M. Hooper (112.3) | L. Hatton (112) | H. Björnsson (92.8) |
 
 ## Winner Flip Analysis
 

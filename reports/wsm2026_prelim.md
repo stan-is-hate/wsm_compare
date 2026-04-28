@@ -240,37 +240,37 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 
 ### MotoGP Extended
 
-_MotoGP-style top, but tail extends to 1 for last (steeper bottom half)._
+_MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 
-**Scale:** `[25, 20, 16, 13, 11, 9, 7, 5, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]` — **1st/2nd ratio:** 1.25x
+**Scale:** `[25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]` — **1st/2nd ratio:** 1.25x
 
 | # | Athlete | Country | Carry | Overhead | Squat | Truck | Stones | **Total** |
 |---|---------|---------|----------|----------|----------|----------|----------|-----------|
-| 1 | R. Nel | RSA | 25 | 0 | 5 | 13 | 25 | **68** |
-| 2 | M. Hooper | CAN | 7 | 13 | 1 | 25 | 20 | **66** |
-| 3 | L. Hatton | USA | 0 | 16 | 25 | 9 | 0 | **50** |
-| 4 | A. Andrade | MEX | 0 | 9 | 18 | 20 | 0 | **47** |
-| 5 | O. Fojtů | CZE | 16 | 25 | 0 | 0 | 0 | **41** |
-| 6 | E. Williams | AUS | 20 | 0 | 0 | 3 | 16 | **39** |
-| 7 | T. Mitchell | USA | 0 | 20 | 12 | 0 | 5 | **37** |
-| 8 | M. Ragg | NZL | 13 | 0 | 12 | 0 | 0 | **25** |
-| 9 | M. Funiok | CZE | 0 | 0 | 0 | 11 | 13 | **24** |
-| 10 | P. Kordiyaka | UKR | 0 | 7 | 8 | 0 | 9 | **24** |
-| 11 | E. Singleton | USA | 11 | 11 | 0 | 0 | 0 | **22** |
-| 12 | J. Schoonwinkel | RSA | 9 | 0 | 0 | 0 | 11 | **20** |
-| 13 | L. Richardson | GBR | 0 | 0 | 18 | 0 | 0 | **18** |
-| 14 | L. Strong | USA | 0 | 0 | 0 | 16 | 0 | **16** |
-| 15 | M. Licis | LAT | 0 | 3 | 8 | 5 | 0 | **16** |
-| 16 | A. Flynn | GBR | 0 | 1 | 1 | 7 | 0 | **9** |
-| 17 | P. Haynes | GBR | 0 | 0 | 0 | 0 | 7 | **7** |
-| 18 | N. Guardione | USA | 2 | 0 | 0 | 0 | 3 | **5** |
-| 19 | B. Glasscock | GBR | 0 | 5 | 0 | 0 | 0 | **5** |
-| 20 | B. Johnson | USA | 5 | 0 | 0 | 0 | 0 | **5** |
-| 21 | T. Stoltman | GBR | 0 | 0 | 1 | 1 | 0 | **2** |
-| 22 | J. Jeffers | CAN | 2 | 0 | 0 | 0 | 0 | **2** |
-| 23 | T. Hoath | CAN | 0 | 0 | 0 | 0 | 1 | **1** |
-| 24 | E. Aryee | GHA | 0 | 0 | 1 | 0 | 0 | **1** |
-| 25 | K. Hazeleger | NED | 0 | 0 | 0 | 0 | 0 | **0** |
+| 1 | M. Hooper | CAN | 9 | 13 | 5.5 | 25 | 20 | **72.5** |
+| 2 | R. Nel | RSA | 25 | 0 | 8 | 13 | 25 | **71** |
+| 3 | L. Hatton | USA | 0 | 16 | 25 | 10 | 0 | **51** |
+| 4 | A. Andrade | MEX | 0 | 10 | 18 | 20 | 2 | **50** |
+| 5 | O. Fojtů | CZE | 16 | 25 | 1 | 2.5 | 5 | **49.5** |
+| 6 | E. Williams | AUS | 20 | 2 | 3 | 7 | 16 | **48** |
+| 7 | T. Mitchell | USA | 0 | 20 | 12 | 0 | 8 | **40** |
+| 8 | P. Kordiyaka | UKR | 0 | 9 | 9.5 | 5 | 10 | **33.5** |
+| 9 | M. Licis | LAT | 4 | 7 | 9.5 | 8 | 4 | **32.5** |
+| 10 | M. Ragg | NZL | 13 | 1 | 12 | 0 | 0 | **26** |
+| 11 | M. Funiok | CZE | 1 | 0 | 0 | 11 | 13 | **25** |
+| 12 | J. Schoonwinkel | RSA | 10 | 0 | 1 | 2.5 | 11 | **24.5** |
+| 13 | A. Flynn | GBR | 0 | 6 | 5.5 | 9 | 3 | **23.5** |
+| 14 | N. Guardione | USA | 6.5 | 5 | 0 | 4 | 7 | **22.5** |
+| 15 | E. Singleton | USA | 11 | 11 | 0 | 0 | 0 | **22** |
+| 16 | L. Richardson | GBR | 0 | 3 | 18 | 0 | 0 | **21** |
+| 17 | L. Strong | USA | 0 | 0 | 0 | 16 | 0 | **16** |
+| 18 | T. Stoltman | GBR | 0 | 4 | 5.5 | 6 | 0 | **15.5** |
+| 19 | P. Haynes | GBR | 3 | 0 | 0 | 0 | 9 | **12** |
+| 20 | B. Glasscock | GBR | 0 | 8 | 1 | 0 | 1 | **10** |
+| 21 | T. Hoath | CAN | 2 | 0 | 0 | 0 | 6 | **8** |
+| 22 | B. Johnson | USA | 8 | 0 | 0 | 0 | 0 | **8** |
+| 23 | J. Jeffers | CAN | 6.5 | 0 | 0 | 1 | 0 | **7.5** |
+| 24 | E. Aryee | GHA | 0 | 0 | 5.5 | 0 | 0 | **5.5** |
+| 25 | K. Hazeleger | NED | 5 | 0 | 0 | 0 | 0 | **5** |
 
 ## Podium Per System
 
@@ -282,12 +282,12 @@ _MotoGP-style top, but tail extends to 1 for last (steeper bottom half)._
 | F1 1991-2002 | 1.67x | R. Nel (23) | M. Hooper (19) | L. Hatton (15) |
 | F1 1961-1990 | 1.50x | R. Nel (21) | M. Hooper (18) | L. Hatton (14) |
 | MotoGP | 1.25x | R. Nel (71) | M. Hooper (70.2) | L. Hatton (51) |
-| MotoGP Extended | 1.25x | R. Nel (68) | M. Hooper (66) | L. Hatton (50) |
+| MotoGP Extended | 1.25x | M. Hooper (72.5) | R. Nel (71) | L. Hatton (51) |
 
 ## Winner Flip Analysis
 
 This comp produces **different winners** under different scoring systems:
 
-- **M. Hooper** wins under: WSM Linear
-- **R. Nel** wins under: F1 2010-present, F1 2003-2009, F1 1991-2002, F1 1961-1990, MotoGP, MotoGP Extended
+- **M. Hooper** wins under: WSM Linear, MotoGP Extended
+- **R. Nel** wins under: F1 2010-present, F1 2003-2009, F1 1991-2002, F1 1961-1990, MotoGP
 

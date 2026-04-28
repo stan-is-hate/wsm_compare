@@ -135,22 +135,22 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 
 ### MotoGP Extended
 
-_MotoGP-style top, but tail extends to 1 for last (steeper bottom half)._
+_MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 
-**Scale:** `[25, 20, 16, 13, 11, 9, 7, 5, 3, 1]` — **1st/2nd ratio:** 1.25x
+**Scale:** `[25, 20, 16, 13, 11, 10, 9, 8, 7, 6]` — **1st/2nd ratio:** 1.25x
 
 | # | Athlete | Country | Prelim | Flip Carry | Deadlift | Titans Toss | Max Log | Atlas Stones | **Total** |
 |---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
 | 1 | M. Hooper | CAN | 25 | 20 | 18 | 20 | 18 | 20 | **121** |
 | 2 | R. Nel | RSA | 20 | 25 | 25 | 25 | 13 | 11 | **119** |
-| 3 | T. Mitchell | USA | 6 | 5 | 10 | 7 | 25 | 25 | **78** |
-| 4 | P. Kordiyaka | UKR | 9 | 16 | 0 | 13 | 8 | 13 | **59** |
-| 5 | O. Fojtů | CZE | 11 | 11 | 7 | 3 | 18 | 9 | **59** |
-| 6 | M. Licis | LAT | 6 | 7 | 10 | 9 | 8 | 16 | **56** |
-| 7 | M. Ragg | NZL | 3 | 9 | 18 | 11 | 8 | 5 | **54** |
-| 8 | E. Williams | AUS | 13 | 13 | 13 | 5 | 0 | 3 | **47** |
-| 9 | N. Guardione | USA | 1 | 1 | 4 | 16 | 8 | 7 | **37** |
-| 10 | A. Andrade | MEX | 16 | 3 | 4 | 0 | 0 | 0 | **23** |
+| 3 | T. Mitchell | USA | 8.5 | 8 | 10.5 | 9 | 25 | 25 | **86** |
+| 4 | O. Fojtů | CZE | 11 | 11 | 9 | 7 | 18 | 10 | **66** |
+| 5 | M. Licis | LAT | 8.5 | 9 | 10.5 | 10 | 9.5 | 16 | **63.5** |
+| 6 | M. Ragg | NZL | 7 | 10 | 18 | 11 | 9.5 | 8 | **63.5** |
+| 7 | P. Kordiyaka | UKR | 10 | 16 | 0 | 13 | 9.5 | 13 | **61.5** |
+| 8 | E. Williams | AUS | 13 | 13 | 13 | 8 | 0 | 7 | **54** |
+| 9 | N. Guardione | USA | 6 | 6 | 7.5 | 16 | 9.5 | 9 | **54** |
+| 10 | A. Andrade | MEX | 16 | 7 | 7.5 | 0 | 0 | 0 | **30.5** |
 
 ## Podium Per System
 
@@ -162,7 +162,7 @@ _MotoGP-style top, but tail extends to 1 for last (steeper bottom half)._
 | F1 1991-2002 | 1.67x | R. Nel (41) | M. Hooper (38) | T. Mitchell (21.5) |
 | F1 1961-1990 | 1.50x | R. Nel (38) | M. Hooper (37) | T. Mitchell (19.5) |
 | MotoGP | 1.25x | M. Hooper (121) | R. Nel (119) | T. Mitchell (86) |
-| MotoGP Extended | 1.25x | M. Hooper (121) | R. Nel (119) | T. Mitchell (78) |
+| MotoGP Extended | 1.25x | M. Hooper (121) | R. Nel (119) | T. Mitchell (86) |
 
 ## Winner Flip Analysis
 

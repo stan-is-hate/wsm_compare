@@ -213,37 +213,37 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 
 ### MotoGP Extended
 
-_MotoGP-style top, but tail extends to 1 for last (steeper bottom half)._
+_MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 
-**Scale:** `[25, 20, 16, 13, 11, 9, 7, 5, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]` — **1st/2nd ratio:** 1.25x
+**Scale:** `[25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]` — **1st/2nd ratio:** 1.25x
 
 | # | Athlete | Country | Group | Carry | Overhead | Squat | Truck | Stones | **Total** |
 |---|---------|---------|-------|-------|-------|-------|-------|-------|-----------|
-| 1 | R. Nel | RSA | G1 | 25 | 0 | 5 | 13 | 25 | **68** |
-| 2 | M. Hooper | CAN | G3 | 7 | 13 | 1 | 25 | 20 | **66** |
-| 3 | L. Hatton | USA | G3 | 0 | 16 | 25 | 9 | 0 | **50** |
-| 4 | A. Andrade | MEX | G2 | 0 | 9 | 18 | 20 | 0 | **47** |
-| 5 | O. Fojtů | CZE | G4 | 16 | 25 | 0 | 0 | 0 | **41** |
-| 6 | E. Williams | AUS | G3 | 20 | 0 | 0 | 3 | 16 | **39** |
-| 7 | T. Mitchell | USA | G5 | 0 | 20 | 12 | 0 | 5 | **37** |
-| 8 | M. Ragg | NZL | G2 | 13 | 0 | 12 | 0 | 0 | **25** |
-| 9 | M. Funiok | CZE | G3 | 0 | 0 | 0 | 11 | 13 | **24** |
-| 10 | P. Kordiyaka | UKR | G5 | 0 | 7 | 8 | 0 | 9 | **24** |
-| 11 | E. Singleton | USA | G5 | 11 | 11 | 0 | 0 | 0 | **22** |
-| 12 | J. Schoonwinkel | RSA | G2 | 9 | 0 | 0 | 0 | 11 | **20** |
-| 13 | L. Richardson | GBR | G1 | 0 | 0 | 18 | 0 | 0 | **18** |
-| 14 | L. Strong | USA | G2 | 0 | 0 | 0 | 16 | 0 | **16** |
-| 15 | M. Licis | LAT | G4 | 0 | 3 | 8 | 5 | 0 | **16** |
-| 16 | A. Flynn | GBR | G5 | 0 | 1 | 1 | 7 | 0 | **9** |
-| 17 | P. Haynes | GBR | G3 | 0 | 0 | 0 | 0 | 7 | **7** |
-| 18 | N. Guardione | USA | G1 | 2 | 0 | 0 | 0 | 3 | **5** |
-| 19 | B. Glasscock | GBR | G1 | 0 | 5 | 0 | 0 | 0 | **5** |
-| 20 | B. Johnson | USA | G4 | 5 | 0 | 0 | 0 | 0 | **5** |
-| 21 | T. Stoltman | GBR | G2 | 0 | 0 | 1 | 1 | 0 | **2** |
-| 22 | J. Jeffers | CAN | G4 | 2 | 0 | 0 | 0 | 0 | **2** |
-| 23 | T. Hoath | CAN | G1 | 0 | 0 | 0 | 0 | 1 | **1** |
-| 24 | E. Aryee | GHA | G5 | 0 | 0 | 1 | 0 | 0 | **1** |
-| 25 | K. Hazeleger | NED | G4 | 0 | 0 | 0 | 0 | 0 | **0** |
+| 1 | M. Hooper | CAN | G3 | 9 | 13 | 5.5 | 25 | 20 | **72.5** |
+| 2 | R. Nel | RSA | G1 | 25 | 0 | 8 | 13 | 25 | **71** |
+| 3 | L. Hatton | USA | G3 | 0 | 16 | 25 | 10 | 0 | **51** |
+| 4 | A. Andrade | MEX | G2 | 0 | 10 | 18 | 20 | 2 | **50** |
+| 5 | O. Fojtů | CZE | G4 | 16 | 25 | 1 | 2.5 | 5 | **49.5** |
+| 6 | E. Williams | AUS | G3 | 20 | 2 | 3 | 7 | 16 | **48** |
+| 7 | T. Mitchell | USA | G5 | 0 | 20 | 12 | 0 | 8 | **40** |
+| 8 | P. Kordiyaka | UKR | G5 | 0 | 9 | 9.5 | 5 | 10 | **33.5** |
+| 9 | M. Licis | LAT | G4 | 4 | 7 | 9.5 | 8 | 4 | **32.5** |
+| 10 | M. Ragg | NZL | G2 | 13 | 1 | 12 | 0 | 0 | **26** |
+| 11 | M. Funiok | CZE | G3 | 1 | 0 | 0 | 11 | 13 | **25** |
+| 12 | J. Schoonwinkel | RSA | G2 | 10 | 0 | 1 | 2.5 | 11 | **24.5** |
+| 13 | A. Flynn | GBR | G5 | 0 | 6 | 5.5 | 9 | 3 | **23.5** |
+| 14 | N. Guardione | USA | G1 | 6.5 | 5 | 0 | 4 | 7 | **22.5** |
+| 15 | E. Singleton | USA | G5 | 11 | 11 | 0 | 0 | 0 | **22** |
+| 16 | L. Richardson | GBR | G1 | 0 | 3 | 18 | 0 | 0 | **21** |
+| 17 | L. Strong | USA | G2 | 0 | 0 | 0 | 16 | 0 | **16** |
+| 18 | T. Stoltman | GBR | G2 | 0 | 4 | 5.5 | 6 | 0 | **15.5** |
+| 19 | P. Haynes | GBR | G3 | 3 | 0 | 0 | 0 | 9 | **12** |
+| 20 | B. Glasscock | GBR | G1 | 0 | 8 | 1 | 0 | 1 | **10** |
+| 21 | T. Hoath | CAN | G1 | 2 | 0 | 0 | 0 | 6 | **8** |
+| 22 | B. Johnson | USA | G4 | 8 | 0 | 0 | 0 | 0 | **8** |
+| 23 | J. Jeffers | CAN | G4 | 6.5 | 0 | 0 | 1 | 0 | **7.5** |
+| 24 | E. Aryee | GHA | G5 | 0 | 0 | 5.5 | 0 | 0 | **5.5** |
+| 25 | K. Hazeleger | NED | G4 | 5 | 0 | 0 | 0 | 0 | **5** |
 
 ## Top 10 Subset Control (Qualifiers Re-Ranked)
 
@@ -268,16 +268,16 @@ The top 2 per group (10 athletes — qualifiers under WSM Linear) re-ranked with
 
 | # | Athlete | Country | Group | WSM Linear | F1 2010-present | F1 2003-2009 | F1 1991-2002 | F1 1961-1990 | MotoGP | MotoGP Extended |
 |---|---------|---------|-------|-------|-------|-------|-------|-------|-------|-------|
-| 1 | M. Hooper | CAN | G3 | 37 | 74 | 30 | 22 | 21 | 81 | 79 |
-| 2 | R. Nel | RSA | G1 | 34 | 74 | 29 | 25 | 23 | 82 | 76 |
-| 3 | A. Andrade | MEX | G2 | 31 | 61 | 24 | 19 | 18 | 73 | 66 |
-| 4 | E. Williams | AUS | G3 | 29 | 51 | 20 | 12 | 12 | 63 | 57 |
-| 5 | O. Fojtů | CZE | G4 | 27 | 52 | 19 | 14 | 13 | 65 | 56 |
-| 6 | P. Kordiyaka | UKR | G5 | 26.5 | 43 | 16.5 | 8.5 | 8.5 | 53 | 48 |
-| 7 | M. Licis | LAT | G4 | 25.5 | 41 | 15.5 | 6.5 | 6.5 | 52 | 46 |
-| 8 | T. Mitchell | USA | G5 | 25.5 | 46.5 | 19 | 13 | 13 | 61 | 51 |
-| 9 | M. Ragg | NZL | G2 | 20.5 | 33.5 | 12 | 8 | 8 | 51 | 38 |
-| 10 | N. Guardione | USA | G1 | 19 | 29 | 10 | 2 | 2 | 44 | 33 |
+| 1 | M. Hooper | CAN | G3 | 37 | 74 | 30 | 22 | 21 | 81 | 81 |
+| 2 | R. Nel | RSA | G1 | 34 | 74 | 29 | 25 | 23 | 82 | 82 |
+| 3 | A. Andrade | MEX | G2 | 31 | 61 | 24 | 19 | 18 | 73 | 73 |
+| 4 | E. Williams | AUS | G3 | 29 | 51 | 20 | 12 | 12 | 63 | 63 |
+| 5 | O. Fojtů | CZE | G4 | 27 | 52 | 19 | 14 | 13 | 65 | 65 |
+| 6 | P. Kordiyaka | UKR | G5 | 26.5 | 43 | 16.5 | 8.5 | 8.5 | 53 | 53 |
+| 7 | M. Licis | LAT | G4 | 25.5 | 41 | 15.5 | 6.5 | 6.5 | 52 | 52 |
+| 8 | T. Mitchell | USA | G5 | 25.5 | 46.5 | 19 | 13 | 13 | 61 | 61 |
+| 9 | M. Ragg | NZL | G2 | 20.5 | 33.5 | 12 | 8 | 8 | 51 | 51 |
+| 10 | N. Guardione | USA | G1 | 19 | 29 | 10 | 2 | 2 | 44 | 44 |
 
 **Top 10 winner per system:**
 
@@ -287,5 +287,5 @@ The top 2 per group (10 athletes — qualifiers under WSM Linear) re-ranked with
 - **F1 1991-2002:** R. Nel (25 pts)
 - **F1 1961-1990:** R. Nel (23 pts)
 - **MotoGP:** R. Nel (82 pts)
-- **MotoGP Extended:** M. Hooper (79 pts)
+- **MotoGP Extended:** R. Nel (82 pts)
 

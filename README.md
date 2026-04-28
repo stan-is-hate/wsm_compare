@@ -98,7 +98,7 @@ scoring_systems/
 | F1 1991-2002 | 10-6-4-3-2-1 | 1.67x | F1, Schumacher era. Top 6 only. |
 | F1 1961-1990 | 9-6-4-3-2-1 | 1.50x | F1, Senna/Prost era. Top 6 only. |
 | MotoGP | 25-20-16-13-11-10-9-8-7-6 | 1.25x | MotoGP, current. All 10 score well. |
-| MotoGP Extended | 25-20-16-13-11-9-7-5-3-1 | 1.25x | Variant: MotoGP top, steeper tail down to 1. |
+| MotoGP Extended | 25-20-16-13-11-10-9-8-7-6-5-4-3-2-1 | 1.25x | Variant: MotoGP scale extended to 15 positions for bigger fields. |
 
 ### Adding a new scoring system
 
