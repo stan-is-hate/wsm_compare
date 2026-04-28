@@ -13,9 +13,11 @@ Data sourced from [Strongman Archives](https://strongmanarchives.com/). Math ver
 
 ## How often the winner changes across systems
 
-Counts of who wins each men's comp under each system, across 9 men's comps over 3 years:
+Counts of who wins each comp under each system, across 14 comps over 3 years (9 men's, 5 women's).
 
 Bold = actual real-world winner (under current WSM Linear scoring). `x/7` = how many of the 7 tested scoring systems crowned that athlete.
+
+### Men's
 
 | Comp | Winners under different systems |
 |---|---|
@@ -28,6 +30,16 @@ Bold = actual real-world winner (under current WSM Linear scoring). `x/7` = how 
 | Rogue 2024 | **M. Hooper (7/7)** |
 | SMOE 2025 | **E. Singleton (1/7)**, L. Hatton (6/7) |
 | SMOE 2024 | **M. Hooper (5/7)**, H. Björnsson (2/7) |
+
+### Women's
+
+| Comp | Winners under different systems |
+|---|---|
+| Arnold 2026 | **O. Liashchuk (1/7)**, I. Carrasquillo (6/7) |
+| Arnold 2025 | **I. Carrasquillo (7/7)** |
+| Arnold 2024 | **A. Jardine (7/7)** |
+| Rogue 2025 | **I. Carrasquillo (7/7)** |
+| Rogue 2024 | **I. Carrasquillo (7/7)** |
 
 ## Browse individual comp reports
 
@@ -45,7 +57,7 @@ Each report shows full standings under all 7 scoring systems, podium-by-system, 
 
 ## Findings
 
-A few patterns:
+### Men's
 
 - **4 of 9 men's comps are uncontroversial** — same winner under all 7 systems. Arnold 2024, Arnold 2026, Rogue 2024, Rogue 2025 all give M. Hooper the trophy regardless of scoring philosophy.
 
@@ -54,6 +66,14 @@ A few patterns:
 - **The biggest reshuffling is at the close finals.** WSM 2025 (Nel by 0.5 pts) and SMOE 2025 (Singleton by 0.5 pts) each have actual winners who only prevail under 1 of 7 systems. Under every steeper system, the runner-up takes it. SMOE 2024 also flipped under 2 systems despite Hooper's clean 9-pt margin.
 
 - **WSM 2026 sits in the middle** — Hooper won by 2 pts but only takes 4 of 7 systems. Nel wins under any system with a 1.39x or higher 1st/2nd ratio.
+
+### Women's
+
+- **4 of 5 women's comps are uncontroversial** — same winner under all 7 systems. Only Arnold 2026 flips.
+
+- **I. Carrasquillo is the dominant figure across the women's dataset** — she wins 27 of 35 system-comp slots (5 comps × 7 systems = 35), including all 7 systems for Arnold 2025, Rogue 2024, and Rogue 2025. Functionally the women's-side equivalent of Hooper.
+
+- **Arnold 2026 is the women's outlier.** O. Liashchuk took it under WSM Linear, but I. Carrasquillo wins under every other system tested. Same pattern as WSM 2025 on the men's side: a real-world winner who only prevails under one specific scoring philosophy.
 
 ## Scoring systems tested
 
