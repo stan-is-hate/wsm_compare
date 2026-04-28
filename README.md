@@ -1,104 +1,105 @@
 # WSM Compare
 
-Compare strongman competition results under different real-world scoring systems (WSM Linear, F1 across eras, MotoGP, etc.) to see how the scoring philosophy affects the winner.
+What if strongman comps used different scoring systems? This tool re-scores 15 real competitions (Arnold, Rogue, SMOE, WSM — both men's and women's) under 7 real-world scoring systems (current strongman, multiple eras of F1, MotoGP, plus a custom MotoGP variant) and shows how the winners change.
 
-## Why?
+All data sourced from [Strongman Archives](https://strongmanarchives.com/). Math verified against official totals.
 
-The 2026 WSM final was decided by 2 points: Mitchell Hooper beat Rayno Nel 54-52 under the current WSM scoring (10-9-8-7-6-5-4-3-2-1). But Nel won 3 events outright while Hooper won only 1. Under different scoring systems — F1, MotoGP, older WSM rules — the winner could have been different. This tool runs that what-if analysis across multiple competitions.
+## TL;DR
 
-## What's here
+**Mitchell Hooper dominates regardless of scoring system.** Across 9 men's comps over 3 years, here's how many he wins under each:
 
-- `wsm_compare.py` — single-script tool, no dependencies (stdlib only)
-- `comps/` — competition results in CSV format (one file per comp)
-- `reports/` — generated markdown reports (per-comp + cross-comp summary)
+| Scoring system | Hooper wins | Other winners |
+|---|---|---|
+| WSM Linear (current) | **7 / 9** | E. Singleton, R. Nel |
+| F1 2003-2009 | **7 / 9** | L. Hatton, T. Stoltman |
+| MotoGP | **7 / 9** | L. Hatton, T. Stoltman |
+| MotoGP Extended | **7 / 9** | L. Hatton, T. Stoltman |
+| F1 2010-present | **6 / 9** | L. Hatton, T. Stoltman, R. Nel |
+| F1 1961-1990 | **5 / 9** | H. Björnsson, L. Hatton, T. Stoltman, R. Nel |
+| F1 1991-2002 | **4 / 9** | L. Hatton (2), H. Björnsson, T. Stoltman, R. Nel |
 
-## Usage
+The "Hooper got lucky with the scoring system" theory doesn't really hold up. He'd win the majority of his comps under any reasonable scoring philosophy. Only the steepest, top-6-only old F1 systems significantly reshuffle the deck — and even those crown Hooper in 4-5 of 9.
 
-Three subcommands:
+## Comps where the scoring system actually changes the winner
 
-### `compare` — apply scoring systems to a single field
+5 of 9 men's comps have at least one scoring system that flips the winner:
 
-Works on any CSV. Computes athlete totals under each scoring system; produces standings, podium, and winner-flip analysis.
+| Comp | Real winner (WSM Linear) | Alternate winner (under some systems) |
+|---|---|---|
+| **WSM 2026 finals** | M. Hooper (54) | R. Nel — wins under F1 2010+, F1 1991-02, F1 1961-90 |
+| **WSM 2025 finals** | R. Nel (47) | T. Stoltman — wins under every other system tested |
+| **SMOE 2024** | M. Hooper (117) | H. Björnsson — wins under F1 1991-02 and F1 1961-90 only |
+| **SMOE 2025** | E. Singleton (93.5) | L. Hatton — wins under every other system tested |
+| **Arnold 2025** | M. Hooper (51.5) | L. Hatton — wins under F1 1991-2002 only |
 
-```bash
-python3 wsm_compare.py compare comps/wsm2026_finals.csv         # one comp, stdout
-python3 wsm_compare.py compare --all                             # all comps, stdout
-python3 wsm_compare.py compare --report                          # all comps to markdown + cross-summary
-python3 wsm_compare.py compare --report comps/arnold2025.csv     # one comp to markdown
-```
+The rest (Arnold 2024, Arnold 2026, Rogue 2024, Rogue 2025) are uncontroversial — same winner under all 7 systems.
 
-### `groups` — compare groups as teams
+**See [`reports/_summary.md`](reports/_summary.md) for the full cross-comp table and methodological notes.**
 
-Requires a CSV with a `group` column. Sums each group's athletes' points to crown the strongest group under each scoring system.
+## Browse individual comp reports
 
-```bash
-python3 wsm_compare.py groups comps/wsm2026_prelim.csv           # stdout
-python3 wsm_compare.py groups --report comps/wsm2026_prelim.csv  # markdown
-```
+Each report shows full standings under all 7 scoring systems plus podium-by-system and winner-flip analysis.
 
-### `pool` — pool all athletes into a single stack rank
+### Men's
+- **WSM:** [2026 finals](reports/wsm2026_finals.md) · [2026 prelim](reports/wsm2026_prelim.md) · [2025 finals](reports/wsm2025_finals.md)
+- **Arnold Strongman Classic:** [2026](reports/arnold2026.md) · [2025](reports/arnold2025.md) · [2024](reports/arnold2024.md)
+- **Rogue Invitational:** [2025](reports/rogue2025.md) · [2024](reports/rogue2024.md)
+- **Strongest Man on Earth:** [2025](reports/smoe2025.md) · [2024](reports/smoe2024.md)
 
-Requires a CSV with a `group` column. Ranks all athletes in one big stack rank, with a BONUS top-10 control (qualifiers re-ranked within their subset). The top-10 control reproduces WSM's official "Prelim Score" carryover.
+### Women's
+- **Arnold Strongman Classic:** [2026](reports/arnold2026_w.md) · [2025](reports/arnold2025_w.md) · [2024](reports/arnold2024_w.md)
+- **Rogue Invitational:** [2025](reports/rogue2025_w.md) · [2024](reports/rogue2024_w.md)
 
-```bash
-python3 wsm_compare.py pool comps/wsm2026_prelim.csv             # stdout
-python3 wsm_compare.py pool --report comps/wsm2026_prelim.csv    # markdown
-```
-
-## CSV format
-
-```csv
-athlete,country,Event1,Event2,...
-M. Hooper,CAN,1,T2,DNS,...
-```
-
-Placement values:
-- `1`, `2`, `3` — solo placement
-- `T2`, `T3` — tied (script counts athletes with the same string to determine tie size and averages points across positions consumed)
-- `DNS` — did not compete / withdrew / no lift (always 0 pts)
-
-### Group-stage CSV (`group` column)
-
-For multi-group competitions (like the WSM group stage), add a `group` column. Placements should be **global across all athletes** (e.g., 1-25 across all 5 groups), not within-group:
-
-```csv
-group,athlete,country,Event1,Event2,...
-1,R. Nel,RSA,1,18,...
-1,N. Guardione,USA,T9,11,...
-...
-```
-
-The `groups` and `pool` subcommands require this column.
-
-The Top-10 subset control in `pool` mode reproduces WSM's official "Prelim Score" carryover when WSM Linear is used. Verified against WSM 2026 official totals (Hooper 37, Nel 34, Andrade 31, Williams 29, Fojtů 27, Kordiyaka 26.5, Licis 25.5, Mitchell 25.5, Ragg 20.5 — all match exactly).
+### Group-stage analysis (WSM 2026 prelim)
+- [Groups as teams](reports/wsm2026_prelim_groups.md) — which group was strongest? (Group 3 by 70+ pts under any system)
+- [Pooled stack rank](reports/wsm2026_prelim_pool.md) — all 25 athletes ranked against each other, with a top-10 control that reproduces WSM's official prelim carryover
 
 ## Scoring systems tested
 
-Each system lives in its own module under `scoring_systems/`:
-
-```
-scoring_systems/
-├── __init__.py          (empty marker, no code)
-├── _base.py             (ScoringSystem dataclass)
-├── _registry.py         (ALL_SYSTEMS list, by_name lookup)
-├── wsm_linear.py
-├── f1_2010.py
-├── f1_2003.py
-├── f1_1991.py
-├── f1_1961.py
-├── motogp.py
-└── motogp_extended.py
-```
-
 | System | Scale (top 10) | 1st/2nd ratio | Origin |
-|--------|---------------|--------------|--------|
+|---|---|---|---|
 | WSM Linear | 10-9-8-7-6-5-4-3-2-1 | 1.11x | World's Strongest Man, current. Equal gaps. |
 | F1 2010-present | 25-18-15-12-10-8-6-4-2-1 | 1.39x | Formula 1, current. Steep top, drops off. |
 | F1 2003-2009 | 10-8-6-5-4-3-2-1 | 1.25x | F1, mid-2000s. Top 8 only. |
 | F1 1991-2002 | 10-6-4-3-2-1 | 1.67x | F1, Schumacher era. Top 6 only. |
 | F1 1961-1990 | 9-6-4-3-2-1 | 1.50x | F1, Senna/Prost era. Top 6 only. |
 | MotoGP | 25-20-16-13-11-10-9-8-7-6 | 1.25x | MotoGP, current. All 10 score well. |
-| MotoGP Extended | 25-20-16-13-11-10-9-8-7-6-5-4-3-2-1 | 1.25x | Variant: MotoGP scale extended to 15 positions for bigger fields. |
+| MotoGP Extended | 25-20-16-13-11-10-9-8-7-6-5-4-3-2-1 | 1.25x | Variant: MotoGP extended to 15 positions for bigger fields. |
+
+## Running it yourself
+
+Zero dependencies (Python stdlib only).
+
+```bash
+# Compare scoring systems on a comp
+python3 wsm_compare.py compare comps/wsm2026_finals.csv         # one comp, stdout
+python3 wsm_compare.py compare --all                              # all comps, stdout
+python3 wsm_compare.py compare --report                           # all comps to markdown
+
+# Group-stage modes (require a 'group' column in the CSV)
+python3 wsm_compare.py groups comps/wsm2026_prelim.csv            # groups as teams
+python3 wsm_compare.py pool comps/wsm2026_prelim.csv              # pooled stack rank + top-10
+
+# Fetch canonical results from Strongman Archives
+python3 fetch_canonical.py 1462 > comps/smoe2024.csv              # SMOE 2024
+```
+
+Tests: `python3 -m unittest discover tests` (60 tests, ~0.3s)
+
+## Project layout
+
+```
+wsm_compare/
+├── wsm_compare.py            # main CLI tool
+├── fetch_canonical.py        # rate-limited fetcher for Strongman Archives
+├── comps/                    # competition CSVs (15 files)
+├── reports/                  # generated markdown reports
+├── scoring_systems/          # one module per scoring system
+│   ├── _base.py              # ScoringSystem dataclass
+│   ├── _registry.py          # ALL_SYSTEMS list, by_name lookup
+│   └── <name>.py             # one file per system (wsm_linear, f1_2010, etc.)
+└── tests/                    # 60 unit + integration + CLI tests
+```
 
 ### Adding a new scoring system
 
@@ -111,32 +112,19 @@ scoring_systems/
        description="One-line description, including origin/era.",
    )
    ```
-2. Register it in `scoring_systems/_registry.py`:
-   ```python
-   from .my_system import SYSTEM as MY_SYSTEM
-   ALL_SYSTEMS = [..., MY_SYSTEM]
-   ```
-3. Run `python3 -m unittest discover tests` and `python3 wsm_compare.py compare --report` to verify.
+2. Register it in `scoring_systems/_registry.py`.
+3. Run `python3 wsm_compare.py compare --report` to regenerate reports.
 
-## Adding a comp
+### Adding a new comp
 
-1. Drop a new CSV in `comps/` with placements (extracted from event-by-event results)
-2. Run `python3 wsm_compare.py --report` to regenerate reports
+```bash
+python3 fetch_canonical.py <strongmanarchives_contest_id> > comps/<name>.csv
+python3 wsm_compare.py compare --report
+```
 
-## Tie handling
+## Methodological notes
 
-When multiple athletes share a placement (e.g., all marked `T2`), they share the points averaged across the positions they consume. Example: 3 athletes tied at T2 → they occupy positions 2, 3, 4 → each gets `(scale[1] + scale[2] + scale[3]) / 3`.
-
-## Field size
-
-Scale length is set by the total number of athletes in the comp, not the number who competed in a specific event. DNS athletes still occupy implicit positions at the bottom of the field but always score 0.
-
-## Findings (across the 5 comps included)
-
-- **Hooper wins under most systems in most comps** — he's so consistent that even steeper scoring rarely flips him to a loss
-- **SMOE 2024 is the most system-sensitive comp** — Björnsson won 5 of 8 events but lost under WSM Linear; he'd win under any system with both a 1.25x+ ratio and a steep tail
-- **WSM 2026 is on the bubble** — Nel needs a 1.39x+ ratio (F1 2010+) to beat Hooper
-- **Rogue 2025 is uncontroversial** — Hooper wins under every system tested
-- **F1 2003-2009 produces the same winners as WSM Linear in 4 of 5 comps** — closest match to the current strongman philosophy
-
-See `reports/_summary.md` for full details.
+- **Scale length follows the comp's full roster**, including DNS athletes. A comp with 10 athletes uses a 10-position scale, regardless of how many actually competed in any event. DNS always scores 0.
+- **Tie averaging:** athletes sharing a placement string (e.g. all `T2`) split points across positions consumed. 3 athletes at T2 → positions 2, 3, 4 → each gets `(scale[1] + scale[2] + scale[3]) / 3`.
+- **Scale truncation in big fields:** systems with short scales (F1 1991-2002 has 6 positions) zero-pad. In a 16-athlete comp under F1 1991-2002, positions 7-16 all score 0.
+- **No-lift / withdrew rules vary across comps.** WSM 2026 treats `(No lift)` as DNS. SMOE 2024 treats no-lifts as competing-but-last. The CSVs encode whichever interpretation matches the comp's published totals.
