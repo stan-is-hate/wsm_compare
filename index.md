@@ -7,7 +7,7 @@ description: Strongman competitions re-scored under different real-world scoring
 People often argue what would happen if strongman used a different scoring system.
 We re-scored 15 real strongman competitions (Arnold, Rogue, SMOE, WSM — both men's and women's) under 7 real-world scoring systems (current strongman, multiple eras of F1, MotoGP, plus a custom MotoGP variant) to see what would actually happen.
 
-**Of course** this is **not fair**. If athletes knew the scoring system was different, their whole approach would be different and results won't be the same. Keep that in mind when browsing this data, because while it's a fun little "what-if", it doesn't work like that in reality.
+**Of course** this is **not fair**. If athletes knew the scoring system was different, their whole approach to prep and events would be different and results won't be the same. Keep that in mind when browsing this data, because while it's a fun little "what-if", it doesn't work like that in reality.
 
 Data sourced from [Strongman Archives](https://strongmanarchives.com/). Math verified against official published totals.
 
