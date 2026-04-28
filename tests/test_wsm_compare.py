@@ -364,5 +364,66 @@ class IntegrationTests(unittest.TestCase):
         self.assertEqual(totals["H. Björnsson"], 42.5, "Björnsson Arnold 2025 total should be 42.5")
 
 
+class GroupModeTests(unittest.TestCase):
+    """Group-stage CSV handling: load_comp groups dict, qualifiers, subset re-ranking."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.path = os.path.join(PROJECT_ROOT, "comps", "wsm2026_groups.csv")
+
+    def test_load_comp_returns_groups_dict(self):
+        _, athletes, _, _, groups = wc.load_comp(self.path)
+        self.assertIsNotNone(groups, "groups dict should be populated when 'group' column present")
+        self.assertEqual(groups["M. Hooper"], "3")
+        self.assertEqual(groups["R. Nel"], "1")
+        self.assertEqual(len(set(groups.values())), 5)
+
+    def test_load_comp_groups_none_when_absent(self):
+        _, _, _, _, groups = wc.load_comp(os.path.join(PROJECT_ROOT, "comps", "wsm2026_finals.csv"))
+        self.assertIsNone(groups)
+
+    def test_determine_qualifiers_picks_top_2_per_group(self):
+        _, athletes, _, events, groups = wc.load_comp(self.path)
+        qualifiers = wc.determine_qualifiers(athletes, groups, events, n_per_group=2)
+        self.assertEqual(len(qualifiers), 10)
+        # Each group represented exactly twice
+        from collections import Counter
+        counts = Counter(groups[a] for a in qualifiers)
+        self.assertEqual(set(counts.values()), {2})
+        # Top contenders should be in there
+        self.assertIn("M. Hooper", qualifiers)
+        self.assertIn("R. Nel", qualifiers)
+        self.assertIn("A. Andrade", qualifiers)
+        self.assertIn("O. Fojtů", qualifiers)
+
+    def test_top10_subset_matches_official_prelim_carryover(self):
+        """Top 10 re-ranked under WSM Linear should match WSM 2026 official prelim totals."""
+        _, athletes, _, events, groups = wc.load_comp(self.path)
+        qualifiers = wc.determine_qualifiers(athletes, groups, events, n_per_group=2)
+        subset_events = wc.derive_subset_placements(qualifiers, events)
+        subset_results = wc.compute_all_systems(qualifiers, subset_events)
+        wsm_totals = subset_results["WSM Linear"].sorted_totals_dict()
+        # Official WSM 2026 prelim scores from Strongman Archives
+        self.assertEqual(wsm_totals["M. Hooper"], 37)
+        self.assertEqual(wsm_totals["R. Nel"], 34)
+        self.assertEqual(wsm_totals["A. Andrade"], 31)
+        self.assertEqual(wsm_totals["E. Williams"], 29)
+        self.assertEqual(wsm_totals["O. Fojtů"], 27)
+        self.assertEqual(wsm_totals["P. Kordiyaka"], 26.5)
+        self.assertEqual(wsm_totals["M. Licis"], 25.5)
+        self.assertEqual(wsm_totals["T. Mitchell"], 25.5)
+        self.assertEqual(wsm_totals["M. Ragg"], 20.5)
+
+    def test_groups_mode_rejects_non_group_csv(self):
+        path = os.path.join(PROJECT_ROOT, "comps", "wsm2026_finals.csv")
+        with self.assertRaisesRegex(ValueError, "groups mode requires"):
+            wc.write_groups_report(path, tempfile.mkdtemp())
+
+    def test_pool_mode_rejects_non_group_csv(self):
+        path = os.path.join(PROJECT_ROOT, "comps", "wsm2026_finals.csv")
+        with self.assertRaisesRegex(ValueError, "pool mode requires"):
+            wc.write_pool_report(path, tempfile.mkdtemp())
+
+
 if __name__ == "__main__":
     unittest.main()

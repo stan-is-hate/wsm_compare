@@ -14,18 +14,35 @@ The 2026 WSM final was decided by 2 points: Mitchell Hooper beat Rayno Nel 54-52
 
 ## Usage
 
+Three subcommands:
+
+### `compare` — apply scoring systems to a single field
+
+Works on any CSV. Computes athlete totals under each scoring system; produces standings, podium, and winner-flip analysis.
+
 ```bash
-# Print one comp's results to stdout
-python3 wsm_compare.py comps/wsm2026_finals.csv
+python3 wsm_compare.py compare comps/wsm2026_finals.csv         # one comp, stdout
+python3 wsm_compare.py compare --all                             # all comps, stdout
+python3 wsm_compare.py compare --report                          # all comps to markdown + cross-summary
+python3 wsm_compare.py compare --report comps/arnold2025.csv     # one comp to markdown
+```
 
-# Print all comps + cross-summary to stdout
-python3 wsm_compare.py --all
+### `groups` — compare groups as teams
 
-# Generate markdown reports in reports/
-python3 wsm_compare.py --report
+Requires a CSV with a `group` column. Sums each group's athletes' points to crown the strongest group under each scoring system.
 
-# Generate one report
-python3 wsm_compare.py --report comps/arnold2025.csv
+```bash
+python3 wsm_compare.py groups comps/wsm2026_groups.csv           # stdout
+python3 wsm_compare.py groups --report comps/wsm2026_groups.csv  # markdown
+```
+
+### `pool` — pool all athletes into a single stack rank
+
+Requires a CSV with a `group` column. Ranks all athletes in one big stack rank, with a BONUS top-10 control (qualifiers re-ranked within their subset). The top-10 control reproduces WSM's official "Prelim Score" carryover.
+
+```bash
+python3 wsm_compare.py pool comps/wsm2026_groups.csv             # stdout
+python3 wsm_compare.py pool --report comps/wsm2026_groups.csv    # markdown
 ```
 
 ## CSV format
@@ -40,7 +57,7 @@ Placement values:
 - `T2`, `T3` — tied (script counts athletes with the same string to determine tie size and averages points across positions consumed)
 - `DNS` — did not compete / withdrew / no lift (always 0 pts)
 
-### Group-stage CSV (optional `group` column)
+### Group-stage CSV (`group` column)
 
 For multi-group competitions (like the WSM group stage), add a `group` column. Placements should be **global across all athletes** (e.g., 1-25 across all 5 groups), not within-group:
 
@@ -51,12 +68,9 @@ group,athlete,country,Event1,Event2,...
 ...
 ```
 
-When the `group` column is present, the report adds three sections:
-- **Groups as Teams** — sums of all group members' points under each scoring system
-- **Top 10 Stack Rank** — top 2 per group (qualifiers under WSM Linear) re-ranked within their subset on each event, then re-scored under every system
-- The standard all-athletes stack rank still applies at the comp level
+The `groups` and `pool` subcommands require this column.
 
-The Top 10 subset re-ranking reproduces WSM's official "Prelim Score" carryover when WSM Linear is used. Verified against WSM 2026 official totals (Hooper 37, Nel 34, Andrade 31, etc. match exactly).
+The Top-10 subset control in `pool` mode reproduces WSM's official "Prelim Score" carryover when WSM Linear is used. Verified against WSM 2026 official totals (Hooper 37, Nel 34, Andrade 31, Williams 29, Fojtů 27, Kordiyaka 26.5, Licis 25.5, Mitchell 25.5, Ragg 20.5 — all match exactly).
 
 ## Scoring systems tested
 
