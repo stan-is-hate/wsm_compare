@@ -14,16 +14,21 @@ Placement values:
     DNS             — did not compete (0 pts always)
 
 Usage:
-    python3 wsm_compare.py comps/wsm2026_finals.csv
-    python3 wsm_compare.py comps/arnold2025.csv
-    python3 wsm_compare.py --all                  # run all CSVs in comps/ and print summary
-    python3 wsm_compare.py --report               # generate markdown reports for all comps
-    python3 wsm_compare.py --report comps/X.csv   # generate markdown report for one comp
+    python3 wsm_compare.py fetch <url_or_id>                       # fetch from Strongman Archives
+    python3 wsm_compare.py compare <csv>                            # re-score a comp, stdout
+    python3 wsm_compare.py compare --all                            # all comps, stdout
+    python3 wsm_compare.py compare --report                         # all comps to markdown + summary
+    python3 wsm_compare.py compare --report <csv>                   # one comp to markdown
 """
 import csv
+import json
+import re
 import sys
 import os
 import glob
+import time
+import urllib.parse
+import urllib.request
 from collections import defaultdict
 from dataclasses import dataclass
 from functools import cached_property
@@ -36,6 +41,154 @@ COMPS_DIR = os.path.join(SCRIPT_DIR, "comps")
 REPORTS_DIR = os.path.join(SCRIPT_DIR, "reports")
 
 DNS_TOKENS = {"DNS", "WD", "WITHDREW", "DQ", ""}
+
+# --- Strongman Archives fetch helpers (used by `fetch` subcommand) ---
+
+_FETCH_ENDPOINT = "https://strongmanarchives.com/fetchContestResult.php"
+_FETCH_HEADER_URL = "https://strongmanarchives.com/viewContest.php?id={cid}"
+_FETCH_REQUEST_DELAY_SEC = 1.5
+_fetch_last_request_time = [0.0]
+
+
+def _fetch_throttle():
+    elapsed = time.time() - _fetch_last_request_time[0]
+    if elapsed < _FETCH_REQUEST_DELAY_SEC:
+        time.sleep(_FETCH_REQUEST_DELAY_SEC - elapsed)
+    _fetch_last_request_time[0] = time.time()
+
+
+def fetch_event_names(contest_id):
+    """Scrape event names from the contest page header."""
+    _fetch_throttle()
+    req = urllib.request.Request(
+        _FETCH_HEADER_URL.format(cid=contest_id),
+        headers={"User-Agent": "Mozilla/5.0 (wsm_compare canonical fetcher)"},
+    )
+    with urllib.request.urlopen(req) as resp:
+        html = resp.read().decode("utf-8", errors="replace")
+    m = re.search(rf'<table[^>]*id="ContestResults{contest_id}"[^>]*>(.*?)</table>', html, re.DOTALL)
+    if not m:
+        raise RuntimeError(f"Couldn't find results table for contest {contest_id}")
+    headers = re.findall(r"<th[^>]*>\s*([^<]*?)\s*</th>", m.group(1))
+    events = []
+    for i, h in enumerate(headers[4:], start=4):
+        h = h.strip()
+        if h.lower() != "pts":
+            events.append(h)
+    return events
+
+
+def fetch_data(contest_id):
+    _fetch_throttle()
+    body = urllib.parse.urlencode({"contestID": contest_id, "unitDisplay": "Metric"}).encode()
+    req = urllib.request.Request(
+        _FETCH_ENDPOINT,
+        data=body,
+        method="POST",
+        headers={"User-Agent": "Mozilla/5.0 (wsm_compare canonical fetcher)"},
+    )
+    with urllib.request.urlopen(req) as resp:
+        return json.loads(resp.read())
+
+
+def _strip_html(s):
+    """Strip HTML tags and decode common entities."""
+    s = re.sub(r"<[^>]+>", "", s)
+    s = s.replace("&nbsp;", " ").strip()
+    return s
+
+
+def _parse_row(row, n_events):
+    """Each row: [#, athlete_html, country_html, total, evt1_result, evt1_pts, ...]."""
+    name = _strip_html(row[1])
+    country_text = _strip_html(row[2])
+    country = country_text.split()[-1] if country_text else ""
+    total = float(row[3])
+    event_pts = []
+    for i in range(n_events):
+        result = _strip_html(str(row[4 + 2 * i]))
+        pts_raw = row[4 + 2 * i + 1]
+        pts = float(pts_raw) if pts_raw not in ("", None, "-") else 0.0
+        event_pts.append(pts)
+    return name, country, total, event_pts
+
+
+def _derive_placement(athletes_pts):
+    """Given {athlete: canonical_pts}, return {athlete: placement_string}."""
+    competing = {a: p for a, p in athletes_pts.items() if p > 0}
+    by_pts = defaultdict(list)
+    for a, p in competing.items():
+        by_pts[p].append(a)
+
+    sorted_groups = sorted(by_pts.items(), key=lambda x: -x[0])
+
+    placements = {}
+    cur_pos = 1
+    for pts, group in sorted_groups:
+        n = len(group)
+        if n == 1:
+            placements[group[0]] = str(cur_pos)
+        else:
+            for a in group:
+                placements[a] = f"T{cur_pos}"
+        cur_pos += n
+
+    for a, p in athletes_pts.items():
+        if p == 0:
+            placements[a] = "DNS"
+
+    return placements
+
+
+def parse_contest_id(url_or_id):
+    """Accept either a Strongman Archives URL or a bare contest ID, return int.
+
+    Examples:
+      'https://strongmanarchives.com/viewContest.php?id=2361' → 2361
+      '2361' → 2361
+      'foo' → ValueError
+    """
+    s = str(url_or_id).strip()
+    m = re.search(r"id=(\d+)", s)
+    if m:
+        return int(m.group(1))
+    if s.isdigit():
+        return int(s)
+    raise ValueError(f"Can't extract contest ID from {url_or_id!r} (expected URL with ?id=N or bare integer)")
+
+
+def _derive_filename_from_page(contest_id):
+    """Derive a filename slug from the contest page title.
+
+    Implemented in a follow-up task. For now, returns f'contest_{contest_id}'.
+    """
+    return f"contest_{contest_id}"
+
+
+def fetch_csv(contest_id):
+    """Fetch a contest from Strongman Archives and return CSV text."""
+    events = fetch_event_names(contest_id)
+    payload = fetch_data(contest_id)
+    rows = payload["data"]
+
+    athletes = []
+    countries = {}
+    pts_per_event = [{} for _ in events]
+    for row in rows:
+        name, country, _total, evt_pts = _parse_row(row, len(events))
+        athletes.append(name)
+        countries[name] = country
+        for i, p in enumerate(evt_pts):
+            pts_per_event[i][name] = p
+
+    placements_per_event = [_derive_placement(pe) for pe in pts_per_event]
+
+    safe_event_names = [re.sub(r"[^A-Za-z0-9]+", "_", e).strip("_") for e in events]
+    lines = ["athlete,country," + ",".join(safe_event_names)]
+    for a in athletes:
+        row_cells = [a, countries[a]] + [placements_per_event[i][a] for i in range(len(events))]
+        lines.append(",".join(row_cells))
+    return "\n".join(lines) + "\n"
 
 
 def get_scale(system, field_size):
@@ -496,13 +649,19 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""\
 Examples:
-  wsm_compare.py compare comps/wsm2026_finals.csv          # one comp to stdout
-  wsm_compare.py compare --all                              # all comps to stdout
-  wsm_compare.py compare --report                           # all comps to markdown + summary
-  wsm_compare.py compare --report comps/arnold2025.csv      # one comp to markdown
+  wsm_compare.py fetch 2361                                         # fetch by ID
+  wsm_compare.py fetch https://strongmanarchives.com/viewContest.php?id=2361
+  wsm_compare.py fetch 2361 --name wsm2026_finals                   # override filename
+  wsm_compare.py compare comps/wsm2026_finals.csv                   # one comp to stdout
+  wsm_compare.py compare --all                                      # all comps to stdout
+  wsm_compare.py compare --report                                   # generate all markdown reports
 """,
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
+
+    p_fetch = subparsers.add_parser("fetch", help="Fetch a contest from Strongman Archives and write a CSV to comps/")
+    p_fetch.add_argument("url_or_id", help="Strongman Archives URL or bare contest ID (e.g., 2361)")
+    p_fetch.add_argument("--name", help="Override the auto-derived output filename (without .csv extension)")
 
     p_compare = subparsers.add_parser("compare", help="Apply scoring systems to a single field (any CSV)")
     p_compare.add_argument("csv", nargs="?", help="Path to comp CSV (omit with --all/--report)")
@@ -511,7 +670,24 @@ Examples:
 
     args = parser.parse_args()
 
-    if args.command == "compare":
+    if args.command == "fetch":
+        contest_id = parse_contest_id(args.url_or_id)
+        csv_text = fetch_csv(contest_id)
+        if args.name:
+            name = args.name
+        else:
+            name = _derive_filename_from_page(contest_id)
+        out_path = os.path.join(COMPS_DIR, f"{name}.csv")
+        if os.path.exists(out_path):
+            raise ValueError(f"Refusing to overwrite {out_path}; rename or delete it first.")
+        with open(out_path, "w") as f:
+            f.write(csv_text)
+        n_athletes = len(csv_text.strip().split("\n")) - 1
+        n_events = len(csv_text.split("\n")[0].split(",")) - 2
+        print(f"Wrote {out_path} ({n_athletes} athletes, {n_events} events)")
+        return
+
+    elif args.command == "compare":
         # B1: --all is exclusive with a positional CSV
         if args.all and args.csv:
             parser.error("compare: cannot combine --all with a CSV path; pick one")
