@@ -511,5 +511,34 @@ class ScoringSystemsPackageTests(unittest.TestCase):
                     self.assertIsInstance(mod.SYSTEM, ScoringSystem)
 
 
+class FilenameDerivationTests(unittest.TestCase):
+    """Test the slug-derivation logic that turns page titles into CSV names."""
+
+    def test_basic_title(self):
+        # "2026 WSM Final" → "2026_wsm_final"
+        self.assertEqual(wc._slug_from_title("Strongman Archives - 2026 WSM Final"),
+                         "2026_wsm_final")
+
+    def test_drops_known_prefix(self):
+        # The "Strongman Archives - " prefix is stripped
+        self.assertEqual(wc._slug_from_title("Strongman Archives - 2024 SMOE"),
+                         "2024_smoe")
+
+    def test_handles_no_prefix(self):
+        # Title without prefix still slugifies
+        self.assertEqual(wc._slug_from_title("Some Random Title"),
+                         "some_random_title")
+
+    def test_collapses_non_alphanumeric(self):
+        # Periods, dashes, slashes etc become single underscores
+        self.assertEqual(wc._slug_from_title("2025  Arnold-Strongman/Classic"),
+                         "2025_arnold_strongman_classic")
+
+    def test_strips_leading_trailing_underscores(self):
+        # Leading/trailing underscores from edge characters get stripped
+        self.assertEqual(wc._slug_from_title("- 2024 -"),
+                         "2024")
+
+
 if __name__ == "__main__":
     unittest.main()

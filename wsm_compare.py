@@ -157,12 +157,31 @@ def parse_contest_id(url_or_id):
     raise ValueError(f"Can't extract contest ID from {url_or_id!r} (expected URL with ?id=N or bare integer)")
 
 
-def _derive_filename_from_page(contest_id):
-    """Derive a filename slug from the contest page title.
+def _slug_from_title(title):
+    """Convert a page title like 'Strongman Archives - 2026 WSM Final' into a slug like '2026_wsm_final'."""
+    s = title.strip()
+    # Strip the known site prefix
+    prefix = "Strongman Archives - "
+    if s.startswith(prefix):
+        s = s[len(prefix):]
+    # Lowercase, replace non-alphanumeric runs with single underscores
+    s = re.sub(r"[^A-Za-z0-9]+", "_", s.lower())
+    return s.strip("_")
 
-    Implemented in a follow-up task. For now, returns f'contest_{contest_id}'.
-    """
-    return f"contest_{contest_id}"
+
+def _derive_filename_from_page(contest_id):
+    """Derive a filename slug from the contest page title."""
+    _fetch_throttle()
+    req = urllib.request.Request(
+        _FETCH_HEADER_URL.format(cid=contest_id),
+        headers={"User-Agent": "Mozilla/5.0 (wsm_compare canonical fetcher)"},
+    )
+    with urllib.request.urlopen(req) as resp:
+        html = resp.read().decode("utf-8", errors="replace")
+    m = re.search(r"<title>([^<]+)</title>", html)
+    if not m:
+        raise RuntimeError(f"Couldn't find <title> for contest {contest_id}")
+    return _slug_from_title(m.group(1))
 
 
 def fetch_csv(contest_id):
