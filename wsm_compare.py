@@ -175,72 +175,6 @@ class SystemResult:
         return self.totals_dict
 
 
-def determine_qualifiers(athletes, groups, events, n_per_group=2):
-    """Top N per group based on WSM Linear scoring with global placements.
-
-    Returns: list of qualifier athlete names, in original group order.
-    """
-    wsm_linear = next(s for s in SCORING_SYSTEMS if s.name == "WSM Linear")
-    scale = wsm_linear.get_scale(len(athletes))
-    totals = {a: 0.0 for a in athletes}
-    for placements in events.values():
-        pts = compute_event_points(placements, scale)
-        for a in athletes:
-            totals[a] += pts[a]
-
-    qualifiers = []
-    by_group = defaultdict(list)
-    for a in athletes:
-        by_group[groups[a]].append(a)
-    # Tie-breaker on identical totals: stable by CSV insertion order.
-    for g in sorted(by_group.keys(), key=_natural_group_key):
-        sorted_in_group = sorted(by_group[g], key=lambda a: -totals[a])
-        qualifiers.extend(sorted_in_group[:n_per_group])
-    return qualifiers
-
-
-def derive_subset_placements(subset_athletes, events):
-    """Re-rank a subset of athletes within each event based on their global placements.
-
-    Returns: {event_name: {athlete: subset_placement_string}}.
-    """
-    subset_events = {}
-    for ev, placements in events.items():
-        subset_placements = {a: placements[a] for a in subset_athletes}
-        subset_events[ev] = _rerank_placements(subset_placements)
-    return subset_events
-
-
-def _rerank_placements(placements):
-    """Take a subset of placement strings and produce within-subset placements.
-
-    Athletes with the same global placement string remain tied.
-    """
-    by_p_str = defaultdict(list)
-    dns = []
-    for athlete, p_str in placements.items():
-        pos, is_dns = parse_placement(p_str)
-        if is_dns:
-            dns.append(athlete)
-        else:
-            by_p_str[p_str].append((athlete, pos))
-
-    sorted_p_strs = sorted(by_p_str.keys(), key=lambda s: by_p_str[s][0][1])
-
-    result = {}
-    cur_rank = 1
-    for p_str in sorted_p_strs:
-        athletes_at = by_p_str[p_str]
-        n = len(athletes_at)
-        rank_str = str(cur_rank) if n == 1 else f"T{cur_rank}"
-        for athlete, _ in athletes_at:
-            result[athlete] = rank_str
-        cur_rank += n
-    for a in dns:
-        result[a] = "DNS"
-    return result
-
-
 def compute_all_systems(athletes, events):
     """Compute totals for every athlete under every scoring system.
 
@@ -431,97 +365,6 @@ def write_groups_report(path, out_dir):
     return out_path, results
 
 
-def write_pool_report(path, out_dir):
-    """Generate a markdown report pooling all athletes into a single stack rank.
-
-    BONUS: also includes top 10 (qualifiers) re-ranked within their subset
-    as a control matching WSM's official 'Prelim Score' carryover.
-    """
-    comp_name, athletes, countries, events, groups = load_comp(path)
-    _require_groups(groups, "pool", list(events.keys()))
-    event_names = list(events.keys())
-    results = compute_all_systems(athletes, events)
-    sys_names = [s.name for s in SCORING_SYSTEMS]
-
-    lines = []
-    w = lines.append
-    w(f"# {comp_name.replace('_', ' ').upper()} — Pooled Stack Rank")
-    w("")
-    w(f"**{len(athletes)} athletes pooled across all groups, {len(event_names)} events**")
-    w("")
-    w("All athletes ranked against each other globally per event, points summed across events.")
-    w("Group affiliation shown for context but not used in scoring.")
-    w("")
-
-    # Full pooled standings under each system
-    w("## Pooled Standings (All Athletes)")
-    w("")
-    for system in SCORING_SYSTEMS:
-        res = results[system.name]
-        ratio = res.scale[0] / res.scale[1] if res.scale[1] > 0 else float('inf')
-        w(f"### {system.name}")
-        w("")
-        w(f"_{system.description}_")
-        w("")
-        w(f"**Scale:** `{res.scale}` — **1st/2nd ratio:** {ratio:.2f}x")
-        w("")
-        w("| # | Athlete | Country | Group | " + " | ".join(ev for ev in event_names) + " | **Total** |")
-        w("|---|---------|---------|-------|" + "|".join("-------" for _ in event_names) + "|-----------|")
-        for rank, (a, total) in enumerate(res.sorted_totals, 1):
-            row = f"| {rank} | {a} | {countries[a]} | G{groups[a]} |"
-            for ev in event_names:
-                row += f" {fmt(res.event_pts[ev][a])} |"
-            row += f" **{fmt(total)}** |"
-            w(row)
-        w("")
-
-    # Top 10 subset (BONUS)
-    qualifiers = determine_qualifiers(athletes, groups, events, n_per_group=2)
-    subset_events = derive_subset_placements(qualifiers, events)
-    subset_results = compute_all_systems(qualifiers, subset_events)
-
-    w("## Top 10 Subset Control (Qualifiers Re-Ranked)")
-    w("")
-    w(f"The top 2 per group ({len(qualifiers)} athletes — qualifiers under WSM Linear) re-ranked within their subset on each event. Mirrors WSM's official 'Prelim Score' carryover when WSM Linear is applied.")
-    w("")
-    w("**Subset placements per event:**")
-    w("")
-    w("| # | Athlete | Country | Group | " + " | ".join(subset_events.keys()) + " |")
-    w("|---|---------|---------|-------|" + "|".join("-------" for _ in subset_events) + "|")
-    subset_wsm = subset_results["WSM Linear"].sorted_totals
-    for rank, (a, _) in enumerate(subset_wsm, 1):
-        row = f"| {rank} | {a} | {countries[a]} | G{groups[a]} |"
-        for ev in subset_events:
-            row += f" {get_placement_display(subset_events[ev][a])} |"
-        w(row)
-    w("")
-
-    w("**Top 10 standings under each system:**")
-    w("")
-    w("| # | Athlete | Country | Group | " + " | ".join(sys_names) + " |")
-    w("|---|---------|---------|-------|" + "|".join("-------" for _ in sys_names) + "|")
-    for rank, (a, _) in enumerate(subset_wsm, 1):
-        row = f"| {rank} | {a} | {countries[a]} | G{groups[a]} |"
-        for sn in sys_names:
-            total = subset_results[sn].sorted_totals_dict()[a]
-            row += f" {fmt(total)} |"
-        w(row)
-    w("")
-
-    w("**Top 10 winner per system:**")
-    w("")
-    for sn in sys_names:
-        winner_a, winner_pts = subset_results[sn].sorted_totals[0]
-        w(f"- **{sn}:** {winner_a} ({fmt(winner_pts)} pts)")
-    w("")
-
-    out_path = os.path.join(out_dir, f"{comp_name}_pool.md")
-    os.makedirs(out_dir, exist_ok=True)
-    with open(out_path, "w") as f:
-        f.write("\n".join(lines) + "\n")
-    return out_path, results, subset_results
-
-
 def write_comp_report(path, out_dir):
     """Generate a markdown report for a single comp."""
     comp_name, athletes, countries, events, groups = load_comp(path)
@@ -657,57 +500,6 @@ def run_groups(path):
         gt = group_totals_by_sys[sn]
         winner_g = max(gt, key=lambda g: gt[g])
         print(f"    {sn}: Group {winner_g} ({fmt(gt[winner_g])} pts)")
-    print()
-
-
-def run_pool(path):
-    """Print pooled stack rank + top-10 subset to stdout."""
-    comp_name, athletes, countries, events, groups = load_comp(path)
-    _require_groups(groups, "pool", list(events.keys()))
-    results = compute_all_systems(athletes, events)
-    sys_names = [s.name for s in SCORING_SYSTEMS]
-
-    print("=" * 110)
-    print(f"POOLED STACK RANK: {comp_name.upper()}  ({len(athletes)} athletes)")
-    print("=" * 110)
-
-    for system in SCORING_SYSTEMS:
-        res = results[system.name]
-        print(f"\n  {system.name}")
-        print(f"  {'#':<4}{'Athlete':<22}{'Grp':<5}{'Pts':<8}")
-        print("  " + "-" * 40)
-        for rank, (a, total) in enumerate(res.sorted_totals, 1):
-            print(f"  {rank:<4}{a:<22}G{groups[a]:<4}{fmt(total):<8}")
-
-    qualifiers = determine_qualifiers(athletes, groups, events, n_per_group=2)
-    subset_events = derive_subset_placements(qualifiers, events)
-    subset_results = compute_all_systems(qualifiers, subset_events)
-
-    print()
-    print("=" * 110)
-    print(f"TOP 10 SUBSET CONTROL — {comp_name.upper()}")
-    print("=" * 110)
-    print("(Top 2 per group re-ranked within subset; matches WSM's official 'Prelim Score' under WSM Linear)")
-
-    print(f"\n  {'#':<4}{'Athlete':<22}{'Grp':<5}", end="")
-    for sn in sys_names:
-        print(f"{sn[:14]:<16}", end="")
-    print()
-    print("  " + "-" * (33 + 16 * len(sys_names)))
-
-    subset_wsm = subset_results["WSM Linear"].sorted_totals
-    for rank, (a, _) in enumerate(subset_wsm, 1):
-        print(f"  {rank:<4}{a:<22}G{groups[a]:<4}", end="")
-        for sn in sys_names:
-            total = subset_results[sn].totals_dict[a]
-            print(f"{fmt(total):<16}", end="")
-        print()
-
-    # Q6: winner-per-system footer (parity with markdown report)
-    print(f"\n  Top 10 winner per system:")
-    for sn in sys_names:
-        winner_a, winner_pts = subset_results[sn].sorted_totals[0]
-        print(f"    {sn}: {winner_a} ({fmt(winner_pts)} pts)")
     print()
 
 
@@ -858,8 +650,6 @@ Examples:
   wsm_compare.py compare --report comps/arnold2025.csv      # one comp to markdown
   wsm_compare.py groups comps/wsm2026_prelim.csv            # groups-as-teams to stdout
   wsm_compare.py groups --report comps/wsm2026_prelim.csv   # groups-as-teams to markdown
-  wsm_compare.py pool comps/wsm2026_prelim.csv              # pooled + top-10 to stdout
-  wsm_compare.py pool --report comps/wsm2026_prelim.csv     # pooled + top-10 to markdown
 """,
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -872,10 +662,6 @@ Examples:
     p_groups = subparsers.add_parser("groups", help="Compare groups as teams (requires 'group' column)")
     p_groups.add_argument("csv", help="Path to comp CSV with 'group' column")
     p_groups.add_argument("--report", action="store_true", help="Write markdown report to reports/")
-
-    p_pool = subparsers.add_parser("pool", help="Pool all athletes into a single stack rank + top-10 control (requires 'group' column)")
-    p_pool.add_argument("csv", help="Path to comp CSV with 'group' column")
-    p_pool.add_argument("--report", action="store_true", help="Write markdown report to reports/")
 
     args = parser.parse_args()
 
@@ -905,12 +691,6 @@ Examples:
             print(f"Wrote {out_path}")
         else:
             run_groups(args.csv)
-    elif args.command == "pool":
-        if args.report:
-            out_path, _, _ = write_pool_report(args.csv, REPORTS_DIR)
-            print(f"Wrote {out_path}")
-        else:
-            run_pool(args.csv)
 
 
 if __name__ == "__main__":

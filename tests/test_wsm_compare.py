@@ -399,7 +399,7 @@ class IntegrationTests(unittest.TestCase):
 
 
 class GroupModeTests(unittest.TestCase):
-    """Group-stage CSV handling: load_comp groups dict, qualifiers, subset re-ranking."""
+    """Group-stage CSV handling: load_comp groups dict and groups-mode validation."""
 
     @classmethod
     def setUpClass(cls):
@@ -416,100 +416,10 @@ class GroupModeTests(unittest.TestCase):
         _, _, _, _, groups = wc.load_comp(os.path.join(PROJECT_ROOT, "comps", "wsm2026_finals.csv"))
         self.assertIsNone(groups)
 
-    def test_determine_qualifiers_picks_top_2_per_group(self):
-        _, athletes, _, events, groups = wc.load_comp(self.path)
-        qualifiers = wc.determine_qualifiers(athletes, groups, events, n_per_group=2)
-        self.assertEqual(len(qualifiers), 10)
-        # Each group represented exactly twice
-        from collections import Counter
-        counts = Counter(groups[a] for a in qualifiers)
-        self.assertEqual(set(counts.values()), {2})
-        # Top contenders should be in there
-        self.assertIn("M. Hooper", qualifiers)
-        self.assertIn("R. Nel", qualifiers)
-        self.assertIn("A. Andrade", qualifiers)
-        self.assertIn("O. Fojtů", qualifiers)
-
-    def test_top10_subset_matches_official_prelim_carryover(self):
-        """Top 10 re-ranked under WSM Linear should match WSM 2026 official prelim totals."""
-        _, athletes, _, events, groups = wc.load_comp(self.path)
-        qualifiers = wc.determine_qualifiers(athletes, groups, events, n_per_group=2)
-        subset_events = wc.derive_subset_placements(qualifiers, events)
-        subset_results = wc.compute_all_systems(qualifiers, subset_events)
-        wsm_totals = subset_results["WSM Linear"].sorted_totals_dict()
-        # Official WSM 2026 prelim scores from Strongman Archives
-        self.assertEqual(wsm_totals["M. Hooper"], 37)
-        self.assertEqual(wsm_totals["R. Nel"], 34)
-        self.assertEqual(wsm_totals["A. Andrade"], 31)
-        self.assertEqual(wsm_totals["E. Williams"], 29)
-        self.assertEqual(wsm_totals["O. Fojtů"], 27)
-        self.assertEqual(wsm_totals["P. Kordiyaka"], 26.5)
-        self.assertEqual(wsm_totals["M. Licis"], 25.5)
-        self.assertEqual(wsm_totals["T. Mitchell"], 25.5)
-        self.assertEqual(wsm_totals["M. Ragg"], 20.5)
-
     def test_groups_mode_rejects_non_group_csv(self):
         path = os.path.join(PROJECT_ROOT, "comps", "wsm2026_finals.csv")
         with self.assertRaisesRegex(ValueError, "groups mode requires"):
             wc.write_groups_report(path, tempfile.mkdtemp())
-
-    def test_pool_mode_rejects_non_group_csv(self):
-        path = os.path.join(PROJECT_ROOT, "comps", "wsm2026_finals.csv")
-        with self.assertRaisesRegex(ValueError, "pool mode requires"):
-            wc.write_pool_report(path, tempfile.mkdtemp())
-
-
-class RerankPlacementsTests(unittest.TestCase):
-    """_rerank_placements: derive within-subset placements from global ones."""
-
-    def test_empty(self):
-        self.assertEqual(wc._rerank_placements({}), {})
-
-    def test_single_athlete(self):
-        self.assertEqual(wc._rerank_placements({"A": "5"}), {"A": "1"})
-
-    def test_distinct_globals_become_ranks(self):
-        # Globals 3, 7, 12 → subset ranks 1, 2, 3
-        result = wc._rerank_placements({"A": "12", "B": "3", "C": "7"})
-        self.assertEqual(result, {"B": "1", "C": "2", "A": "3"})
-
-    def test_tied_globals_stay_tied(self):
-        # Two athletes globally T2 → both T1 within subset
-        result = wc._rerank_placements({"A": "T2", "B": "T2", "C": "9"})
-        self.assertEqual(result["A"], "T1")
-        self.assertEqual(result["B"], "T1")
-        self.assertEqual(result["C"], "3")  # 2 tied athletes consume positions 1+2, so C is 3rd
-
-    def test_all_tied(self):
-        result = wc._rerank_placements({"A": "T5", "B": "T5", "C": "T5"})
-        for v in result.values():
-            self.assertEqual(v, "T1")
-
-    def test_dns_pass_through(self):
-        result = wc._rerank_placements({"A": "1", "B": "DNS", "C": "5"})
-        self.assertEqual(result["A"], "1")
-        self.assertEqual(result["B"], "DNS")
-        self.assertEqual(result["C"], "2")
-
-
-class DeriveSubsetPlacementsTests(unittest.TestCase):
-    """derive_subset_placements: re-rank a subset across all events."""
-
-    def test_basic(self):
-        events = {
-            "E1": {"A": "1", "B": "T2", "C": "T2", "D": "5"},
-            "E2": {"A": "DNS", "B": "1", "C": "3", "D": "2"},
-        }
-        # Subset of A, B, C
-        result = wc.derive_subset_placements(["A", "B", "C"], events)
-        # E1: A=1, B=T2, C=T2 → A=1, B=T2, C=T2 (D excluded)
-        self.assertEqual(result["E1"]["A"], "1")
-        self.assertEqual(result["E1"]["B"], "T2")
-        self.assertEqual(result["E1"]["C"], "T2")
-        # E2: A=DNS, B=1, C=3 → A=DNS, B=1, C=2
-        self.assertEqual(result["E2"]["A"], "DNS")
-        self.assertEqual(result["E2"]["B"], "1")
-        self.assertEqual(result["E2"]["C"], "2")
 
 
 class ReportFileTests(unittest.TestCase):
@@ -544,17 +454,6 @@ class ReportFileTests(unittest.TestCase):
         self.assertIn("## Group Standings", content)
         self.assertIn("401.5", content, "Group 3 total under WSM Linear should be 401.5")
 
-    def test_pool_report_creates_file_with_top10_subset(self):
-        out_path, _, _ = wc.write_pool_report(self.prelim, self.tmp)
-        self.assertTrue(out_path.endswith("_pool.md"))
-        with open(out_path) as f:
-            content = f.read()
-        self.assertIn("Pooled Standings", content)
-        self.assertIn("Top 10 Subset Control", content)
-        # Hooper's WSM Linear top-10 total should be 37 (the official prelim score)
-        self.assertIn("37", content)
-
-
 class CLITests(unittest.TestCase):
     """End-to-end CLI tests via subprocess. Catches argparse bugs that unit tests miss."""
 
@@ -571,8 +470,9 @@ class CLITests(unittest.TestCase):
 
     def test_help_lists_subcommands(self):
         result = self._run("--help", expect_success=True)
-        for sub in ("compare", "groups", "pool"):
+        for sub in ("compare", "groups"):
             self.assertIn(sub, result.stdout)
+        self.assertNotIn("pool", result.stdout)
 
     def test_no_subcommand_errors(self):
         result = self._run()
@@ -602,34 +502,10 @@ class CLITests(unittest.TestCase):
         self.assertNotIn("Traceback", result.stderr)
         self.assertIn("groups mode requires", result.stderr)
 
-    def test_pool_on_non_group_csv_clean_error(self):
-        result = self._run("pool", os.path.join(PROJECT_ROOT, "comps", "wsm2026_finals.csv"))
-        self.assertNotEqual(result.returncode, 0)
-        self.assertNotIn("Traceback", result.stderr)
-        self.assertIn("pool mode requires", result.stderr)
-
     def test_invalid_subcommand(self):
         result = self._run("invalidmode")
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("invalid choice", result.stderr)
-
-
-class QualifierOrderTests(unittest.TestCase):
-    """determine_qualifiers returns athletes in deterministic group order."""
-
-    def test_qualifiers_grouped_by_group_id(self):
-        path = os.path.join(PROJECT_ROOT, "comps", "wsm2026_prelim.csv")
-        _, athletes, _, events, groups = wc.load_comp(path)
-        qualifiers = wc.determine_qualifiers(athletes, groups, events, n_per_group=2)
-        # Adjacent qualifiers should share the same group (top-2 pairs together)
-        for i in range(0, len(qualifiers), 2):
-            self.assertEqual(
-                groups[qualifiers[i]], groups[qualifiers[i + 1]],
-                f"Pair at index {i} should be from same group",
-            )
-        # Group order should be natural-sorted (1, 2, 3, 4, 5)
-        group_order = [groups[qualifiers[i]] for i in range(0, len(qualifiers), 2)]
-        self.assertEqual(group_order, sorted(group_order, key=wc._natural_group_key))
 
 
 class ScoringSystemsPackageTests(unittest.TestCase):

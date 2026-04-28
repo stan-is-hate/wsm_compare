@@ -36,11 +36,11 @@ The rest (Arnold 2024, Arnold 2026, Rogue 2024, Rogue 2025) are uncontroversial 
 
 **See [`reports/_summary.md`](reports/_summary.md) for the full cross-comp table and methodological notes.**
 
-## WSM coverage (group stage + pool + finals)
+## WSM coverage (group stage + finals)
 
-The WSM analysis is its own thing — the group stage gets multiple analyses (groups-as-teams, pooled stack rank, top-10 control matching the official prelim carryover) on top of the finals breakdown.
+The WSM analysis is its own thing — the group stage gets groups-as-teams analysis on top of the finals breakdown.
 
-- **[WSM 2026](reports/wsm2026.md)** — full coverage: group stage + pool + finals. The 2-pt Hooper/Nel result.
+- **[WSM 2026](reports/wsm2026.md)** — full coverage: group stage + finals. The 2-pt Hooper/Nel result.
 - **[WSM 2025](reports/wsm2025.md)** — finals only. Nel beat Stoltman by 0.5 pts under WSM Linear; Stoltman wins under everything else.
 
 ## Browse individual comp reports
@@ -80,7 +80,6 @@ python3 wsm_compare.py compare --report                           # all comps to
 
 # Group-stage modes (require a 'group' column in the CSV)
 python3 wsm_compare.py groups comps/wsm2026_prelim.csv            # groups as teams
-python3 wsm_compare.py pool comps/wsm2026_prelim.csv              # pooled stack rank + top-10
 
 # Fetch canonical results from Strongman Archives
 python3 fetch_canonical.py 1462 > comps/smoe2024.csv              # SMOE 2024
