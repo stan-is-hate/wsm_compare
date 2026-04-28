@@ -1,4 +1,10 @@
-# WSM2026 FINALS
+---
+title: WSM 2026 Finals
+parent: Men's
+nav_order: 104
+---
+
+# WSM 2026 Finals
 
 **10 athletes, 6 events**
 

@@ -1,4 +1,10 @@
-# ARNOLD2026 W
+---
+title: Arnold 2026
+parent: Women's
+nav_order: 204
+---
+
+# Arnold 2026
 
 **10 athletes, 6 events**
 

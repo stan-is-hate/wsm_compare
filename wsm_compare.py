@@ -424,6 +424,39 @@ def run_comp(path, verbose=True):
     return comp_name, results
 
 
+def _comp_nav_metadata(comp_name):
+    """Return (title, parent, nav_order) for a comp report — used in Jekyll front matter
+    so just-the-docs can build the sidebar.
+
+    Returns None if the comp name doesn't match the expected pattern; the report still
+    gets written but without sidebar nav metadata.
+    """
+    is_women = comp_name.endswith("_w")
+    base = comp_name[:-2] if is_women else comp_name
+    parent = "Women's" if is_women else "Men's"
+
+    m = re.match(r"^([a-z]+)(\d{4})(_finals)?$", base)
+    if not m:
+        return None
+    series_raw, year_str, finals_suffix = m.group(1), m.group(2), m.group(3)
+
+    series_pretty = {"wsm": "WSM", "arnold": "Arnold", "rogue": "Rogue", "smoe": "SMOE"}.get(series_raw)
+    series_order = {"wsm": 1, "arnold": 2, "rogue": 3, "smoe": 4}.get(series_raw)
+    if series_pretty is None or series_order is None:
+        return None
+
+    year = int(year_str)
+    title_parts = [series_pretty, year_str]
+    if finals_suffix:
+        title_parts.append("Finals")
+    title = " ".join(title_parts)
+
+    # nav_order: smaller = first. Encode as series_order * 100 + (2030 - year)
+    # so within each series the most recent year sorts first.
+    nav_order = series_order * 100 + (2030 - year)
+    return title, parent, nav_order
+
+
 def write_comp_report(path, out_dir):
     """Generate a markdown report for a single comp."""
     comp_name, athletes, countries, events = load_comp(path)
@@ -432,7 +465,20 @@ def write_comp_report(path, out_dir):
 
     lines = []
     w = lines.append
-    w(f"# {comp_name.replace('_', ' ').upper()}")
+
+    # Jekyll front matter for sidebar nav (just-the-docs)
+    nav = _comp_nav_metadata(comp_name)
+    if nav is not None:
+        title, parent, nav_order = nav
+        w("---")
+        w(f"title: {title}")
+        w(f"parent: {parent}")
+        w(f"nav_order: {nav_order}")
+        w("---")
+        w("")
+        w(f"# {title}")
+    else:
+        w(f"# {comp_name.replace('_', ' ').upper()}")
     w("")
     w(f"**{len(athletes)} athletes, {len(event_names)} events**")
     w("")
@@ -538,6 +584,12 @@ def write_combined_report(comps_dir, out_dir):
 
     lines = []
     w = lines.append
+    # Front matter for just-the-docs sidebar
+    w("---")
+    w("title: Cross-Comp Summary")
+    w("nav_order: 2")
+    w("---")
+    w("")
     w("# WSM Scoring System Comparison — All Comps")
     w("")
     w("Cross-competition analysis across multiple real-world scoring systems.")

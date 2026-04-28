@@ -1,4 +1,10 @@
-# ARNOLD2024
+---
+title: Arnold 2024
+parent: Men's
+nav_order: 206
+---
+
+# Arnold 2024
 
 **11 athletes, 5 events**
 

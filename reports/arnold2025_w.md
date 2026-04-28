@@ -1,4 +1,10 @@
-# ARNOLD2025 W
+---
+title: Arnold 2025
+parent: Women's
+nav_order: 205
+---
+
+# Arnold 2025
 
 **12 athletes, 6 events**
 

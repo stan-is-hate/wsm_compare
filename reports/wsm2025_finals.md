@@ -1,4 +1,10 @@
-# WSM2025 FINALS
+---
+title: WSM 2025 Finals
+parent: Men's
+nav_order: 105
+---
+
+# WSM 2025 Finals
 
 **10 athletes, 6 events**
 

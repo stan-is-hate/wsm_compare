@@ -1,5 +1,6 @@
 ---
-title: WSM Compare
+title: Home
+nav_order: 1
 description: Strongman competitions re-scored under different real-world scoring systems
 ---
 

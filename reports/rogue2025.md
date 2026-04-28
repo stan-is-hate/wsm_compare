@@ -1,4 +1,10 @@
-# ROGUE2025
+---
+title: Rogue 2025
+parent: Men's
+nav_order: 305
+---
+
+# Rogue 2025
 
 **9 athletes, 6 events**
 

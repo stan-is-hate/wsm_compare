@@ -1,7 +1,26 @@
-theme: jekyll-theme-cayman
-title: WSM Compare
-description: Strongman competition results re-scored under different real-world scoring systems
+remote_theme: just-the-docs/just-the-docs
 
-# README.md is for repo browsers (technical content). Don't render it at /README.html on the site.
+title: WSM Compare
+description: Strongman competitions re-scored under different real-world scoring systems
+
+# Just-the-docs settings
+color_scheme: light
+search_enabled: true
+heading_anchors: true
+back_to_top: true
+back_to_top_text: "Back to top"
+
+# External link in nav (rendered above the search box)
+nav_external_links:
+  - title: Source on GitHub
+    url: https://github.com/stan-is-hate/wsm_compare
+    hide_icon: false
+
+# Plugins required by just-the-docs (github-pages bundles jekyll-include-cache)
+plugins:
+  - jekyll-include-cache
+  - jekyll-seo-tag
+
+# README.md is the repo's technical doc, not part of the site.
 exclude:
   - README.md

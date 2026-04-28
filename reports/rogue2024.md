@@ -1,4 +1,10 @@
-# ROGUE2024
+---
+title: Rogue 2024
+parent: Men's
+nav_order: 306
+---
+
+# Rogue 2024
 
 **10 athletes, 6 events**
 

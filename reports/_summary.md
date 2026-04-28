@@ -1,3 +1,8 @@
+---
+title: Cross-Comp Summary
+nav_order: 2
+---
+
 # WSM Scoring System Comparison — All Comps
 
 Cross-competition analysis across multiple real-world scoring systems.

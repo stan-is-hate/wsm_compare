@@ -1,4 +1,10 @@
-# ARNOLD2025
+---
+title: Arnold 2025
+parent: Men's
+nav_order: 205
+---
+
+# Arnold 2025
 
 **10 athletes, 6 events**
 
