@@ -1,0 +1,26 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+// Shrink Cayman's chunky hero header — defaults are 5rem padding + 3.25rem title.
+.page-header {
+  padding: 1.5rem 1rem;
+}
+
+.project-name {
+  font-size: 1.75rem;
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+.project-tagline {
+  font-size: 1rem;
+  margin-bottom: 0;
+  opacity: 0.85;
+}
+
+// Tighten main content top spacing too
+.main-content {
+  padding-top: 1.5rem;
+}
