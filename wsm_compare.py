@@ -124,7 +124,10 @@ def compute_event_points(placements_by_athlete, scale):
 
 
 def load_comp(path):
-    """Returns (comp_name, athletes, countries, events) where events maps event_name to {athlete: placement_string}."""
+    """Returns (comp_name, athletes, countries, events, groups) where:
+       - events maps event_name to {athlete: placement_string}
+       - groups maps athlete to group_id (or None if no 'group' column in CSV)
+    """
     with open(path) as f:
         reader = csv.DictReader(f)
         rows = list(reader)
@@ -133,14 +136,17 @@ def load_comp(path):
         raise ValueError(f"Empty CSV: {path}")
 
     fieldnames = list(rows[0].keys())
-    static = {"athlete", "country"}
+    static = {"athlete", "country", "group"}
     event_names = [f for f in fieldnames if f.lower() not in static]
 
     if not event_names:
         raise ValueError(f"CSV has no event columns: {path} (expected columns beyond 'athlete' and 'country')")
 
+    has_groups = "group" in (f.lower() for f in fieldnames)
+
     athletes = [r["athlete"].strip() for r in rows]
     countries = {r["athlete"].strip(): r.get("country", "").strip() for r in rows}
+    groups = {r["athlete"].strip(): r.get("group", "").strip() for r in rows} if has_groups else None
 
     events = {}
     for ev in event_names:
@@ -155,7 +161,7 @@ def load_comp(path):
                 raise ValueError(f"{path}: athlete {athlete!r}, event {ev!r}: {e}")
 
     comp_name = os.path.basename(path).replace(".csv", "")
-    return comp_name, athletes, countries, events
+    return comp_name, athletes, countries, events, groups
 
 
 def fmt(v):
@@ -190,6 +196,75 @@ class SystemResult:
     event_pts: dict      # event_name -> {athlete: pts}
     scale: list
 
+    def sorted_totals_dict(self):
+        """Convenience: return totals as {athlete: total_pts}."""
+        return dict(self.sorted_totals)
+
+
+def determine_qualifiers(athletes, groups, events, n_per_group=2):
+    """Top N per group based on WSM Linear scoring with global placements.
+
+    Returns: list of qualifier athlete names, in original group order.
+    """
+    wsm_linear = next(s for s in SCORING_SYSTEMS if s.name == "WSM Linear")
+    scale = wsm_linear.get_scale(len(athletes))
+    totals = {a: 0.0 for a in athletes}
+    for placements in events.values():
+        pts = compute_event_points(placements, scale)
+        for a in athletes:
+            totals[a] += pts[a]
+
+    qualifiers = []
+    by_group = defaultdict(list)
+    for a in athletes:
+        by_group[groups[a]].append(a)
+    for g in sorted(by_group.keys()):
+        sorted_in_group = sorted(by_group[g], key=lambda a: -totals[a])
+        qualifiers.extend(sorted_in_group[:n_per_group])
+    return qualifiers
+
+
+def derive_subset_placements(subset_athletes, events):
+    """Re-rank a subset of athletes within each event based on their global placements.
+
+    Returns: {event_name: {athlete: subset_placement_string}}.
+    """
+    subset_events = {}
+    for ev, placements in events.items():
+        subset_placements = {a: placements[a] for a in subset_athletes}
+        subset_events[ev] = _rerank_placements(subset_placements)
+    return subset_events
+
+
+def _rerank_placements(placements):
+    """Take a subset of placement strings and produce within-subset placements.
+
+    Athletes with the same global placement string remain tied.
+    """
+    by_p_str = defaultdict(list)
+    dns = []
+    for athlete, p_str in placements.items():
+        pos, is_dns = parse_placement(p_str)
+        if is_dns:
+            dns.append(athlete)
+        else:
+            by_p_str[p_str].append((athlete, pos))
+
+    sorted_p_strs = sorted(by_p_str.keys(), key=lambda s: by_p_str[s][0][1])
+
+    result = {}
+    cur_rank = 1
+    for p_str in sorted_p_strs:
+        athletes_at = by_p_str[p_str]
+        n = len(athletes_at)
+        rank_str = str(cur_rank) if n == 1 else f"T{cur_rank}"
+        for athlete, _ in athletes_at:
+            result[athlete] = rank_str
+        cur_rank += n
+    for a in dns:
+        result[a] = "DNS"
+    return result
+
 
 def compute_all_systems(athletes, events):
     """Compute totals for every athlete under every scoring system.
@@ -213,7 +288,7 @@ def compute_all_systems(athletes, events):
 
 
 def run_comp(path, verbose=True):
-    comp_name, athletes, countries, events = load_comp(path)
+    comp_name, athletes, countries, events, groups = load_comp(path)
     event_names = list(events.keys())
     results = compute_all_systems(athletes, events)
 
@@ -272,9 +347,107 @@ def run_comp(path, verbose=True):
     return comp_name, results
 
 
+def _append_group_sections(w, athletes, countries, groups, events, results):
+    """Add Groups-as-Teams + Top-10 Stack Rank sections to a markdown report."""
+    sys_names = [s.name for s in SCORING_SYSTEMS]
+    group_ids = sorted(set(groups.values()))
+
+    # --- Groups as Teams ---
+    w("## Groups as Teams")
+    w("")
+    w("Sum of all group members' points under each scoring system. Treats each group as a team competing against the other groups.")
+    w("")
+    header = "| Group |"
+    sep = "|-------|"
+    for sn in sys_names:
+        header += f" {sn} |"
+        sep += "-------|"
+    w(header)
+    w(sep)
+    group_totals_by_sys = {}
+    for sn in sys_names:
+        gt = defaultdict(float)
+        for a in athletes:
+            gt[groups[a]] += results[sn].sorted_totals_dict()[a]
+        group_totals_by_sys[sn] = gt
+
+    # Rank groups by WSM Linear for display order
+    ranked_groups = sorted(group_ids, key=lambda g: -group_totals_by_sys["WSM Linear"][g])
+    for g in ranked_groups:
+        row = f"| **G{g}** |"
+        for sn in sys_names:
+            row += f" {fmt(group_totals_by_sys[sn][g])} |"
+        w(row)
+    w("")
+
+    # Show group winner per system
+    w("**Strongest group under each system:**")
+    w("")
+    for sn in sys_names:
+        gt = group_totals_by_sys[sn]
+        winner_g = max(gt, key=lambda g: gt[g])
+        w(f"- **{sn}:** Group {winner_g} ({fmt(gt[winner_g])} pts)")
+    w("")
+
+    # --- Top 10 Subset (qualifiers re-ranked) ---
+    qualifiers = determine_qualifiers(athletes, groups, events, n_per_group=2)
+    subset_events = derive_subset_placements(qualifiers, events)
+    subset_results = compute_all_systems(qualifiers, subset_events)
+
+    w("## Top 10 Stack Rank (Qualifiers Re-Scored)")
+    w("")
+    w(f"The top 2 from each group ({len(qualifiers)} athletes) re-ranked within their subset on each event. Same scoring systems applied.")
+    w("")
+    w(f"_Qualifiers determined by WSM Linear scoring within each group._")
+    w("")
+    w("**Subset placements per event:**")
+    w("")
+    header = "| # | Athlete | Country | Group |"
+    sep = "|---|---------|---------|-------|"
+    for ev in subset_events:
+        header += f" {ev} |"
+        sep += "-------|"
+    w(header)
+    w(sep)
+    # Sort qualifiers by WSM Linear total in subset
+    subset_wsm = subset_results["WSM Linear"].sorted_totals
+    for rank, (a, _) in enumerate(subset_wsm, 1):
+        row = f"| {rank} | {a} | {countries[a]} | G{groups[a]} |"
+        for ev in subset_events:
+            row += f" {get_placement_display(subset_events[ev][a])} |"
+        w(row)
+    w("")
+
+    w("**Top 10 standings under each system:**")
+    w("")
+    header = "| # | Athlete | Country | Group |"
+    sep = "|---|---------|---------|-------|"
+    for sn in sys_names:
+        header += f" {sn} |"
+        sep += "-------|"
+    w(header)
+    w(sep)
+    # Use WSM Linear order for the rows
+    for rank, (a, _) in enumerate(subset_wsm, 1):
+        row = f"| {rank} | {a} | {countries[a]} | G{groups[a]} |"
+        for sn in sys_names:
+            total = next(t for name, t in subset_results[sn].sorted_totals if name == a)
+            row += f" {fmt(total)} |"
+        w(row)
+    w("")
+
+    # Top 10 winner per system
+    w("**Top 10 winner under each system:**")
+    w("")
+    for sn in sys_names:
+        winner_a, winner_pts = subset_results[sn].sorted_totals[0]
+        w(f"- **{sn}:** {winner_a} ({fmt(winner_pts)} pts)")
+    w("")
+
+
 def write_comp_report(path, out_dir):
     """Generate a markdown report for a single comp."""
-    comp_name, athletes, countries, events = load_comp(path)
+    comp_name, athletes, countries, events, groups = load_comp(path)
     event_names = list(events.keys())
     results = compute_all_systems(athletes, events)
 
@@ -349,6 +522,10 @@ def write_comp_report(path, out_dir):
             line += f" {athlete} ({fmt(total)}) |"
         w(line)
     w("")
+
+    # Group-mode sections (only when CSV has a 'group' column)
+    if groups is not None:
+        _append_group_sections(w, athletes, countries, groups, events, results)
 
     # Winner-flip analysis
     winners = {sn: results[sn].sorted_totals[0][0] for sn in results}

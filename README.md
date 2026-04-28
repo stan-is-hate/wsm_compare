@@ -40,6 +40,24 @@ Placement values:
 - `T2`, `T3` — tied (script counts athletes with the same string to determine tie size and averages points across positions consumed)
 - `DNS` — did not compete / withdrew / no lift (always 0 pts)
 
+### Group-stage CSV (optional `group` column)
+
+For multi-group competitions (like the WSM group stage), add a `group` column. Placements should be **global across all athletes** (e.g., 1-25 across all 5 groups), not within-group:
+
+```csv
+group,athlete,country,Event1,Event2,...
+1,R. Nel,RSA,1,18,...
+1,N. Guardione,USA,T9,11,...
+...
+```
+
+When the `group` column is present, the report adds three sections:
+- **Groups as Teams** — sums of all group members' points under each scoring system
+- **Top 10 Stack Rank** — top 2 per group (qualifiers under WSM Linear) re-ranked within their subset on each event, then re-scored under every system
+- The standard all-athletes stack rank still applies at the comp level
+
+The Top 10 subset re-ranking reproduces WSM's official "Prelim Score" carryover when WSM Linear is used. Verified against WSM 2026 official totals (Hooper 37, Nel 34, Andrade 31, etc. match exactly).
+
 ## Scoring systems tested
 
 | System | Scale (top 10) | 1st/2nd ratio | Origin |
