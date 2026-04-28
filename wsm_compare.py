@@ -256,115 +256,6 @@ def run_comp(path, verbose=True):
     return comp_name, results
 
 
-def _require_groups(groups, mode_name, event_names=None):
-    if groups is None:
-        msg = f"{mode_name} mode requires a CSV with a 'group' column"
-        if event_names:
-            msg += f"; got columns: athlete, country, {', '.join(event_names)}"
-        raise ValueError(msg)
-
-
-def _natural_group_key(g):
-    """Sort key for group IDs: numeric if possible, else string."""
-    try:
-        return (0, int(g))
-    except (TypeError, ValueError):
-        return (1, str(g))
-
-
-def compute_group_totals_by_sys(athletes, groups, results):
-    """For each scoring system, sum each group's athletes' points.
-
-    Returns: {system_name: {group_id: total_pts}}.
-    """
-    out = {}
-    for system in SCORING_SYSTEMS:
-        gt = defaultdict(float)
-        totals = results[system.name].totals_dict
-        for a in athletes:
-            gt[groups[a]] += totals[a]
-        out[system.name] = gt
-    return out
-
-
-def write_groups_report(path, out_dir):
-    """Generate a markdown report comparing groups as teams.
-
-    Sums each group's athletes' points under each scoring system to crown
-    the strongest group.
-    """
-    comp_name, athletes, countries, events, groups = load_comp(path)
-    _require_groups(groups, "groups", list(events.keys()))
-    results = compute_all_systems(athletes, events)
-    sys_names = [s.name for s in SCORING_SYSTEMS]
-    group_ids = sorted(set(groups.values()), key=_natural_group_key)
-
-    lines = []
-    w = lines.append
-    w(f"# {comp_name.replace('_', ' ').upper()} — Groups as Teams")
-    w("")
-    w(f"**{len(athletes)} athletes across {len(group_ids)} groups, {len(events)} events**")
-    w("")
-    w("Each group's total = sum of its athletes' points under each scoring system.")
-    w("Athletes' points are computed from their global placements (1-N across the full field).")
-    w("")
-
-    # Group totals
-    w("## Group Standings")
-    w("")
-    header = "| Rank | Group |"
-    sep = "|------|-------|"
-    for sn in sys_names:
-        header += f" {sn} |"
-        sep += "-------|"
-    w(header)
-    w(sep)
-    group_totals_by_sys = compute_group_totals_by_sys(athletes, groups, results)
-
-    ranked_groups = sorted(group_ids, key=lambda g: -group_totals_by_sys["WSM Linear"][g])
-    for rank, g in enumerate(ranked_groups, 1):
-        row = f"| {rank} | **G{g}** |"
-        for sn in sys_names:
-            row += f" {fmt(group_totals_by_sys[sn][g])} |"
-        w(row)
-    w("")
-
-    # Per-group breakdown
-    w("## Group Breakdowns (WSM Linear)")
-    w("")
-    wsm_totals = results["WSM Linear"].totals_dict
-    for g in ranked_groups:
-        members = sorted(
-            [a for a in athletes if groups[a] == g],
-            key=lambda a: -wsm_totals[a],
-        )
-        w(f"### Group {g} — {fmt(group_totals_by_sys['WSM Linear'][g])} pts")
-        w("")
-        w("| Athlete | Country | WSM Linear pts |")
-        w("|---------|---------|----------------|")
-        for a in members:
-            w(f"| {a} | {countries[a]} | {fmt(wsm_totals[a])} |")
-        w("")
-
-    # Strongest group per system
-    w("## Strongest Group Per System")
-    w("")
-    w("| System | Winner | Pts | Runner-up | Pts | Gap |")
-    w("|--------|--------|-----|-----------|-----|-----|")
-    for sn in sys_names:
-        gt = group_totals_by_sys[sn]
-        sorted_gs = sorted(gt.items(), key=lambda x: -x[1])
-        gap = sorted_gs[0][1] - sorted_gs[1][1]
-        w(f"| {sn} | G{sorted_gs[0][0]} | {fmt(sorted_gs[0][1])} | G{sorted_gs[1][0]} | {fmt(sorted_gs[1][1])} | {fmt(gap)} |")
-    w("")
-
-    out_path = os.path.join(out_dir, f"{comp_name}_groups.md")
-    os.makedirs(out_dir, exist_ok=True)
-    with open(out_path, "w") as f:
-        f.write("\n".join(lines) + "\n")
-    return out_path, results
-
-
 def write_comp_report(path, out_dir):
     """Generate a markdown report for a single comp."""
     comp_name, athletes, countries, events, groups = load_comp(path)
@@ -466,41 +357,6 @@ def write_comp_report(path, out_dir):
     with open(out_path, "w") as f:
         f.write("\n".join(lines) + "\n")
     return out_path, results
-
-
-def run_groups(path):
-    """Print groups-as-teams comparison to stdout."""
-    comp_name, athletes, countries, events, groups = load_comp(path)
-    _require_groups(groups, "groups", list(events.keys()))
-    results = compute_all_systems(athletes, events)
-    sys_names = [s.name for s in SCORING_SYSTEMS]
-    group_ids = sorted(set(groups.values()), key=_natural_group_key)
-
-    print("=" * 110)
-    print(f"GROUPS AS TEAMS: {comp_name.upper()}  ({len(athletes)} athletes / {len(group_ids)} groups)")
-    print("=" * 110)
-
-    group_totals_by_sys = compute_group_totals_by_sys(athletes, groups, results)
-
-    print(f"\n  {'Rank':<6}{'Group':<8}", end="")
-    for sn in sys_names:
-        print(f"{sn[:14]:<16}", end="")
-    print()
-    print("  " + "-" * (14 + 16 * len(sys_names)))
-
-    ranked = sorted(group_ids, key=lambda g: -group_totals_by_sys["WSM Linear"][g])
-    for rank, g in enumerate(ranked, 1):
-        print(f"  {rank:<6}G{g:<7}", end="")
-        for sn in sys_names:
-            print(f"{fmt(group_totals_by_sys[sn][g]):<16}", end="")
-        print()
-
-    print(f"\n  Strongest group per system:")
-    for sn in sys_names:
-        gt = group_totals_by_sys[sn]
-        winner_g = max(gt, key=lambda g: gt[g])
-        print(f"    {sn}: Group {winner_g} ({fmt(gt[winner_g])} pts)")
-    print()
 
 
 def write_combined_report(comps_dir, out_dir):
@@ -648,8 +504,6 @@ Examples:
   wsm_compare.py compare --all                              # all comps to stdout
   wsm_compare.py compare --report                           # all comps to markdown + summary
   wsm_compare.py compare --report comps/arnold2025.csv      # one comp to markdown
-  wsm_compare.py groups comps/wsm2026_prelim.csv            # groups-as-teams to stdout
-  wsm_compare.py groups --report comps/wsm2026_prelim.csv   # groups-as-teams to markdown
 """,
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -658,10 +512,6 @@ Examples:
     p_compare.add_argument("csv", nargs="?", help="Path to comp CSV (omit with --all/--report)")
     p_compare.add_argument("--all", action="store_true", help="Process all CSVs in comps/")
     p_compare.add_argument("--report", action="store_true", help="Write markdown reports to reports/")
-
-    p_groups = subparsers.add_parser("groups", help="Compare groups as teams (requires 'group' column)")
-    p_groups.add_argument("csv", help="Path to comp CSV with 'group' column")
-    p_groups.add_argument("--report", action="store_true", help="Write markdown report to reports/")
 
     args = parser.parse_args()
 
@@ -685,12 +535,6 @@ Examples:
             run_comp(args.csv)
         else:
             parser.error("compare requires either a CSV path, --all, or --report")
-    elif args.command == "groups":
-        if args.report:
-            out_path, _ = write_groups_report(args.csv, REPORTS_DIR)
-            print(f"Wrote {out_path}")
-        else:
-            run_groups(args.csv)
 
 
 if __name__ == "__main__":

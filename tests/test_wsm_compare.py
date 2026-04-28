@@ -398,36 +398,11 @@ class IntegrationTests(unittest.TestCase):
                                  f"{comp_name} winner pts changed")
 
 
-class GroupModeTests(unittest.TestCase):
-    """Group-stage CSV handling: load_comp groups dict and groups-mode validation."""
-
-    @classmethod
-    def setUpClass(cls):
-        cls.path = os.path.join(PROJECT_ROOT, "comps", "wsm2026_prelim.csv")
-
-    def test_load_comp_returns_groups_dict(self):
-        _, athletes, _, _, groups = wc.load_comp(self.path)
-        self.assertIsNotNone(groups, "groups dict should be populated when 'group' column present")
-        self.assertEqual(groups["M. Hooper"], "3")
-        self.assertEqual(groups["R. Nel"], "1")
-        self.assertEqual(len(set(groups.values())), 5)
-
-    def test_load_comp_groups_none_when_absent(self):
-        _, _, _, _, groups = wc.load_comp(os.path.join(PROJECT_ROOT, "comps", "wsm2026_finals.csv"))
-        self.assertIsNone(groups)
-
-    def test_groups_mode_rejects_non_group_csv(self):
-        path = os.path.join(PROJECT_ROOT, "comps", "wsm2026_finals.csv")
-        with self.assertRaisesRegex(ValueError, "groups mode requires"):
-            wc.write_groups_report(path, tempfile.mkdtemp())
-
-
 class ReportFileTests(unittest.TestCase):
     """Positive tests: write_*_report actually creates files with expected content."""
 
     @classmethod
     def setUpClass(cls):
-        cls.prelim = os.path.join(PROJECT_ROOT, "comps", "wsm2026_prelim.csv")
         cls.finals = os.path.join(PROJECT_ROOT, "comps", "wsm2026_finals.csv")
 
     def setUp(self):
@@ -445,15 +420,6 @@ class ReportFileTests(unittest.TestCase):
         self.assertIn("M. Hooper", content)
         self.assertIn("Winner Flip Analysis", content)
 
-    def test_groups_report_creates_file_with_known_total(self):
-        out_path, _ = wc.write_groups_report(self.prelim, self.tmp)
-        self.assertTrue(out_path.endswith("_groups.md"))
-        self.assertTrue(os.path.isfile(out_path))
-        with open(out_path) as f:
-            content = f.read()
-        self.assertIn("## Group Standings", content)
-        self.assertIn("401.5", content, "Group 3 total under WSM Linear should be 401.5")
-
 class CLITests(unittest.TestCase):
     """End-to-end CLI tests via subprocess. Catches argparse bugs that unit tests miss."""
 
@@ -470,9 +436,9 @@ class CLITests(unittest.TestCase):
 
     def test_help_lists_subcommands(self):
         result = self._run("--help", expect_success=True)
-        for sub in ("compare", "groups"):
-            self.assertIn(sub, result.stdout)
+        self.assertIn("compare", result.stdout)
         self.assertNotIn("pool", result.stdout)
+        self.assertNotIn("groups", result.stdout)
 
     def test_no_subcommand_errors(self):
         result = self._run()
@@ -495,12 +461,6 @@ class CLITests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertNotIn("Traceback", result.stderr)
         self.assertIn("CSV file not found", result.stderr)
-
-    def test_groups_on_non_group_csv_clean_error(self):
-        result = self._run("groups", os.path.join(PROJECT_ROOT, "comps", "wsm2026_finals.csv"))
-        self.assertNotEqual(result.returncode, 0)
-        self.assertNotIn("Traceback", result.stderr)
-        self.assertIn("groups mode requires", result.stderr)
 
     def test_invalid_subcommand(self):
         result = self._run("invalidmode")

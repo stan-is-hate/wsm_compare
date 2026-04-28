@@ -78,9 +78,6 @@ python3 wsm_compare.py compare comps/wsm2026_finals.csv         # one comp, stdo
 python3 wsm_compare.py compare --all                              # all comps, stdout
 python3 wsm_compare.py compare --report                           # all comps to markdown
 
-# Group-stage modes (require a 'group' column in the CSV)
-python3 wsm_compare.py groups comps/wsm2026_prelim.csv            # groups as teams
-
 # Fetch canonical results from Strongman Archives
 python3 fetch_canonical.py 1462 > comps/smoe2024.csv              # SMOE 2024
 ```
