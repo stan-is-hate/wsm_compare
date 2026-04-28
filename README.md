@@ -36,18 +36,12 @@ The rest (Arnold 2024, Arnold 2026, Rogue 2024, Rogue 2025) are uncontroversial 
 
 **See [`reports/_summary.md`](reports/_summary.md) for the full cross-comp table and methodological notes.**
 
-## WSM coverage (group stage + finals)
-
-The WSM analysis is its own thing — the group stage gets groups-as-teams analysis on top of the finals breakdown.
-
-- **[WSM 2026](reports/wsm2026.md)** — full coverage: group stage + finals. The 2-pt Hooper/Nel result.
-- **[WSM 2025](reports/wsm2025.md)** — finals only. Nel beat Stoltman by 0.5 pts under WSM Linear; Stoltman wins under everything else.
-
 ## Browse individual comp reports
 
 Each report shows full standings under all 7 scoring systems plus podium-by-system and winner-flip analysis.
 
 ### Men's
+- **WSM:** [2026 finals](reports/wsm2026_finals.md) · [2025 finals](reports/wsm2025_finals.md)
 - **Arnold Strongman Classic:** [2026](reports/arnold2026.md) · [2025](reports/arnold2025.md) · [2024](reports/arnold2024.md)
 - **Rogue Invitational:** [2025](reports/rogue2025.md) · [2024](reports/rogue2024.md)
 - **Strongest Man on Earth:** [2025](reports/smoe2025.md) · [2024](reports/smoe2024.md)
@@ -73,30 +67,31 @@ Each report shows full standings under all 7 scoring systems plus podium-by-syst
 Zero dependencies (Python stdlib only).
 
 ```bash
-# Compare scoring systems on a comp
-python3 wsm_compare.py compare comps/wsm2026_finals.csv         # one comp, stdout
-python3 wsm_compare.py compare --all                              # all comps, stdout
-python3 wsm_compare.py compare --report                           # all comps to markdown
+# Add a comp from Strongman Archives (auto-names from page title)
+python3 wsm_compare.py fetch 2361
+python3 wsm_compare.py fetch https://strongmanarchives.com/viewContest.php?id=2361
+python3 wsm_compare.py fetch 2361 --name wsm2026_finals    # override filename
 
-# Fetch canonical results from Strongman Archives
-python3 fetch_canonical.py 1462 > comps/smoe2024.csv              # SMOE 2024
+# Re-score under all systems
+python3 wsm_compare.py compare comps/wsm2026_finals.csv     # one comp, stdout
+python3 wsm_compare.py compare --all                         # all comps, stdout
+python3 wsm_compare.py compare --report                      # all comps to markdown
 ```
 
-Tests: `python3 -m unittest discover tests` (60 tests, ~0.3s)
+Tests: `python3 -m unittest discover tests` (54 tests, ~0.4s)
 
 ## Project layout
 
 ```
 wsm_compare/
-├── wsm_compare.py            # main CLI tool
-├── fetch_canonical.py        # rate-limited fetcher for Strongman Archives
-├── comps/                    # competition CSVs (15 files)
+├── wsm_compare.py            # CLI: fetch + compare subcommands
+├── comps/                    # competition CSVs (one per single-contest comp)
 ├── reports/                  # generated markdown reports
 ├── scoring_systems/          # one module per scoring system
 │   ├── _base.py              # ScoringSystem dataclass
 │   ├── _registry.py          # ALL_SYSTEMS list, by_name lookup
 │   └── <name>.py             # one file per system (wsm_linear, f1_2010, etc.)
-└── tests/                    # 60 unit + integration + CLI tests
+└── tests/                    # unit + integration + CLI tests
 ```
 
 ### Adding a new scoring system
@@ -116,7 +111,7 @@ wsm_compare/
 ### Adding a new comp
 
 ```bash
-python3 fetch_canonical.py <strongmanarchives_contest_id> > comps/<name>.csv
+python3 wsm_compare.py fetch <strongmanarchives_url_or_id>
 python3 wsm_compare.py compare --report
 ```
 
