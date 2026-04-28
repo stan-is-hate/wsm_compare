@@ -600,5 +600,48 @@ class QualifierOrderTests(unittest.TestCase):
         self.assertEqual(group_order, sorted(group_order, key=wc._natural_group_key))
 
 
+class ScoringSystemsPackageTests(unittest.TestCase):
+    """Verify the scoring_systems package structure works."""
+
+    def test_init_has_no_code(self):
+        """Project rule: scoring_systems/__init__.py contains only docstring."""
+        init_path = os.path.join(PROJECT_ROOT, "scoring_systems", "__init__.py")
+        with open(init_path) as f:
+            content = f.read()
+        # Strip the module docstring; what's left should be empty/whitespace.
+        import ast
+        tree = ast.parse(content)
+        non_doc_nodes = [n for n in tree.body if not (isinstance(n, ast.Expr) and isinstance(n.value, ast.Constant))]
+        self.assertEqual(non_doc_nodes, [], "scoring_systems/__init__.py should contain no code beyond a docstring")
+
+    def test_registry_exposes_all_systems(self):
+        from scoring_systems._registry import ALL_SYSTEMS
+        names = [s.name for s in ALL_SYSTEMS]
+        # Locked-in names — order matches display order in reports
+        self.assertIn("WSM Linear", names)
+        self.assertIn("F1 2010-present", names)
+        self.assertIn("MotoGP", names)
+        self.assertIn("MotoGP Extended", names)
+
+    def test_by_name_lookup(self):
+        from scoring_systems._registry import by_name
+        self.assertEqual(by_name("WSM Linear").name, "WSM Linear")
+        with self.assertRaises(ValueError):
+            by_name("Nonexistent System")
+
+    def test_each_system_module_exports_SYSTEM(self):
+        """Every <name>.py in scoring_systems/ (excluding _-prefixed) exports a `SYSTEM` constant."""
+        import importlib
+        ss_dir = os.path.join(PROJECT_ROOT, "scoring_systems")
+        for fn in os.listdir(ss_dir):
+            if fn.endswith(".py") and not fn.startswith("_"):
+                mod_name = "scoring_systems." + fn[:-3]
+                with self.subTest(module=mod_name):
+                    mod = importlib.import_module(mod_name)
+                    self.assertTrue(hasattr(mod, "SYSTEM"), f"{mod_name} must export a SYSTEM constant")
+                    from scoring_systems._base import ScoringSystem
+                    self.assertIsInstance(mod.SYSTEM, ScoringSystem)
+
+
 if __name__ == "__main__":
     unittest.main()

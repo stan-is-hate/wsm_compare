@@ -238,6 +238,40 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 | 24 | E. Aryee | GHA | 0 | 0 | 3.2 | 0 | 0 | **3.2** |
 | 25 | K. Hazeleger | NED | 0 | 0 | 0 | 0 | 0 | **0** |
 
+### MotoGP Extended
+
+_MotoGP-style top, but tail extends to 1 for last (steeper bottom half)._
+
+**Scale:** `[25, 20, 16, 13, 11, 9, 7, 5, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]` — **1st/2nd ratio:** 1.25x
+
+| # | Athlete | Country | Carry | Overhead | Squat | Truck | Stones | **Total** |
+|---|---------|---------|----------|----------|----------|----------|----------|-----------|
+| 1 | R. Nel | RSA | 25 | 0 | 5 | 13 | 25 | **68** |
+| 2 | M. Hooper | CAN | 7 | 13 | 1 | 25 | 20 | **66** |
+| 3 | L. Hatton | USA | 0 | 16 | 25 | 9 | 0 | **50** |
+| 4 | A. Andrade | MEX | 0 | 9 | 18 | 20 | 0 | **47** |
+| 5 | O. Fojtů | CZE | 16 | 25 | 0 | 0 | 0 | **41** |
+| 6 | E. Williams | AUS | 20 | 0 | 0 | 3 | 16 | **39** |
+| 7 | T. Mitchell | USA | 0 | 20 | 12 | 0 | 5 | **37** |
+| 8 | M. Ragg | NZL | 13 | 0 | 12 | 0 | 0 | **25** |
+| 9 | M. Funiok | CZE | 0 | 0 | 0 | 11 | 13 | **24** |
+| 10 | P. Kordiyaka | UKR | 0 | 7 | 8 | 0 | 9 | **24** |
+| 11 | E. Singleton | USA | 11 | 11 | 0 | 0 | 0 | **22** |
+| 12 | J. Schoonwinkel | RSA | 9 | 0 | 0 | 0 | 11 | **20** |
+| 13 | L. Richardson | GBR | 0 | 0 | 18 | 0 | 0 | **18** |
+| 14 | L. Strong | USA | 0 | 0 | 0 | 16 | 0 | **16** |
+| 15 | M. Licis | LAT | 0 | 3 | 8 | 5 | 0 | **16** |
+| 16 | A. Flynn | GBR | 0 | 1 | 1 | 7 | 0 | **9** |
+| 17 | P. Haynes | GBR | 0 | 0 | 0 | 0 | 7 | **7** |
+| 18 | N. Guardione | USA | 2 | 0 | 0 | 0 | 3 | **5** |
+| 19 | B. Glasscock | GBR | 0 | 5 | 0 | 0 | 0 | **5** |
+| 20 | B. Johnson | USA | 5 | 0 | 0 | 0 | 0 | **5** |
+| 21 | T. Stoltman | GBR | 0 | 0 | 1 | 1 | 0 | **2** |
+| 22 | J. Jeffers | CAN | 2 | 0 | 0 | 0 | 0 | **2** |
+| 23 | T. Hoath | CAN | 0 | 0 | 0 | 0 | 1 | **1** |
+| 24 | E. Aryee | GHA | 0 | 0 | 1 | 0 | 0 | **1** |
+| 25 | K. Hazeleger | NED | 0 | 0 | 0 | 0 | 0 | **0** |
+
 ## Podium Per System
 
 | System | 1st/2nd ratio | 1st | 2nd | 3rd |
@@ -248,11 +282,12 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 | F1 1991-2002 | 1.67x | R. Nel (23) | M. Hooper (19) | L. Hatton (15) |
 | F1 1961-1990 | 1.50x | R. Nel (21) | M. Hooper (18) | L. Hatton (14) |
 | MotoGP | 1.25x | R. Nel (71) | M. Hooper (70.2) | L. Hatton (51) |
+| MotoGP Extended | 1.25x | R. Nel (68) | M. Hooper (66) | L. Hatton (50) |
 
 ## Winner Flip Analysis
 
 This comp produces **different winners** under different scoring systems:
 
 - **M. Hooper** wins under: WSM Linear
-- **R. Nel** wins under: F1 2010-present, F1 2003-2009, F1 1991-2002, F1 1961-1990, MotoGP
+- **R. Nel** wins under: F1 2010-present, F1 2003-2009, F1 1991-2002, F1 1961-1990, MotoGP, MotoGP Extended
 

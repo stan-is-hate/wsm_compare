@@ -12,30 +12,31 @@ Cross-competition analysis across multiple real-world scoring systems.
 | **F1 1991-2002** (10-6-4-3-2-1-0-0-0-0) | Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning. | 1.67x |
 | **F1 1961-1990** (9-6-4-3-2-1-0-0-0-0) | Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning. | 1.50x |
 | **MotoGP** (25-20-16-13-11-10-9-8-7-6) | MotoGP (current). All 10 positions score well. 1.25x for winning. | 1.25x |
+| **MotoGP Extended** (25-20-16-13-11-9-7-5-3-1) | MotoGP-style top, but tail extends to 1 for last (steeper bottom half). | 1.25x |
 
 ## Cross-Competition Winners
 
-| Comp | WSM Linear | F1 2010-present | F1 2003-2009 | F1 1991-2002 | F1 1961-1990 | MotoGP |
-|------|-------|-------|-------|-------|-------|-------|
-| **arnold2025** | M. Hooper (51.5) | M. Hooper (104.8) | M. Hooper (44) | L. Hatton (35) | M. Hooper (33) | M. Hooper (112.3) |
-| **rogue2025** | M. Hooper (46) | M. Hooper (112) | M. Hooper (47) | M. Hooper (39) | M. Hooper (37) | M. Hooper (120) |
-| **smoe2024** | M. Hooper (115.5) | H. Björnsson (140) | M. Hooper (58) | H. Björnsson (53) | H. Björnsson (48) | H. Björnsson (151) |
-| **smoe2025** | L. Hatton (93.5) | L. Hatton (109.5) | L. Hatton (44) | L. Hatton (37) | L. Hatton (34.5) | L. Hatton (114.5) |
-| **wsm2026_finals** | M. Hooper (54) | R. Nel (115) | M. Hooper (48) | R. Nel (41) | R. Nel (38) | M. Hooper (121) |
-| **wsm2026_prelim** | M. Hooper (105.5) | R. Nel (66) | R. Nel (26) | R. Nel (23) | R. Nel (21) | R. Nel (71) |
+| Comp | WSM Linear | F1 2010-present | F1 2003-2009 | F1 1991-2002 | F1 1961-1990 | MotoGP | MotoGP Extended |
+|------|-------|-------|-------|-------|-------|-------|-------|
+| **arnold2025** | M. Hooper (51.5) | M. Hooper (104.8) | M. Hooper (44) | L. Hatton (35) | M. Hooper (33) | M. Hooper (112.3) | M. Hooper (112.3) |
+| **rogue2025** | M. Hooper (46) | M. Hooper (112) | M. Hooper (47) | M. Hooper (39) | M. Hooper (37) | M. Hooper (120) | M. Hooper (119) |
+| **smoe2024** | M. Hooper (115.5) | H. Björnsson (140) | M. Hooper (58) | H. Björnsson (53) | H. Björnsson (48) | H. Björnsson (151) | M. Hooper (148) |
+| **smoe2025** | L. Hatton (93.5) | L. Hatton (109.5) | L. Hatton (44) | L. Hatton (37) | L. Hatton (34.5) | L. Hatton (114.5) | L. Hatton (113.5) |
+| **wsm2026_finals** | M. Hooper (54) | R. Nel (115) | M. Hooper (48) | R. Nel (41) | R. Nel (38) | M. Hooper (121) | M. Hooper (121) |
+| **wsm2026_prelim** | M. Hooper (105.5) | R. Nel (66) | R. Nel (26) | R. Nel (23) | R. Nel (21) | R. Nel (71) | R. Nel (68) |
 
 ## 1st-vs-2nd Gap Per System
 
 How close was the comp under each system? Smaller gap = more sensitive to system choice.
 
-| Comp | WSM Linear | F1 2010-present | F1 2003-2009 | F1 1991-2002 | F1 1961-1990 | MotoGP |
-|------|-------|-------|-------|-------|-------|-------|
-| **arnold2025** | 2.5 | 0.8 | 1 | 1 | 0 | 0.3 |
-| **rogue2025** | 6.5 | 16.5 | 8.5 | 8.5 | 8.5 | 16.5 |
-| **smoe2024** | 7.5 | 0.5 | 3 | 7 | 4 | 2.5 |
-| **smoe2025** | 0.5 | 22.5 | 8.5 | 13.8 | 11.8 | 13.5 |
-| **wsm2026_finals** | 2 | 3 | 1 | 3 | 1 | 2 |
-| **wsm2026_prelim** | 7.5 | 4.2 | 1 | 4 | 3 | 0.8 |
+| Comp | WSM Linear | F1 2010-present | F1 2003-2009 | F1 1991-2002 | F1 1961-1990 | MotoGP | MotoGP Extended |
+|------|-------|-------|-------|-------|-------|-------|-------|
+| **arnold2025** | 2.5 | 0.8 | 1 | 1 | 0 | 0.3 | 2.3 |
+| **rogue2025** | 6.5 | 16.5 | 8.5 | 8.5 | 8.5 | 16.5 | 18.5 |
+| **smoe2024** | 7.5 | 0.5 | 3 | 7 | 4 | 2.5 | 6 |
+| **smoe2025** | 0.5 | 22.5 | 8.5 | 13.8 | 11.8 | 13.5 | 18 |
+| **wsm2026_finals** | 2 | 3 | 1 | 3 | 1 | 2 | 2 |
+| **wsm2026_prelim** | 7.5 | 4.2 | 1 | 4 | 3 | 0.8 | 2 |
 
 ## Winner Flips Per Comp
 
@@ -60,6 +61,7 @@ Under each scoring system, who wins how many comps?
 - **F1 1991-2002:** L. Hatton (2), R. Nel (2), M. Hooper (1), H. Björnsson (1)
 - **F1 1961-1990:** M. Hooper (2), R. Nel (2), H. Björnsson (1), L. Hatton (1)
 - **MotoGP:** M. Hooper (3), H. Björnsson (1), L. Hatton (1), R. Nel (1)
+- **MotoGP Extended:** M. Hooper (4), L. Hatton (1), R. Nel (1)
 
 ## Methodological Notes
 

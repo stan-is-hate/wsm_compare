@@ -74,6 +74,22 @@ The Top-10 subset control in `pool` mode reproduces WSM's official "Prelim Score
 
 ## Scoring systems tested
 
+Each system lives in its own module under `scoring_systems/`:
+
+```
+scoring_systems/
+├── __init__.py          (empty marker, no code)
+├── _base.py             (ScoringSystem dataclass)
+├── _registry.py         (ALL_SYSTEMS list, by_name lookup)
+├── wsm_linear.py
+├── f1_2010.py
+├── f1_2003.py
+├── f1_1991.py
+├── f1_1961.py
+├── motogp.py
+└── motogp_extended.py
+```
+
 | System | Scale (top 10) | 1st/2nd ratio | Origin |
 |--------|---------------|--------------|--------|
 | WSM Linear | 10-9-8-7-6-5-4-3-2-1 | 1.11x | World's Strongest Man, current. Equal gaps. |
@@ -82,6 +98,25 @@ The Top-10 subset control in `pool` mode reproduces WSM's official "Prelim Score
 | F1 1991-2002 | 10-6-4-3-2-1 | 1.67x | F1, Schumacher era. Top 6 only. |
 | F1 1961-1990 | 9-6-4-3-2-1 | 1.50x | F1, Senna/Prost era. Top 6 only. |
 | MotoGP | 25-20-16-13-11-10-9-8-7-6 | 1.25x | MotoGP, current. All 10 score well. |
+| MotoGP Extended | 25-20-16-13-11-9-7-5-3-1 | 1.25x | Variant: MotoGP top, steeper tail down to 1. |
+
+### Adding a new scoring system
+
+1. Create `scoring_systems/<name>.py`:
+   ```python
+   from ._base import ScoringSystem
+   SYSTEM = ScoringSystem(
+       name="My System",
+       scale=[10, 8, 6, 4, 2, 1],   # or None for "WSM Linear" (N down to 1)
+       description="One-line description, including origin/era.",
+   )
+   ```
+2. Register it in `scoring_systems/_registry.py`:
+   ```python
+   from .my_system import SYSTEM as MY_SYSTEM
+   ALL_SYSTEMS = [..., MY_SYSTEM]
+   ```
+3. Run `python3 -m unittest discover tests` and `python3 wsm_compare.py compare --report` to verify.
 
 ## Adding a comp
 

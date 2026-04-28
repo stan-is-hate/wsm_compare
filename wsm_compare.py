@@ -25,46 +25,17 @@ import sys
 import os
 import glob
 from collections import defaultdict
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from functools import cached_property
-from typing import Optional
+
+from scoring_systems._base import ScoringSystem
+from scoring_systems._registry import ALL_SYSTEMS as SCORING_SYSTEMS
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 COMPS_DIR = os.path.join(SCRIPT_DIR, "comps")
 REPORTS_DIR = os.path.join(SCRIPT_DIR, "reports")
 
 DNS_TOKENS = {"DNS", "WD", "WITHDREW", "DQ", ""}
-
-
-# --- Real-world scoring systems ---
-
-@dataclass(frozen=True)
-class ScoringSystem:
-    name: str
-    scale: Optional[list]  # None = "WSM Linear" (N down to 1)
-    description: str
-
-    def get_scale(self, field_size: int) -> list:
-        """Slice the scale to the field size, padding with zeros if needed."""
-        if self.scale is None:
-            return list(range(field_size, 0, -1))
-        return self.scale[:field_size] + [0] * max(0, field_size - len(self.scale))
-
-
-SCORING_SYSTEMS = [
-    ScoringSystem("WSM Linear", None,
-                  "World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps."),
-    ScoringSystem("F1 2010-present", [25, 18, 15, 12, 10, 8, 6, 4, 2, 1],
-                  "Formula 1 (2010+). Steep top, drops off after 10th."),
-    ScoringSystem("F1 2003-2009", [10, 8, 6, 5, 4, 3, 2, 1],
-                  "Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)."),
-    ScoringSystem("F1 1991-2002", [10, 6, 4, 3, 2, 1],
-                  "Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning."),
-    ScoringSystem("F1 1961-1990", [9, 6, 4, 3, 2, 1],
-                  "Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning."),
-    ScoringSystem("MotoGP", [25, 20, 16, 13, 11, 10, 9, 8, 7, 6],
-                  "MotoGP (current). All 10 positions score well. 1.25x for winning."),
-]
 
 
 def get_scale(system, field_size):
