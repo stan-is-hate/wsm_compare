@@ -22,7 +22,7 @@ Cross-competition analysis across multiple real-world scoring systems.
 | **smoe2024** | M. Hooper (115.5) | H. Björnsson (140) | M. Hooper (58) | H. Björnsson (53) | H. Björnsson (48) | H. Björnsson (151) |
 | **smoe2025** | L. Hatton (93.5) | L. Hatton (109.5) | L. Hatton (44) | L. Hatton (37) | L. Hatton (34.5) | L. Hatton (114.5) |
 | **wsm2026_finals** | M. Hooper (54) | R. Nel (115) | M. Hooper (48) | R. Nel (41) | R. Nel (38) | M. Hooper (121) |
-| **wsm2026_groups** | M. Hooper (105.5) | R. Nel (66) | R. Nel (26) | R. Nel (23) | R. Nel (21) | R. Nel (71) |
+| **wsm2026_prelim** | M. Hooper (105.5) | R. Nel (66) | R. Nel (26) | R. Nel (23) | R. Nel (21) | R. Nel (71) |
 
 ## 1st-vs-2nd Gap Per System
 
@@ -35,7 +35,7 @@ How close was the comp under each system? Smaller gap = more sensitive to system
 | **smoe2024** | 7.5 | 0.5 | 3 | 7 | 4 | 2.5 |
 | **smoe2025** | 0.5 | 22.5 | 8.5 | 13.8 | 11.8 | 13.5 |
 | **wsm2026_finals** | 2 | 3 | 1 | 3 | 1 | 2 |
-| **wsm2026_groups** | 7.5 | 4.2 | 1 | 4 | 3 | 0.8 |
+| **wsm2026_prelim** | 7.5 | 4.2 | 1 | 4 | 3 | 0.8 |
 
 ## Winner Flips Per Comp
 
@@ -48,7 +48,7 @@ How many distinct winners does each comp produce across the 6 scoring systems?
 | **smoe2024** | 2 | H. Björnsson, M. Hooper |
 | **smoe2025** | 1 | L. Hatton |
 | **wsm2026_finals** | 2 | M. Hooper, R. Nel |
-| **wsm2026_groups** | 2 | M. Hooper, R. Nel |
+| **wsm2026_prelim** | 2 | M. Hooper, R. Nel |
 
 ## Per-System Winner Distribution
 

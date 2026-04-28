@@ -32,8 +32,8 @@ python3 wsm_compare.py compare --report comps/arnold2025.csv     # one comp to m
 Requires a CSV with a `group` column. Sums each group's athletes' points to crown the strongest group under each scoring system.
 
 ```bash
-python3 wsm_compare.py groups comps/wsm2026_groups.csv           # stdout
-python3 wsm_compare.py groups --report comps/wsm2026_groups.csv  # markdown
+python3 wsm_compare.py groups comps/wsm2026_prelim.csv           # stdout
+python3 wsm_compare.py groups --report comps/wsm2026_prelim.csv  # markdown
 ```
 
 ### `pool` — pool all athletes into a single stack rank
@@ -41,8 +41,8 @@ python3 wsm_compare.py groups --report comps/wsm2026_groups.csv  # markdown
 Requires a CSV with a `group` column. Ranks all athletes in one big stack rank, with a BONUS top-10 control (qualifiers re-ranked within their subset). The top-10 control reproduces WSM's official "Prelim Score" carryover.
 
 ```bash
-python3 wsm_compare.py pool comps/wsm2026_groups.csv             # stdout
-python3 wsm_compare.py pool --report comps/wsm2026_groups.csv    # markdown
+python3 wsm_compare.py pool comps/wsm2026_prelim.csv             # stdout
+python3 wsm_compare.py pool --report comps/wsm2026_prelim.csv    # markdown
 ```
 
 ## CSV format

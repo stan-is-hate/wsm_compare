@@ -1,4 +1,4 @@
-# WSM2026 GROUPS — Groups as Teams
+# WSM2026 PRELIM — Groups as Teams
 
 **25 athletes across 5 groups, 5 events**
 

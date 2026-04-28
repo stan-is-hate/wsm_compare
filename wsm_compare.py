@@ -25,7 +25,8 @@ import sys
 import os
 import glob
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from functools import cached_property
 from typing import Optional
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -66,14 +67,9 @@ SCORING_SYSTEMS = [
 ]
 
 
-# Backwards-compatible shim for tests/external callers that pass a tuple-style entry.
-# Tests originally used `(name, scale, desc)` tuples; the function now also accepts
-# ScoringSystem instances directly.
-def get_scale(system_entry, field_size):
-    if isinstance(system_entry, ScoringSystem):
-        return system_entry.get_scale(field_size)
-    name, scale, _ = system_entry
-    return ScoringSystem(name, scale, "").get_scale(field_size)
+def get_scale(system, field_size):
+    """Convenience: get the scoring scale for a ScoringSystem at a given field size."""
+    return system.get_scale(field_size)
 
 
 def parse_placement(s):
@@ -128,6 +124,8 @@ def load_comp(path):
        - events maps event_name to {athlete: placement_string}
        - groups maps athlete to group_id (or None if no 'group' column in CSV)
     """
+    if not os.path.isfile(path):
+        raise ValueError(f"CSV file not found: {path}")
     with open(path) as f:
         reader = csv.DictReader(f)
         rows = list(reader)
@@ -196,9 +194,14 @@ class SystemResult:
     event_pts: dict      # event_name -> {athlete: pts}
     scale: list
 
-    def sorted_totals_dict(self):
-        """Convenience: return totals as {athlete: total_pts}."""
+    @cached_property
+    def totals_dict(self):
+        """Cached: totals as {athlete: total_pts}. Built once on first access."""
         return dict(self.sorted_totals)
+
+    # Backwards-compat alias kept for callers that still use the method form.
+    def sorted_totals_dict(self):
+        return self.totals_dict
 
 
 def determine_qualifiers(athletes, groups, events, n_per_group=2):
@@ -218,7 +221,8 @@ def determine_qualifiers(athletes, groups, events, n_per_group=2):
     by_group = defaultdict(list)
     for a in athletes:
         by_group[groups[a]].append(a)
-    for g in sorted(by_group.keys()):
+    # Tie-breaker on identical totals: stable by CSV insertion order.
+    for g in sorted(by_group.keys(), key=_natural_group_key):
         sorted_in_group = sorted(by_group[g], key=lambda a: -totals[a])
         qualifiers.extend(sorted_in_group[:n_per_group])
     return qualifiers
@@ -347,9 +351,35 @@ def run_comp(path, verbose=True):
     return comp_name, results
 
 
-def _require_groups(groups, mode_name):
+def _require_groups(groups, mode_name, event_names=None):
     if groups is None:
-        raise ValueError(f"{mode_name} mode requires a CSV with a 'group' column")
+        msg = f"{mode_name} mode requires a CSV with a 'group' column"
+        if event_names:
+            msg += f"; got columns: athlete, country, {', '.join(event_names)}"
+        raise ValueError(msg)
+
+
+def _natural_group_key(g):
+    """Sort key for group IDs: numeric if possible, else string."""
+    try:
+        return (0, int(g))
+    except (TypeError, ValueError):
+        return (1, str(g))
+
+
+def compute_group_totals_by_sys(athletes, groups, results):
+    """For each scoring system, sum each group's athletes' points.
+
+    Returns: {system_name: {group_id: total_pts}}.
+    """
+    out = {}
+    for system in SCORING_SYSTEMS:
+        gt = defaultdict(float)
+        totals = results[system.name].totals_dict
+        for a in athletes:
+            gt[groups[a]] += totals[a]
+        out[system.name] = gt
+    return out
 
 
 def write_groups_report(path, out_dir):
@@ -359,10 +389,10 @@ def write_groups_report(path, out_dir):
     the strongest group.
     """
     comp_name, athletes, countries, events, groups = load_comp(path)
-    _require_groups(groups, "groups")
+    _require_groups(groups, "groups", list(events.keys()))
     results = compute_all_systems(athletes, events)
     sys_names = [s.name for s in SCORING_SYSTEMS]
-    group_ids = sorted(set(groups.values()))
+    group_ids = sorted(set(groups.values()), key=_natural_group_key)
 
     lines = []
     w = lines.append
@@ -384,12 +414,7 @@ def write_groups_report(path, out_dir):
         sep += "-------|"
     w(header)
     w(sep)
-    group_totals_by_sys = {}
-    for sn in sys_names:
-        gt = defaultdict(float)
-        for a in athletes:
-            gt[groups[a]] += results[sn].sorted_totals_dict()[a]
-        group_totals_by_sys[sn] = gt
+    group_totals_by_sys = compute_group_totals_by_sys(athletes, groups, results)
 
     ranked_groups = sorted(group_ids, key=lambda g: -group_totals_by_sys["WSM Linear"][g])
     for rank, g in enumerate(ranked_groups, 1):
@@ -402,18 +427,18 @@ def write_groups_report(path, out_dir):
     # Per-group breakdown
     w("## Group Breakdowns (WSM Linear)")
     w("")
+    wsm_totals = results["WSM Linear"].totals_dict
     for g in ranked_groups:
         members = sorted(
             [a for a in athletes if groups[a] == g],
-            key=lambda a: -results["WSM Linear"].sorted_totals_dict()[a],
+            key=lambda a: -wsm_totals[a],
         )
         w(f"### Group {g} — {fmt(group_totals_by_sys['WSM Linear'][g])} pts")
         w("")
         w("| Athlete | Country | WSM Linear pts |")
         w("|---------|---------|----------------|")
         for a in members:
-            pts = results["WSM Linear"].sorted_totals_dict()[a]
-            w(f"| {a} | {countries[a]} | {fmt(pts)} |")
+            w(f"| {a} | {countries[a]} | {fmt(wsm_totals[a])} |")
         w("")
 
     # Strongest group per system
@@ -442,7 +467,7 @@ def write_pool_report(path, out_dir):
     as a control matching WSM's official 'Prelim Score' carryover.
     """
     comp_name, athletes, countries, events, groups = load_comp(path)
-    _require_groups(groups, "pool")
+    _require_groups(groups, "pool", list(events.keys()))
     event_names = list(events.keys())
     results = compute_all_systems(athletes, events)
     sys_names = [s.name for s in SCORING_SYSTEMS]
@@ -632,21 +657,16 @@ def write_comp_report(path, out_dir):
 def run_groups(path):
     """Print groups-as-teams comparison to stdout."""
     comp_name, athletes, countries, events, groups = load_comp(path)
-    _require_groups(groups, "groups")
+    _require_groups(groups, "groups", list(events.keys()))
     results = compute_all_systems(athletes, events)
     sys_names = [s.name for s in SCORING_SYSTEMS]
-    group_ids = sorted(set(groups.values()))
+    group_ids = sorted(set(groups.values()), key=_natural_group_key)
 
     print("=" * 110)
     print(f"GROUPS AS TEAMS: {comp_name.upper()}  ({len(athletes)} athletes / {len(group_ids)} groups)")
     print("=" * 110)
 
-    group_totals_by_sys = {}
-    for sn in sys_names:
-        gt = defaultdict(float)
-        for a in athletes:
-            gt[groups[a]] += results[sn].sorted_totals_dict()[a]
-        group_totals_by_sys[sn] = gt
+    group_totals_by_sys = compute_group_totals_by_sys(athletes, groups, results)
 
     print(f"\n  {'Rank':<6}{'Group':<8}", end="")
     for sn in sys_names:
@@ -672,7 +692,7 @@ def run_groups(path):
 def run_pool(path):
     """Print pooled stack rank + top-10 subset to stdout."""
     comp_name, athletes, countries, events, groups = load_comp(path)
-    _require_groups(groups, "pool")
+    _require_groups(groups, "pool", list(events.keys()))
     results = compute_all_systems(athletes, events)
     sys_names = [s.name for s in SCORING_SYSTEMS]
 
@@ -708,9 +728,15 @@ def run_pool(path):
     for rank, (a, _) in enumerate(subset_wsm, 1):
         print(f"  {rank:<4}{a:<22}G{groups[a]:<4}", end="")
         for sn in sys_names:
-            total = subset_results[sn].sorted_totals_dict()[a]
+            total = subset_results[sn].totals_dict[a]
             print(f"{fmt(total):<16}", end="")
         print()
+
+    # Q6: winner-per-system footer (parity with markdown report)
+    print(f"\n  Top 10 winner per system:")
+    for sn in sys_names:
+        winner_a, winner_pts = subset_results[sn].sorted_totals[0]
+        print(f"    {sn}: {winner_a} ({fmt(winner_pts)} pts)")
     print()
 
 
@@ -859,10 +885,10 @@ Examples:
   wsm_compare.py compare --all                              # all comps to stdout
   wsm_compare.py compare --report                           # all comps to markdown + summary
   wsm_compare.py compare --report comps/arnold2025.csv      # one comp to markdown
-  wsm_compare.py groups comps/wsm2026_groups.csv            # groups-as-teams to stdout
-  wsm_compare.py groups --report comps/wsm2026_groups.csv   # groups-as-teams to markdown
-  wsm_compare.py pool comps/wsm2026_groups.csv              # pooled + top-10 to stdout
-  wsm_compare.py pool --report comps/wsm2026_groups.csv     # pooled + top-10 to markdown
+  wsm_compare.py groups comps/wsm2026_prelim.csv            # groups-as-teams to stdout
+  wsm_compare.py groups --report comps/wsm2026_prelim.csv   # groups-as-teams to markdown
+  wsm_compare.py pool comps/wsm2026_prelim.csv              # pooled + top-10 to stdout
+  wsm_compare.py pool --report comps/wsm2026_prelim.csv     # pooled + top-10 to markdown
 """,
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -883,6 +909,9 @@ Examples:
     args = parser.parse_args()
 
     if args.command == "compare":
+        # B1: --all is exclusive with a positional CSV
+        if args.all and args.csv:
+            parser.error("compare: cannot combine --all with a CSV path; pick one")
         if args.all and args.report:
             summary_path = write_combined_report(COMPS_DIR, REPORTS_DIR)
             print(f"Wrote per-comp reports + {summary_path}")
@@ -914,4 +943,9 @@ Examples:
 
 
 if __name__ == "__main__":
-    main()
+    # B2: surface ValueError as a clean stderr message instead of a traceback
+    try:
+        main()
+    except ValueError as e:
+        sys.stderr.write(f"error: {e}\n")
+        sys.exit(2)

@@ -1,4 +1,4 @@
-# WSM2026 GROUPS — Pooled Stack Rank
+# WSM2026 PRELIM — Pooled Stack Rank
 
 **25 athletes pooled across all groups, 5 events**
 
