@@ -1,3 +1,7 @@
 theme: jekyll-theme-cayman
 title: WSM Compare
 description: Strongman competition results re-scored under different real-world scoring systems
+
+# README.md is for repo browsers (technical content). Don't render it at /README.html on the site.
+exclude:
+  - README.md

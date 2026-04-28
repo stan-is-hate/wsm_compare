@@ -1,68 +1,12 @@
 # WSM Compare
 
-We built a tool and ran it to re-score 15 real strongman competitions (Arnold, Rogue, SMOE, WSM — both men's and women's) under 7 real-world scoring systems (current strongman, multiple eras of F1, MotoGP, plus a custom MotoGP variant). This page summarizes how the winners differ across systems.
+A small Python tool that re-scores strongman competition results under different real-world scoring systems (current strongman, multiple eras of F1, MotoGP, plus a custom MotoGP variant). For results and analysis, see the rendered site:
 
-Data sourced from [Strongman Archives](https://strongmanarchives.com/). Math verified against official published totals.
+🌐 **https://stan-is-hate.github.io/wsm_compare/**
 
-## How often the winner changes across systems
+This README covers the technical bits: running it, project layout, adding scoring systems, adding comps.
 
-Counts of who wins each men's comp under each system, across 9 men's comps over 3 years:
-
-| Scoring system | M. Hooper | Other winners |
-|---|---|---|
-| WSM Linear (current) | **7 / 9** | E. Singleton, R. Nel |
-| F1 2003-2009 | **7 / 9** | L. Hatton, T. Stoltman |
-| MotoGP | **7 / 9** | L. Hatton, T. Stoltman |
-| MotoGP Extended | **7 / 9** | L. Hatton, T. Stoltman |
-| F1 2010-present | **6 / 9** | L. Hatton, T. Stoltman, R. Nel |
-| F1 1961-1990 | **5 / 9** | H. Björnsson, L. Hatton, T. Stoltman, R. Nel |
-| F1 1991-2002 | **4 / 9** | L. Hatton (2), H. Björnsson, T. Stoltman, R. Nel |
-
-Across the 9 comps, the same winner emerges under most reasonable systems. The two F1 systems with the steepest top end and shortest tail (1961-1990 and 1991-2002, both top-6-only) produce the most reshuffling.
-
-## Comps where the scoring system flips the winner
-
-5 of the 9 men's comps have at least one alternate winner depending on the system used:
-
-| Comp | Winner under WSM Linear | Alternate winner | Systems where alternate wins |
-|---|---|---|---|
-| **WSM 2026 finals** | M. Hooper (54) | R. Nel | F1 2010+, F1 1991-02, F1 1961-90 |
-| **WSM 2025 finals** | R. Nel (47) | T. Stoltman | every other system tested |
-| **SMOE 2024** | M. Hooper (117) | H. Björnsson | F1 1991-02, F1 1961-90 only |
-| **SMOE 2025** | E. Singleton (93.5) | L. Hatton | every other system tested |
-| **Arnold 2025** | M. Hooper (51.5) | L. Hatton | F1 1991-2002 only |
-
-The remaining 4 men's comps (Arnold 2024, Arnold 2026, Rogue 2024, Rogue 2025) produce the same winner under all 7 systems.
-
-**See [`reports/_summary.md`](reports/_summary.md) for the full cross-comp table and methodological notes.**
-
-## Browse individual comp reports
-
-Each report shows full standings under all 7 scoring systems plus podium-by-system and winner-flip analysis.
-
-### Men's
-- **WSM:** [2026 finals](reports/wsm2026_finals.md) · [2025 finals](reports/wsm2025_finals.md)
-- **Arnold Strongman Classic:** [2026](reports/arnold2026.md) · [2025](reports/arnold2025.md) · [2024](reports/arnold2024.md)
-- **Rogue Invitational:** [2025](reports/rogue2025.md) · [2024](reports/rogue2024.md)
-- **Strongest Man on Earth:** [2025](reports/smoe2025.md) · [2024](reports/smoe2024.md)
-
-### Women's
-- **Arnold Strongman Classic:** [2026](reports/arnold2026_w.md) · [2025](reports/arnold2025_w.md) · [2024](reports/arnold2024_w.md)
-- **Rogue Invitational:** [2025](reports/rogue2025_w.md) · [2024](reports/rogue2024_w.md)
-
-## Scoring systems tested
-
-| System | Scale (top 10) | 1st/2nd ratio | Origin |
-|---|---|---|---|
-| WSM Linear | 10-9-8-7-6-5-4-3-2-1 | 1.11x | World's Strongest Man, current. Equal gaps. |
-| F1 2010-present | 25-18-15-12-10-8-6-4-2-1 | 1.39x | Formula 1, current. Steep top, drops off. |
-| F1 2003-2009 | 10-8-6-5-4-3-2-1 | 1.25x | F1, mid-2000s. Top 8 only. |
-| F1 1991-2002 | 10-6-4-3-2-1 | 1.67x | F1, Schumacher era. Top 6 only. |
-| F1 1961-1990 | 9-6-4-3-2-1 | 1.50x | F1, Senna/Prost era. Top 6 only. |
-| MotoGP | 25-20-16-13-11-10-9-8-7-6 | 1.25x | MotoGP, current. All 10 score well. |
-| MotoGP Extended | 25-20-16-13-11-10-9-8-7-6-5-4-3-2-1 | 1.25x | Variant: MotoGP extended to 15 positions for bigger fields. |
-
-## Running it yourself
+## Running it
 
 Zero dependencies (Python stdlib only).
 
@@ -91,10 +35,24 @@ wsm_compare/
 │   ├── _base.py              # ScoringSystem dataclass
 │   ├── _registry.py          # ALL_SYSTEMS list, by_name lookup
 │   └── <name>.py             # one file per system (wsm_linear, f1_2010, etc.)
-└── tests/                    # unit + integration + CLI tests
+├── tests/                    # unit + integration + CLI tests
+├── index.md                  # GitHub Pages homepage (casual readers)
+└── _config.yml               # Jekyll config
 ```
 
-### Adding a new scoring system
+## CSV format
+
+```csv
+athlete,country,Event1,Event2,...
+M. Hooper,CAN,1,T2,DNS,...
+```
+
+Placement values:
+- `1`, `2`, `3` — solo placement
+- `T2`, `T3` — tied (the script counts athletes with the same string to determine tie size and averages points across the positions they consume)
+- `DNS` (or `WD`, `WITHDREW`, `DQ`) — did not compete / withdrew / no lift; always 0 pts
+
+## Adding a new scoring system
 
 1. Create `scoring_systems/<name>.py`:
    ```python
@@ -108,16 +66,34 @@ wsm_compare/
 2. Register it in `scoring_systems/_registry.py`.
 3. Run `python3 wsm_compare.py compare --report` to regenerate reports.
 
-### Adding a new comp
+## Adding a new comp
 
 ```bash
 python3 wsm_compare.py fetch <strongmanarchives_url_or_id>
 python3 wsm_compare.py compare --report
 ```
 
+The fetch subcommand:
+- Accepts a Strongman Archives URL or a bare contest ID
+- Hits `/fetchContestResult.php` for canonical points
+- Derives global per-event placements (athletes with same canonical pts in an event are tied)
+- Auto-names the output file from the page `<title>` (`"Strongman Archives - 2026 WSM Final"` → `wsm2026_finals.csv`)
+- Refuses to overwrite an existing file (use `--name` to override)
+- Rate-limited to 1.5s between requests (be nice to a small community-run site)
+
 ## Methodological notes
 
 - **Scale length follows the comp's full roster**, including DNS athletes. A comp with 10 athletes uses a 10-position scale, regardless of how many actually competed in any event. DNS always scores 0.
-- **Tie averaging:** athletes sharing a placement string (e.g. all `T2`) split points across positions consumed. 3 athletes at T2 → positions 2, 3, 4 → each gets `(scale[1] + scale[2] + scale[3]) / 3`.
+- **Tie averaging:** athletes sharing a placement (e.g. all `T2`) split points across positions consumed. 3 athletes at T2 → positions 2, 3, 4 → each gets `(scale[1] + scale[2] + scale[3]) / 3`.
 - **Scale truncation in big fields:** systems with short scales (F1 1991-2002 has 6 positions) zero-pad. In a 16-athlete comp under F1 1991-2002, positions 7-16 all score 0.
 - **No-lift / withdrew rules vary across comps.** WSM 2026 treats `(No lift)` as DNS. SMOE 2024 treats no-lifts as competing-but-last. The CSVs encode whichever interpretation matches the comp's published totals.
+
+## Site structure
+
+Two separate documents:
+- `index.md` — rendered as the GitHub Pages homepage. Casual-reader summary of findings.
+- `README.md` — this file. Technical reference for repo browsers and contributors. Excluded from Jekyll via `_config.yml` so it doesn't render at `/README.html` on the site.
+
+## License
+
+No license attached (yet). Open an issue if you want to use this for something.
