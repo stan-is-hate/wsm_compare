@@ -4,7 +4,7 @@
 
 ## Event Placements
 
-| Athlete | Country | Prelim | Flip Carry | Deadlift | Titans Toss | Max Log | Atlas Stones | Wins | Top-3 |
+| Athlete | Country | Prelim Score | Flip Carry | Deadlift | Titan s Toss | Max Log Lift | Atlas Stones | Wins | Top-3 |
 |---------|---------|----------|----------|----------|----------|----------|----------|------|-------|
 | M. Hooper | CAN | 1 | 2 | T2 | 2 | T2 | 2 | 1 | 6 |
 | R. Nel | RSA | 2 | 1 | 1 | 1 | 4 | 5 | 3 | 4 |
@@ -25,7 +25,7 @@ _World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps._
 
 **Scale:** `[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]` — **1st/2nd ratio:** 1.11x
 
-| # | Athlete | Country | Prelim | Flip Carry | Deadlift | Titans Toss | Max Log | Atlas Stones | **Total** |
+| # | Athlete | Country | Prelim Score | Flip Carry | Deadlift | Titan s Toss | Max Log Lift | Atlas Stones | **Total** |
 |---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
 | 1 | M. Hooper | CAN | 10 | 9 | 8.5 | 9 | 8.5 | 9 | **54** |
 | 2 | R. Nel | RSA | 9 | 10 | 10 | 10 | 7 | 6 | **52** |
@@ -44,7 +44,7 @@ _Formula 1 (2010+). Steep top, drops off after 10th._
 
 **Scale:** `[25, 18, 15, 12, 10, 8, 6, 4, 2, 1]` — **1st/2nd ratio:** 1.39x
 
-| # | Athlete | Country | Prelim | Flip Carry | Deadlift | Titans Toss | Max Log | Atlas Stones | **Total** |
+| # | Athlete | Country | Prelim Score | Flip Carry | Deadlift | Titan s Toss | Max Log Lift | Atlas Stones | **Total** |
 |---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
 | 1 | R. Nel | RSA | 18 | 25 | 25 | 25 | 12 | 10 | **115** |
 | 2 | M. Hooper | CAN | 25 | 18 | 16.5 | 18 | 16.5 | 18 | **112** |
@@ -63,7 +63,7 @@ _Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)._
 
 **Scale:** `[10, 8, 6, 5, 4, 3, 2, 1, 0, 0]` — **1st/2nd ratio:** 1.25x
 
-| # | Athlete | Country | Prelim | Flip Carry | Deadlift | Titans Toss | Max Log | Atlas Stones | **Total** |
+| # | Athlete | Country | Prelim Score | Flip Carry | Deadlift | Titan s Toss | Max Log Lift | Atlas Stones | **Total** |
 |---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
 | 1 | M. Hooper | CAN | 10 | 8 | 7 | 8 | 7 | 8 | **48** |
 | 2 | R. Nel | RSA | 8 | 10 | 10 | 10 | 5 | 4 | **47** |
@@ -82,7 +82,7 @@ _Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning._
 
 **Scale:** `[10, 6, 4, 3, 2, 1, 0, 0, 0, 0]` — **1st/2nd ratio:** 1.67x
 
-| # | Athlete | Country | Prelim | Flip Carry | Deadlift | Titans Toss | Max Log | Atlas Stones | **Total** |
+| # | Athlete | Country | Prelim Score | Flip Carry | Deadlift | Titan s Toss | Max Log Lift | Atlas Stones | **Total** |
 |---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
 | 1 | R. Nel | RSA | 6 | 10 | 10 | 10 | 3 | 2 | **41** |
 | 2 | M. Hooper | CAN | 10 | 6 | 5 | 6 | 5 | 6 | **38** |
@@ -101,7 +101,7 @@ _Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning._
 
 **Scale:** `[9, 6, 4, 3, 2, 1, 0, 0, 0, 0]` — **1st/2nd ratio:** 1.50x
 
-| # | Athlete | Country | Prelim | Flip Carry | Deadlift | Titans Toss | Max Log | Atlas Stones | **Total** |
+| # | Athlete | Country | Prelim Score | Flip Carry | Deadlift | Titan s Toss | Max Log Lift | Atlas Stones | **Total** |
 |---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
 | 1 | R. Nel | RSA | 6 | 9 | 9 | 9 | 3 | 2 | **38** |
 | 2 | M. Hooper | CAN | 9 | 6 | 5 | 6 | 5 | 6 | **37** |
@@ -120,7 +120,7 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 
 **Scale:** `[25, 20, 16, 13, 11, 10, 9, 8, 7, 6]` — **1st/2nd ratio:** 1.25x
 
-| # | Athlete | Country | Prelim | Flip Carry | Deadlift | Titans Toss | Max Log | Atlas Stones | **Total** |
+| # | Athlete | Country | Prelim Score | Flip Carry | Deadlift | Titan s Toss | Max Log Lift | Atlas Stones | **Total** |
 |---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
 | 1 | M. Hooper | CAN | 25 | 20 | 18 | 20 | 18 | 20 | **121** |
 | 2 | R. Nel | RSA | 20 | 25 | 25 | 25 | 13 | 11 | **119** |
@@ -139,7 +139,7 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 
 **Scale:** `[25, 20, 16, 13, 11, 10, 9, 8, 7, 6]` — **1st/2nd ratio:** 1.25x
 
-| # | Athlete | Country | Prelim | Flip Carry | Deadlift | Titans Toss | Max Log | Atlas Stones | **Total** |
+| # | Athlete | Country | Prelim Score | Flip Carry | Deadlift | Titan s Toss | Max Log Lift | Atlas Stones | **Total** |
 |---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
 | 1 | M. Hooper | CAN | 25 | 20 | 18 | 20 | 18 | 20 | **121** |
 | 2 | R. Nel | RSA | 20 | 25 | 25 | 25 | 13 | 11 | **119** |

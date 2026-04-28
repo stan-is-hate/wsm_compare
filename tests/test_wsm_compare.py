@@ -355,7 +355,7 @@ class IntegrationTests(unittest.TestCase):
     def test_wsm2026_hooper_max_log_event(self):
         # Hooper is T2 in Max Log alongside Fojtů, scale [10,9,...] → avg(9,8) = 8.5.
         _, events, scale = self._totals("wsm2026_finals.csv", WSM_LINEAR)
-        max_log = wc.compute_event_points(events["Max_Log"], scale)
+        max_log = wc.compute_event_points(events["Max_Log_Lift"], scale)
         self.assertEqual(max_log["M. Hooper"], 8.5)
         self.assertEqual(max_log["O. Fojtů"], 8.5)
 

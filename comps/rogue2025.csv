@@ -1,10 +1,10 @@
-athlete,country,Deadlift_18in,Mons_Meg,Overhead,Power_Drive,Viking_Press,Yoke_Escalator
-M. Hooper,CAN,1,1,2,2,2,6
-T. Mitchell,USA,T3,6,1,7,1,2
-T. Stoltman,UK,T5,5,5,1,6,4
-L. Hatton,USA,T3,2,3,9,3,8
-T. Evans,USA,T5,9,4,4,5,3
-B. Johnson,USA,T5,4,6,6,4,5
-A. Andrade,USA,2,8,7,5,7,7
-R. Nel,RSA,T5,3,8,3,8,9
-P. Haynes,UK,9,7,DNS,8,9,1
+athlete,country,18_inch_Deadlift,Viking_Press,Yoke_Escalator,Overhead_Medley,The_Power_Drive,Mons_Meg_Stones
+M. Hooper,CAN,1,2,6,2,2,1
+T. Mitchell,USA,T3,1,2,1,7,6
+T. Stoltman,GBR,T5,6,4,5,1,5
+L. Hatton,USA,T3,3,8,3,9,2
+T. Evans,USA,T5,5,3,4,4,9
+B. Johnson,USA,T5,4,5,6,6,4
+A. Andrade,MEX,2,7,7,7,5,8
+R. Nel,RSA,T5,8,9,8,3,3
+P. Haynes,GBR,9,9,1,DNS,8,7

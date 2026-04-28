@@ -1,17 +1,17 @@
-athlete,country,Deadlift,Overhead,Keg,Manhood,Squat,Wheelbarrow,Dumbbell,Fingals
-M. Hooper,CAN,2,1,T2,T2,1,2,3,4
+athlete,country,Max_Deadlift,Overhead_Medley,Keg_Toss,Manhood_Stones,Squat_Lift,Power_Medley,Dumbbell_Medley,Medley
+M. Hooper,CAN,2,1,T2,3,1,2,3,4
 H. Björnsson,ISL,1,9,1,1,4,1,10,1
-L. Hatton,USA,T11,5,T13,5,2,T9,1,5
-T. Mitchell,USA,7,2,T8,T2,T5,T13,4,8
-A. Andrade,USA,T3,6,T8,T2,DNS,3,7,T11
-E. Singleton,USA,6,11,T2,T7,DNS,T9,9,2
-T. Stoltman,UK,8,3,T2,DNS,DNS,8,5,3
-B. Thompson,USA,T3,8,T8,DNS,3,5,15,T11
-W. Derwinsky,CAN,9,15,T2,DNS,T5,T6,12,6
-T. Evans,USA,T11,4,T2,6,DNS,T13,8,T13
+L. Hatton,USA,T11,5,T13,5,2,10,1,5
+T. Mitchell,USA,7,2,T8,4,T5,16,4,8
+A. Andrade,USA,T3,6,T8,2,DNS,3,7,12
+E. Singleton,USA,6,11,T2,7,DNS,11,9,2
+T. Stoltman,GBR,8,3,T6,DNS,DNS,8,5,3
+B. Thompson,USA,T3,8,T8,DNS,3,5,15,11
+W. Derwinsky,CAN,9,15,T2,DNS,T5,7,12,6
+T. Evans,USA,T11,4,T6,6,DNS,13,8,13
 M. Boudreault,CAN,16,7,16,DNS,DNS,4,11,7
-M. Ragg,NZL,5,14,T2,DNS,DNS,T9,14,T13
-T. Hoath,CAN,10,16,T13,T7,DNS,T6,13,9
-A. Šmaukstelis,LAT,14,12,T8,T7,DNS,T13,16,10
-P. Kordiyaka,UKR,15,10,T8,DNS,DNS,T9,6,T13
-O. Novikov,UKR,13,13,T13,DNS,DNS,T13,2,16
+M. Ragg,NZL,5,14,5,DNS,DNS,9,14,15
+T. Hoath,CAN,10,16,15,8,DNS,6,16,10
+A. Šmaukstelis,LAT,14,12,T8,9,DNS,14,13,9
+P. Kordiyaka,UKR,15,10,T8,DNS,DNS,12,6,14
+O. Novikov,UKR,13,13,T13,DNS,DNS,15,2,16
