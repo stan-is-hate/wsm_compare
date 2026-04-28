@@ -3,6 +3,7 @@
 Run from project root with:
     python3 -m unittest discover tests
 """
+import json
 import os
 import shutil
 import subprocess
@@ -538,6 +539,82 @@ class FilenameDerivationTests(unittest.TestCase):
         # Leading/trailing underscores from edge characters get stripped
         self.assertEqual(wc._slug_from_title("- 2024 -"),
                          "2024")
+
+
+class ParseContestIdTests(unittest.TestCase):
+    """Test contest ID extraction from URL or bare integer."""
+
+    def test_full_url(self):
+        url = "https://strongmanarchives.com/viewContest.php?id=2361"
+        self.assertEqual(wc.parse_contest_id(url), 2361)
+
+    def test_partial_url(self):
+        url = "viewContest.php?id=1462"
+        self.assertEqual(wc.parse_contest_id(url), 1462)
+
+    def test_bare_integer_string(self):
+        self.assertEqual(wc.parse_contest_id("2361"), 2361)
+
+    def test_int_passthrough(self):
+        self.assertEqual(wc.parse_contest_id(2361), 2361)
+
+    def test_invalid_input_raises(self):
+        with self.assertRaisesRegex(ValueError, "Can't extract contest ID"):
+            wc.parse_contest_id("not_a_url")
+
+
+class FetchCsvMockedTests(unittest.TestCase):
+    """End-to-end test of fetch_csv with mocked HTTP responses."""
+
+    def test_fetch_csv_produces_expected_format(self):
+        # Mock HTML for fetch_event_names (contains the headers table)
+        mock_html = """<html><body>
+        <table id="ContestResults1234">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Competitor</th>
+          <th>Country</th>
+          <th>TOT. PTS</th>
+          <th>Event A</th><th>Pts</th>
+          <th>Event B</th><th>Pts</th>
+        </tr>
+        </thead>
+        </table>
+        </body></html>"""
+
+        # Mock JSON for fetch_data (athletes + per-event canonical points)
+        mock_json = {
+            "data": [
+                ["1", '<a>A. Athlete</a>', '<a><img>USA</a>', "5", "result1", 3, "result2", 2],
+                ["2", '<a>B. Athlete</a>', '<a><img>CAN</a>', "3", "result1", 2, "result2", 1],
+                ["3", '<a>C. Athlete</a>', '<a><img>GBR</a>', "0", "result1", 0, "result2", 0],
+            ]
+        }
+
+        from unittest.mock import patch, MagicMock
+
+        def fake_urlopen(req, *args, **kwargs):
+            mock_resp = MagicMock()
+            if "viewContest.php" in req.full_url:
+                mock_resp.read.return_value = mock_html.encode("utf-8")
+            else:
+                mock_resp.read.return_value = json.dumps(mock_json).encode("utf-8")
+            mock_resp.__enter__ = lambda s: s
+            mock_resp.__exit__ = lambda *args: None
+            return mock_resp
+
+        with patch("wsm_compare.urllib.request.urlopen", side_effect=fake_urlopen):
+            csv_text = wc.fetch_csv(1234)
+
+        lines = csv_text.strip().split("\n")
+        self.assertEqual(lines[0], "athlete,country,Event_A,Event_B")
+        # A. Athlete has highest pts in both events → 1st in both
+        self.assertIn("A. Athlete,USA,1,1", lines[1])
+        # B. Athlete is 2nd in both
+        self.assertIn("B. Athlete,CAN,2,2", lines[2])
+        # C. Athlete has 0 pts → DNS in both
+        self.assertIn("C. Athlete,GBR,DNS,DNS", lines[3])
 
 
 if __name__ == "__main__":
