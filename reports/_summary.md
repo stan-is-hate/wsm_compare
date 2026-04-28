@@ -32,7 +32,6 @@ Cross-competition analysis across multiple real-world scoring systems.
 | **smoe2025** | E. Singleton (93.5) | L. Hatton (106.5) | L. Hatton (43) | L. Hatton (36) | L. Hatton (33.5) | L. Hatton (111.5) | L. Hatton (116.5) |
 | **wsm2025_finals** | R. Nel (47) | T. Stoltman (96.7) | T. Stoltman (40) | T. Stoltman (32) | T. Stoltman (30.5) | T. Stoltman (107.3) | T. Stoltman (107.3) |
 | **wsm2026_finals** | M. Hooper (54) | R. Nel (115) | M. Hooper (48) | R. Nel (41) | R. Nel (38) | M. Hooper (121) | M. Hooper (121) |
-| **wsm2026_prelim** | M. Hooper (105.5) | R. Nel (66) | R. Nel (26) | R. Nel (23) | R. Nel (21) | R. Nel (71) | M. Hooper (72.5) |
 
 ## 1st-vs-2nd Gap Per System
 
@@ -54,7 +53,6 @@ How close was the comp under each system? Smaller gap = more sensitive to system
 | **smoe2025** | 1 | 19.5 | 7.5 | 12.8 | 10.8 | 10.5 | 11.5 |
 | **wsm2025_finals** | 0.5 | 1.7 | 1 | 2 | 1.5 | 2.3 | 2.3 |
 | **wsm2026_finals** | 2 | 3 | 1 | 3 | 1 | 2 | 2 |
-| **wsm2026_prelim** | 7.5 | 4.2 | 1 | 4 | 3 | 0.8 | 1.5 |
 
 ## Winner Flips Per Comp
 
@@ -76,19 +74,18 @@ How many distinct winners does each comp produce across the 6 scoring systems?
 | **smoe2025** | 2 | E. Singleton, L. Hatton |
 | **wsm2025_finals** | 2 | R. Nel, T. Stoltman |
 | **wsm2026_finals** | 2 | M. Hooper, R. Nel |
-| **wsm2026_prelim** | 2 | M. Hooper, R. Nel |
 
 ## Per-System Winner Distribution
 
 Under each scoring system, who wins how many comps?
 
-- **WSM Linear:** M. Hooper (8), I. Carrasquillo (3), A. Jardine (1), O. Liashchuk (1), E. Singleton (1), R. Nel (1)
-- **F1 2010-present:** M. Hooper (6), I. Carrasquillo (4), R. Nel (2), A. Jardine (1), L. Hatton (1), T. Stoltman (1)
-- **F1 2003-2009:** M. Hooper (7), I. Carrasquillo (4), A. Jardine (1), L. Hatton (1), T. Stoltman (1), R. Nel (1)
-- **F1 1991-2002:** M. Hooper (4), I. Carrasquillo (4), L. Hatton (2), R. Nel (2), A. Jardine (1), H. Björnsson (1), T. Stoltman (1)
-- **F1 1961-1990:** M. Hooper (5), I. Carrasquillo (4), R. Nel (2), A. Jardine (1), H. Björnsson (1), L. Hatton (1), T. Stoltman (1)
-- **MotoGP:** M. Hooper (7), I. Carrasquillo (4), A. Jardine (1), L. Hatton (1), T. Stoltman (1), R. Nel (1)
-- **MotoGP Extended:** M. Hooper (8), I. Carrasquillo (4), A. Jardine (1), L. Hatton (1), T. Stoltman (1)
+- **WSM Linear:** M. Hooper (7), I. Carrasquillo (3), A. Jardine (1), O. Liashchuk (1), E. Singleton (1), R. Nel (1)
+- **F1 2010-present:** M. Hooper (6), I. Carrasquillo (4), A. Jardine (1), L. Hatton (1), T. Stoltman (1), R. Nel (1)
+- **F1 2003-2009:** M. Hooper (7), I. Carrasquillo (4), A. Jardine (1), L. Hatton (1), T. Stoltman (1)
+- **F1 1991-2002:** M. Hooper (4), I. Carrasquillo (4), L. Hatton (2), A. Jardine (1), H. Björnsson (1), T. Stoltman (1), R. Nel (1)
+- **F1 1961-1990:** M. Hooper (5), I. Carrasquillo (4), A. Jardine (1), H. Björnsson (1), L. Hatton (1), T. Stoltman (1), R. Nel (1)
+- **MotoGP:** M. Hooper (7), I. Carrasquillo (4), A. Jardine (1), L. Hatton (1), T. Stoltman (1)
+- **MotoGP Extended:** M. Hooper (7), I. Carrasquillo (4), A. Jardine (1), L. Hatton (1), T. Stoltman (1)
 
 ## Methodological Notes
 
