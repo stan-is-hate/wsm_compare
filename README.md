@@ -36,12 +36,18 @@ The rest (Arnold 2024, Arnold 2026, Rogue 2024, Rogue 2025) are uncontroversial 
 
 **See [`reports/_summary.md`](reports/_summary.md) for the full cross-comp table and methodological notes.**
 
+## WSM coverage (group stage + pool + finals)
+
+The WSM analysis is its own thing — the group stage gets multiple analyses (groups-as-teams, pooled stack rank, top-10 control matching the official prelim carryover) on top of the finals breakdown.
+
+- **[WSM 2026](reports/wsm2026.md)** — full coverage: group stage + pool + finals. The 2-pt Hooper/Nel result.
+- **[WSM 2025](reports/wsm2025.md)** — finals only. Nel beat Stoltman by 0.5 pts under WSM Linear; Stoltman wins under everything else.
+
 ## Browse individual comp reports
 
 Each report shows full standings under all 7 scoring systems plus podium-by-system and winner-flip analysis.
 
 ### Men's
-- **WSM:** [2026 finals](reports/wsm2026_finals.md) · [2026 prelim](reports/wsm2026_prelim.md) · [2025 finals](reports/wsm2025_finals.md)
 - **Arnold Strongman Classic:** [2026](reports/arnold2026.md) · [2025](reports/arnold2025.md) · [2024](reports/arnold2024.md)
 - **Rogue Invitational:** [2025](reports/rogue2025.md) · [2024](reports/rogue2024.md)
 - **Strongest Man on Earth:** [2025](reports/smoe2025.md) · [2024](reports/smoe2024.md)
@@ -49,10 +55,6 @@ Each report shows full standings under all 7 scoring systems plus podium-by-syst
 ### Women's
 - **Arnold Strongman Classic:** [2026](reports/arnold2026_w.md) · [2025](reports/arnold2025_w.md) · [2024](reports/arnold2024_w.md)
 - **Rogue Invitational:** [2025](reports/rogue2025_w.md) · [2024](reports/rogue2024_w.md)
-
-### Group-stage analysis (WSM 2026 prelim)
-- [Groups as teams](reports/wsm2026_prelim_groups.md) — which group was strongest? (Group 3 by 70+ pts under any system)
-- [Pooled stack rank](reports/wsm2026_prelim_pool.md) — all 25 athletes ranked against each other, with a top-10 control that reproduces WSM's official prelim carryover
 
 ## Scoring systems tested
 
