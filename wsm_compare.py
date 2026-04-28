@@ -91,9 +91,8 @@ def compute_event_points(placements_by_athlete, scale):
 
 
 def load_comp(path):
-    """Returns (comp_name, athletes, countries, events, groups) where:
-       - events maps event_name to {athlete: placement_string}
-       - groups maps athlete to group_id (or None if no 'group' column in CSV)
+    """Returns (comp_name, athletes, countries, events) where events maps
+    event_name to {athlete: placement_string}.
     """
     if not os.path.isfile(path):
         raise ValueError(f"CSV file not found: {path}")
@@ -105,17 +104,14 @@ def load_comp(path):
         raise ValueError(f"Empty CSV: {path}")
 
     fieldnames = list(rows[0].keys())
-    static = {"athlete", "country", "group"}
+    static = {"athlete", "country"}
     event_names = [f for f in fieldnames if f.lower() not in static]
 
     if not event_names:
         raise ValueError(f"CSV has no event columns: {path} (expected columns beyond 'athlete' and 'country')")
 
-    has_groups = "group" in (f.lower() for f in fieldnames)
-
     athletes = [r["athlete"].strip() for r in rows]
     countries = {r["athlete"].strip(): r.get("country", "").strip() for r in rows}
-    groups = {r["athlete"].strip(): r.get("group", "").strip() for r in rows} if has_groups else None
 
     events = {}
     for ev in event_names:
@@ -130,7 +126,7 @@ def load_comp(path):
                 raise ValueError(f"{path}: athlete {athlete!r}, event {ev!r}: {e}")
 
     comp_name = os.path.basename(path).replace(".csv", "")
-    return comp_name, athletes, countries, events, groups
+    return comp_name, athletes, countries, events
 
 
 def fmt(v):
@@ -197,7 +193,7 @@ def compute_all_systems(athletes, events):
 
 
 def run_comp(path, verbose=True):
-    comp_name, athletes, countries, events, groups = load_comp(path)
+    comp_name, athletes, countries, events = load_comp(path)
     event_names = list(events.keys())
     results = compute_all_systems(athletes, events)
 
@@ -258,7 +254,7 @@ def run_comp(path, verbose=True):
 
 def write_comp_report(path, out_dir):
     """Generate a markdown report for a single comp."""
-    comp_name, athletes, countries, events, groups = load_comp(path)
+    comp_name, athletes, countries, events = load_comp(path)
     event_names = list(events.keys())
     results = compute_all_systems(athletes, events)
 

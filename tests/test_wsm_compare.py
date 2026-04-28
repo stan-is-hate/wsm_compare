@@ -247,7 +247,7 @@ class LoadCompTests(unittest.TestCase):
             Bob,CAN,T2,1
             Charlie,GBR,DNS,3
         """))
-        comp_name, athletes, countries, events, _ = wc.load_comp(path)
+        comp_name, athletes, countries, events = wc.load_comp(path)
         self.assertEqual(athletes, ["Alice", "Bob", "Charlie"])
         self.assertEqual(countries, {"Alice": "USA", "Bob": "CAN", "Charlie": "GBR"})
         self.assertEqual(list(events.keys()), ["Event1", "Event2"])
@@ -263,7 +263,7 @@ class LoadCompTests(unittest.TestCase):
             Alice,USA,1
             Bob,CAN,2
         """))
-        _, athletes, _, events, _ = wc.load_comp(path)
+        _, athletes, _, events = wc.load_comp(path)
         self.assertEqual(athletes, ["Alice", "Bob"])
         self.assertEqual(len(events), 1)
         self.assertEqual(events["OnlyEvent"], {"Alice": "1", "Bob": "2"})
@@ -275,7 +275,7 @@ class LoadCompTests(unittest.TestCase):
             Bob,CAN,2,DNS
             Charlie,GBR,3,DNS
         """))
-        _, athletes, _, events, _ = wc.load_comp(path)
+        _, athletes, _, events = wc.load_comp(path)
         # compute_event_points returns dict with all athletes at 0.
         scale = wc.get_scale(WSM_LINEAR, 3)
         pts = wc.compute_event_points(events["E2"], scale)
@@ -288,7 +288,7 @@ class LoadCompTests(unittest.TestCase):
             O. Fojtů,CZE,1
             H. Björnsson,ISL,2
         """))
-        _, athletes, countries, events, _ = wc.load_comp(path)
+        _, athletes, countries, events = wc.load_comp(path)
         self.assertIn("O. Fojtů", athletes)
         self.assertIn("H. Björnsson", athletes)
         self.assertEqual(countries["O. Fojtů"], "CZE")
@@ -335,7 +335,7 @@ class IntegrationTests(unittest.TestCase):
     def _totals(self, csv_name, system_entry):
         """Compute {athlete: total_points} for a given CSV under a scoring system."""
         path = os.path.join(self.comps_dir, csv_name)
-        _, athletes, _, events, _ = wc.load_comp(path)
+        _, athletes, _, events = wc.load_comp(path)
         scale = wc.get_scale(system_entry, len(athletes))
         totals = {a: 0.0 for a in athletes}
         for ev_placements in events.values():
