@@ -1044,8 +1044,9 @@ def write_combined_report(comps_dir, out_dir):
         if write_wsm_groups_report(year, comps_dir, out_dir) is not None:
             written_group_years.append(year)
 
-    # Refresh the WSM group strength parent stub (sidebar dropdown contents are
-    # driven by per-page front matter; this body is just a convenience link list).
+    # Refresh the WSM group strength parent stub. just-the-docs auto-generates
+    # a children TOC for any page with `has_children: true`, so the body just
+    # needs the section description — the per-year links come from the theme.
     if written_group_years:
         repo_root = os.path.dirname(os.path.abspath(out_dir))
         parent_path = os.path.join(repo_root, "wsm_groups.md")
@@ -1065,9 +1066,6 @@ def write_combined_report(comps_dir, out_dir):
             "groups were stacked harder than others.",
             "",
         ]
-        for year in sorted(written_group_years, reverse=True):
-            parent_lines.append(f"- [WSM {year}](reports/wsm{year}_groups.md)")
-        parent_lines.append("")
         with open(parent_path, "w") as f:
             f.write("\n".join(parent_lines))
 
