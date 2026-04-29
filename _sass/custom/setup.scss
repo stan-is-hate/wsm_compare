@@ -5,5 +5,7 @@
 $nav-width: 13.75rem; // 220px
 
 // Default $content-width is 50rem (800px) — too narrow for our wide standings tables.
-// Bump it so tables don't get crammed into the middle of the page.
-$content-width: 75rem; // 1200px
+// Setting it high makes layout adaptive: on viewports below ($nav-width + $content-width)
+// the content fills the space between sidebar and right edge; on wider monitors it caps
+// here and centers, so text stays readable on ultrawide displays.
+$content-width: 100rem; // 1600px
