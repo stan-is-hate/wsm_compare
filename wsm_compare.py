@@ -570,14 +570,158 @@ def write_comp_report(path, out_dir):
     return out_path, results
 
 
+_WSM_GROUP_RE = re.compile(r"^wsm(\d{4})_g[1-5]$")
+
+
+def write_wsm_groups_report(year, comps_dir, out_dir):
+    """Generate a 'groups as teams' report for a WSM year.
+
+    Loads the 5 prelim group CSVs to get group rosters, and the WSM final CSV to
+    score each group: for each scoring system, group total = sum of group members'
+    points in the final (non-finalists score 0). Produces standings, podium-per-system,
+    and winner-flip analysis at the group level.
+    """
+    finals_path = os.path.join(comps_dir, f"wsm{year}_finals.csv")
+    if not os.path.exists(finals_path):
+        return None
+    group_paths = [os.path.join(comps_dir, f"wsm{year}_g{g}.csv") for g in range(1, 6)]
+    if not all(os.path.exists(p) for p in group_paths):
+        return None
+
+    # Build group roster: {group_num: [athlete, ...]}
+    group_roster = {}
+    athlete_to_group = {}
+    for g, gp in enumerate(group_paths, 1):
+        _, athletes, _, _ = load_comp(gp)
+        group_roster[g] = list(athletes)
+        for a in athletes:
+            athlete_to_group[a] = g
+
+    # Score the final under all systems
+    _, finalists, finalist_countries, final_events = load_comp(finals_path)
+    final_results = compute_all_systems(finalists, final_events)
+
+    # group_pts_per_system[sys_name] -> sorted [(group_num, total), ...] desc
+    group_pts_per_system = {}
+    # group_member_pts[sys_name][group_num] -> [(athlete, pts), ...] sorted desc
+    group_member_pts = {}
+    for sys_name, res in final_results.items():
+        totals = {g: 0.0 for g in range(1, 6)}
+        members = {g: [] for g in range(1, 6)}
+        for athlete, total in res.sorted_totals:
+            g = athlete_to_group.get(athlete)
+            if g is None:
+                continue  # finalist not from any tracked group (shouldn't happen)
+            totals[g] += total
+            members[g].append((athlete, total))
+        group_pts_per_system[sys_name] = sorted(totals.items(), key=lambda x: -x[1])
+        group_member_pts[sys_name] = {g: sorted(members[g], key=lambda x: -x[1]) for g in range(1, 6)}
+
+    finalist_set = set(finalists)
+    lines = []
+    w = lines.append
+
+    # Front matter — sidebar: WSM Compare Groups → WSM YYYY
+    w("---")
+    w(f"title: WSM {year}")
+    w("parent: WSM Compare Groups")
+    w(f"nav_order: {2030 - int(year)}")
+    w("---")
+    w("")
+    w(f"# WSM {year} — Groups as Teams")
+    w("")
+    w("5 prelim groups of 5 athletes each. Top 2 from each group advance to the final.")
+    w("Group strength = sum of group members' points in the final (non-finalists score 0).")
+    w("Each scoring system gives a different ranking.")
+    w("")
+
+    # Group rosters
+    w("## Group Rosters")
+    w("")
+    w("| Group | Athletes (✓ = made the final) |")
+    w("|-------|-------------------------------|")
+    for g in range(1, 6):
+        roster = group_roster[g]
+        rendered = ", ".join(f"{a} ✓" if a in finalist_set else a for a in roster)
+        w(f"| **Group {g}** | {rendered} |")
+    w("")
+
+    # Podium per system — overview before details
+    w("## Group Strength Per System")
+    w("")
+    w("| System | 1st | 2nd | 3rd | 4th | 5th |")
+    w("|--------|-----|-----|-----|-----|-----|")
+    for system in SCORING_SYSTEMS:
+        ranking = group_pts_per_system[system.name]
+        line = f"| {system.name} |"
+        for group_num, total in ranking:
+            line += f" Group {group_num} ({fmt(total)}) |"
+        w(line)
+    w("")
+
+    # Standings under each system
+    w("## Standings Under Each Scoring System")
+    w("")
+    for system in SCORING_SYSTEMS:
+        ranking = group_pts_per_system[system.name]
+        w(f"### {system.name}")
+        w("")
+        w(f"_{system.description}_")
+        w("")
+        w("| Rank | Group | **Total** | Members (final pts) |")
+        w("|------|-------|-----------|----------------------|")
+        for rank, (group_num, total) in enumerate(ranking, 1):
+            members = group_member_pts[system.name][group_num]
+            members_str = ", ".join(f"{a} ({fmt(p)})" for a, p in members)
+            w(f"| {rank} | Group {group_num} | **{fmt(total)}** | {members_str} |")
+        w("")
+
+    # Winner-flip analysis
+    winners = {sn: group_pts_per_system[sn][0][0] for sn in group_pts_per_system}
+    unique_winners = set(winners.values())
+    w("## Winner Flip Analysis")
+    w("")
+    if len(unique_winners) > 1:
+        w("The strongest group changes across scoring systems:")
+        w("")
+        by_winner = defaultdict(list)
+        for sn, group_num in winners.items():
+            by_winner[group_num].append(sn)
+        for group_num, sys_list in sorted(by_winner.items()):
+            w(f"- **Group {group_num}** is strongest under: {', '.join(sys_list)}")
+        w("")
+    else:
+        only = next(iter(unique_winners))
+        w(f"**Group {only}** is strongest under every scoring system tested. No flip.")
+        w("")
+
+    out_path = os.path.join(out_dir, f"wsm{year}_groups.md")
+    os.makedirs(out_dir, exist_ok=True)
+    with open(out_path, "w") as f:
+        f.write("\n".join(lines) + "\n")
+    return out_path
+
+
 def write_combined_report(comps_dir, out_dir):
     """Generate a combined cross-comp summary report."""
-    paths = sorted(glob.glob(os.path.join(comps_dir, "*.csv")))
+    all_paths = sorted(glob.glob(os.path.join(comps_dir, "*.csv")))
+    # contest_ids.csv is the slug→ID manifest, not a comp.
+    all_paths = [p for p in all_paths if os.path.basename(p) != "contest_ids.csv"]
+    # Prelim group CSVs feed into the WSM-groups report only — don't generate
+    # individual reports for them or include them in the cross-comp summary.
+    paths = [p for p in all_paths
+             if not _WSM_GROUP_RE.match(os.path.basename(p).replace(".csv", ""))]
     all_results = []
     for path in paths:
         _, results = write_comp_report(path, out_dir)
         comp_name = os.path.basename(path).replace(".csv", "")
         all_results.append((comp_name, results))
+
+    # WSM groups-as-teams reports — one per year that has all the group CSVs.
+    group_years = sorted({m.group(1) for p in all_paths
+                          if (m := _WSM_GROUP_RE.match(os.path.basename(p).replace(".csv", "")))})
+    for year in group_years:
+        write_wsm_groups_report(year, comps_dir, out_dir)
 
     lines = []
     w = lines.append
@@ -684,6 +828,7 @@ def write_combined_report(comps_dir, out_dir):
 
 def run_all(comps_dir):
     paths = sorted(glob.glob(os.path.join(comps_dir, "*.csv")))
+    paths = [p for p in paths if os.path.basename(p) != "contest_ids.csv"]
     all_results = []
     for path in paths:
         all_results.append(run_comp(path, verbose=True))
