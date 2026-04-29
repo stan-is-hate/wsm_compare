@@ -1154,7 +1154,7 @@ def write_combined_report(comps_dir, out_dir):
     w("- **No-lift / withdrew rules vary across comps.** WSM 2026 treats a `(No lift)` on max events as DNS (0 pts). SMOE 2024 treats no-lifts as competing-but-last. The CSVs here encode whichever interpretation matches the comp's published totals; cross-comp comparison should account for this.")
     w("")
 
-    out_path = os.path.join(out_dir, "_summary.md")
+    out_path = os.path.join(out_dir, "summary.md")
     with open(out_path, "w") as f:
         f.write("\n".join(lines) + "\n")
     return out_path

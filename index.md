@@ -10,7 +10,7 @@ People love two arguments about strongman: whether the scoring system is fair, a
 
 ---
 
-## [Data on scoring-system fairness →]({{ '/reports/_summary.html' | relative_url }})
+## [Data on scoring-system fairness →]({{ '/reports/summary.html' | relative_url }})
 
 *(Do you think strongman's scoring system is unfair? We don't have opinions — but we do have data.)*
 
