@@ -56,6 +56,26 @@ Each cell shows the within-pool placement (the points-determining number) with t
 </tbody>
 </table>
 
+## Top 2 from each group, re-ranked among themselves
+
+This is what WSM organizers actually did: take the top 2 from each group, treat them as one pool of 10, and re-rank them on the same group events. Their resulting standing seeds the WSM Final as the **Prelim Score** event. Cells show the within-10 placement followed by the raw result.
+
+<table class="rainbow sortable">
+<thead><tr><th>#</th><th>Athlete</th><th>Group</th><th>Country</th><th>Loading Race</th><th>Deadlift</th><th>Overhead Medley</th><th>Titan s Toss</th><th>Stone Medley</th></tr></thead>
+<tbody>
+<tr style="background:#edf5ca"><td>1</td><td>M. Hooper</td><td>2</td><td>🇨🇦 CAN</td><td><strong>1</strong> · 4 in 38.60 s</td><td><strong>T4</strong> · 7 reps</td><td><strong>2</strong> · 7 in 59.74 s</td><td><strong>4</strong> · 8 in 27.97 s</td><td><strong>1</strong> · 4 in 56.22 s</td></tr>
+<tr style="background:#f5caca"><td>2</td><td>T. Stoltman</td><td>1</td><td>🇬🇧 GBR</td><td><strong>3</strong> · 4 in 38.71 s</td><td><strong>T4</strong> · 7 reps</td><td><strong>1</strong> · 7 in 56.95 s</td><td><strong>1</strong> · 10 in 31.97 s</td><td><strong>8</strong> · 2 in 65.88 s</td></tr>
+<tr style="background:#caf5dc"><td>3</td><td>R. Nel</td><td>3</td><td>🇿🇦 RSA</td><td><strong>7</strong> · 4 in 42.36 s</td><td><strong>T2</strong> · 8 reps</td><td><strong>7</strong> · 5 in 36.81 s</td><td><strong>5</strong> · 8 in 29.41 s</td><td><strong>2</strong> · 4 in 62.00 s</td></tr>
+<tr style="background:#cadcf5"><td>4</td><td>T. Mitchell</td><td>4</td><td>🇺🇸 USA</td><td><strong>10</strong> · 4 in 49.38 s</td><td><strong>1</strong> · 10 reps</td><td><strong>4</strong> · 7 in 60.54 s</td><td><strong>8</strong> · 6 in 27.22 s</td><td><strong>3</strong> · 4 in 73.56 s</td></tr>
+<tr style="background:#edcaf5"><td>5</td><td>L. Stoltman</td><td>5</td><td>🇬🇧 GBR</td><td><strong>5</strong> · 4 in 41.21 s</td><td><strong>10</strong> · 2 reps</td><td><strong>6</strong> · 6 in 49.98 s</td><td><strong>2</strong> · 9 in 34.81 s</td><td><strong>5</strong> · 3 in 69.34 s</td></tr>
+<tr style="background:#edf5ca"><td>6</td><td>P. Haynes</td><td>2</td><td>🇬🇧 GBR</td><td><strong>6</strong> · 4 in 41.26 s</td><td><strong>T2</strong> · 8 reps</td><td><strong>9</strong> · 5 in 64.40 s</td><td><strong>7</strong> · 6 in 18.72 s</td><td><strong>6</strong> · 3 in 82.03 s</td></tr>
+<tr style="background:#caf5dc"><td>7</td><td>S. Flowers</td><td>3</td><td>🇬🇧 GBR</td><td><strong>4</strong> · 4 in 40.13 s</td><td><strong>7</strong> · 6 reps</td><td><strong>8</strong> · 5 in 52.74 s</td><td><strong>3</strong> · 8 in 23.38 s</td><td><strong>10</strong> · 1 in 11.38 s</td></tr>
+<tr style="background:#cadcf5"><td>8</td><td>O. Fojtů</td><td>4</td><td>🇨🇿 CZE</td><td><strong>8</strong> · 4 in 42.55 s</td><td><strong>8</strong> · 5 reps</td><td><strong>3</strong> · 7 in 60.21 s</td><td><strong>10</strong> · 3 in 11.41 s</td><td><strong>4</strong> · 3 in 61.34 s</td></tr>
+<tr style="background:#edcaf5"><td>9</td><td>P. Kordiyaka</td><td>5</td><td>🇺🇦 UKR</td><td><strong>2</strong> · 4 in 38.61 s</td><td><strong>9</strong> · 4 reps</td><td><strong>5</strong> · 6 in 46.35 s</td><td><strong>9</strong> · 4 in 12.81 s</td><td><strong>9</strong> · 2 in 69.88 s</td></tr>
+<tr style="background:#f5caca"><td>10</td><td>E. Williams</td><td>1</td><td>🇦🇺 AUS</td><td><strong>9</strong> · 4 in 44.70 s</td><td><strong>T4</strong> · 7 reps</td><td><strong>10</strong> · 4 in 41.11 s</td><td><strong>6</strong> · 8 in 35.66 s</td><td><strong>7</strong> · 2 + 8.87 m</td></tr>
+</tbody>
+</table>
+
 ## How results are ranked across groups
 
 Strongman Archives publishes raw results — `"9 in 37.06 s"`, `"13 reps"`, `"35.03 s"`, `"2 + 6.10 m"`, etc. For each event, every athlete is converted into a sortable key with the same shape:

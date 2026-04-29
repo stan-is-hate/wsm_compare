@@ -1021,6 +1021,63 @@ def write_wsm_groups_report(year, comps_dir, out_dir):
     w("</table>")
     w("")
 
+    # Qualifier-pool table — only for years where organizers actually did this
+    # (2025 and 2026): top 2 from each group re-ranked among themselves on the
+    # same group events to seed the WSM Final's "Prelim Score" event.
+    if year in {"2025", "2026"}:
+        finals_path = os.path.join(comps_dir, f"wsm{year}_finals.csv")
+        if os.path.exists(finals_path):
+            _, finalists, _, _ = load_comp(finals_path)
+            qualifiers = [a for a in finalists if a in group_of]
+            if len(qualifiers) >= 2:
+                # Re-rank within just the qualifiers; sort by sum of WSM-Linear
+                # points (10..1) so the default order matches the actual Prelim
+                # Score the organizers gave them. Points themselves aren't shown.
+                nq = len(qualifiers)
+                qual_scale = list(range(nq, 0, -1))
+                qual_placement_per_event = {}
+                qual_pts_per_event = {}
+                for ev in event_names:
+                    qual_keys = {a: parse_raw_result(raw_per_event[ev][a]) for a in qualifiers}
+                    qual_placement_per_event[ev] = _placements_from_keys(qual_keys)
+                    qual_pts_per_event[ev] = compute_event_points(qual_placement_per_event[ev], qual_scale)
+                qual_total = {a: sum(qual_pts_per_event[ev][a] for ev in event_names) for a in qualifiers}
+                qual_ranking = sorted(qualifiers, key=lambda a: -qual_total[a])
+                # Tie-aware rank strings ("T7") so ties match the published
+                # Prelim Score column on the WSM Final page.
+                qual_rank_str = _placements_from_keys({a: qual_total[a] for a in qualifiers})
+
+                w(f"## Top 2 from each group, re-ranked among themselves")
+                w("")
+                w("This is what WSM organizers actually did: take the top 2 from each group, "
+                  "treat them as one pool of 10, and re-rank them on the same group events. "
+                  "Their resulting standing seeds the WSM Final as the **Prelim Score** event. "
+                  "Cells show the within-10 placement followed by the raw result.")
+                w("")
+                w('<table class="rainbow sortable">')
+                qheader = "<tr><th>#</th><th>Athlete</th><th>Group</th><th>Country</th>"
+                for ev in event_names:
+                    qheader += f"<th>{ev.replace('_', ' ')}</th>"
+                qheader += "</tr>"
+                w("<thead>" + qheader + "</thead>")
+                w("<tbody>")
+                for a in qual_ranking:
+                    g = group_of[a]
+                    bg = color_for[g]
+                    qcells = [qual_rank_str[a], a, str(g), _country_with_flag(countries[a])]
+                    for ev in event_names:
+                        place = qual_placement_per_event[ev][a]
+                        raw = raw_per_event[ev][a]
+                        if place == "DNS":
+                            qcells.append(f'<span title="{raw}">DNS</span>')
+                        else:
+                            qcells.append(f'<strong>{place}</strong> · {raw}')
+                    qrow = "".join(f"<td>{c}</td>" for c in qcells)
+                    w(f'<tr style="background:{bg}">{qrow}</tr>')
+                w("</tbody>")
+                w("</table>")
+                w("")
+
     # Methodology
     w("## How results are ranked across groups")
     w("")
