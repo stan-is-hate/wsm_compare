@@ -192,12 +192,13 @@ def _derive_filename_from_page(contest_id):
 
 
 def discover_wsm_year(final_contest_id):
-    """Scrape a WSM Final's view page to find the year and the 5 prelim group IDs.
+    """Scrape a WSM Final's view page to find the year and the group IDs.
 
     Strongman Archives renders the WSM Final page with the final's results table
-    plus the 5 prelim group tables embedded below, each preceded by an
+    plus the group tables embedded below, each preceded by an
     ``<h3>YYYY WSM Group N</h3>`` heading. The final itself is identified by the
-    page ``<title>``. This is consistent across years so it works for any WSM.
+    page ``<title>``. This layout is consistent across years, so it works for
+    any WSM regardless of how many groups that year used.
 
     Returns a dict: {"year": "2026", "final_id": 2361, "groups": {1: 2478, …}}.
     Raises RuntimeError if the page doesn't match the expected structure.
@@ -225,7 +226,7 @@ def discover_wsm_year(final_contest_id):
     if len(group_headings) != len(table_ids) - 1:
         raise RuntimeError(
             f"contest {final_contest_id}: found {len(group_headings)} group headings "
-            f"but {len(table_ids) - 1} prelim tables — page layout may have changed")
+            f"but {len(table_ids) - 1} group tables — page layout may have changed")
 
     groups = {int(num): int(tid) for num, tid in zip(group_headings, table_ids[1:])}
     return {"year": year, "final_id": int(final_contest_id), "groups": groups}
@@ -802,7 +803,7 @@ def _load_raw_comp(path):
 
 
 def compute_pooled_groups_standings(year, comps_dir):
-    """Pool every prelim athlete for a WSM year and score them as one virtual
+    """Pool every group athlete for a WSM year and score them as one virtual
     N-athlete comp under WSM Linear (1st = N pts, last = 1 pt). Group count is
     discovered from the filesystem — older WSMs may have 4 groups, newer ones
     5 or 6. Reads raw event values from comps/raw/wsm{year}_g*.csv. Returns
@@ -881,7 +882,7 @@ def compute_pooled_groups_standings(year, comps_dir):
 def write_wsm_groups_report(year, comps_dir, out_dir):
     """Generate the WSM groups-as-teams report for a year.
 
-    Pools all 25 prelim athletes into one virtual comp, scores under WSM Linear
+    Pools all group athletes into one virtual comp, scores under WSM Linear
     using raw event data (times/reps/distances), then sums per group. Renders
     two color-coded tables: group totals (5 rows) and individual standings (25
     rows). Same group → same row color across both tables. Returns the output
@@ -930,11 +931,11 @@ def write_wsm_groups_report(year, comps_dir, out_dir):
     w(f"# WSM {year} — Groups as Teams")
     w("")
     sizes_str = ", ".join(f"Group {g}: {group_sizes[g]}" for g in group_nums)
-    w(f"{n_groups} prelim groups, {n_athletes} athletes total ({sizes_str}). All pooled into a "
+    w(f"{n_groups} groups, {n_athletes} athletes total ({sizes_str}). All pooled into a "
       f"single virtual {n_athletes}-athlete comp, scored under **WSM Linear** "
       f"(1st = {n_athletes} pts, last = 1 pt) on raw event data — actual times, reps, distances "
       "— *not* within-group placements. Per-group total = sum of its members' points. "
-      "This addresses claims that some prelim groups were stacked harder than others.")
+      "This addresses claims that some groups were stacked harder than others.")
     w("")
 
     w("## Group totals")
@@ -1011,7 +1012,7 @@ def write_combined_report(comps_dir, out_dir):
     all_paths = sorted(glob.glob(os.path.join(comps_dir, "*.csv")))
     # contest_ids.csv is the slug→ID manifest, not a comp.
     all_paths = [p for p in all_paths if os.path.basename(p) != "contest_ids.csv"]
-    # Prelim group CSVs feed into the WSM-groups report only — don't generate
+    # Group CSVs feed into the WSM-groups report only — don't generate
     # individual reports for them or include them in the cross-comp summary.
     paths = [p for p in all_paths
              if not _WSM_GROUP_RE.match(os.path.basename(p).replace(".csv", ""))]
@@ -1043,10 +1044,10 @@ def write_combined_report(comps_dir, out_dir):
             "",
             "# WSM groups as teams",
             "",
-            "WSM is the only series here that runs prelim groups before the final. "
-            "These pages pool every prelim athlete from all groups into one virtual comp, "
+            "WSM is the only series here that runs groups before the final. "
+            "These pages pool every athlete from every group into one virtual comp, "
             "scored under WSM Linear using raw event data (actual times, reps, distances). "
-            "Per-group total = sum of its members' points. Addresses claims that some prelim "
+            "Per-group total = sum of its members' points. Addresses claims that some "
             "groups were stacked harder than others.",
             "",
         ]
@@ -1211,7 +1212,7 @@ Examples:
 
     p_fetch_year = subparsers.add_parser(
         "fetch-wsm-year",
-        help="Given a WSM Final URL or ID, auto-discover the 5 prelim group IDs and fetch all 6 contests",
+        help="Given a WSM Final URL or ID, auto-discover the group IDs and fetch the final + every group",
     )
     p_fetch_year.add_argument("url_or_id", help="WSM Final URL or bare contest ID (e.g., 2361 or the 2024 final's id)")
 

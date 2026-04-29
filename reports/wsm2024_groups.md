@@ -6,7 +6,7 @@ nav_order: 6
 
 # WSM 2024 — Groups as Teams
 
-5 prelim groups, 30 athletes total (Group 1: 6, Group 2: 6, Group 3: 6, Group 4: 6, Group 5: 6). All pooled into a single virtual 30-athlete comp, scored under **WSM Linear** (1st = 30 pts, last = 1 pt) on raw event data — actual times, reps, distances — *not* within-group placements. Per-group total = sum of its members' points. This addresses claims that some prelim groups were stacked harder than others.
+5 groups, 30 athletes total (Group 1: 6, Group 2: 6, Group 3: 6, Group 4: 6, Group 5: 6). All pooled into a single virtual 30-athlete comp, scored under **WSM Linear** (1st = 30 pts, last = 1 pt) on raw event data — actual times, reps, distances — *not* within-group placements. Per-group total = sum of its members' points. This addresses claims that some groups were stacked harder than others.
 
 ## Group totals
 

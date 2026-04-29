@@ -6,7 +6,7 @@ description: Strongman competitions re-scored under different real-world scoring
 
 # WSM Compare
 
-People love two arguments about strongman: whether the scoring system is fair, and whether the prelim groups are evenly stacked. We don't take a side — we just ran the numbers. Pick your fight:
+People love two arguments about strongman: whether the scoring system is fair, and whether the WSM groups are evenly stacked. We don't take a side — we just ran the numbers. Pick your fight:
 
 ---
 
@@ -20,11 +20,11 @@ You can also drill into a single comp from the sidebar (**Men's** / **Women's**)
 
 ---
 
-## [Data on WSM prelim group strength →]({{ '/wsm_groups.html' | relative_url }})
+## [Data on WSM group strength →]({{ '/wsm_groups.html' | relative_url }})
 
-*(Do you think some WSM prelim groups got stacked harder than others? Again, no opinion — just hard data.)*
+*(Do you think some WSM groups got stacked harder than others? Again, no opinion — just hard data.)*
 
-For WSM 2024–2026, every prelim athlete is pooled into a single virtual comp and scored on the actual raw event data (times, reps, distances), then summed by group. If you've heard *"Group X had it easy"* on a podcast, this is where you check.
+For WSM 2024–2026, every athlete from every group is pooled into a single virtual comp and scored on the actual raw event data (times, reps, distances), then summed by group. If you've heard *"Group X had it easy"* on a podcast, this is where you check.
 
 ---
 
