@@ -23,6 +23,18 @@ nav_order: 205
 | N. Guardione | USA | 9 | 9 | 7 | T8 | 8 | T7 | 0 | 0 |
 | M. Boudreault | CAN | DNS | 10 | 6 | DNS | DNS | DNS | 0 | 0 |
 
+## Podium Per System
+
+| System | 1st/2nd ratio | 1st | 2nd | 3rd |
+|--------|---------------|-----|-----|-----|
+| WSM Linear | 1.11x | M. Hooper (51.5) | L. Hatton (49) | H. Björnsson (42.5) |
+| F1 2010-present | 1.39x | M. Hooper (104.8) | L. Hatton (104) | H. Björnsson (87) |
+| F1 2003-2009 | 1.25x | M. Hooper (44) | L. Hatton (43) | H. Björnsson (34.5) |
+| F1 1991-2002 | 1.67x | L. Hatton (35) | M. Hooper (34) | H. Björnsson (26.5) |
+| F1 1961-1990 | 1.50x | M. Hooper (33) | L. Hatton (33) | H. Björnsson (24.5) |
+| MotoGP | 1.25x | M. Hooper (112.3) | L. Hatton (112) | H. Björnsson (92.8) |
+| MotoGP Extended | 1.25x | M. Hooper (112.3) | L. Hatton (112) | H. Björnsson (92.8) |
+
 ## Standings Under Each Scoring System
 
 ### WSM Linear
@@ -157,18 +169,6 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 8 | N. Guardione | USA | **47** | 7 | 7 | 9 | 7.5 | 8 | 8.5 |
 | 9 | B. Thompson | USA | **45.5** | 16 | 8 | 7 | 7.5 | 7 | 0 |
 | 10 | M. Boudreault | CAN | **16** | 0 | 6 | 10 | 0 | 0 | 0 |
-
-## Podium Per System
-
-| System | 1st/2nd ratio | 1st | 2nd | 3rd |
-|--------|---------------|-----|-----|-----|
-| WSM Linear | 1.11x | M. Hooper (51.5) | L. Hatton (49) | H. Björnsson (42.5) |
-| F1 2010-present | 1.39x | M. Hooper (104.8) | L. Hatton (104) | H. Björnsson (87) |
-| F1 2003-2009 | 1.25x | M. Hooper (44) | L. Hatton (43) | H. Björnsson (34.5) |
-| F1 1991-2002 | 1.67x | L. Hatton (35) | M. Hooper (34) | H. Björnsson (26.5) |
-| F1 1961-1990 | 1.50x | M. Hooper (33) | L. Hatton (33) | H. Björnsson (24.5) |
-| MotoGP | 1.25x | M. Hooper (112.3) | L. Hatton (112) | H. Björnsson (92.8) |
-| MotoGP Extended | 1.25x | M. Hooper (112.3) | L. Hatton (112) | H. Björnsson (92.8) |
 
 ## Winner Flip Analysis
 

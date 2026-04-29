@@ -23,6 +23,18 @@ nav_order: 105
 | L. Stoltman | GBR | 5 | 8 | 10 | 7 | T6 | 8 | 0 | 0 |
 | E. Williams | AUS | 10 | 6 | T8 | 1 | DNS | 9 | 1 | 1 |
 
+## Podium Per System
+
+| System | 1st/2nd ratio | 1st | 2nd | 3rd |
+|--------|---------------|-----|-----|-----|
+| WSM Linear | 1.11x | R. Nel (47) | T. Stoltman (46.5) | M. Hooper (43.5) |
+| F1 2010-present | 1.39x | T. Stoltman (96.7) | R. Nel (95) | M. Hooper (83.7) |
+| F1 2003-2009 | 1.25x | T. Stoltman (40) | R. Nel (39) | M. Hooper (33.5) |
+| F1 1991-2002 | 1.67x | T. Stoltman (32) | R. Nel (30) | T. Mitchell (27) |
+| F1 1961-1990 | 1.50x | T. Stoltman (30.5) | R. Nel (29) | T. Mitchell (25.5) |
+| MotoGP | 1.25x | T. Stoltman (107.3) | R. Nel (105) | T. Mitchell (93.5) |
+| MotoGP Extended | 1.25x | T. Stoltman (107.3) | R. Nel (105) | T. Mitchell (93.5) |
+
 ## Standings Under Each Scoring System
 
 ### WSM Linear
@@ -157,18 +169,6 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 8 | S. Flowers | GBR | **56.3** | 9 | 6 | 11.8 | 11 | 9.5 | 9 |
 | 9 | E. Williams | AUS | **55.5** | 6 | 10 | 7.5 | 25 | 0 | 7 |
 | 10 | L. Stoltman | GBR | **51.5** | 11 | 8 | 6 | 9 | 9.5 | 8 |
-
-## Podium Per System
-
-| System | 1st/2nd ratio | 1st | 2nd | 3rd |
-|--------|---------------|-----|-----|-----|
-| WSM Linear | 1.11x | R. Nel (47) | T. Stoltman (46.5) | M. Hooper (43.5) |
-| F1 2010-present | 1.39x | T. Stoltman (96.7) | R. Nel (95) | M. Hooper (83.7) |
-| F1 2003-2009 | 1.25x | T. Stoltman (40) | R. Nel (39) | M. Hooper (33.5) |
-| F1 1991-2002 | 1.67x | T. Stoltman (32) | R. Nel (30) | T. Mitchell (27) |
-| F1 1961-1990 | 1.50x | T. Stoltman (30.5) | R. Nel (29) | T. Mitchell (25.5) |
-| MotoGP | 1.25x | T. Stoltman (107.3) | R. Nel (105) | T. Mitchell (93.5) |
-| MotoGP Extended | 1.25x | T. Stoltman (107.3) | R. Nel (105) | T. Mitchell (93.5) |
 
 ## Winner Flip Analysis
 

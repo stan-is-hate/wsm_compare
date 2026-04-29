@@ -22,6 +22,18 @@ nav_order: 305
 | R. Nel | RSA | T5 | 8 | 9 | 8 | 3 | 3 | 0 | 2 |
 | P. Haynes | GBR | 9 | 9 | 1 | DNS | 8 | 7 | 1 | 1 |
 
+## Podium Per System
+
+| System | 1st/2nd ratio | 1st | 2nd | 3rd |
+|--------|---------------|-----|-----|-----|
+| WSM Linear | 1.12x | M. Hooper (46) | T. Mitchell (39.5) | T. Stoltman (32.5) |
+| F1 2010-present | 1.39x | M. Hooper (112) | T. Mitchell (95.5) | T. Stoltman (72) |
+| F1 2003-2009 | 1.25x | M. Hooper (47) | T. Mitchell (38.5) | T. Stoltman (28.5) |
+| F1 1991-2002 | 1.67x | M. Hooper (39) | T. Mitchell (30.5) | T. Stoltman (18.8) |
+| F1 1961-1990 | 1.50x | M. Hooper (37) | T. Mitchell (28.5) | T. Stoltman (17.8) |
+| MotoGP | 1.25x | M. Hooper (120) | T. Mitchell (103.5) | L. Hatton (81.5) |
+| MotoGP Extended | 1.25x | M. Hooper (120) | T. Mitchell (103.5) | L. Hatton (81.5) |
+
 ## Standings Under Each Scoring System
 
 ### WSM Linear
@@ -149,18 +161,6 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 7 | A. Andrade | MEX | **66** | 20 | 9 | 9 | 9 | 11 | 8 |
 | 8 | R. Nel | RSA | **64.5** | 9.5 | 8 | 7 | 8 | 16 | 16 |
 | 9 | P. Haynes | GBR | **56** | 7 | 7 | 25 | 0 | 8 | 9 |
-
-## Podium Per System
-
-| System | 1st/2nd ratio | 1st | 2nd | 3rd |
-|--------|---------------|-----|-----|-----|
-| WSM Linear | 1.12x | M. Hooper (46) | T. Mitchell (39.5) | T. Stoltman (32.5) |
-| F1 2010-present | 1.39x | M. Hooper (112) | T. Mitchell (95.5) | T. Stoltman (72) |
-| F1 2003-2009 | 1.25x | M. Hooper (47) | T. Mitchell (38.5) | T. Stoltman (28.5) |
-| F1 1991-2002 | 1.67x | M. Hooper (39) | T. Mitchell (30.5) | T. Stoltman (18.8) |
-| F1 1961-1990 | 1.50x | M. Hooper (37) | T. Mitchell (28.5) | T. Stoltman (17.8) |
-| MotoGP | 1.25x | M. Hooper (120) | T. Mitchell (103.5) | L. Hatton (81.5) |
-| MotoGP Extended | 1.25x | M. Hooper (120) | T. Mitchell (103.5) | L. Hatton (81.5) |
 
 ## Winner Flip Analysis
 

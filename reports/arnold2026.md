@@ -22,6 +22,18 @@ nav_order: 204
 | N. Guardione | USA | 9 | T5 | 7 | 3 | T7 | 1 | 1 | 2 |
 | A. Burton | USA | 8 | DNS | DNS | 6 | DNS | 2 | 0 | 1 |
 
+## Podium Per System
+
+| System | 1st/2nd ratio | 1st | 2nd | 3rd |
+|--------|---------------|-----|-----|-----|
+| WSM Linear | 1.12x | M. Hooper (36) | A. Andrade (35) | M. Licis (34) |
+| F1 2010-present | 1.39x | M. Hooper (83.5) | A. Andrade (79.5) | M. Licis (78) |
+| F1 2003-2009 | 1.25x | M. Hooper (33.5) | A. Andrade (32) | M. Licis (31) |
+| F1 1991-2002 | 1.67x | M. Hooper (26.5) | A. Andrade (23) | M. Licis (21) |
+| F1 1961-1990 | 1.50x | M. Hooper (25) | A. Andrade (22) | M. Licis (20) |
+| MotoGP | 1.25x | M. Hooper (92.5) | A. Andrade (89.5) | M. Licis (89) |
+| MotoGP Extended | 1.25x | M. Hooper (92.5) | A. Andrade (89.5) | M. Licis (89) |
+
 ## Standings Under Each Scoring System
 
 ### WSM Linear
@@ -149,18 +161,6 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 7 | B. Johnson | USA | **69.5** | 16 | 0 | 16 | 20 | 8.5 | 9 |
 | 8 | T. Evans | USA | **67.5** | 10 | 10.5 | 10 | 11 | 18 | 8 |
 | 9 | A. Burton | USA | **38** | 8 | 0 | 0 | 10 | 0 | 20 |
-
-## Podium Per System
-
-| System | 1st/2nd ratio | 1st | 2nd | 3rd |
-|--------|---------------|-----|-----|-----|
-| WSM Linear | 1.12x | M. Hooper (36) | A. Andrade (35) | M. Licis (34) |
-| F1 2010-present | 1.39x | M. Hooper (83.5) | A. Andrade (79.5) | M. Licis (78) |
-| F1 2003-2009 | 1.25x | M. Hooper (33.5) | A. Andrade (32) | M. Licis (31) |
-| F1 1991-2002 | 1.67x | M. Hooper (26.5) | A. Andrade (23) | M. Licis (21) |
-| F1 1961-1990 | 1.50x | M. Hooper (25) | A. Andrade (22) | M. Licis (20) |
-| MotoGP | 1.25x | M. Hooper (92.5) | A. Andrade (89.5) | M. Licis (89) |
-| MotoGP Extended | 1.25x | M. Hooper (92.5) | A. Andrade (89.5) | M. Licis (89) |
 
 ## Winner Flip Analysis
 

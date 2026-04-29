@@ -504,6 +504,20 @@ def write_comp_report(path, out_dir):
         w(row)
     w("")
 
+    # Podium comparison — overview before details
+    w("## Podium Per System")
+    w("")
+    w("| System | 1st/2nd ratio | 1st | 2nd | 3rd |")
+    w("|--------|---------------|-----|-----|-----|")
+    for system in SCORING_SYSTEMS:
+        res = results[system.name]
+        ratio = res.scale[0] / res.scale[1] if res.scale[1] > 0 else float('inf')
+        line = f"| {system.name} | {ratio:.2f}x |"
+        for athlete, total in res.sorted_totals[:3]:
+            line += f" {athlete} ({fmt(total)}) |"
+        w(line)
+    w("")
+
     # Standings under each system
     w("## Standings Under Each Scoring System")
     w("")
@@ -530,20 +544,6 @@ def write_comp_report(path, out_dir):
                 row += f" {fmt(res.event_pts[ev][a])} |"
             w(row)
         w("")
-
-    # Podium comparison
-    w("## Podium Per System")
-    w("")
-    w("| System | 1st/2nd ratio | 1st | 2nd | 3rd |")
-    w("|--------|---------------|-----|-----|-----|")
-    for system in SCORING_SYSTEMS:
-        res = results[system.name]
-        ratio = res.scale[0] / res.scale[1] if res.scale[1] > 0 else float('inf')
-        line = f"| {system.name} | {ratio:.2f}x |"
-        for athlete, total in res.sorted_totals[:3]:
-            line += f" {athlete} ({fmt(total)}) |"
-        w(line)
-    w("")
 
     # Winner-flip analysis
     winners = {sn: results[sn].sorted_totals[0][0] for sn in results}

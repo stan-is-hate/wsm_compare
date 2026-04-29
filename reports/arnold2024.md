@@ -24,6 +24,18 @@ nav_order: 206
 | O. Ziółkowski | POL | 10 | 8 | 10 | DNS | DNS | 0 | 0 |
 | M. Boudreault | CAN | DNS | DNS | DNS | DNS | DNS | 0 | 0 |
 
+## Podium Per System
+
+| System | 1st/2nd ratio | 1st | 2nd | 3rd |
+|--------|---------------|-----|-----|-----|
+| WSM Linear | 1.10x | M. Hooper (52) | M. Kieliszkowski (40.5) | T. Stoltman (38.5) |
+| F1 2010-present | 1.39x | M. Hooper (108) | H. Björnsson (71) | M. Kieliszkowski (70.5) |
+| F1 2003-2009 | 1.25x | M. Hooper (44) | H. Björnsson (30) | M. Kieliszkowski (28) |
+| F1 1991-2002 | 1.67x | M. Hooper (40) | H. Björnsson (24) | M. Kieliszkowski (22) |
+| F1 1961-1990 | 1.50x | M. Hooper (37) | H. Björnsson (23) | M. Kieliszkowski (21) |
+| MotoGP | 1.25x | M. Hooper (111) | M. Kieliszkowski (79) | H. Björnsson (76.3) |
+| MotoGP Extended | 1.25x | M. Hooper (111) | M. Kieliszkowski (79) | H. Björnsson (76.3) |
+
 ## Standings Under Each Scoring System
 
 ### WSM Linear
@@ -165,18 +177,6 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 9 | T. Evans | USA | **22** | 9 | 6 | 7 | 0 | 0 |
 | 10 | O. Ziółkowski | POL | **20** | 6 | 8 | 6 | 0 | 0 |
 | 11 | M. Boudreault | CAN | **0** | 0 | 0 | 0 | 0 | 0 |
-
-## Podium Per System
-
-| System | 1st/2nd ratio | 1st | 2nd | 3rd |
-|--------|---------------|-----|-----|-----|
-| WSM Linear | 1.10x | M. Hooper (52) | M. Kieliszkowski (40.5) | T. Stoltman (38.5) |
-| F1 2010-present | 1.39x | M. Hooper (108) | H. Björnsson (71) | M. Kieliszkowski (70.5) |
-| F1 2003-2009 | 1.25x | M. Hooper (44) | H. Björnsson (30) | M. Kieliszkowski (28) |
-| F1 1991-2002 | 1.67x | M. Hooper (40) | H. Björnsson (24) | M. Kieliszkowski (22) |
-| F1 1961-1990 | 1.50x | M. Hooper (37) | H. Björnsson (23) | M. Kieliszkowski (21) |
-| MotoGP | 1.25x | M. Hooper (111) | M. Kieliszkowski (79) | H. Björnsson (76.3) |
-| MotoGP Extended | 1.25x | M. Hooper (111) | M. Kieliszkowski (79) | H. Björnsson (76.3) |
 
 ## Winner Flip Analysis
 

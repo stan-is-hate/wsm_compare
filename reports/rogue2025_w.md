@@ -23,6 +23,18 @@ nav_order: 305
 | J. Lyle | USA | T2 | 8 | 5 | 10 | 10 | 8 | 0 | 1 |
 | S. Belliveau | CAN | T8 | DNS | 6 | 6 | 7 | 10 | 0 | 0 |
 
+## Podium Per System
+
+| System | 1st/2nd ratio | 1st | 2nd | 3rd |
+|--------|---------------|-----|-----|-----|
+| WSM Linear | 1.11x | I. Carrasquillo (50) | O. Liashchuk (43.5) | A. Jardine (39) |
+| F1 2010-present | 1.39x | I. Carrasquillo (111) | O. Liashchuk (84) | H. Linzay (74) |
+| F1 2003-2009 | 1.25x | I. Carrasquillo (44) | O. Liashchuk (33.5) | A. Jardine (30) |
+| F1 1991-2002 | 1.67x | I. Carrasquillo (38) | O. Liashchuk (23.5) | A. Jardine (20) |
+| F1 1961-1990 | 1.50x | I. Carrasquillo (35) | O. Liashchuk (22.5) | A. Jardine (20) |
+| MotoGP | 1.25x | I. Carrasquillo (116) | O. Liashchuk (90.5) | H. Linzay (84.5) |
+| MotoGP Extended | 1.25x | I. Carrasquillo (116) | O. Liashchuk (90.5) | H. Linzay (84.5) |
+
 ## Standings Under Each Scoring System
 
 ### WSM Linear
@@ -157,18 +169,6 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 8 | J. Lyle | USA | **57** | 18 | 8 | 11 | 6 | 6 | 8 |
 | 9 | M. Peacock | CAN | **54** | 7 | 7 | 13 | 11 | 7 | 9 |
 | 10 | S. Belliveau | CAN | **42** | 7 | 0 | 10 | 10 | 9 | 6 |
-
-## Podium Per System
-
-| System | 1st/2nd ratio | 1st | 2nd | 3rd |
-|--------|---------------|-----|-----|-----|
-| WSM Linear | 1.11x | I. Carrasquillo (50) | O. Liashchuk (43.5) | A. Jardine (39) |
-| F1 2010-present | 1.39x | I. Carrasquillo (111) | O. Liashchuk (84) | H. Linzay (74) |
-| F1 2003-2009 | 1.25x | I. Carrasquillo (44) | O. Liashchuk (33.5) | A. Jardine (30) |
-| F1 1991-2002 | 1.67x | I. Carrasquillo (38) | O. Liashchuk (23.5) | A. Jardine (20) |
-| F1 1961-1990 | 1.50x | I. Carrasquillo (35) | O. Liashchuk (22.5) | A. Jardine (20) |
-| MotoGP | 1.25x | I. Carrasquillo (116) | O. Liashchuk (90.5) | H. Linzay (84.5) |
-| MotoGP Extended | 1.25x | I. Carrasquillo (116) | O. Liashchuk (90.5) | H. Linzay (84.5) |
 
 ## Winner Flip Analysis
 

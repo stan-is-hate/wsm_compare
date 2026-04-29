@@ -25,6 +25,18 @@ nav_order: 205
 | N. Stowers | USA | 12 | 5 | 8 | 12 | 12 | 6 | 0 | 0 |
 | G. Dixson | USA | 10 | DNS | 7 | T10 | 9 | DNS | 0 | 0 |
 
+## Podium Per System
+
+| System | 1st/2nd ratio | 1st | 2nd | 3rd |
+|--------|---------------|-----|-----|-----|
+| WSM Linear | 1.09x | I. Carrasquillo (60.5) | O. Liashchuk (56.5) | A. Jardine (50) |
+| F1 2010-present | 1.39x | I. Carrasquillo (97) | O. Liashchuk (85.5) | A. Jardine (75.8) |
+| F1 2003-2009 | 1.25x | I. Carrasquillo (40.5) | O. Liashchuk (35) | A. Jardine (29.5) |
+| F1 1991-2002 | 1.67x | I. Carrasquillo (30.5) | O. Liashchuk (25) | A. Jardine (22.5) |
+| F1 1961-1990 | 1.50x | I. Carrasquillo (29.5) | O. Liashchuk (24.5) | A. Jardine (21) |
+| MotoGP | 1.25x | I. Carrasquillo (104.5) | O. Liashchuk (95.5) | A. Jardine (87) |
+| MotoGP Extended | 1.25x | I. Carrasquillo (104.5) | O. Liashchuk (95.5) | A. Jardine (87) |
+
 ## Standings Under Each Scoring System
 
 ### WSM Linear
@@ -173,18 +185,6 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 10 | N. Stowers | USA | **41** | 4 | 11 | 8 | 4 | 4 | 10 |
 | 11 | E. Murray | USA | **38.5** | 7.5 | 8 | 6 | 8 | 9 | 0 |
 | 12 | G. Dixson | USA | **27.5** | 6 | 0 | 9 | 5.5 | 7 | 0 |
-
-## Podium Per System
-
-| System | 1st/2nd ratio | 1st | 2nd | 3rd |
-|--------|---------------|-----|-----|-----|
-| WSM Linear | 1.09x | I. Carrasquillo (60.5) | O. Liashchuk (56.5) | A. Jardine (50) |
-| F1 2010-present | 1.39x | I. Carrasquillo (97) | O. Liashchuk (85.5) | A. Jardine (75.8) |
-| F1 2003-2009 | 1.25x | I. Carrasquillo (40.5) | O. Liashchuk (35) | A. Jardine (29.5) |
-| F1 1991-2002 | 1.67x | I. Carrasquillo (30.5) | O. Liashchuk (25) | A. Jardine (22.5) |
-| F1 1961-1990 | 1.50x | I. Carrasquillo (29.5) | O. Liashchuk (24.5) | A. Jardine (21) |
-| MotoGP | 1.25x | I. Carrasquillo (104.5) | O. Liashchuk (95.5) | A. Jardine (87) |
-| MotoGP Extended | 1.25x | I. Carrasquillo (104.5) | O. Liashchuk (95.5) | A. Jardine (87) |
 
 ## Winner Flip Analysis
 

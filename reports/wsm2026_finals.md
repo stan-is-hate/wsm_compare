@@ -23,6 +23,18 @@ nav_order: 104
 | N. Guardione | USA | 10 | 10 | T8 | 3 | T5 | 7 | 0 | 1 |
 | A. Andrade | MEX | 3 | 9 | T8 | DNS | DNS | DNS | 0 | 1 |
 
+## Podium Per System
+
+| System | 1st/2nd ratio | 1st | 2nd | 3rd |
+|--------|---------------|-----|-----|-----|
+| WSM Linear | 1.11x | M. Hooper (54) | R. Nel (52) | T. Mitchell (36) |
+| F1 2010-present | 1.39x | R. Nel (115) | M. Hooper (112) | T. Mitchell (74) |
+| F1 2003-2009 | 1.25x | M. Hooper (48) | R. Nel (47) | T. Mitchell (28) |
+| F1 1991-2002 | 1.67x | R. Nel (41) | M. Hooper (38) | T. Mitchell (21.5) |
+| F1 1961-1990 | 1.50x | R. Nel (38) | M. Hooper (37) | T. Mitchell (19.5) |
+| MotoGP | 1.25x | M. Hooper (121) | R. Nel (119) | T. Mitchell (86) |
+| MotoGP Extended | 1.25x | M. Hooper (121) | R. Nel (119) | T. Mitchell (86) |
+
 ## Standings Under Each Scoring System
 
 ### WSM Linear
@@ -157,18 +169,6 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 8 | E. Williams | AUS | **54** | 13 | 13 | 13 | 8 | 0 | 7 |
 | 9 | N. Guardione | USA | **54** | 6 | 6 | 7.5 | 16 | 9.5 | 9 |
 | 10 | A. Andrade | MEX | **30.5** | 16 | 7 | 7.5 | 0 | 0 | 0 |
-
-## Podium Per System
-
-| System | 1st/2nd ratio | 1st | 2nd | 3rd |
-|--------|---------------|-----|-----|-----|
-| WSM Linear | 1.11x | M. Hooper (54) | R. Nel (52) | T. Mitchell (36) |
-| F1 2010-present | 1.39x | R. Nel (115) | M. Hooper (112) | T. Mitchell (74) |
-| F1 2003-2009 | 1.25x | M. Hooper (48) | R. Nel (47) | T. Mitchell (28) |
-| F1 1991-2002 | 1.67x | R. Nel (41) | M. Hooper (38) | T. Mitchell (21.5) |
-| F1 1961-1990 | 1.50x | R. Nel (38) | M. Hooper (37) | T. Mitchell (19.5) |
-| MotoGP | 1.25x | M. Hooper (121) | R. Nel (119) | T. Mitchell (86) |
-| MotoGP Extended | 1.25x | M. Hooper (121) | R. Nel (119) | T. Mitchell (86) |
 
 ## Winner Flip Analysis
 

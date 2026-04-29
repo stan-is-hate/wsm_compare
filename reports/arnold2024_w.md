@@ -25,6 +25,18 @@ nav_order: 206
 | V. Long | USA | 3 | DNS | DNS | DNS | DNS | 0 | 1 |
 | D. Moore | GBR | 10 | 11 | 11 | DNS | DNS | 0 | 0 |
 
+## Podium Per System
+
+| System | 1st/2nd ratio | 1st | 2nd | 3rd |
+|--------|---------------|-----|-----|-----|
+| WSM Linear | 1.09x | A. Jardine (45) | O. Liashchuk (44.5) | L. Underdown (44.5) |
+| F1 2010-present | 1.39x | A. Jardine (74) | L. Underdown (67) | O. Liashchuk (63) |
+| F1 2003-2009 | 1.25x | A. Jardine (29) | O. Liashchuk (26.5) | L. Underdown (26.5) |
+| F1 1991-2002 | 1.67x | A. Jardine (24) | L. Underdown (20) | O. Liashchuk (16.5) |
+| F1 1961-1990 | 1.50x | A. Jardine (22) | L. Underdown (19) | O. Liashchuk (16.5) |
+| MotoGP | 1.25x | A. Jardine (80) | L. Underdown (74.5) | O. Liashchuk (72) |
+| MotoGP Extended | 1.25x | A. Jardine (80) | L. Underdown (74.5) | O. Liashchuk (72) |
+
 ## Standings Under Each Scoring System
 
 ### WSM Linear
@@ -173,18 +185,6 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 10 | E. Murray | USA | **40** | 7 | 8 | 9 | 9 | 7 |
 | 11 | V. Long | USA | **16** | 16 | 0 | 0 | 0 | 0 |
 | 12 | D. Moore | GBR | **16** | 6 | 5 | 5 | 0 | 0 |
-
-## Podium Per System
-
-| System | 1st/2nd ratio | 1st | 2nd | 3rd |
-|--------|---------------|-----|-----|-----|
-| WSM Linear | 1.09x | A. Jardine (45) | O. Liashchuk (44.5) | L. Underdown (44.5) |
-| F1 2010-present | 1.39x | A. Jardine (74) | L. Underdown (67) | O. Liashchuk (63) |
-| F1 2003-2009 | 1.25x | A. Jardine (29) | O. Liashchuk (26.5) | L. Underdown (26.5) |
-| F1 1991-2002 | 1.67x | A. Jardine (24) | L. Underdown (20) | O. Liashchuk (16.5) |
-| F1 1961-1990 | 1.50x | A. Jardine (22) | L. Underdown (19) | O. Liashchuk (16.5) |
-| MotoGP | 1.25x | A. Jardine (80) | L. Underdown (74.5) | O. Liashchuk (72) |
-| MotoGP Extended | 1.25x | A. Jardine (80) | L. Underdown (74.5) | O. Liashchuk (72) |
 
 ## Winner Flip Analysis
 

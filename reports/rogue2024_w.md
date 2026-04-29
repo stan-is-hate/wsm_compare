@@ -23,6 +23,18 @@ nav_order: 306
 | A. Thompson | GBR | 2 | 2 | 10 | 9 | 9 | 8 | 0 | 2 |
 | D. Moore | GBR | 9 | 9 | 7 | 10 | 10 | DNS | 0 | 0 |
 
+## Podium Per System
+
+| System | 1st/2nd ratio | 1st | 2nd | 3rd |
+|--------|---------------|-----|-----|-----|
+| WSM Linear | 1.11x | I. Carrasquillo (53) | O. Liashchuk (47) | L. Underdown (41) |
+| F1 2010-present | 1.39x | I. Carrasquillo (117) | O. Liashchuk (87) | L. Underdown (84) |
+| F1 2003-2009 | 1.25x | I. Carrasquillo (47) | O. Liashchuk (36) | L. Underdown (33) |
+| F1 1991-2002 | 1.67x | I. Carrasquillo (41) | L. Underdown (25) | O. Liashchuk (24) |
+| F1 1961-1990 | 1.50x | I. Carrasquillo (38) | O. Liashchuk (24) | L. Underdown (23) |
+| MotoGP | 1.25x | I. Carrasquillo (120) | O. Liashchuk (94) | L. Underdown (91) |
+| MotoGP Extended | 1.25x | I. Carrasquillo (120) | O. Liashchuk (94) | L. Underdown (91) |
+
 ## Standings Under Each Scoring System
 
 ### WSM Linear
@@ -157,18 +169,6 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 8 | R. Roberts | GBR | **60.5** | 9.5 | 8 | 13 | 13 | 8 | 9 |
 | 9 | H. Linzay | USA | **60** | 8 | 11 | 10 | 9 | 9 | 13 |
 | 10 | D. Moore | GBR | **35** | 7 | 7 | 9 | 6 | 6 | 0 |
-
-## Podium Per System
-
-| System | 1st/2nd ratio | 1st | 2nd | 3rd |
-|--------|---------------|-----|-----|-----|
-| WSM Linear | 1.11x | I. Carrasquillo (53) | O. Liashchuk (47) | L. Underdown (41) |
-| F1 2010-present | 1.39x | I. Carrasquillo (117) | O. Liashchuk (87) | L. Underdown (84) |
-| F1 2003-2009 | 1.25x | I. Carrasquillo (47) | O. Liashchuk (36) | L. Underdown (33) |
-| F1 1991-2002 | 1.67x | I. Carrasquillo (41) | L. Underdown (25) | O. Liashchuk (24) |
-| F1 1961-1990 | 1.50x | I. Carrasquillo (38) | O. Liashchuk (24) | L. Underdown (23) |
-| MotoGP | 1.25x | I. Carrasquillo (120) | O. Liashchuk (94) | L. Underdown (91) |
-| MotoGP Extended | 1.25x | I. Carrasquillo (120) | O. Liashchuk (94) | L. Underdown (91) |
 
 ## Winner Flip Analysis
 

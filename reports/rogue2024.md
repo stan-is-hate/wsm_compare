@@ -23,6 +23,18 @@ nav_order: 306
 | P. Kordiyaka | UKR | 10 | 8 | 4 | 4 | 10 | T9 | 0 | 0 |
 | T. Hoath | CAN | 9 | 10 | 7 | 8 | 9 | T9 | 0 | 0 |
 
+## Podium Per System
+
+| System | 1st/2nd ratio | 1st | 2nd | 3rd |
+|--------|---------------|-----|-----|-----|
+| WSM Linear | 1.11x | M. Hooper (54) | H. Björnsson (44) | T. Stoltman (44) |
+| F1 2010-present | 1.39x | M. Hooper (112) | H. Björnsson (92) | T. Stoltman (86) |
+| F1 2003-2009 | 1.25x | M. Hooper (48) | H. Björnsson (37) | T. Stoltman (34) |
+| F1 1991-2002 | 1.67x | M. Hooper (38) | H. Björnsson (31) | T. Stoltman (24) |
+| F1 1961-1990 | 1.50x | M. Hooper (37) | H. Björnsson (29) | T. Stoltman (23) |
+| MotoGP | 1.25x | M. Hooper (121) | H. Björnsson (101) | T. Stoltman (93) |
+| MotoGP Extended | 1.25x | M. Hooper (121) | H. Björnsson (101) | T. Stoltman (93) |
+
 ## Standings Under Each Scoring System
 
 ### WSM Linear
@@ -157,18 +169,6 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 8 | B. Thompson | USA | **54** | 12 | 9 | 7 | 9 | 9 | 8 |
 | 9 | P. Kordiyaka | UKR | **52.5** | 6 | 8 | 13 | 13 | 6 | 6.5 |
 | 10 | T. Hoath | CAN | **43.5** | 7 | 6 | 9 | 8 | 7 | 6.5 |
-
-## Podium Per System
-
-| System | 1st/2nd ratio | 1st | 2nd | 3rd |
-|--------|---------------|-----|-----|-----|
-| WSM Linear | 1.11x | M. Hooper (54) | H. Björnsson (44) | T. Stoltman (44) |
-| F1 2010-present | 1.39x | M. Hooper (112) | H. Björnsson (92) | T. Stoltman (86) |
-| F1 2003-2009 | 1.25x | M. Hooper (48) | H. Björnsson (37) | T. Stoltman (34) |
-| F1 1991-2002 | 1.67x | M. Hooper (38) | H. Björnsson (31) | T. Stoltman (24) |
-| F1 1961-1990 | 1.50x | M. Hooper (37) | H. Björnsson (29) | T. Stoltman (23) |
-| MotoGP | 1.25x | M. Hooper (121) | H. Björnsson (101) | T. Stoltman (93) |
-| MotoGP Extended | 1.25x | M. Hooper (121) | H. Björnsson (101) | T. Stoltman (93) |
 
 ## Winner Flip Analysis
 

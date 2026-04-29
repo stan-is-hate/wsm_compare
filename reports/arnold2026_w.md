@@ -23,6 +23,18 @@ nav_order: 204
 | J. Osczevski | CAN | 8 | 9 | 7 | 6 | 8 | 8 | 0 | 0 |
 | A. Thompson | GBR | 6 | DNS | DNS | DNS | DNS | DNS | 0 | 0 |
 
+## Podium Per System
+
+| System | 1st/2nd ratio | 1st | 2nd | 3rd |
+|--------|---------------|-----|-----|-----|
+| WSM Linear | 1.11x | O. Liashchuk (50.5) | I. Carrasquillo (49) | A. Jardine (48.5) |
+| F1 2010-present | 1.39x | I. Carrasquillo (109) | A. Jardine (101.5) | O. Liashchuk (97.5) |
+| F1 2003-2009 | 1.25x | I. Carrasquillo (44) | O. Liashchuk (41) | A. Jardine (41) |
+| F1 1991-2002 | 1.67x | I. Carrasquillo (38) | A. Jardine (33) | O. Liashchuk (29) |
+| F1 1961-1990 | 1.50x | I. Carrasquillo (35) | A. Jardine (31) | O. Liashchuk (29) |
+| MotoGP | 1.25x | I. Carrasquillo (115) | A. Jardine (107) | O. Liashchuk (106) |
+| MotoGP Extended | 1.25x | I. Carrasquillo (115) | A. Jardine (107) | O. Liashchuk (106) |
+
 ## Standings Under Each Scoring System
 
 ### WSM Linear
@@ -157,18 +169,6 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 8 | K. Blunden | AUS | **59** | 6 | 12 | 10 | 7 | 13 | 11 |
 | 9 | J. Osczevski | CAN | **50** | 8 | 7 | 9 | 10 | 8 | 8 |
 | 10 | A. Thompson | GBR | **10** | 10 | 0 | 0 | 0 | 0 | 0 |
-
-## Podium Per System
-
-| System | 1st/2nd ratio | 1st | 2nd | 3rd |
-|--------|---------------|-----|-----|-----|
-| WSM Linear | 1.11x | O. Liashchuk (50.5) | I. Carrasquillo (49) | A. Jardine (48.5) |
-| F1 2010-present | 1.39x | I. Carrasquillo (109) | A. Jardine (101.5) | O. Liashchuk (97.5) |
-| F1 2003-2009 | 1.25x | I. Carrasquillo (44) | O. Liashchuk (41) | A. Jardine (41) |
-| F1 1991-2002 | 1.67x | I. Carrasquillo (38) | A. Jardine (33) | O. Liashchuk (29) |
-| F1 1961-1990 | 1.50x | I. Carrasquillo (35) | A. Jardine (31) | O. Liashchuk (29) |
-| MotoGP | 1.25x | I. Carrasquillo (115) | A. Jardine (107) | O. Liashchuk (106) |
-| MotoGP Extended | 1.25x | I. Carrasquillo (115) | A. Jardine (107) | O. Liashchuk (106) |
 
 ## Winner Flip Analysis
 
