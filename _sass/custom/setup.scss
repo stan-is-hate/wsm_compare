@@ -1,0 +1,4 @@
+// Override just-the-docs SCSS variables before theme styles load.
+
+// Default $nav-width is 264px — too wide for our short sidebar entries.
+$nav-width: 220px;

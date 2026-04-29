@@ -517,20 +517,17 @@ def write_comp_report(path, out_dir):
         w("")
         w(f"**Scale:** `{res.scale}` — **1st/2nd ratio:** {ratio:.2f}x")
         w("")
-        header = "| # | Athlete | Country |"
-        sep = "|---|---------|---------|"
+        header = "| # | Athlete | Country | **Total** |"
+        sep = "|---|---------|---------|-----------|"
         for ev in event_names:
             header += f" {ev.replace('_', ' ')} |"
             sep += "----------|"
-        header += " **Total** |"
-        sep += "-----------|"
         w(header)
         w(sep)
         for rank, (a, total) in enumerate(res.sorted_totals, 1):
-            row = f"| {rank} | {a} | {countries[a]} |"
+            row = f"| {rank} | {a} | {countries[a]} | **{fmt(total)}** |"
             for ev in event_names:
                 row += f" {fmt(res.event_pts[ev][a])} |"
-            row += f" **{fmt(total)}** |"
             w(row)
         w("")
 

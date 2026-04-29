@@ -31,18 +31,18 @@ _World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps._
 
 **Scale:** `[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]` — **1st/2nd ratio:** 1.11x
 
-| # | Athlete | Country | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 9 | 9 | 9 | 8 | 10 | 9 | **54** |
-| 2 | H. Björnsson | ISL | 10 | 2 | 10 | 9 | 7 | 6 | **44** |
-| 3 | T. Stoltman | GBR | 4 | 8 | 8 | 10 | 6 | 8 | **44** |
-| 4 | E. Singleton | USA | 6.5 | 7 | 6 | 6 | 9 | 7 | **41.5** |
-| 5 | L. Stoltman | GBR | 3 | 6 | 5 | 5 | 3 | 10 | **32** |
-| 6 | T. Evans | USA | 5 | 10 | 1 | 1 | 8 | 5 | **30** |
-| 7 | M. Ragg | NZL | 8 | 5 | 3 | 2 | 5 | 4 | **27** |
-| 8 | B. Thompson | USA | 6.5 | 4 | 2 | 4 | 4 | 3 | **23.5** |
-| 9 | P. Kordiyaka | UKR | 1 | 3 | 7 | 7 | 1 | 1.5 | **20.5** |
-| 10 | T. Hoath | CAN | 2 | 1 | 4 | 3 | 2 | 1.5 | **13.5** |
+| # | Athlete | Country | **Total** | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **54** | 9 | 9 | 9 | 8 | 10 | 9 |
+| 2 | H. Björnsson | ISL | **44** | 10 | 2 | 10 | 9 | 7 | 6 |
+| 3 | T. Stoltman | GBR | **44** | 4 | 8 | 8 | 10 | 6 | 8 |
+| 4 | E. Singleton | USA | **41.5** | 6.5 | 7 | 6 | 6 | 9 | 7 |
+| 5 | L. Stoltman | GBR | **32** | 3 | 6 | 5 | 5 | 3 | 10 |
+| 6 | T. Evans | USA | **30** | 5 | 10 | 1 | 1 | 8 | 5 |
+| 7 | M. Ragg | NZL | **27** | 8 | 5 | 3 | 2 | 5 | 4 |
+| 8 | B. Thompson | USA | **23.5** | 6.5 | 4 | 2 | 4 | 4 | 3 |
+| 9 | P. Kordiyaka | UKR | **20.5** | 1 | 3 | 7 | 7 | 1 | 1.5 |
+| 10 | T. Hoath | CAN | **13.5** | 2 | 1 | 4 | 3 | 2 | 1.5 |
 
 ### F1 2010-present
 
@@ -50,18 +50,18 @@ _Formula 1 (2010+). Steep top, drops off after 10th._
 
 **Scale:** `[25, 18, 15, 12, 10, 8, 6, 4, 2, 1]` — **1st/2nd ratio:** 1.39x
 
-| # | Athlete | Country | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 18 | 18 | 18 | 15 | 25 | 18 | **112** |
-| 2 | H. Björnsson | ISL | 25 | 2 | 25 | 18 | 12 | 10 | **92** |
-| 3 | T. Stoltman | GBR | 6 | 15 | 15 | 25 | 10 | 15 | **86** |
-| 4 | E. Singleton | USA | 11 | 12 | 10 | 10 | 18 | 12 | **73** |
-| 5 | L. Stoltman | GBR | 4 | 10 | 8 | 8 | 4 | 25 | **59** |
-| 6 | T. Evans | USA | 8 | 25 | 1 | 1 | 15 | 8 | **58** |
-| 7 | M. Ragg | NZL | 15 | 8 | 4 | 2 | 8 | 6 | **43** |
-| 8 | B. Thompson | USA | 11 | 6 | 2 | 6 | 6 | 4 | **35** |
-| 9 | P. Kordiyaka | UKR | 1 | 4 | 12 | 12 | 1 | 1.5 | **31.5** |
-| 10 | T. Hoath | CAN | 2 | 1 | 6 | 4 | 2 | 1.5 | **16.5** |
+| # | Athlete | Country | **Total** | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **112** | 18 | 18 | 18 | 15 | 25 | 18 |
+| 2 | H. Björnsson | ISL | **92** | 25 | 2 | 25 | 18 | 12 | 10 |
+| 3 | T. Stoltman | GBR | **86** | 6 | 15 | 15 | 25 | 10 | 15 |
+| 4 | E. Singleton | USA | **73** | 11 | 12 | 10 | 10 | 18 | 12 |
+| 5 | L. Stoltman | GBR | **59** | 4 | 10 | 8 | 8 | 4 | 25 |
+| 6 | T. Evans | USA | **58** | 8 | 25 | 1 | 1 | 15 | 8 |
+| 7 | M. Ragg | NZL | **43** | 15 | 8 | 4 | 2 | 8 | 6 |
+| 8 | B. Thompson | USA | **35** | 11 | 6 | 2 | 6 | 6 | 4 |
+| 9 | P. Kordiyaka | UKR | **31.5** | 1 | 4 | 12 | 12 | 1 | 1.5 |
+| 10 | T. Hoath | CAN | **16.5** | 2 | 1 | 6 | 4 | 2 | 1.5 |
 
 ### F1 2003-2009
 
@@ -69,18 +69,18 @@ _Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)._
 
 **Scale:** `[10, 8, 6, 5, 4, 3, 2, 1, 0, 0]` — **1st/2nd ratio:** 1.25x
 
-| # | Athlete | Country | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 8 | 8 | 8 | 6 | 10 | 8 | **48** |
-| 2 | H. Björnsson | ISL | 10 | 0 | 10 | 8 | 5 | 4 | **37** |
-| 3 | T. Stoltman | GBR | 2 | 6 | 6 | 10 | 4 | 6 | **34** |
-| 4 | E. Singleton | USA | 4.5 | 5 | 4 | 4 | 8 | 5 | **30.5** |
-| 5 | L. Stoltman | GBR | 1 | 4 | 3 | 3 | 1 | 10 | **22** |
-| 6 | T. Evans | USA | 3 | 10 | 0 | 0 | 6 | 3 | **22** |
-| 7 | M. Ragg | NZL | 6 | 3 | 1 | 0 | 3 | 2 | **15** |
-| 8 | B. Thompson | USA | 4.5 | 2 | 0 | 2 | 2 | 1 | **11.5** |
-| 9 | P. Kordiyaka | UKR | 0 | 1 | 5 | 5 | 0 | 0 | **11** |
-| 10 | T. Hoath | CAN | 0 | 0 | 2 | 1 | 0 | 0 | **3** |
+| # | Athlete | Country | **Total** | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **48** | 8 | 8 | 8 | 6 | 10 | 8 |
+| 2 | H. Björnsson | ISL | **37** | 10 | 0 | 10 | 8 | 5 | 4 |
+| 3 | T. Stoltman | GBR | **34** | 2 | 6 | 6 | 10 | 4 | 6 |
+| 4 | E. Singleton | USA | **30.5** | 4.5 | 5 | 4 | 4 | 8 | 5 |
+| 5 | L. Stoltman | GBR | **22** | 1 | 4 | 3 | 3 | 1 | 10 |
+| 6 | T. Evans | USA | **22** | 3 | 10 | 0 | 0 | 6 | 3 |
+| 7 | M. Ragg | NZL | **15** | 6 | 3 | 1 | 0 | 3 | 2 |
+| 8 | B. Thompson | USA | **11.5** | 4.5 | 2 | 0 | 2 | 2 | 1 |
+| 9 | P. Kordiyaka | UKR | **11** | 0 | 1 | 5 | 5 | 0 | 0 |
+| 10 | T. Hoath | CAN | **3** | 0 | 0 | 2 | 1 | 0 | 0 |
 
 ### F1 1991-2002
 
@@ -88,18 +88,18 @@ _Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning._
 
 **Scale:** `[10, 6, 4, 3, 2, 1, 0, 0, 0, 0]` — **1st/2nd ratio:** 1.67x
 
-| # | Athlete | Country | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 6 | 6 | 6 | 4 | 10 | 6 | **38** |
-| 2 | H. Björnsson | ISL | 10 | 0 | 10 | 6 | 3 | 2 | **31** |
-| 3 | T. Stoltman | GBR | 0 | 4 | 4 | 10 | 2 | 4 | **24** |
-| 4 | E. Singleton | USA | 2.5 | 3 | 2 | 2 | 6 | 3 | **18.5** |
-| 5 | T. Evans | USA | 1 | 10 | 0 | 0 | 4 | 1 | **16** |
-| 6 | L. Stoltman | GBR | 0 | 2 | 1 | 1 | 0 | 10 | **14** |
-| 7 | M. Ragg | NZL | 4 | 1 | 0 | 0 | 1 | 0 | **6** |
-| 8 | P. Kordiyaka | UKR | 0 | 0 | 3 | 3 | 0 | 0 | **6** |
-| 9 | B. Thompson | USA | 2.5 | 0 | 0 | 0 | 0 | 0 | **2.5** |
-| 10 | T. Hoath | CAN | 0 | 0 | 0 | 0 | 0 | 0 | **0** |
+| # | Athlete | Country | **Total** | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **38** | 6 | 6 | 6 | 4 | 10 | 6 |
+| 2 | H. Björnsson | ISL | **31** | 10 | 0 | 10 | 6 | 3 | 2 |
+| 3 | T. Stoltman | GBR | **24** | 0 | 4 | 4 | 10 | 2 | 4 |
+| 4 | E. Singleton | USA | **18.5** | 2.5 | 3 | 2 | 2 | 6 | 3 |
+| 5 | T. Evans | USA | **16** | 1 | 10 | 0 | 0 | 4 | 1 |
+| 6 | L. Stoltman | GBR | **14** | 0 | 2 | 1 | 1 | 0 | 10 |
+| 7 | M. Ragg | NZL | **6** | 4 | 1 | 0 | 0 | 1 | 0 |
+| 8 | P. Kordiyaka | UKR | **6** | 0 | 0 | 3 | 3 | 0 | 0 |
+| 9 | B. Thompson | USA | **2.5** | 2.5 | 0 | 0 | 0 | 0 | 0 |
+| 10 | T. Hoath | CAN | **0** | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ### F1 1961-1990
 
@@ -107,18 +107,18 @@ _Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning._
 
 **Scale:** `[9, 6, 4, 3, 2, 1, 0, 0, 0, 0]` — **1st/2nd ratio:** 1.50x
 
-| # | Athlete | Country | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 6 | 6 | 6 | 4 | 9 | 6 | **37** |
-| 2 | H. Björnsson | ISL | 9 | 0 | 9 | 6 | 3 | 2 | **29** |
-| 3 | T. Stoltman | GBR | 0 | 4 | 4 | 9 | 2 | 4 | **23** |
-| 4 | E. Singleton | USA | 2.5 | 3 | 2 | 2 | 6 | 3 | **18.5** |
-| 5 | T. Evans | USA | 1 | 9 | 0 | 0 | 4 | 1 | **15** |
-| 6 | L. Stoltman | GBR | 0 | 2 | 1 | 1 | 0 | 9 | **13** |
-| 7 | M. Ragg | NZL | 4 | 1 | 0 | 0 | 1 | 0 | **6** |
-| 8 | P. Kordiyaka | UKR | 0 | 0 | 3 | 3 | 0 | 0 | **6** |
-| 9 | B. Thompson | USA | 2.5 | 0 | 0 | 0 | 0 | 0 | **2.5** |
-| 10 | T. Hoath | CAN | 0 | 0 | 0 | 0 | 0 | 0 | **0** |
+| # | Athlete | Country | **Total** | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **37** | 6 | 6 | 6 | 4 | 9 | 6 |
+| 2 | H. Björnsson | ISL | **29** | 9 | 0 | 9 | 6 | 3 | 2 |
+| 3 | T. Stoltman | GBR | **23** | 0 | 4 | 4 | 9 | 2 | 4 |
+| 4 | E. Singleton | USA | **18.5** | 2.5 | 3 | 2 | 2 | 6 | 3 |
+| 5 | T. Evans | USA | **15** | 1 | 9 | 0 | 0 | 4 | 1 |
+| 6 | L. Stoltman | GBR | **13** | 0 | 2 | 1 | 1 | 0 | 9 |
+| 7 | M. Ragg | NZL | **6** | 4 | 1 | 0 | 0 | 1 | 0 |
+| 8 | P. Kordiyaka | UKR | **6** | 0 | 0 | 3 | 3 | 0 | 0 |
+| 9 | B. Thompson | USA | **2.5** | 2.5 | 0 | 0 | 0 | 0 | 0 |
+| 10 | T. Hoath | CAN | **0** | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ### MotoGP
 
@@ -126,18 +126,18 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 
 **Scale:** `[25, 20, 16, 13, 11, 10, 9, 8, 7, 6]` — **1st/2nd ratio:** 1.25x
 
-| # | Athlete | Country | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 20 | 20 | 20 | 16 | 25 | 20 | **121** |
-| 2 | H. Björnsson | ISL | 25 | 7 | 25 | 20 | 13 | 11 | **101** |
-| 3 | T. Stoltman | GBR | 9 | 16 | 16 | 25 | 11 | 16 | **93** |
-| 4 | E. Singleton | USA | 12 | 13 | 11 | 11 | 20 | 13 | **80** |
-| 5 | T. Evans | USA | 10 | 25 | 6 | 6 | 16 | 10 | **73** |
-| 6 | L. Stoltman | GBR | 8 | 11 | 10 | 10 | 8 | 25 | **72** |
-| 7 | M. Ragg | NZL | 16 | 10 | 8 | 7 | 10 | 9 | **60** |
-| 8 | B. Thompson | USA | 12 | 9 | 7 | 9 | 9 | 8 | **54** |
-| 9 | P. Kordiyaka | UKR | 6 | 8 | 13 | 13 | 6 | 6.5 | **52.5** |
-| 10 | T. Hoath | CAN | 7 | 6 | 9 | 8 | 7 | 6.5 | **43.5** |
+| # | Athlete | Country | **Total** | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **121** | 20 | 20 | 20 | 16 | 25 | 20 |
+| 2 | H. Björnsson | ISL | **101** | 25 | 7 | 25 | 20 | 13 | 11 |
+| 3 | T. Stoltman | GBR | **93** | 9 | 16 | 16 | 25 | 11 | 16 |
+| 4 | E. Singleton | USA | **80** | 12 | 13 | 11 | 11 | 20 | 13 |
+| 5 | T. Evans | USA | **73** | 10 | 25 | 6 | 6 | 16 | 10 |
+| 6 | L. Stoltman | GBR | **72** | 8 | 11 | 10 | 10 | 8 | 25 |
+| 7 | M. Ragg | NZL | **60** | 16 | 10 | 8 | 7 | 10 | 9 |
+| 8 | B. Thompson | USA | **54** | 12 | 9 | 7 | 9 | 9 | 8 |
+| 9 | P. Kordiyaka | UKR | **52.5** | 6 | 8 | 13 | 13 | 6 | 6.5 |
+| 10 | T. Hoath | CAN | **43.5** | 7 | 6 | 9 | 8 | 7 | 6.5 |
 
 ### MotoGP Extended
 
@@ -145,18 +145,18 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 
 **Scale:** `[25, 20, 16, 13, 11, 10, 9, 8, 7, 6]` — **1st/2nd ratio:** 1.25x
 
-| # | Athlete | Country | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 20 | 20 | 20 | 16 | 25 | 20 | **121** |
-| 2 | H. Björnsson | ISL | 25 | 7 | 25 | 20 | 13 | 11 | **101** |
-| 3 | T. Stoltman | GBR | 9 | 16 | 16 | 25 | 11 | 16 | **93** |
-| 4 | E. Singleton | USA | 12 | 13 | 11 | 11 | 20 | 13 | **80** |
-| 5 | T. Evans | USA | 10 | 25 | 6 | 6 | 16 | 10 | **73** |
-| 6 | L. Stoltman | GBR | 8 | 11 | 10 | 10 | 8 | 25 | **72** |
-| 7 | M. Ragg | NZL | 16 | 10 | 8 | 7 | 10 | 9 | **60** |
-| 8 | B. Thompson | USA | 12 | 9 | 7 | 9 | 9 | 8 | **54** |
-| 9 | P. Kordiyaka | UKR | 6 | 8 | 13 | 13 | 6 | 6.5 | **52.5** |
-| 10 | T. Hoath | CAN | 7 | 6 | 9 | 8 | 7 | 6.5 | **43.5** |
+| # | Athlete | Country | **Total** | Max Deadlift | Carry Press | Inver Stones | Load Drag | Super Medley | Overhead Medley |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **121** | 20 | 20 | 20 | 16 | 25 | 20 |
+| 2 | H. Björnsson | ISL | **101** | 25 | 7 | 25 | 20 | 13 | 11 |
+| 3 | T. Stoltman | GBR | **93** | 9 | 16 | 16 | 25 | 11 | 16 |
+| 4 | E. Singleton | USA | **80** | 12 | 13 | 11 | 11 | 20 | 13 |
+| 5 | T. Evans | USA | **73** | 10 | 25 | 6 | 6 | 16 | 10 |
+| 6 | L. Stoltman | GBR | **72** | 8 | 11 | 10 | 10 | 8 | 25 |
+| 7 | M. Ragg | NZL | **60** | 16 | 10 | 8 | 7 | 10 | 9 |
+| 8 | B. Thompson | USA | **54** | 12 | 9 | 7 | 9 | 9 | 8 |
+| 9 | P. Kordiyaka | UKR | **52.5** | 6 | 8 | 13 | 13 | 6 | 6.5 |
+| 10 | T. Hoath | CAN | **43.5** | 7 | 6 | 9 | 8 | 7 | 6.5 |
 
 ## Podium Per System
 

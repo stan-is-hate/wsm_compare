@@ -1,0 +1,23 @@
+// Custom styles loaded after theme styles.
+
+// Tables that overflow horizontally — show a visible scrollbar instead of
+// just-the-docs's default macOS-style "scrollbar appears only on hover".
+// Also add subtle shadows on the edges to hint at scrollability.
+.main-content table {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.05);
+
+  &::-webkit-scrollbar {
+    height: 8px;
+    -webkit-appearance: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+  }
+}

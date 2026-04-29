@@ -32,19 +32,19 @@ _World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps._
 
 **Scale:** `[11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]` — **1st/2nd ratio:** 1.10x
 
-| # | Athlete | Country | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 9 | 11 | 11 | 11 | 10 | **52** |
-| 2 | M. Kieliszkowski | POL | 3 | 9 | 8 | 9.5 | 11 | **40.5** |
-| 3 | T. Stoltman | GBR | 7 | 6 | 7 | 9.5 | 9 | **38.5** |
-| 4 | H. Björnsson | ISL | 11 | 10 | 10 | 7 | 0 | **38** |
-| 5 | B. Thompson | USA | 10 | 3 | 5 | 7 | 7 | **32** |
-| 6 | O. Novikov | UKR | 6 | 5 | 6 | 0 | 8 | **25** |
-| 7 | E. Singleton | USA | 8 | 7 | 9 | 0 | 0 | **24** |
-| 8 | M. Licis | USA | 4 | 8 | 4 | 7 | 0 | **23** |
-| 9 | T. Evans | USA | 5 | 2 | 3 | 0 | 0 | **10** |
-| 10 | O. Ziółkowski | POL | 2 | 4 | 2 | 0 | 0 | **8** |
-| 11 | M. Boudreault | CAN | 0 | 0 | 0 | 0 | 0 | **0** |
+| # | Athlete | Country | **Total** | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **52** | 9 | 11 | 11 | 11 | 10 |
+| 2 | M. Kieliszkowski | POL | **40.5** | 3 | 9 | 8 | 9.5 | 11 |
+| 3 | T. Stoltman | GBR | **38.5** | 7 | 6 | 7 | 9.5 | 9 |
+| 4 | H. Björnsson | ISL | **38** | 11 | 10 | 10 | 7 | 0 |
+| 5 | B. Thompson | USA | **32** | 10 | 3 | 5 | 7 | 7 |
+| 6 | O. Novikov | UKR | **25** | 6 | 5 | 6 | 0 | 8 |
+| 7 | E. Singleton | USA | **24** | 8 | 7 | 9 | 0 | 0 |
+| 8 | M. Licis | USA | **23** | 4 | 8 | 4 | 7 | 0 |
+| 9 | T. Evans | USA | **10** | 5 | 2 | 3 | 0 | 0 |
+| 10 | O. Ziółkowski | POL | **8** | 2 | 4 | 2 | 0 | 0 |
+| 11 | M. Boudreault | CAN | **0** | 0 | 0 | 0 | 0 | 0 |
 
 ### F1 2010-present
 
@@ -52,19 +52,19 @@ _Formula 1 (2010+). Steep top, drops off after 10th._
 
 **Scale:** `[25, 18, 15, 12, 10, 8, 6, 4, 2, 1, 0]` — **1st/2nd ratio:** 1.39x
 
-| # | Athlete | Country | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 15 | 25 | 25 | 25 | 18 | **108** |
-| 2 | H. Björnsson | ISL | 25 | 18 | 18 | 10 | 0 | **71** |
-| 3 | M. Kieliszkowski | POL | 2 | 15 | 12 | 16.5 | 25 | **70.5** |
-| 4 | T. Stoltman | GBR | 10 | 8 | 10 | 16.5 | 15 | **59.5** |
-| 5 | B. Thompson | USA | 18 | 2 | 6 | 10 | 10 | **46** |
-| 6 | E. Singleton | USA | 12 | 10 | 15 | 0 | 0 | **37** |
-| 7 | O. Novikov | UKR | 8 | 6 | 8 | 0 | 12 | **34** |
-| 8 | M. Licis | USA | 4 | 12 | 4 | 10 | 0 | **30** |
-| 9 | T. Evans | USA | 6 | 1 | 2 | 0 | 0 | **9** |
-| 10 | O. Ziółkowski | POL | 1 | 4 | 1 | 0 | 0 | **6** |
-| 11 | M. Boudreault | CAN | 0 | 0 | 0 | 0 | 0 | **0** |
+| # | Athlete | Country | **Total** | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **108** | 15 | 25 | 25 | 25 | 18 |
+| 2 | H. Björnsson | ISL | **71** | 25 | 18 | 18 | 10 | 0 |
+| 3 | M. Kieliszkowski | POL | **70.5** | 2 | 15 | 12 | 16.5 | 25 |
+| 4 | T. Stoltman | GBR | **59.5** | 10 | 8 | 10 | 16.5 | 15 |
+| 5 | B. Thompson | USA | **46** | 18 | 2 | 6 | 10 | 10 |
+| 6 | E. Singleton | USA | **37** | 12 | 10 | 15 | 0 | 0 |
+| 7 | O. Novikov | UKR | **34** | 8 | 6 | 8 | 0 | 12 |
+| 8 | M. Licis | USA | **30** | 4 | 12 | 4 | 10 | 0 |
+| 9 | T. Evans | USA | **9** | 6 | 1 | 2 | 0 | 0 |
+| 10 | O. Ziółkowski | POL | **6** | 1 | 4 | 1 | 0 | 0 |
+| 11 | M. Boudreault | CAN | **0** | 0 | 0 | 0 | 0 | 0 |
 
 ### F1 2003-2009
 
@@ -72,19 +72,19 @@ _Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)._
 
 **Scale:** `[10, 8, 6, 5, 4, 3, 2, 1, 0, 0, 0]` — **1st/2nd ratio:** 1.25x
 
-| # | Athlete | Country | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 6 | 10 | 10 | 10 | 8 | **44** |
-| 2 | H. Björnsson | ISL | 10 | 8 | 8 | 4 | 0 | **30** |
-| 3 | M. Kieliszkowski | POL | 0 | 6 | 5 | 7 | 10 | **28** |
-| 4 | T. Stoltman | GBR | 4 | 3 | 4 | 7 | 6 | **24** |
-| 5 | B. Thompson | USA | 8 | 0 | 2 | 4 | 4 | **18** |
-| 6 | E. Singleton | USA | 5 | 4 | 6 | 0 | 0 | **15** |
-| 7 | O. Novikov | UKR | 3 | 2 | 3 | 0 | 5 | **13** |
-| 8 | M. Licis | USA | 1 | 5 | 1 | 4 | 0 | **11** |
-| 9 | T. Evans | USA | 2 | 0 | 0 | 0 | 0 | **2** |
-| 10 | O. Ziółkowski | POL | 0 | 1 | 0 | 0 | 0 | **1** |
-| 11 | M. Boudreault | CAN | 0 | 0 | 0 | 0 | 0 | **0** |
+| # | Athlete | Country | **Total** | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **44** | 6 | 10 | 10 | 10 | 8 |
+| 2 | H. Björnsson | ISL | **30** | 10 | 8 | 8 | 4 | 0 |
+| 3 | M. Kieliszkowski | POL | **28** | 0 | 6 | 5 | 7 | 10 |
+| 4 | T. Stoltman | GBR | **24** | 4 | 3 | 4 | 7 | 6 |
+| 5 | B. Thompson | USA | **18** | 8 | 0 | 2 | 4 | 4 |
+| 6 | E. Singleton | USA | **15** | 5 | 4 | 6 | 0 | 0 |
+| 7 | O. Novikov | UKR | **13** | 3 | 2 | 3 | 0 | 5 |
+| 8 | M. Licis | USA | **11** | 1 | 5 | 1 | 4 | 0 |
+| 9 | T. Evans | USA | **2** | 2 | 0 | 0 | 0 | 0 |
+| 10 | O. Ziółkowski | POL | **1** | 0 | 1 | 0 | 0 | 0 |
+| 11 | M. Boudreault | CAN | **0** | 0 | 0 | 0 | 0 | 0 |
 
 ### F1 1991-2002
 
@@ -92,19 +92,19 @@ _Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning._
 
 **Scale:** `[10, 6, 4, 3, 2, 1, 0, 0, 0, 0, 0]` — **1st/2nd ratio:** 1.67x
 
-| # | Athlete | Country | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 4 | 10 | 10 | 10 | 6 | **40** |
-| 2 | H. Björnsson | ISL | 10 | 6 | 6 | 2 | 0 | **24** |
-| 3 | M. Kieliszkowski | POL | 0 | 4 | 3 | 5 | 10 | **22** |
-| 4 | T. Stoltman | GBR | 2 | 1 | 2 | 5 | 4 | **14** |
-| 5 | B. Thompson | USA | 6 | 0 | 0 | 2 | 2 | **10** |
-| 6 | E. Singleton | USA | 3 | 2 | 4 | 0 | 0 | **9** |
-| 7 | O. Novikov | UKR | 1 | 0 | 1 | 0 | 3 | **5** |
-| 8 | M. Licis | USA | 0 | 3 | 0 | 2 | 0 | **5** |
-| 9 | T. Evans | USA | 0 | 0 | 0 | 0 | 0 | **0** |
-| 10 | O. Ziółkowski | POL | 0 | 0 | 0 | 0 | 0 | **0** |
-| 11 | M. Boudreault | CAN | 0 | 0 | 0 | 0 | 0 | **0** |
+| # | Athlete | Country | **Total** | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **40** | 4 | 10 | 10 | 10 | 6 |
+| 2 | H. Björnsson | ISL | **24** | 10 | 6 | 6 | 2 | 0 |
+| 3 | M. Kieliszkowski | POL | **22** | 0 | 4 | 3 | 5 | 10 |
+| 4 | T. Stoltman | GBR | **14** | 2 | 1 | 2 | 5 | 4 |
+| 5 | B. Thompson | USA | **10** | 6 | 0 | 0 | 2 | 2 |
+| 6 | E. Singleton | USA | **9** | 3 | 2 | 4 | 0 | 0 |
+| 7 | O. Novikov | UKR | **5** | 1 | 0 | 1 | 0 | 3 |
+| 8 | M. Licis | USA | **5** | 0 | 3 | 0 | 2 | 0 |
+| 9 | T. Evans | USA | **0** | 0 | 0 | 0 | 0 | 0 |
+| 10 | O. Ziółkowski | POL | **0** | 0 | 0 | 0 | 0 | 0 |
+| 11 | M. Boudreault | CAN | **0** | 0 | 0 | 0 | 0 | 0 |
 
 ### F1 1961-1990
 
@@ -112,19 +112,19 @@ _Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning._
 
 **Scale:** `[9, 6, 4, 3, 2, 1, 0, 0, 0, 0, 0]` — **1st/2nd ratio:** 1.50x
 
-| # | Athlete | Country | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 4 | 9 | 9 | 9 | 6 | **37** |
-| 2 | H. Björnsson | ISL | 9 | 6 | 6 | 2 | 0 | **23** |
-| 3 | M. Kieliszkowski | POL | 0 | 4 | 3 | 5 | 9 | **21** |
-| 4 | T. Stoltman | GBR | 2 | 1 | 2 | 5 | 4 | **14** |
-| 5 | B. Thompson | USA | 6 | 0 | 0 | 2 | 2 | **10** |
-| 6 | E. Singleton | USA | 3 | 2 | 4 | 0 | 0 | **9** |
-| 7 | O. Novikov | UKR | 1 | 0 | 1 | 0 | 3 | **5** |
-| 8 | M. Licis | USA | 0 | 3 | 0 | 2 | 0 | **5** |
-| 9 | T. Evans | USA | 0 | 0 | 0 | 0 | 0 | **0** |
-| 10 | O. Ziółkowski | POL | 0 | 0 | 0 | 0 | 0 | **0** |
-| 11 | M. Boudreault | CAN | 0 | 0 | 0 | 0 | 0 | **0** |
+| # | Athlete | Country | **Total** | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **37** | 4 | 9 | 9 | 9 | 6 |
+| 2 | H. Björnsson | ISL | **23** | 9 | 6 | 6 | 2 | 0 |
+| 3 | M. Kieliszkowski | POL | **21** | 0 | 4 | 3 | 5 | 9 |
+| 4 | T. Stoltman | GBR | **14** | 2 | 1 | 2 | 5 | 4 |
+| 5 | B. Thompson | USA | **10** | 6 | 0 | 0 | 2 | 2 |
+| 6 | E. Singleton | USA | **9** | 3 | 2 | 4 | 0 | 0 |
+| 7 | O. Novikov | UKR | **5** | 1 | 0 | 1 | 0 | 3 |
+| 8 | M. Licis | USA | **5** | 0 | 3 | 0 | 2 | 0 |
+| 9 | T. Evans | USA | **0** | 0 | 0 | 0 | 0 | 0 |
+| 10 | O. Ziółkowski | POL | **0** | 0 | 0 | 0 | 0 | 0 |
+| 11 | M. Boudreault | CAN | **0** | 0 | 0 | 0 | 0 | 0 |
 
 ### MotoGP
 
@@ -132,19 +132,19 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 
 **Scale:** `[25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 0]` — **1st/2nd ratio:** 1.25x
 
-| # | Athlete | Country | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 16 | 25 | 25 | 25 | 20 | **111** |
-| 2 | M. Kieliszkowski | POL | 7 | 16 | 13 | 18 | 25 | **79** |
-| 3 | H. Björnsson | ISL | 25 | 20 | 20 | 11.3 | 0 | **76.3** |
-| 4 | T. Stoltman | GBR | 11 | 10 | 11 | 18 | 16 | **66** |
-| 5 | B. Thompson | USA | 20 | 7 | 9 | 11.3 | 11 | **58.3** |
-| 6 | O. Novikov | UKR | 10 | 9 | 10 | 0 | 13 | **42** |
-| 7 | M. Licis | USA | 8 | 13 | 8 | 11.3 | 0 | **40.3** |
-| 8 | E. Singleton | USA | 13 | 11 | 16 | 0 | 0 | **40** |
-| 9 | T. Evans | USA | 9 | 6 | 7 | 0 | 0 | **22** |
-| 10 | O. Ziółkowski | POL | 6 | 8 | 6 | 0 | 0 | **20** |
-| 11 | M. Boudreault | CAN | 0 | 0 | 0 | 0 | 0 | **0** |
+| # | Athlete | Country | **Total** | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **111** | 16 | 25 | 25 | 25 | 20 |
+| 2 | M. Kieliszkowski | POL | **79** | 7 | 16 | 13 | 18 | 25 |
+| 3 | H. Björnsson | ISL | **76.3** | 25 | 20 | 20 | 11.3 | 0 |
+| 4 | T. Stoltman | GBR | **66** | 11 | 10 | 11 | 18 | 16 |
+| 5 | B. Thompson | USA | **58.3** | 20 | 7 | 9 | 11.3 | 11 |
+| 6 | O. Novikov | UKR | **42** | 10 | 9 | 10 | 0 | 13 |
+| 7 | M. Licis | USA | **40.3** | 8 | 13 | 8 | 11.3 | 0 |
+| 8 | E. Singleton | USA | **40** | 13 | 11 | 16 | 0 | 0 |
+| 9 | T. Evans | USA | **22** | 9 | 6 | 7 | 0 | 0 |
+| 10 | O. Ziółkowski | POL | **20** | 6 | 8 | 6 | 0 | 0 |
+| 11 | M. Boudreault | CAN | **0** | 0 | 0 | 0 | 0 | 0 |
 
 ### MotoGP Extended
 
@@ -152,19 +152,19 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 
 **Scale:** `[25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5]` — **1st/2nd ratio:** 1.25x
 
-| # | Athlete | Country | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength | **Total** |
-|---|---------|---------|----------|----------|----------|----------|----------|-----------|
-| 1 | M. Hooper | CAN | 16 | 25 | 25 | 25 | 20 | **111** |
-| 2 | M. Kieliszkowski | POL | 7 | 16 | 13 | 18 | 25 | **79** |
-| 3 | H. Björnsson | ISL | 25 | 20 | 20 | 11.3 | 0 | **76.3** |
-| 4 | T. Stoltman | GBR | 11 | 10 | 11 | 18 | 16 | **66** |
-| 5 | B. Thompson | USA | 20 | 7 | 9 | 11.3 | 11 | **58.3** |
-| 6 | O. Novikov | UKR | 10 | 9 | 10 | 0 | 13 | **42** |
-| 7 | M. Licis | USA | 8 | 13 | 8 | 11.3 | 0 | **40.3** |
-| 8 | E. Singleton | USA | 13 | 11 | 16 | 0 | 0 | **40** |
-| 9 | T. Evans | USA | 9 | 6 | 7 | 0 | 0 | **22** |
-| 10 | O. Ziółkowski | POL | 6 | 8 | 6 | 0 | 0 | **20** |
-| 11 | M. Boudreault | CAN | 0 | 0 | 0 | 0 | 0 | **0** |
+| # | Athlete | Country | **Total** | Max Deadlift | Timber Carry | Webster Stones | Apollon s Wheels | Stones of Strength |
+|---|---------|---------|-----------|----------|----------|----------|----------|----------|
+| 1 | M. Hooper | CAN | **111** | 16 | 25 | 25 | 25 | 20 |
+| 2 | M. Kieliszkowski | POL | **79** | 7 | 16 | 13 | 18 | 25 |
+| 3 | H. Björnsson | ISL | **76.3** | 25 | 20 | 20 | 11.3 | 0 |
+| 4 | T. Stoltman | GBR | **66** | 11 | 10 | 11 | 18 | 16 |
+| 5 | B. Thompson | USA | **58.3** | 20 | 7 | 9 | 11.3 | 11 |
+| 6 | O. Novikov | UKR | **42** | 10 | 9 | 10 | 0 | 13 |
+| 7 | M. Licis | USA | **40.3** | 8 | 13 | 8 | 11.3 | 0 |
+| 8 | E. Singleton | USA | **40** | 13 | 11 | 16 | 0 | 0 |
+| 9 | T. Evans | USA | **22** | 9 | 6 | 7 | 0 | 0 |
+| 10 | O. Ziółkowski | POL | **20** | 6 | 8 | 6 | 0 | 0 |
+| 11 | M. Boudreault | CAN | **0** | 0 | 0 | 0 | 0 | 0 |
 
 ## Podium Per System
 
