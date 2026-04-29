@@ -6,122 +6,65 @@ nav_order: 5
 
 # WSM 2025 — Groups as Teams
 
-5 prelim groups of 5 athletes each. Top 2 from each group advance to the final.
-Group strength = sum of group members' points in the final (non-finalists score 0).
-Each scoring system gives a different ranking.
+5 prelim groups, 25 athletes total (Group 1: 5, Group 2: 5, Group 3: 5, Group 4: 5, Group 5: 5). All pooled into a single virtual 25-athlete comp, scored under **WSM Linear** (1st = 25 pts, last = 1 pt) on raw event data — actual times, reps, distances — *not* within-group placements. Per-group total = sum of its members' points. This addresses claims that some prelim groups were stacked harder than others.
 
-## Group Rosters
+## Group totals
 
-| Group | Athletes (✓ = made the final) |
-|-------|-------------------------------|
-| **Group 1** | T. Stoltman ✓, E. Williams ✓, J. Schoonwinkel, T. Evans, A. Andrade |
-| **Group 2** | M. Hooper ✓, P. Haynes ✓, B. Johnson, W. Derwinsky, M. Ragg |
-| **Group 3** | R. Nel ✓, S. Flowers ✓, L. Hatton, E. Aryee, M. Kieliszkowski |
-| **Group 4** | T. Mitchell ✓, O. Fojtů ✓, M. Boudreault, T. Hoath, L. Richardson |
-| **Group 5** | L. Stoltman ✓, P. Kordiyaka ✓, N. Guardione, A. Flynn, E. Singleton |
+<table>
+<thead><tr><th>Rank</th><th>Group</th><th>Total points</th></tr></thead>
+<tbody>
+<tr style="background:#edf5ca"><td>1</td><td><strong>Group 2</strong></td><td><strong>369</strong></td></tr>
+<tr style="background:#f5caca"><td>2</td><td><strong>Group 1</strong></td><td><strong>343.5</strong></td></tr>
+<tr style="background:#caf5dc"><td>3</td><td><strong>Group 3</strong></td><td><strong>324.5</strong></td></tr>
+<tr style="background:#cadcf5"><td>4</td><td><strong>Group 4</strong></td><td><strong>303.5</strong></td></tr>
+<tr style="background:#edcaf5"><td>5</td><td><strong>Group 5</strong></td><td><strong>269.5</strong></td></tr>
+</tbody>
+</table>
 
-## Group Strength Per System
+## Individual standings (pooled across all 25)
 
-| System | 1st | 2nd | 3rd | 4th | 5th |
-|--------|-----|-----|-----|-----|-----|
-| WSM Linear | Group 2 (75.5) | Group 3 (72.5) | Group 1 (67) | Group 4 (65.5) | Group 5 (46.5) |
-| F1 2010-present | Group 2 (138.9) | Group 1 (135.7) | Group 3 (135.2) | Group 4 (122.7) | Group 5 (70.5) |
-| F1 2003-2009 | Group 2 (55.5) | Group 1 (53.5) | Group 3 (53.5) | Group 4 (48) | Group 5 (23.5) |
-| F1 1991-2002 | Group 1 (43) | Group 2 (35.5) | Group 3 (34.5) | Group 4 (34) | Group 5 (9) |
-| F1 1961-1990 | Group 1 (40.5) | Group 2 (34.5) | Group 3 (33.5) | Group 4 (32.5) | Group 5 (9) |
-| MotoGP | Group 1 (162.8) | Group 3 (161.3) | Group 4 (152.3) | Group 2 (152.1) | Group 5 (108.5) |
-| MotoGP Extended | Group 1 (162.8) | Group 3 (161.3) | Group 4 (152.3) | Group 2 (152.1) | Group 5 (108.5) |
+Each cell shows the within-pool placement (the points-determining number) with the raw result underneath.
 
-## Standings Under Each Scoring System
+<table>
+<thead><tr><th>#</th><th>Athlete</th><th>Group</th><th>Country</th><th>Loading Race</th><th>Deadlift</th><th>Overhead Medley</th><th>Titan s Toss</th><th>Stone Medley</th><th>Total</th></tr></thead>
+<tbody>
+<tr style="background:#edf5ca"><td>1</td><td>M. Hooper</td><td>2</td><td>CAN</td><td><strong>1</strong> · 4 in 38.60 s <em>(25)</em></td><td><strong>T5</strong> · 7 reps <em>(17.5)</em></td><td><strong>2</strong> · 7 in 59.74 s <em>(24)</em></td><td><strong>7</strong> · 8 in 27.97 s <em>(19)</em></td><td><strong>1</strong> · 4 in 56.22 s <em>(25)</em></td><td><strong>110.5</strong></td></tr>
+<tr style="background:#f5caca"><td>2</td><td>T. Stoltman</td><td>1</td><td>GBR</td><td><strong>3</strong> · 4 in 38.71 s <em>(23)</em></td><td><strong>T5</strong> · 7 reps <em>(17.5)</em></td><td><strong>1</strong> · 7 in 56.95 s <em>(25)</em></td><td><strong>1</strong> · 10 in 31.97 s <em>(25)</em></td><td><strong>12</strong> · 2 in 65.88 s <em>(14)</em></td><td><strong>104.5</strong></td></tr>
+<tr style="background:#caf5dc"><td>3</td><td>R. Nel</td><td>3</td><td>RSA</td><td><strong>8</strong> · 4 in 42.36 s <em>(18)</em></td><td><strong>T2</strong> · 8 reps <em>(23)</em></td><td><strong>13</strong> · 5 in 36.81 s <em>(13)</em></td><td><strong>9</strong> · 8 in 29.41 s <em>(17)</em></td><td><strong>2</strong> · 4 in 62.00 s <em>(24)</em></td><td><strong>95</strong></td></tr>
+<tr style="background:#cadcf5"><td>4</td><td>T. Mitchell</td><td>4</td><td>USA</td><td><strong>19</strong> · 4 in 49.38 s <em>(7)</em></td><td><strong>1</strong> · 10 reps <em>(25)</em></td><td><strong>4</strong> · 7 in 60.54 s <em>(22)</em></td><td><strong>20</strong> · 6 in 27.22 s <em>(6)</em></td><td><strong>3</strong> · 4 in 73.56 s <em>(23)</em></td><td><strong>83</strong></td></tr>
+<tr style="background:#edcaf5"><td>5</td><td>L. Stoltman</td><td>5</td><td>GBR</td><td><strong>5</strong> · 4 in 41.21 s <em>(21)</em></td><td><strong>21</strong> · 2 reps <em>(5)</em></td><td><strong>9</strong> · 6 in 49.98 s <em>(17)</em></td><td><strong>5</strong> · 9 in 34.81 s <em>(21)</em></td><td><strong>7</strong> · 3 in 69.34 s <em>(19)</em></td><td><strong>83</strong></td></tr>
+<tr style="background:#edf5ca"><td>6</td><td>P. Haynes</td><td>2</td><td>GBR</td><td><strong>6</strong> · 4 in 41.26 s <em>(20)</em></td><td><strong>T2</strong> · 8 reps <em>(23)</em></td><td><strong>17</strong> · 5 in 64.40 s <em>(9)</em></td><td><strong>17</strong> · 6 in 18.72 s <em>(9)</em></td><td><strong>9</strong> · 3 in 82.03 s <em>(17)</em></td><td><strong>78</strong></td></tr>
+<tr style="background:#caf5dc"><td>7</td><td>S. Flowers</td><td>3</td><td>GBR</td><td><strong>4</strong> · 4 in 40.13 s <em>(22)</em></td><td><strong>T13</strong> · 6 reps <em>(11.5)</em></td><td><strong>16</strong> · 5 in 52.74 s <em>(10)</em></td><td><strong>6</strong> · 8 in 23.38 s <em>(20)</em></td><td><strong>15</strong> · 1 in 11.38 s <em>(11)</em></td><td><strong>74.5</strong></td></tr>
+<tr style="background:#cadcf5"><td>8</td><td>T. Hoath</td><td>4</td><td>CAN</td><td><strong>21</strong> · 4 in 51.60 s <em>(5)</em></td><td><strong>T2</strong> · 8 reps <em>(23)</em></td><td><strong>12</strong> · 6 in 73.70 s <em>(14)</em></td><td><strong>14</strong> · 7 in 29.75 s <em>(12)</em></td><td><strong>6</strong> · 3 in 64.10 s <em>(20)</em></td><td><strong>74</strong></td></tr>
+<tr style="background:#cadcf5"><td>9</td><td>O. Fojtů</td><td>4</td><td>CZE</td><td><strong>9</strong> · 4 in 42.55 s <em>(17)</em></td><td><strong>T17</strong> · 5 reps <em>(8.5)</em></td><td><strong>3</strong> · 7 in 60.21 s <em>(23)</em></td><td><strong>23</strong> · 3 in 11.41 s <em>(3)</em></td><td><strong>5</strong> · 3 in 61.34 s <em>(21)</em></td><td><strong>72.5</strong></td></tr>
+<tr style="background:#cadcf5"><td>10</td><td>M. Boudreault</td><td>4</td><td>CAN</td><td><strong>10</strong> · 4 in 42.81 s <em>(16)</em></td><td><strong>22</strong> · 1 rep <em>(4)</em></td><td><strong>10</strong> · 6 in 57.99 s <em>(16)</em></td><td><strong>2</strong> · 10 in 46.91 s <em>(24)</em></td><td><strong>14</strong> · 1 in 9.81 s <em>(12)</em></td><td><strong>72</strong></td></tr>
+<tr style="background:#caf5dc"><td>11</td><td>L. Hatton</td><td>3</td><td>USA</td><td><strong>16</strong> · 4 in 48.09 s <em>(10)</em></td><td><strong>T5</strong> · 7 reps <em>(17.5)</em></td><td><strong>8</strong> · 6 in 47.41 s <em>(18)</em></td><td><strong>11</strong> · 8 in 44.06 s <em>(15)</em></td><td><strong>18</strong> · 1 in 16.72 s <em>(8)</em></td><td><strong>68.5</strong></td></tr>
+<tr style="background:#edcaf5"><td>12</td><td>P. Kordiyaka</td><td>5</td><td>UKR</td><td><strong>2</strong> · 4 in 38.61 s <em>(24)</em></td><td><strong>T19</strong> · 4 reps <em>(6.5)</em></td><td><strong>7</strong> · 6 in 46.35 s <em>(19)</em></td><td><strong>21</strong> · 4 in 12.81 s <em>(5)</em></td><td><strong>13</strong> · 2 in 69.88 s <em>(13)</em></td><td><strong>67.5</strong></td></tr>
+<tr style="background:#edcaf5"><td>13</td><td>N. Guardione</td><td>5</td><td>USA</td><td><strong>7</strong> · 4 in 41.34 s <em>(19)</em></td><td><strong>T19</strong> · 4 reps <em>(6.5)</em></td><td><strong>20</strong> · 5 in 67.85 s <em>(6)</em></td><td><strong>8</strong> · 8 in 28.38 s <em>(18)</em></td><td><strong>8</strong> · 3 in 71.84 s <em>(18)</em></td><td><strong>67.5</strong></td></tr>
+<tr style="background:#f5caca"><td>14</td><td>E. Williams</td><td>1</td><td>AUS</td><td><strong>12</strong> · 4 in 44.70 s <em>(14)</em></td><td><strong>T5</strong> · 7 reps <em>(17.5)</em></td><td><strong>23</strong> · 4 in 41.11 s <em>(3)</em></td><td><strong>10</strong> · 8 in 35.66 s <em>(16)</em></td><td><strong>10</strong> · 2 + 8.87 m <em>(16)</em></td><td><strong>66.5</strong></td></tr>
+<tr style="background:#f5caca"><td>15</td><td>A. Andrade</td><td>1</td><td>MEX</td><td><strong>23</strong> · 4 in 53.33 s <em>(3)</em></td><td><strong>T17</strong> · 5 reps <em>(8.5)</em></td><td><strong>6</strong> · 7 in 73.81 s <em>(20)</em></td><td><strong>15</strong> · 7 in 31.28 s <em>(11)</em></td><td><strong>4</strong> · 4 in 85.69 s <em>(22)</em></td><td><strong>64.5</strong></td></tr>
+<tr style="background:#edf5ca"><td>16</td><td>M. Ragg</td><td>2</td><td>NZL</td><td><strong>11</strong> · 4 in 43.79 s <em>(15)</em></td><td><strong>T5</strong> · 7 reps <em>(17.5)</em></td><td><strong>22</strong> · 4 in 31.07 s <em>(4)</em></td><td><strong>4</strong> · 9 in 32.22 s <em>(22)</em></td><td><strong>T20</strong> · 0 in 90.00 s <em>(5)</em></td><td><strong>63.5</strong></td></tr>
+<tr style="background:#edf5ca"><td>17</td><td>W. Derwinsky</td><td>2</td><td>CAN</td><td><strong>18</strong> · 4 in 49.14 s <em>(8)</em></td><td><strong>T5</strong> · 7 reps <em>(17.5)</em></td><td><strong>18</strong> · 5 in 65.14 s <em>(8)</em></td><td><strong>3</strong> · 9 in 29.88 s <em>(23)</em></td><td><strong>T20</strong> · 0 in 90.00 s <em>(5)</em></td><td><strong>61.5</strong></td></tr>
+<tr style="background:#f5caca"><td>18</td><td>T. Evans</td><td>1</td><td>USA</td><td><strong>17</strong> · 4 in 48.58 s <em>(9)</em></td><td><strong>T13</strong> · 6 reps <em>(11.5)</em></td><td><strong>5</strong> · 7 in 65.11 s <em>(21)</em></td><td><strong>13</strong> · 7 in 29.06 s <em>(13)</em></td><td><strong>T20</strong> · 0 in 90.00 s <em>(5)</em></td><td><strong>59.5</strong></td></tr>
+<tr style="background:#caf5dc"><td>19</td><td>E. Aryee</td><td>3</td><td>GHA</td><td><strong>13</strong> · 4 in 44.90 s <em>(13)</em></td><td><strong>T5</strong> · 7 reps <em>(17.5)</em></td><td><strong>15</strong> · 5 in 48.91 s <em>(11)</em></td><td><strong>19</strong> · 6 in 23.66 s <em>(7)</em></td><td><strong>17</strong> · 1 in 13.47 s <em>(9)</em></td><td><strong>57.5</strong></td></tr>
+<tr style="background:#edf5ca"><td>20</td><td>B. Johnson</td><td>2</td><td>USA</td><td><strong>22</strong> · 4 in 51.83 s <em>(4)</em></td><td><strong>T5</strong> · 7 reps <em>(17.5)</em></td><td><strong>11</strong> · 6 in 65.54 s <em>(15)</em></td><td><strong>22</strong> · 4 in 17.75 s <em>(4)</em></td><td><strong>11</strong> · 2 in 45.53 s <em>(15)</em></td><td><strong>55.5</strong></td></tr>
+<tr style="background:#edcaf5"><td>21</td><td>A. Flynn</td><td>5</td><td>GBR</td><td><strong>14</strong> · 4 in 45.66 s <em>(12)</em></td><td><strong>T13</strong> · 6 reps <em>(11.5)</em></td><td><strong>14</strong> · 5 in 46.99 s <em>(12)</em></td><td><strong>18</strong> · 6 in 20.16 s <em>(8)</em></td><td><strong>19</strong> · 1 in 70.94 s <em>(7)</em></td><td><strong>50.5</strong></td></tr>
+<tr style="background:#f5caca"><td>22</td><td>J. Schoonwinkel</td><td>1</td><td>RSA</td><td><strong>20</strong> · 4 in 50.34 s <em>(6)</em></td><td><strong>T13</strong> · 6 reps <em>(11.5)</em></td><td><strong>19</strong> · 5 in 66.86 s <em>(7)</em></td><td><strong>12</strong> · 7 in 25.03 s <em>(14)</em></td><td><strong>16</strong> · 1 in 12.44 s <em>(10)</em></td><td><strong>48.5</strong></td></tr>
+<tr style="background:#caf5dc"><td>23</td><td>M. Kieliszkowski</td><td>3</td><td>POL</td><td><strong>15</strong> · 4 in 46.28 s <em>(11)</em></td><td><strong>23</strong> · 0 reps <em>(3)</em></td><td><strong>21</strong> · 4 in 26.25 s <em>(5)</em></td><td><strong>16</strong> · 7 in 31.97 s <em>(10)</em></td><td><span title="(Withdrew)">DNS (0)</span></td><td><strong>29</strong></td></tr>
+<tr style="background:#cadcf5"><td>24</td><td>L. Richardson</td><td>4</td><td>GBR</td><td><strong>24</strong> · 2 in 13.53 s <em>(2)</em></td><td><span title="(Withdrew)">DNS (0)</span></td><td><span title="(Withdrew)">DNS (0)</span></td><td><span title="(Withdrew)">DNS (0)</span></td><td><span title="(Withdrew)">DNS (0)</span></td><td><strong>2</strong></td></tr>
+<tr style="background:#edcaf5"><td>25</td><td>E. Singleton</td><td>5</td><td>USA</td><td><strong>25</strong> · 2 in 14.25 s <em>(1)</em></td><td><span title="(Withdrew)">DNS (0)</span></td><td><span title="(Withdrew)">DNS (0)</span></td><td><span title="(Withdrew)">DNS (0)</span></td><td><span title="(Withdrew)">DNS (0)</span></td><td><strong>1</strong></td></tr>
+</tbody>
+</table>
 
-### WSM Linear
+## How results are ranked across groups
 
-_World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps._
+Strongman Archives publishes raw results — `"9 in 37.06 s"`, `"13 reps"`, `"35.03 s"`, `"2 + 6.10 m"`, etc. For each event, every athlete is converted into a sortable key with the same shape:
 
-| Rank | Group | **Total** | Members (final pts) |
-|------|-------|-----------|----------------------|
-| 1 | Group 2 | **75.5** | M. Hooper (43.5), P. Haynes (32) |
-| 2 | Group 3 | **72.5** | R. Nel (47), S. Flowers (25.5) |
-| 3 | Group 1 | **67** | T. Stoltman (46.5), E. Williams (20.5) |
-| 4 | Group 4 | **65.5** | T. Mitchell (38.5), O. Fojtů (27) |
-| 5 | Group 5 | **46.5** | P. Kordiyaka (25), L. Stoltman (21.5) |
+- `X in T s` (count + time): rank by count desc, then time asc. More implements first; faster as tiebreaker.
+- `X + D m` (count + partial distance): same primary, then partial distance desc — beats `X in T s` at the same X.
+- `X reps` / `W kg`: rank by the number desc.
+- `T s` alone (time-only events like Truck Pull): rank by time asc.
+- `(Withdrew)` / `(No lift)` / blank: DNS, scores 0.
 
-### F1 2010-present
-
-_Formula 1 (2010+). Steep top, drops off after 10th._
-
-| Rank | Group | **Total** | Members (final pts) |
-|------|-------|-----------|----------------------|
-| 1 | Group 2 | **138.9** | M. Hooper (83.7), P. Haynes (55.2) |
-| 2 | Group 1 | **135.7** | T. Stoltman (96.7), E. Williams (39) |
-| 3 | Group 3 | **135.2** | R. Nel (95), S. Flowers (40.2) |
-| 4 | Group 4 | **122.7** | T. Mitchell (79.5), O. Fojtů (43.2) |
-| 5 | Group 5 | **70.5** | P. Kordiyaka (38.5), L. Stoltman (32) |
-
-### F1 2003-2009
-
-_Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)._
-
-| Rank | Group | **Total** | Members (final pts) |
-|------|-------|-----------|----------------------|
-| 1 | Group 2 | **55.5** | M. Hooper (33.5), P. Haynes (22) |
-| 2 | Group 1 | **53.5** | T. Stoltman (40), E. Williams (13.5) |
-| 3 | Group 3 | **53.5** | R. Nel (39), S. Flowers (14.5) |
-| 4 | Group 4 | **48** | T. Mitchell (32), O. Fojtů (16) |
-| 5 | Group 5 | **23.5** | P. Kordiyaka (13), L. Stoltman (10.5) |
-
-### F1 1991-2002
-
-_Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning._
-
-| Rank | Group | **Total** | Members (final pts) |
-|------|-------|-----------|----------------------|
-| 1 | Group 1 | **43** | T. Stoltman (32), E. Williams (11) |
-| 2 | Group 2 | **35.5** | M. Hooper (23.5), P. Haynes (12) |
-| 3 | Group 3 | **34.5** | R. Nel (30), S. Flowers (4.5) |
-| 4 | Group 4 | **34** | T. Mitchell (27), O. Fojtů (7) |
-| 5 | Group 5 | **9** | P. Kordiyaka (6.5), L. Stoltman (2.5) |
-
-### F1 1961-1990
-
-_Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning._
-
-| Rank | Group | **Total** | Members (final pts) |
-|------|-------|-----------|----------------------|
-| 1 | Group 1 | **40.5** | T. Stoltman (30.5), E. Williams (10) |
-| 2 | Group 2 | **34.5** | M. Hooper (22.5), P. Haynes (12) |
-| 3 | Group 3 | **33.5** | R. Nel (29), S. Flowers (4.5) |
-| 4 | Group 4 | **32.5** | T. Mitchell (25.5), O. Fojtů (7) |
-| 5 | Group 5 | **9** | P. Kordiyaka (6.5), L. Stoltman (2.5) |
-
-### MotoGP
-
-_MotoGP (current). All 10 positions score well. 1.25x for winning._
-
-| Rank | Group | **Total** | Members (final pts) |
-|------|-------|-----------|----------------------|
-| 1 | Group 1 | **162.8** | T. Stoltman (107.3), E. Williams (55.5) |
-| 2 | Group 3 | **161.3** | R. Nel (105), S. Flowers (56.3) |
-| 3 | Group 4 | **152.3** | T. Mitchell (93.5), O. Fojtů (58.8) |
-| 4 | Group 2 | **152.1** | M. Hooper (90.3), P. Haynes (61.8) |
-| 5 | Group 5 | **108.5** | P. Kordiyaka (57), L. Stoltman (51.5) |
-
-### MotoGP Extended
-
-_MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
-
-| Rank | Group | **Total** | Members (final pts) |
-|------|-------|-----------|----------------------|
-| 1 | Group 1 | **162.8** | T. Stoltman (107.3), E. Williams (55.5) |
-| 2 | Group 3 | **161.3** | R. Nel (105), S. Flowers (56.3) |
-| 3 | Group 4 | **152.3** | T. Mitchell (93.5), O. Fojtů (58.8) |
-| 4 | Group 2 | **152.1** | M. Hooper (90.3), P. Haynes (61.8) |
-| 5 | Group 5 | **108.5** | P. Kordiyaka (57), L. Stoltman (51.5) |
-
-## Winner Flip Analysis
-
-The strongest group changes across scoring systems:
-
-- **Group 1** is strongest under: F1 1991-2002, F1 1961-1990, MotoGP, MotoGP Extended
-- **Group 2** is strongest under: WSM Linear, F1 2010-present, F1 2003-2009
+The pooled 25-athlete placement string is fed into WSM Linear (`[25, 24, …, 1]`), with tie-averaging where multiple athletes share a key. Sum across 5 events for the athlete total, then sum athletes per group.
 

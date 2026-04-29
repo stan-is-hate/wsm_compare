@@ -6,7 +6,8 @@ has_children: true
 
 # WSM groups as teams
 
-WSM is the only series here that runs prelim groups (5 groups of 5 athletes; top 2 advance to the final). These pages compare each prelim group as a team — each group's strength is measured by how its athletes performed in the final, summed under each of the 7 scoring systems. Non-finalists contribute 0.
+WSM is the only series here that runs prelim groups before the final. These pages pool every prelim athlete from all groups into one virtual comp, scored under WSM Linear using raw event data (actual times, reps, distances). Per-group total = sum of its members' points. Addresses claims that some prelim groups were stacked harder than others.
 
 - [WSM 2026](reports/wsm2026_groups.md)
 - [WSM 2025](reports/wsm2025_groups.md)
+- [WSM 2024](reports/wsm2024_groups.md)

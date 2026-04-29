@@ -105,12 +105,14 @@ def _parse_row(row, n_events):
     country = country_text.split()[-1] if country_text else ""
     total = float(row[3])
     event_pts = []
+    event_raw = []
     for i in range(n_events):
         result = _strip_html(str(row[4 + 2 * i]))
         pts_raw = row[4 + 2 * i + 1]
         pts = float(pts_raw) if pts_raw not in ("", None, "-") else 0.0
         event_pts.append(pts)
-    return name, country, total, event_pts
+        event_raw.append(result)
+    return name, country, total, event_pts, event_raw
 
 
 def _derive_placement(athletes_pts):
@@ -169,43 +171,165 @@ def _slug_from_title(title):
     return s.strip("_")
 
 
-def _derive_filename_from_page(contest_id):
-    """Derive a filename slug from the contest page title."""
+def _fetch_contest_page_html(contest_id):
+    """One throttled GET of the contest's view page; returns the HTML."""
     _fetch_throttle()
     req = urllib.request.Request(
         _FETCH_HEADER_URL.format(cid=contest_id),
         headers={"User-Agent": "Mozilla/5.0 (wsm_compare canonical fetcher)"},
     )
     with urllib.request.urlopen(req) as resp:
-        html = resp.read().decode("utf-8", errors="replace")
+        return resp.read().decode("utf-8", errors="replace")
+
+
+def _derive_filename_from_page(contest_id):
+    """Derive a filename slug from the contest page title."""
+    html = _fetch_contest_page_html(contest_id)
     m = re.search(r"<title>([^<]+)</title>", html)
     if not m:
         raise RuntimeError(f"Couldn't find <title> for contest {contest_id}")
     return _slug_from_title(m.group(1))
 
 
-def fetch_csv(contest_id):
-    """Fetch a contest from Strongman Archives and return CSV text."""
+def discover_wsm_year(final_contest_id):
+    """Scrape a WSM Final's view page to find the year and the 5 prelim group IDs.
+
+    Strongman Archives renders the WSM Final page with the final's results table
+    plus the 5 prelim group tables embedded below, each preceded by an
+    ``<h3>YYYY WSM Group N</h3>`` heading. The final itself is identified by the
+    page ``<title>``. This is consistent across years so it works for any WSM.
+
+    Returns a dict: {"year": "2026", "final_id": 2361, "groups": {1: 2478, …}}.
+    Raises RuntimeError if the page doesn't match the expected structure.
+    """
+    html = _fetch_contest_page_html(final_contest_id)
+    title_m = re.search(r"<title>([^<]+)</title>", html)
+    if not title_m:
+        raise RuntimeError(f"contest {final_contest_id}: no <title>")
+    title = title_m.group(1)
+    year_m = re.search(r"\b(19|20)\d{2}\b", title)
+    if not year_m or "WSM" not in title.upper() or "FINAL" not in title.upper():
+        raise RuntimeError(f"contest {final_contest_id}: <title>={title!r} doesn't look like a WSM Final page")
+    year = re.search(r"\b((?:19|20)\d{2})\b", title).group(1)
+
+    # All <table id="ContestResultsN"> tags in document order.
+    table_ids = re.findall(r'<table\s+id="ContestResults(\d+)"', html)
+    if not table_ids:
+        raise RuntimeError(f"contest {final_contest_id}: no ContestResults tables on page")
+    if int(table_ids[0]) != int(final_contest_id):
+        raise RuntimeError(f"contest {final_contest_id}: first table id is {table_ids[0]}, expected the final")
+
+    # Group headings in document order.
+    group_headings = re.findall(
+        rf'<h3[^>]*>\s*{year}\s+WSM\s+Group\s+(\d+)\s*</h3>', html, re.IGNORECASE)
+    if len(group_headings) != len(table_ids) - 1:
+        raise RuntimeError(
+            f"contest {final_contest_id}: found {len(group_headings)} group headings "
+            f"but {len(table_ids) - 1} prelim tables — page layout may have changed")
+
+    groups = {int(num): int(tid) for num, tid in zip(group_headings, table_ids[1:])}
+    return {"year": year, "final_id": int(final_contest_id), "groups": groups}
+
+
+def _save_contest_csvs(contest_id, name, comps_dir):
+    """Fetch a contest once and write both the placement CSV and the raw CSV.
+    Skips writing if the file already exists. Returns (placement_path, raw_path)."""
+    placement_path = os.path.join(comps_dir, f"{name}.csv")
+    raw_path = os.path.join(comps_dir, "raw", f"{name}.csv")
+    if os.path.exists(placement_path) and os.path.exists(raw_path):
+        return placement_path, raw_path, False  # already cached
+
+    events, athletes, countries, pts_per_event, raw_per_event = fetch_contest_payload(contest_id)
+    safe_events = _safe_event_names(events)
+
+    placements_per_event = [_derive_placement(pe) for pe in pts_per_event]
+    placement_lines = ["athlete,country," + ",".join(safe_events)]
+    for a in athletes:
+        placement_lines.append(",".join([a, countries[a]] +
+                                        [placements_per_event[i][a] for i in range(len(events))]))
+    with open(placement_path, "w") as f:
+        f.write("\n".join(placement_lines) + "\n")
+
+    os.makedirs(os.path.dirname(raw_path), exist_ok=True)
+    raw_lines = ["athlete,country," + ",".join(safe_events)]
+    for a in athletes:
+        raw_lines.append(",".join([a, countries[a]] +
+                                  [raw_per_event[i][a].replace(",", " ") for i in range(len(events))]))
+    with open(raw_path, "w") as f:
+        f.write("\n".join(raw_lines) + "\n")
+    return placement_path, raw_path, True
+
+
+def _update_contest_ids_manifest(comps_dir, entries):
+    """Append/update entries in comps/contest_ids.csv, deduplicating by slug.
+
+    entries: list of (slug, contest_id). Existing slugs are overwritten with
+    the new contest_id. The output stays sorted by slug.
+    """
+    manifest_path = os.path.join(comps_dir, "contest_ids.csv")
+    existing = {}
+    if os.path.exists(manifest_path):
+        with open(manifest_path) as f:
+            for row in csv.DictReader(f):
+                existing[row["slug"]] = row["contest_id"]
+    for slug, cid in entries:
+        existing[slug] = str(cid)
+    with open(manifest_path, "w") as f:
+        f.write("slug,contest_id\n")
+        for slug in sorted(existing):
+            f.write(f"{slug},{existing[slug]}\n")
+
+
+def fetch_contest_payload(contest_id):
+    """One HTTP round-trip; return event names + parsed rows.
+
+    Returns (events, athletes, countries, pts_per_event, raw_per_event) where:
+      events            : [event_name, ...]
+      athletes          : [athlete_name, ...] in the order returned by SA
+      countries         : {athlete: country}
+      pts_per_event     : [{athlete: pts}, ...] aligned with events
+      raw_per_event     : [{athlete: raw_str}, ...] aligned with events — the
+                          original "9 in 37.06 s" / "13 reps" / "(No lift)" text
+    """
     events = fetch_event_names(contest_id)
-    payload = fetch_data(contest_id)
-    rows = payload["data"]
+    rows = fetch_data(contest_id)["data"]
 
     athletes = []
     countries = {}
     pts_per_event = [{} for _ in events]
+    raw_per_event = [{} for _ in events]
     for row in rows:
-        name, country, _total, evt_pts = _parse_row(row, len(events))
+        name, country, _total, evt_pts, evt_raw = _parse_row(row, len(events))
         athletes.append(name)
         countries[name] = country
-        for i, p in enumerate(evt_pts):
+        for i, (p, r) in enumerate(zip(evt_pts, evt_raw)):
             pts_per_event[i][name] = p
+            raw_per_event[i][name] = r
+    return events, athletes, countries, pts_per_event, raw_per_event
 
+
+def _safe_event_names(events):
+    return [re.sub(r"[^A-Za-z0-9]+", "_", e).strip("_") for e in events]
+
+
+def fetch_csv(contest_id):
+    """Fetch a contest from Strongman Archives and return CSV text (placements)."""
+    events, athletes, countries, pts_per_event, _ = fetch_contest_payload(contest_id)
     placements_per_event = [_derive_placement(pe) for pe in pts_per_event]
 
-    safe_event_names = [re.sub(r"[^A-Za-z0-9]+", "_", e).strip("_") for e in events]
-    lines = ["athlete,country," + ",".join(safe_event_names)]
+    lines = ["athlete,country," + ",".join(_safe_event_names(events))]
     for a in athletes:
         row_cells = [a, countries[a]] + [placements_per_event[i][a] for i in range(len(events))]
+        lines.append(",".join(row_cells))
+    return "\n".join(lines) + "\n"
+
+
+def fetch_raw_csv(contest_id):
+    """Fetch a contest and return CSV text with raw event values (e.g. '9 in 37.06 s')."""
+    events, athletes, countries, _, raw_per_event = fetch_contest_payload(contest_id)
+    lines = ["athlete,country," + ",".join(_safe_event_names(events))]
+    for a in athletes:
+        row_cells = [a, countries[a]] + [raw_per_event[i][a].replace(",", " ") for i in range(len(events))]
         lines.append(",".join(row_cells))
     return "\n".join(lines) + "\n"
 
@@ -570,58 +694,233 @@ def write_comp_report(path, out_dir):
     return out_path, results
 
 
-_WSM_GROUP_RE = re.compile(r"^wsm(\d{4})_g[1-5]$")
+_WSM_GROUP_RE = re.compile(r"^wsm(\d{4})_g(\d+)$")
+
+
+def _group_color(group_num, total_groups):
+    """Light pastel hex color for group_num (1-indexed) with hues evenly spaced
+    around the wheel by total_groups. Same group_num/total_groups → same color
+    on every table so the two tables on a page stay visually consistent.
+    """
+    h = ((group_num - 1) * 360.0 / total_groups) % 360
+    s, lightness = 0.70, 0.88
+    c = (1 - abs(2 * lightness - 1)) * s
+    x = c * (1 - abs((h / 60.0) % 2 - 1))
+    m = lightness - c / 2
+    if h < 60:    r1, g1, b1 = c, x, 0
+    elif h < 120: r1, g1, b1 = x, c, 0
+    elif h < 180: r1, g1, b1 = 0, c, x
+    elif h < 240: r1, g1, b1 = 0, x, c
+    elif h < 300: r1, g1, b1 = x, 0, c
+    else:         r1, g1, b1 = c, 0, x
+    r, g, b = int((r1 + m) * 255), int((g1 + m) * 255), int((b1 + m) * 255)
+    return f"#{r:02x}{g:02x}{b:02x}"
+
+
+def parse_raw_result(s):
+    """Parse a Strongman Archives raw result string into a comparison key.
+
+    Returns a tuple where higher → better placement, or None for DNS / withdrew /
+    unparseable. Within one event, all athletes' keys must share the same shape
+    so tuple comparison is meaningful (true for every WSM event format we've
+    seen — count+time/distance share a 3-tuple, reps-only share a 1-tuple, etc.).
+
+    Recognized formats (covers WSM 2025-2026; extend here for older events):
+      "X in T s"   (count + time)        →  (X, 0,  -T)
+      "X + D m"    (count + partial m)   →  (X, D,   0)
+      "D m"        (distance only)       →  (0, D,   0)
+      "X reps"                           →  (X,)
+      "T s"        (time only, lower=better) → (-T,)
+      "W kg"       (weight only)         →  (W,)
+      "(Withdrew)" / "(No lift)" / ""    → None  (DNS-equivalent)
+    """
+    s = s.strip()
+    if not s or (s.startswith("(") and s.endswith(")")):
+        return None
+    m = re.match(r"^(\d+)\s+in\s+([\d.]+)\s*s$", s)
+    if m:
+        return (int(m.group(1)), 0.0, -float(m.group(2)))
+    m = re.match(r"^(\d+)\s*\+\s*([\d.]+)\s*m$", s)
+    if m:
+        return (int(m.group(1)), float(m.group(2)), 0.0)
+    m = re.match(r"^(\d+)\s+reps?$", s)  # "X reps" or "1 rep"
+    if m:
+        return (int(m.group(1)),)
+    m = re.match(r"^(\d+)\s+stones?$", s)  # "X stones" or "1 stone"
+    if m:
+        return (int(m.group(1)),)
+    m = re.match(r"^([\d.]+)\s*s$", s)
+    if m:
+        return (-float(m.group(1)),)
+    m = re.match(r"^([\d.]+)\s*m$", s)
+    if m:
+        return (0, float(m.group(1)), 0.0)
+    m = re.match(r"^([\d.]+)\s*kg$", s)
+    if m:
+        return (float(m.group(1)),)
+    return None
+
+
+def _placements_from_keys(athlete_keys):
+    """Convert {athlete: comparison_key_or_None} into {athlete: placement_str}.
+
+    None → "DNS". Equal keys share a placement (T-prefixed).
+    """
+    keyed = [(a, k) for a, k in athlete_keys.items() if k is not None]
+    placements = {a: "DNS" for a, k in athlete_keys.items() if k is None}
+    keyed.sort(key=lambda x: x[1], reverse=True)
+
+    cur_pos = 1
+    i = 0
+    while i < len(keyed):
+        j = i
+        while j + 1 < len(keyed) and keyed[j + 1][1] == keyed[i][1]:
+            j += 1
+        n = j - i + 1
+        if n == 1:
+            placements[keyed[i][0]] = str(cur_pos)
+        else:
+            for k in range(i, j + 1):
+                placements[keyed[k][0]] = f"T{cur_pos}"
+        cur_pos += n
+        i = j + 1
+    return placements
+
+
+def _load_raw_comp(path):
+    """Read a raw-data CSV. Returns (athletes, countries, events_dict)."""
+    with open(path) as f:
+        reader = csv.DictReader(f)
+        rows = list(reader)
+    if not rows:
+        return [], {}, {}
+    event_names = [k for k in rows[0].keys() if k not in ("athlete", "country")]
+    athletes = [r["athlete"] for r in rows]
+    countries = {r["athlete"]: r["country"] for r in rows}
+    events = {ev: {r["athlete"]: r[ev] for r in rows} for ev in event_names}
+    return athletes, countries, events
+
+
+def compute_pooled_groups_standings(year, comps_dir):
+    """Pool every prelim athlete for a WSM year and score them as one virtual
+    N-athlete comp under WSM Linear (1st = N pts, last = 1 pt). Group count is
+    discovered from the filesystem — older WSMs may have 4 groups, newer ones
+    5 or 6. Reads raw event values from comps/raw/wsm{year}_g*.csv. Returns
+    None if no raw CSVs are found.
+    """
+    raw_paths = sorted(
+        glob.glob(os.path.join(comps_dir, "raw", f"wsm{year}_g*.csv")),
+        key=lambda p: int(re.search(r"_g(\d+)\.csv$", p).group(1)),
+    )
+    if not raw_paths:
+        return None
+
+    all_athletes = []
+    countries = {}
+    group_of = {}
+    event_names = None
+    raw_per_event = None
+    group_nums = []
+    for p in raw_paths:
+        g = int(re.search(r"_g(\d+)\.csv$", p).group(1))
+        group_nums.append(g)
+        ath, ctry, evs = _load_raw_comp(p)
+        if event_names is None:
+            event_names = list(evs.keys())
+            raw_per_event = {ev: {} for ev in event_names}
+        elif list(evs.keys()) != event_names:
+            raise ValueError(f"WSM {year} group {g} events {list(evs.keys())} don't match {event_names}")
+        for a in ath:
+            all_athletes.append(a)
+            countries[a] = ctry[a]
+            group_of[a] = g
+            for ev in event_names:
+                raw_per_event[ev][a] = evs[ev][a]
+
+    # Per-event pooled placements + WSM-Linear points across the full pooled field.
+    n = len(all_athletes)
+    scale = list(range(n, 0, -1))  # WSM Linear: N, N-1, ..., 1
+    placement_per_event = {}
+    pts_per_event = {}
+    unparseable_per_event = {}
+    for ev in event_names:
+        keys = {}
+        unparseable = []
+        for a in all_athletes:
+            raw = (raw_per_event[ev][a] or "").strip()
+            k = parse_raw_result(raw)
+            keys[a] = k
+            # If the raw string isn't empty and isn't a parenthesized DNS marker
+            # but still didn't parse, the parser is missing a format — flag it.
+            if k is None and raw and not (raw.startswith("(") and raw.endswith(")")):
+                unparseable.append((a, raw))
+        unparseable_per_event[ev] = unparseable
+        placement_per_event[ev] = _placements_from_keys(keys)
+        pts_per_event[ev] = compute_event_points(placement_per_event[ev], scale)
+
+    athlete_total = {a: sum(pts_per_event[ev][a] for ev in event_names) for a in all_athletes}
+    group_nums_unique = sorted(set(group_nums))
+    group_total = {g: sum(athlete_total[a] for a in all_athletes if group_of[a] == g)
+                   for g in group_nums_unique}
+
+    return {
+        "athletes": all_athletes,
+        "countries": countries,
+        "group_of": group_of,
+        "group_nums": group_nums_unique,
+        "event_names": event_names,
+        "raw_per_event": raw_per_event,
+        "placement_per_event": placement_per_event,
+        "pts_per_event": pts_per_event,
+        "athlete_total": athlete_total,
+        "group_total": group_total,
+        "unparseable_per_event": unparseable_per_event,
+    }
 
 
 def write_wsm_groups_report(year, comps_dir, out_dir):
-    """Generate a 'groups as teams' report for a WSM year.
+    """Generate the WSM groups-as-teams report for a year.
 
-    Loads the 5 prelim group CSVs to get group rosters, and the WSM final CSV to
-    score each group: for each scoring system, group total = sum of group members'
-    points in the final (non-finalists score 0). Produces standings, podium-per-system,
-    and winner-flip analysis at the group level.
+    Pools all 25 prelim athletes into one virtual comp, scores under WSM Linear
+    using raw event data (times/reps/distances), then sums per group. Renders
+    two color-coded tables: group totals (5 rows) and individual standings (25
+    rows). Same group → same row color across both tables. Returns the output
+    path, or None if raw data is missing.
     """
-    finals_path = os.path.join(comps_dir, f"wsm{year}_finals.csv")
-    if not os.path.exists(finals_path):
-        return None
-    group_paths = [os.path.join(comps_dir, f"wsm{year}_g{g}.csv") for g in range(1, 6)]
-    if not all(os.path.exists(p) for p in group_paths):
+    pooled = compute_pooled_groups_standings(year, comps_dir)
+    if pooled is None:
         return None
 
-    # Build group roster: {group_num: [athlete, ...]}
-    group_roster = {}
-    athlete_to_group = {}
-    for g, gp in enumerate(group_paths, 1):
-        _, athletes, _, _ = load_comp(gp)
-        group_roster[g] = list(athletes)
-        for a in athletes:
-            athlete_to_group[a] = g
+    # Warn loudly if any event had unparseable values — earlier years may use
+    # event formats this parser doesn't yet recognize.
+    for ev, unparseable in pooled["unparseable_per_event"].items():
+        for athlete, raw in unparseable:
+            print(f"WARNING: WSM {year} {ev}: unparseable result for {athlete!r}: {raw!r}",
+                  file=sys.stderr)
 
-    # Score the final under all systems
-    _, finalists, finalist_countries, final_events = load_comp(finals_path)
-    final_results = compute_all_systems(finalists, final_events)
+    athletes = pooled["athletes"]
+    group_of = pooled["group_of"]
+    group_nums = pooled["group_nums"]
+    event_names = pooled["event_names"]
+    raw_per_event = pooled["raw_per_event"]
+    placement_per_event = pooled["placement_per_event"]
+    pts_per_event = pooled["pts_per_event"]
+    athlete_total = pooled["athlete_total"]
+    group_total = pooled["group_total"]
+    countries = pooled["countries"]
+    n_groups = len(group_nums)
+    n_athletes = len(athletes)
+    color_for = {g: _group_color(g, n_groups) for g in group_nums}
 
-    # group_pts_per_system[sys_name] -> sorted [(group_num, total), ...] desc
-    group_pts_per_system = {}
-    # group_member_pts[sys_name][group_num] -> [(athlete, pts), ...] sorted desc
-    group_member_pts = {}
-    for sys_name, res in final_results.items():
-        totals = {g: 0.0 for g in range(1, 6)}
-        members = {g: [] for g in range(1, 6)}
-        for athlete, total in res.sorted_totals:
-            g = athlete_to_group.get(athlete)
-            if g is None:
-                continue  # finalist not from any tracked group (shouldn't happen)
-            totals[g] += total
-            members[g].append((athlete, total))
-        group_pts_per_system[sys_name] = sorted(totals.items(), key=lambda x: -x[1])
-        group_member_pts[sys_name] = {g: sorted(members[g], key=lambda x: -x[1]) for g in range(1, 6)}
+    group_ranking = sorted(group_total.items(), key=lambda x: -x[1])
+    athlete_ranking = sorted(athletes, key=lambda a: -athlete_total[a])
 
-    finalist_set = set(finalists)
+    # Roster sizes (informational — old WSMs may have uneven group sizes)
+    group_sizes = {g: sum(1 for a in athletes if group_of[a] == g) for g in group_nums}
+
     lines = []
     w = lines.append
 
-    # Front matter — sidebar: WSM Compare Groups → WSM YYYY
     w("---")
     w(f"title: WSM {year}")
     w("parent: WSM Compare Groups")
@@ -630,70 +929,75 @@ def write_wsm_groups_report(year, comps_dir, out_dir):
     w("")
     w(f"# WSM {year} — Groups as Teams")
     w("")
-    w("5 prelim groups of 5 athletes each. Top 2 from each group advance to the final.")
-    w("Group strength = sum of group members' points in the final (non-finalists score 0).")
-    w("Each scoring system gives a different ranking.")
+    sizes_str = ", ".join(f"Group {g}: {group_sizes[g]}" for g in group_nums)
+    w(f"{n_groups} prelim groups, {n_athletes} athletes total ({sizes_str}). All pooled into a "
+      f"single virtual {n_athletes}-athlete comp, scored under **WSM Linear** "
+      f"(1st = {n_athletes} pts, last = 1 pt) on raw event data — actual times, reps, distances "
+      "— *not* within-group placements. Per-group total = sum of its members' points. "
+      "This addresses claims that some prelim groups were stacked harder than others.")
     w("")
 
-    # Group rosters
-    w("## Group Rosters")
+    w("## Group totals")
     w("")
-    w("| Group | Athletes (✓ = made the final) |")
-    w("|-------|-------------------------------|")
-    for g in range(1, 6):
-        roster = group_roster[g]
-        rendered = ", ".join(f"{a} ✓" if a in finalist_set else a for a in roster)
-        w(f"| **Group {g}** | {rendered} |")
-    w("")
-
-    # Podium per system — overview before details
-    w("## Group Strength Per System")
-    w("")
-    w("| System | 1st | 2nd | 3rd | 4th | 5th |")
-    w("|--------|-----|-----|-----|-----|-----|")
-    for system in SCORING_SYSTEMS:
-        ranking = group_pts_per_system[system.name]
-        line = f"| {system.name} |"
-        for group_num, total in ranking:
-            line += f" Group {group_num} ({fmt(total)}) |"
-        w(line)
+    w("<table>")
+    w("<thead><tr><th>Rank</th><th>Group</th><th>Total points</th></tr></thead>")
+    w("<tbody>")
+    for rank, (g, total) in enumerate(group_ranking, 1):
+        bg = color_for[g]
+        w(f'<tr style="background:{bg}"><td>{rank}</td><td><strong>Group {g}</strong></td>'
+          f'<td><strong>{fmt(total)}</strong></td></tr>')
+    w("</tbody>")
+    w("</table>")
     w("")
 
-    # Standings under each system
-    w("## Standings Under Each Scoring System")
+    w(f"## Individual standings (pooled across all {n_athletes})")
     w("")
-    for system in SCORING_SYSTEMS:
-        ranking = group_pts_per_system[system.name]
-        w(f"### {system.name}")
-        w("")
-        w(f"_{system.description}_")
-        w("")
-        w("| Rank | Group | **Total** | Members (final pts) |")
-        w("|------|-------|-----------|----------------------|")
-        for rank, (group_num, total) in enumerate(ranking, 1):
-            members = group_member_pts[system.name][group_num]
-            members_str = ", ".join(f"{a} ({fmt(p)})" for a, p in members)
-            w(f"| {rank} | Group {group_num} | **{fmt(total)}** | {members_str} |")
-        w("")
+    w("Each cell shows the within-pool placement (the points-determining number) "
+      "with the raw result underneath.")
+    w("")
+    w("<table>")
+    header = "<tr><th>#</th><th>Athlete</th><th>Group</th><th>Country</th>"
+    for ev in event_names:
+        header += f"<th>{ev.replace('_', ' ')}</th>"
+    header += "<th>Total</th></tr>"
+    w("<thead>" + header + "</thead>")
+    w("<tbody>")
+    for rank, a in enumerate(athlete_ranking, 1):
+        g = group_of[a]
+        bg = color_for[g]
+        cells = [str(rank), a, str(g), countries[a]]
+        for ev in event_names:
+            place = placement_per_event[ev][a]
+            raw = raw_per_event[ev][a]
+            pts = pts_per_event[ev][a]
+            if place == "DNS":
+                cells.append(f'<span title="{raw}">DNS (0)</span>')
+            else:
+                cells.append(f'<strong>{place}</strong> · {raw} <em>({fmt(pts)})</em>')
+        cells.append(f"<strong>{fmt(athlete_total[a])}</strong>")
+        row = "".join(f"<td>{c}</td>" for c in cells)
+        w(f'<tr style="background:{bg}">{row}</tr>')
+    w("</tbody>")
+    w("</table>")
+    w("")
 
-    # Winner-flip analysis
-    winners = {sn: group_pts_per_system[sn][0][0] for sn in group_pts_per_system}
-    unique_winners = set(winners.values())
-    w("## Winner Flip Analysis")
+    # Methodology
+    w("## How results are ranked across groups")
     w("")
-    if len(unique_winners) > 1:
-        w("The strongest group changes across scoring systems:")
-        w("")
-        by_winner = defaultdict(list)
-        for sn, group_num in winners.items():
-            by_winner[group_num].append(sn)
-        for group_num, sys_list in sorted(by_winner.items()):
-            w(f"- **Group {group_num}** is strongest under: {', '.join(sys_list)}")
-        w("")
-    else:
-        only = next(iter(unique_winners))
-        w(f"**Group {only}** is strongest under every scoring system tested. No flip.")
-        w("")
+    w("Strongman Archives publishes raw results — `\"9 in 37.06 s\"`, `\"13 reps\"`, "
+      "`\"35.03 s\"`, `\"2 + 6.10 m\"`, etc. For each event, every athlete is converted "
+      "into a sortable key with the same shape:")
+    w("")
+    w("- `X in T s` (count + time): rank by count desc, then time asc. More implements first; faster as tiebreaker.")
+    w("- `X + D m` (count + partial distance): same primary, then partial distance desc — beats `X in T s` at the same X.")
+    w("- `X reps` / `W kg`: rank by the number desc.")
+    w("- `T s` alone (time-only events like Truck Pull): rank by time asc.")
+    w("- `(Withdrew)` / `(No lift)` / blank: DNS, scores 0.")
+    w("")
+    w("The pooled 25-athlete placement string is fed into WSM Linear (`[25, 24, …, 1]`), "
+      "with tie-averaging where multiple athletes share a key. Sum across 5 events for "
+      "the athlete total, then sum athletes per group.")
+    w("")
 
     out_path = os.path.join(out_dir, f"wsm{year}_groups.md")
     os.makedirs(out_dir, exist_ok=True)
@@ -720,8 +1024,37 @@ def write_combined_report(comps_dir, out_dir):
     # WSM groups-as-teams reports — one per year that has all the group CSVs.
     group_years = sorted({m.group(1) for p in all_paths
                           if (m := _WSM_GROUP_RE.match(os.path.basename(p).replace(".csv", "")))})
+    written_group_years = []
     for year in group_years:
-        write_wsm_groups_report(year, comps_dir, out_dir)
+        if write_wsm_groups_report(year, comps_dir, out_dir) is not None:
+            written_group_years.append(year)
+
+    # Refresh the WSM Compare Groups parent stub (sidebar dropdown contents are
+    # driven by per-page front matter; this body is just a convenience link list).
+    if written_group_years:
+        repo_root = os.path.dirname(os.path.abspath(out_dir))
+        parent_path = os.path.join(repo_root, "wsm_groups.md")
+        parent_lines = [
+            "---",
+            "title: WSM Compare Groups",
+            "nav_order: 5",
+            "has_children: true",
+            "---",
+            "",
+            "# WSM groups as teams",
+            "",
+            "WSM is the only series here that runs prelim groups before the final. "
+            "These pages pool every prelim athlete from all groups into one virtual comp, "
+            "scored under WSM Linear using raw event data (actual times, reps, distances). "
+            "Per-group total = sum of its members' points. Addresses claims that some prelim "
+            "groups were stacked harder than others.",
+            "",
+        ]
+        for year in sorted(written_group_years, reverse=True):
+            parent_lines.append(f"- [WSM {year}](reports/wsm{year}_groups.md)")
+        parent_lines.append("")
+        with open(parent_path, "w") as f:
+            f.write("\n".join(parent_lines))
 
     lines = []
     w = lines.append
@@ -876,6 +1209,12 @@ Examples:
     p_fetch.add_argument("url_or_id", help="Strongman Archives URL or bare contest ID (e.g., 2361)")
     p_fetch.add_argument("--name", help="Override the auto-derived output filename (without .csv extension)")
 
+    p_fetch_year = subparsers.add_parser(
+        "fetch-wsm-year",
+        help="Given a WSM Final URL or ID, auto-discover the 5 prelim group IDs and fetch all 6 contests",
+    )
+    p_fetch_year.add_argument("url_or_id", help="WSM Final URL or bare contest ID (e.g., 2361 or the 2024 final's id)")
+
     p_compare = subparsers.add_parser("compare", help="Apply scoring systems to a single field (any CSV)")
     p_compare.add_argument("csv", nargs="?", help="Path to comp CSV (omit with --all/--report)")
     p_compare.add_argument("--all", action="store_true", help="Process all CSVs in comps/")
@@ -885,19 +1224,53 @@ Examples:
 
     if args.command == "fetch":
         contest_id = parse_contest_id(args.url_or_id)
-        csv_text = fetch_csv(contest_id)
+        events, athletes, countries, pts_per_event, raw_per_event = fetch_contest_payload(contest_id)
         if args.name:
             name = args.name
         else:
             name = _derive_filename_from_page(contest_id)
+
+        # Placement CSV (the canonical comp file)
+        placements_per_event = [_derive_placement(pe) for pe in pts_per_event]
+        safe_events = _safe_event_names(events)
+        placement_lines = ["athlete,country," + ",".join(safe_events)]
+        for a in athletes:
+            placement_lines.append(",".join([a, countries[a]] +
+                                            [placements_per_event[i][a] for i in range(len(events))]))
         out_path = os.path.join(COMPS_DIR, f"{name}.csv")
         if os.path.exists(out_path):
             raise ValueError(f"Refusing to overwrite {out_path}; rename or delete it first.")
         with open(out_path, "w") as f:
-            f.write(csv_text)
-        n_athletes = len(csv_text.strip().split("\n")) - 1
-        n_events = len(csv_text.split("\n")[0].split(",")) - 2
-        print(f"Wrote {out_path} ({n_athletes} athletes, {n_events} events)")
+            f.write("\n".join(placement_lines) + "\n")
+
+        # Raw CSV (preserves the original "9 in 37.06 s" / "13 reps" / "(No lift)"
+        # text — used for cross-group pooled scoring.)
+        raw_dir = os.path.join(COMPS_DIR, "raw")
+        os.makedirs(raw_dir, exist_ok=True)
+        raw_lines = ["athlete,country," + ",".join(safe_events)]
+        for a in athletes:
+            raw_lines.append(",".join([a, countries[a]] +
+                                      [raw_per_event[i][a].replace(",", " ") for i in range(len(events))]))
+        raw_path = os.path.join(raw_dir, f"{name}.csv")
+        with open(raw_path, "w") as f:
+            f.write("\n".join(raw_lines) + "\n")
+
+        print(f"Wrote {out_path} and {raw_path} ({len(athletes)} athletes, {len(events)} events)")
+        return
+
+    elif args.command == "fetch-wsm-year":
+        final_id = parse_contest_id(args.url_or_id)
+        info = discover_wsm_year(final_id)
+        year = info["year"]
+        print(f"WSM {year} (final={final_id}): groups {info['groups']}")
+        manifest_entries = [(f"wsm{year}_finals", final_id)]
+        manifest_entries += [(f"wsm{year}_g{g}", info["groups"][g]) for g in sorted(info["groups"])]
+        for slug, cid in manifest_entries:
+            _, _, fetched = _save_contest_csvs(cid, slug, COMPS_DIR)
+            status = "wrote" if fetched else "cached"
+            print(f"  {status} {slug}.csv (cid={cid})")
+        _update_contest_ids_manifest(COMPS_DIR, manifest_entries)
+        print(f"Updated {os.path.join(COMPS_DIR, 'contest_ids.csv')}")
         return
 
     elif args.command == "compare":
