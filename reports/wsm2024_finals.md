@@ -1,7 +1,7 @@
 ---
 title: WSM 2024 Finals
-parent: Men's
-nav_order: 106
+parent: Scoring systems
+nav_order: 160
 ---
 
 # WSM 2024 Finals

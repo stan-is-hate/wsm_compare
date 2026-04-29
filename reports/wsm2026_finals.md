@@ -1,7 +1,7 @@
 ---
 title: WSM 2026 Finals
-parent: Men's
-nav_order: 104
+parent: Scoring systems
+nav_order: 140
 ---
 
 # WSM 2026 Finals

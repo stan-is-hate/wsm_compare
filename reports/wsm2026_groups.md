@@ -1,6 +1,6 @@
 ---
 title: WSM 2026
-parent: WSM Compare Groups
+parent: WSM group strength
 nav_order: 4
 ---
 

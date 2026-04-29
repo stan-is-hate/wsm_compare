@@ -1,10 +1,10 @@
 ---
-title: Rogue 2025
-parent: Women's
-nav_order: 305
+title: Rogue 2025 W
+parent: Scoring systems
+nav_order: 355
 ---
 
-# Rogue 2025
+# Rogue 2025 W
 
 **10 athletes, 6 events**
 

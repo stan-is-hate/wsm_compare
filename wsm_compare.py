@@ -553,12 +553,15 @@ def _comp_nav_metadata(comp_name):
     """Return (title, parent, nav_order) for a comp report — used in Jekyll front matter
     so just-the-docs can build the sidebar.
 
+    All comp reports live under one parent ("Scoring systems") in a flat list,
+    sorted: WSM finals → Arnolds → Rogues → SMOEs; within a series, newest year
+    first; within a year, men's first then women's.
+
     Returns None if the comp name doesn't match the expected pattern; the report still
     gets written but without sidebar nav metadata.
     """
     is_women = comp_name.endswith("_w")
     base = comp_name[:-2] if is_women else comp_name
-    parent = "Women's" if is_women else "Men's"
 
     m = re.match(r"^([a-z]+)(\d{4})(_finals)?$", base)
     if not m:
@@ -574,12 +577,13 @@ def _comp_nav_metadata(comp_name):
     title_parts = [series_pretty, year_str]
     if finals_suffix:
         title_parts.append("Finals")
+    if is_women:
+        title_parts.append("W")
     title = " ".join(title_parts)
 
-    # nav_order: smaller = first. Encode as series_order * 100 + (2030 - year)
-    # so within each series the most recent year sorts first.
-    nav_order = series_order * 100 + (2030 - year)
-    return title, parent, nav_order
+    # Sort key: series block (×100), year recency (×10), then men/women.
+    nav_order = series_order * 100 + (2030 - year) * 10 + (5 if is_women else 0)
+    return title, "Scoring systems", nav_order
 
 
 def write_comp_report(path, out_dir):
@@ -924,7 +928,7 @@ def write_wsm_groups_report(year, comps_dir, out_dir):
 
     w("---")
     w(f"title: WSM {year}")
-    w("parent: WSM Compare Groups")
+    w("parent: WSM group strength")
     w(f"nav_order: {2030 - int(year)}")
     w("---")
     w("")
@@ -1030,15 +1034,15 @@ def write_combined_report(comps_dir, out_dir):
         if write_wsm_groups_report(year, comps_dir, out_dir) is not None:
             written_group_years.append(year)
 
-    # Refresh the WSM Compare Groups parent stub (sidebar dropdown contents are
+    # Refresh the WSM group strength parent stub (sidebar dropdown contents are
     # driven by per-page front matter; this body is just a convenience link list).
     if written_group_years:
         repo_root = os.path.dirname(os.path.abspath(out_dir))
         parent_path = os.path.join(repo_root, "wsm_groups.md")
         parent_lines = [
             "---",
-            "title: WSM Compare Groups",
-            "nav_order: 5",
+            "title: WSM group strength",
+            "nav_order: 3",
             "has_children: true",
             "---",
             "",
@@ -1061,8 +1065,9 @@ def write_combined_report(comps_dir, out_dir):
     w = lines.append
     # Front matter for just-the-docs sidebar
     w("---")
-    w("title: Cross-Comp Summary")
-    w("nav_order: 2")
+    w("title: Cross-comp details")
+    w("parent: Scoring systems")
+    w("nav_order: 1")
     w("---")
     w("")
     w("# WSM Scoring System Comparison — All Comps")

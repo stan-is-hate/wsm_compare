@@ -1,6 +1,6 @@
 ---
-title: WSM Compare Groups
-nav_order: 5
+title: WSM group strength
+nav_order: 3
 has_children: true
 ---
 

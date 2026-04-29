@@ -1,7 +1,7 @@
 ---
 title: Rogue 2025
-parent: Men's
-nav_order: 305
+parent: Scoring systems
+nav_order: 350
 ---
 
 # Rogue 2025

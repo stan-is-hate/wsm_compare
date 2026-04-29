@@ -10,13 +10,11 @@ People love two arguments about strongman: whether the scoring system is fair, a
 
 ---
 
-## [Data on scoring-system fairness →]({{ '/reports/summary.html' | relative_url }})
+## [Data on scoring-system fairness →]({{ '/scoring.html' | relative_url }})
 
 *(Do you think strongman's scoring system is unfair? We don't have opinions — but we do have data.)*
 
-15 real comps (Arnold, Rogue, SMOE, WSM — men's and women's, 2024–2026) re-scored under 7 real-world scoring systems: current WSM, four eras of F1, MotoGP, and a MotoGP variant. See which winners hold up across every system and which flip the moment the scale steepens.
-
-You can also drill into a single comp from the sidebar (**Men's** / **Women's**) to see its standings under each system, podium-by-system, and winner-flip analysis.
+15 real comps (Arnold, Rogue, SMOE, WSM — men's and women's, 2024–2026) re-scored under 7 real-world scoring systems: current WSM, four eras of F1, MotoGP, and a MotoGP variant. See which winners hold up across every system and which flip the moment the scale steepens. Drill into any single comp from the **Scoring systems** sidebar group.
 
 ---
 
@@ -24,7 +22,7 @@ You can also drill into a single comp from the sidebar (**Men's** / **Women's**)
 
 *(Do you think some WSM groups got stacked harder than others? Again, no opinion — just hard data.)*
 
-For WSM 2024–2026, every athlete from every group is pooled into a single virtual comp and scored on the actual raw event data (times, reps, distances), then summed by group. If you've heard *"Group X had it easy"* on a podcast, this is where you check.
+For WSM 2024–2026, every athlete from every group is pooled into a single virtual comp and scored on the actual raw event data (times, reps, distances), then summed by group. If you've heard *"Group X had it easy"* on a podcast, this is where you check. Pick a year from the **WSM group strength** sidebar group.
 
 ---
 

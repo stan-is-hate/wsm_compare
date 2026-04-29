@@ -1,7 +1,7 @@
 ---
 title: Arnold 2026
-parent: Men's
-nav_order: 204
+parent: Scoring systems
+nav_order: 240
 ---
 
 # Arnold 2026

@@ -1,10 +1,10 @@
 ---
-title: Rogue 2024
-parent: Women's
-nav_order: 306
+title: Rogue 2024 W
+parent: Scoring systems
+nav_order: 365
 ---
 
-# Rogue 2024
+# Rogue 2024 W
 
 **10 athletes, 6 events**
 

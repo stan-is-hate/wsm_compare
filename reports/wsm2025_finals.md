@@ -1,7 +1,7 @@
 ---
 title: WSM 2025 Finals
-parent: Men's
-nav_order: 105
+parent: Scoring systems
+nav_order: 150
 ---
 
 # WSM 2025 Finals

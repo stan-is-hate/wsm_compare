@@ -1,7 +1,7 @@
 ---
 title: Arnold 2025
-parent: Men's
-nav_order: 205
+parent: Scoring systems
+nav_order: 250
 ---
 
 # Arnold 2025

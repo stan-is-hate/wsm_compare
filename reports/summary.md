@@ -1,6 +1,7 @@
 ---
-title: Cross-Comp Summary
-nav_order: 2
+title: Cross-comp details
+parent: Scoring systems
+nav_order: 1
 ---
 
 # WSM Scoring System Comparison — All Comps

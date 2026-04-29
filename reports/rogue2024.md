@@ -1,7 +1,7 @@
 ---
 title: Rogue 2024
-parent: Men's
-nav_order: 306
+parent: Scoring systems
+nav_order: 360
 ---
 
 # Rogue 2024
