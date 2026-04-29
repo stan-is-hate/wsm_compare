@@ -10,7 +10,7 @@ nav_order: 4
 
 ## Group totals
 
-<table>
+<table class="rainbow">
 <thead><tr><th>Rank</th><th>Group</th><th>Total points</th></tr></thead>
 <tbody>
 <tr style="background:#caf5dc"><td>1</td><td><strong>Group 3</strong></td><td><strong>400.5</strong></td></tr>
@@ -25,7 +25,7 @@ nav_order: 4
 
 Each cell shows the within-pool placement (the points-determining number) with the raw result underneath.
 
-<table>
+<table class="rainbow">
 <thead><tr><th>#</th><th>Athlete</th><th>Group</th><th>Country</th><th>Carry Climb</th><th>Overhead Medley</th><th>Squat Lift</th><th>Truck Pull</th><th>Stone Medley</th><th>Total</th></tr></thead>
 <tbody>
 <tr style="background:#caf5dc"><td>1</td><td>M. Hooper</td><td>3</td><td>CAN</td><td><strong>7</strong> · 9 in 39.64 s <em>(19)</em></td><td><strong>4</strong> · 7 in 58.47 s <em>(22)</em></td><td><strong>T9</strong> · 12 reps <em>(15.5)</em></td><td><strong>1</strong> · 33.02 s <em>(25)</em></td><td><strong>2</strong> · 4 in 52.81 s <em>(24)</em></td><td><strong>105.5</strong></td></tr>

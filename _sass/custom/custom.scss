@@ -21,3 +21,12 @@
     background: rgba(0, 0, 0, 0.05);
   }
 }
+
+// Row-tinted tables (WSM groups pages emit <table class="rainbow"> with
+// inline <tr style="background:...">). just-the-docs's theme paints a hard
+// white background on every <td>/<th>, which would cover the row tint —
+// this lets the row's background show through.
+.main-content table.rainbow td,
+.main-content table.rainbow th {
+  background-color: transparent;
+}

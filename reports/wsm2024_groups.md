@@ -10,7 +10,7 @@ nav_order: 6
 
 ## Group totals
 
-<table>
+<table class="rainbow">
 <thead><tr><th>Rank</th><th>Group</th><th>Total points</th></tr></thead>
 <tbody>
 <tr style="background:#f5caca"><td>1</td><td><strong>Group 1</strong></td><td><strong>563.5</strong></td></tr>
@@ -25,7 +25,7 @@ nav_order: 6
 
 Each cell shows the within-pool placement (the points-determining number) with the raw result underneath.
 
-<table>
+<table class="rainbow">
 <thead><tr><th>#</th><th>Athlete</th><th>Group</th><th>Country</th><th>Webster Stones</th><th>Deadlift Ladder</th><th>Sandbag Steeplechase</th><th>Viking Press</th><th>Car Walk</th><th>Stone Off</th><th>Total</th></tr></thead>
 <tbody>
 <tr style="background:#edf5ca"><td>1</td><td>O. Fojtů</td><td>2</td><td>CZE</td><td><strong>T2</strong> · 40 m <em>(28)</em></td><td><strong>16</strong> · 4 in 32.51 s <em>(15)</em></td><td><strong>5</strong> · 6 in 62.91 s <em>(26)</em></td><td><strong>T4</strong> · 15 reps <em>(26.5)</em></td><td><strong>7</strong> · 2.01 m <em>(24)</em></td><td><strong>6</strong> · 7 stones <em>(25)</em></td><td><strong>144.5</strong></td></tr>

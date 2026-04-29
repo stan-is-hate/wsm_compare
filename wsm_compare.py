@@ -939,7 +939,7 @@ def write_wsm_groups_report(year, comps_dir, out_dir):
 
     w("## Group totals")
     w("")
-    w("<table>")
+    w('<table class="rainbow">')
     w("<thead><tr><th>Rank</th><th>Group</th><th>Total points</th></tr></thead>")
     w("<tbody>")
     for rank, (g, total) in enumerate(group_ranking, 1):
@@ -955,7 +955,7 @@ def write_wsm_groups_report(year, comps_dir, out_dir):
     w("Each cell shows the within-pool placement (the points-determining number) "
       "with the raw result underneath.")
     w("")
-    w("<table>")
+    w('<table class="rainbow">')
     header = "<tr><th>#</th><th>Athlete</th><th>Group</th><th>Country</th>"
     for ev in event_names:
         header += f"<th>{ev.replace('_', ' ')}</th>"
