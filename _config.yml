@@ -22,5 +22,7 @@ plugins:
   - jekyll-seo-tag
 
 # README.md is the repo's technical doc, not part of the site.
+# tests/ contains Python tests + a tests-internal README, none of which belong in the site.
 exclude:
   - README.md
+  - tests/
