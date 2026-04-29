@@ -876,6 +876,17 @@ def compute_pooled_groups_standings(year, comps_dir):
             for ev in event_names:
                 raw_per_event[ev][a] = evs[ev][a]
 
+    # Drop qualifier-tiebreaker events (e.g. WSM 2024 Stone Off): if any athlete
+    # is marked "(Qualified)" in an event, the event is structurally a 2nd-place
+    # decider, not a group event everyone competed in. Including it in pooled
+    # scoring would penalize the strongest athletes (who skipped it) — so out.
+    excluded_events = [ev for ev in event_names
+                       if any(raw_per_event[ev][a].strip() == "(Qualified)" for a in all_athletes)]
+    if excluded_events:
+        event_names = [ev for ev in event_names if ev not in excluded_events]
+        for ev in excluded_events:
+            raw_per_event.pop(ev, None)
+
     # Per-event pooled placements + WSM-Linear points across the full pooled field.
     n = len(all_athletes)
     scale = list(range(n, 0, -1))  # WSM Linear: N, N-1, ..., 1
@@ -908,6 +919,7 @@ def compute_pooled_groups_standings(year, comps_dir):
         "group_of": group_of,
         "group_nums": group_nums_unique,
         "event_names": event_names,
+        "excluded_events": excluded_events,
         "raw_per_event": raw_per_event,
         "placement_per_event": placement_per_event,
         "pts_per_event": pts_per_event,
@@ -975,6 +987,13 @@ def write_wsm_groups_report(year, comps_dir, out_dir):
       "— *not* within-group placements. Per-group total = sum of its members' points. "
       "This addresses claims that some groups were stacked harder than others.")
     w("")
+    excluded = pooled.get("excluded_events") or []
+    if excluded:
+        excl_str = ", ".join(f"**{ev.replace('_', ' ')}**" for ev in excluded)
+        w(f"_Excluded from pooled scoring: {excl_str} — group winners were marked "
+          "`(Qualified)` and skipped this event, so it's a 2nd-place tiebreaker, not "
+          "a group event. Including it would penalize the strongest athletes for skipping._")
+        w("")
 
     w("## Group totals")
     w("")
