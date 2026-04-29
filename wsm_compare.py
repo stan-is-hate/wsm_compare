@@ -549,6 +549,16 @@ def run_comp(path, verbose=True):
     return comp_name, results
 
 
+def _pretty_comp_name(comp_name):
+    """Display name for a comp slug ('arnold2026_w' → 'Arnold 2026 W'). Falls
+    back to a readable form of the slug if the name doesn't match the pattern.
+    """
+    nav = _comp_nav_metadata(comp_name)
+    if nav:
+        return nav[0]
+    return comp_name.replace("_", " ").title()
+
+
 def _comp_nav_metadata(comp_name):
     """Return (title, parent, nav_order) for a comp report — used in Jekyll front matter
     so just-the-docs can build the sidebar.
@@ -1097,7 +1107,7 @@ def write_combined_report(comps_dir, out_dir):
     w(header)
     w(sep)
     for comp_name, results in all_results:
-        row = f"| **{comp_name}** |"
+        row = f"| **{_pretty_comp_name(comp_name)}** |"
         for sn in sys_names:
             winner_name, winner_pts = results[sn].sorted_totals[0]
             row += f" {winner_name} ({fmt(winner_pts)}) |"
@@ -1117,7 +1127,7 @@ def write_combined_report(comps_dir, out_dir):
     w(header)
     w(sep)
     for comp_name, results in all_results:
-        row = f"| **{comp_name}** |"
+        row = f"| **{_pretty_comp_name(comp_name)}** |"
         for sn in sys_names:
             gap = results[sn].sorted_totals[0][1] - results[sn].sorted_totals[1][1]
             row += f" {fmt(gap)} |"
@@ -1133,7 +1143,7 @@ def write_combined_report(comps_dir, out_dir):
     w("|------|-----------------|---------|")
     for comp_name, results in all_results:
         winners = {results[sn].sorted_totals[0][0] for sn in sys_names}
-        w(f"| **{comp_name}** | {len(winners)} | {', '.join(sorted(winners))} |")
+        w(f"| **{_pretty_comp_name(comp_name)}** | {len(winners)} | {', '.join(sorted(winners))} |")
     w("")
 
     # Per-system: who wins the most comps
