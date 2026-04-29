@@ -30,3 +30,17 @@
 .main-content table.rainbow th {
   background-color: transparent;
 }
+
+// Click-to-sort indicator on tables marked <table class="sortable">.
+.main-content table.sortable thead th {
+  cursor: pointer;
+  user-select: none;
+}
+.main-content table.sortable thead th.sort-asc::after {
+  content: " ▲";
+  opacity: 0.55;
+}
+.main-content table.sortable thead th.sort-desc::after {
+  content: " ▼";
+  opacity: 0.55;
+}

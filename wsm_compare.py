@@ -549,6 +549,28 @@ def run_comp(path, verbose=True):
     return comp_name, results
 
 
+# IOC 3-letter country codes (the format Strongman Archives uses) → ISO 3166-1
+# alpha-2 codes used to build flag emoji via regional indicator characters.
+# Extend this when a new country shows up in the dataset.
+_IOC_TO_ISO2 = {
+    "AUS": "AU", "CAN": "CA", "CZE": "CZ", "EST": "EE", "GBR": "GB",
+    "GHA": "GH", "IRL": "IE", "ISL": "IS", "ITA": "IT", "LAT": "LV",
+    "MEX": "MX", "NED": "NL", "NZL": "NZ", "POL": "PL", "PUR": "PR",
+    "RSA": "ZA", "UKR": "UA", "USA": "US",
+}
+
+
+def _country_with_flag(country):
+    """'CAN' → '🇨🇦 CAN'. Returns the bare code if no mapping is known so the
+    table still renders sensibly when a new country shows up.
+    """
+    iso2 = _IOC_TO_ISO2.get(country)
+    if not iso2 or len(iso2) != 2:
+        return country
+    flag = "".join(chr(0x1F1E6 + (ord(ch) - ord("A"))) for ch in iso2)
+    return f"{flag} {country}"
+
+
 def _pretty_comp_name(comp_name):
     """Display name for a comp slug ('arnold2026_w' → 'Arnold 2026 W'). Falls
     back to a readable form of the slug if the name doesn't match the pattern.
@@ -635,7 +657,7 @@ def write_comp_report(path, out_dir):
     w(header)
     w(sep)
     for a in athletes:
-        row = f"| {a} | {countries[a]} |"
+        row = f"| {a} | {_country_with_flag(countries[a])} |"
         for ev in event_names:
             row += f" {get_placement_display(events[ev][a])} |"
         wins, top3 = count_wins_and_top3(events, a)
@@ -678,7 +700,7 @@ def write_comp_report(path, out_dir):
         w(header)
         w(sep)
         for rank, (a, total) in enumerate(res.sorted_totals, 1):
-            row = f"| {rank} | {a} | {countries[a]} | **{fmt(total)}** |"
+            row = f"| {rank} | {a} | {_country_with_flag(countries[a])} | **{fmt(total)}** |"
             for ev in event_names:
                 row += f" {fmt(res.event_pts[ev][a])} |"
             w(row)
@@ -968,9 +990,10 @@ def write_wsm_groups_report(year, comps_dir, out_dir):
     w(f"## Individual standings (pooled across all {n_athletes})")
     w("")
     w("Each cell shows the within-pool placement (the points-determining number) "
-      "with the raw result underneath.")
+      "with the raw result underneath. Click any column header to sort by that column "
+      "— e.g. click an event name to see who was best at that event.")
     w("")
-    w('<table class="rainbow">')
+    w('<table class="rainbow sortable">')
     header = "<tr><th>#</th><th>Athlete</th><th>Group</th><th>Country</th>"
     for ev in event_names:
         header += f"<th>{ev.replace('_', ' ')}</th>"
@@ -980,7 +1003,7 @@ def write_wsm_groups_report(year, comps_dir, out_dir):
     for rank, a in enumerate(athlete_ranking, 1):
         g = group_of[a]
         bg = color_for[g]
-        cells = [str(rank), a, str(g), countries[a]]
+        cells = [str(rank), a, str(g), _country_with_flag(countries[a])]
         for ev in event_names:
             place = placement_per_event[ev][a]
             raw = raw_per_event[ev][a]
