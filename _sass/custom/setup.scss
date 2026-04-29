@@ -1,4 +1,9 @@
 // Override just-the-docs SCSS variables before theme styles load.
+// Units must be rem — the theme does media-query math on these and px breaks it.
 
-// Default $nav-width is 264px — too wide for our short sidebar entries.
-$nav-width: 220px;
+// Default $nav-width is 16.5rem (264px) — too wide for our short sidebar entries.
+$nav-width: 13.75rem; // 220px
+
+// Default $content-width is 50rem (800px) — too narrow for our wide standings tables.
+// Bump it so tables don't get crammed into the middle of the page.
+$content-width: 75rem; // 1200px
