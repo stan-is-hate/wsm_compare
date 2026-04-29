@@ -22,6 +22,7 @@ nav_order: 355
 | M. Peacock | 🇨🇦 CAN | T8 | 9 | 4 | 5 | 9 | 7 | 0 | 0 |
 | J. Lyle | 🇺🇸 USA | T2 | 8 | 5 | 10 | 10 | 8 | 0 | 1 |
 | S. Belliveau | 🇨🇦 CAN | T8 | DNS | 6 | 6 | 7 | 10 | 0 | 0 |
+{: .sortable }
 
 ## Podium Per System
 
@@ -55,6 +56,7 @@ _World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps._
 | 8 | M. Peacock | 🇨🇦 CAN | **23** | 2 | 2 | 7 | 6 | 2 | 4 |
 | 9 | J. Lyle | 🇺🇸 USA | **22.5** | 8.5 | 3 | 6 | 1 | 1 | 3 |
 | 10 | S. Belliveau | 🇨🇦 CAN | **17** | 2 | 0 | 5 | 5 | 4 | 1 |
+{: .sortable }
 
 ### F1 2010-present
 
@@ -74,6 +76,7 @@ _Formula 1 (2010+). Steep top, drops off after 10th._
 | 8 | J. Lyle | 🇺🇸 USA | **36.5** | 16.5 | 4 | 10 | 1 | 1 | 4 |
 | 9 | M. Peacock | 🇨🇦 CAN | **34.3** | 2.3 | 2 | 12 | 10 | 2 | 6 |
 | 10 | S. Belliveau | 🇨🇦 CAN | **25.3** | 2.3 | 0 | 8 | 8 | 6 | 1 |
+{: .sortable }
 
 ### F1 2003-2009
 
@@ -93,6 +96,7 @@ _Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)._
 | 8 | J. Lyle | 🇺🇸 USA | **13** | 7 | 1 | 4 | 0 | 0 | 1 |
 | 9 | M. Peacock | 🇨🇦 CAN | **11.3** | 0.3 | 0 | 5 | 4 | 0 | 2 |
 | 10 | S. Belliveau | 🇨🇦 CAN | **8.3** | 0.3 | 0 | 3 | 3 | 2 | 0 |
+{: .sortable }
 
 ### F1 1991-2002
 
@@ -112,6 +116,7 @@ _Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning._
 | 8 | J. Lyle | 🇺🇸 USA | **7** | 5 | 0 | 2 | 0 | 0 | 0 |
 | 9 | M. Peacock | 🇨🇦 CAN | **5** | 0 | 0 | 3 | 2 | 0 | 0 |
 | 10 | S. Belliveau | 🇨🇦 CAN | **2** | 0 | 0 | 1 | 1 | 0 | 0 |
+{: .sortable }
 
 ### F1 1961-1990
 
@@ -131,6 +136,7 @@ _Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning._
 | 8 | J. Lyle | 🇺🇸 USA | **7** | 5 | 0 | 2 | 0 | 0 | 0 |
 | 9 | M. Peacock | 🇨🇦 CAN | **5** | 0 | 0 | 3 | 2 | 0 | 0 |
 | 10 | S. Belliveau | 🇨🇦 CAN | **2** | 0 | 0 | 1 | 1 | 0 | 0 |
+{: .sortable }
 
 ### MotoGP
 
@@ -150,6 +156,7 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 | 8 | J. Lyle | 🇺🇸 USA | **57** | 18 | 8 | 11 | 6 | 6 | 8 |
 | 9 | M. Peacock | 🇨🇦 CAN | **54** | 7 | 7 | 13 | 11 | 7 | 9 |
 | 10 | S. Belliveau | 🇨🇦 CAN | **42** | 7 | 0 | 10 | 10 | 9 | 6 |
+{: .sortable }
 
 ### MotoGP Extended
 
@@ -169,6 +176,7 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 8 | J. Lyle | 🇺🇸 USA | **57** | 18 | 8 | 11 | 6 | 6 | 8 |
 | 9 | M. Peacock | 🇨🇦 CAN | **54** | 7 | 7 | 13 | 11 | 7 | 9 |
 | 10 | S. Belliveau | 🇨🇦 CAN | **42** | 7 | 0 | 10 | 10 | 9 | 6 |
+{: .sortable }
 
 ## Winner Flip Analysis
 

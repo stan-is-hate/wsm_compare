@@ -19,6 +19,7 @@ Cross-competition analysis across multiple real-world scoring systems.
 | **F1 1961-1990** (9-6-4-3-2-1-0-0-0-0) | Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning. | 1.50x |
 | **MotoGP** (25-20-16-13-11-10-9-8-7-6) | MotoGP (current). All 10 positions score well. 1.25x for winning. | 1.25x |
 | **MotoGP Extended** (25-20-16-13-11-10-9-8-7-6) | MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields. | 1.25x |
+{: .sortable }
 
 ## Cross-Competition Winners
 
@@ -61,6 +62,7 @@ How close was the comp under each system? Smaller gap = more sensitive to system
 | **WSM 2024 Finals** | 5.5 | 17.5 | 6 | 8.0 | 7.0 | 13.7 | 13.7 |
 | **WSM 2025 Finals** | 0.5 | 1.7 | 1 | 2 | 1.5 | 2.3 | 2.3 |
 | **WSM 2026 Finals** | 2 | 3 | 1 | 3 | 1 | 2 | 2 |
+{: .sortable }
 
 ## Winner Flips Per Comp
 
@@ -83,6 +85,7 @@ How many distinct winners does each comp produce across the 6 scoring systems?
 | **WSM 2024 Finals** | 1 | T. Stoltman |
 | **WSM 2025 Finals** | 2 | R. Nel, T. Stoltman |
 | **WSM 2026 Finals** | 2 | M. Hooper, R. Nel |
+{: .sortable }
 
 ## Per-System Winner Distribution
 

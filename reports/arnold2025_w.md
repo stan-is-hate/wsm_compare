@@ -24,6 +24,7 @@ nav_order: 255
 | E. Murray | 🇺🇸 USA | T8 | 8 | 10 | T7 | 7 | DNS | 0 | 0 |
 | N. Stowers | 🇺🇸 USA | 12 | 5 | 8 | 12 | 12 | 6 | 0 | 0 |
 | G. Dixson | 🇺🇸 USA | 10 | DNS | 7 | T10 | 9 | DNS | 0 | 0 |
+{: .sortable }
 
 ## Podium Per System
 
@@ -59,6 +60,7 @@ _World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps._
 | 10 | E. Murray | 🇺🇸 USA | **23.5** | 4.5 | 5 | 3 | 5 | 6 | 0 |
 | 11 | N. Stowers | 🇺🇸 USA | **23** | 1 | 8 | 5 | 1 | 1 | 7 |
 | 12 | G. Dixson | 🇺🇸 USA | **15.5** | 3 | 0 | 6 | 2.5 | 4 | 0 |
+{: .sortable }
 
 ### F1 2010-present
 
@@ -80,6 +82,7 @@ _Formula 1 (2010+). Steep top, drops off after 10th._
 | 10 | N. Stowers | 🇺🇸 USA | **22** | 0 | 10 | 4 | 0 | 0 | 8 |
 | 11 | E. Murray | 🇺🇸 USA | **18** | 3 | 4 | 1 | 4 | 6 | 0 |
 | 12 | G. Dixson | 🇺🇸 USA | **9.5** | 1 | 0 | 6 | 0.5 | 2 | 0 |
+{: .sortable }
 
 ### F1 2003-2009
 
@@ -101,6 +104,7 @@ _Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)._
 | 10 | N. Stowers | 🇺🇸 USA | **8** | 0 | 4 | 1 | 0 | 0 | 3 |
 | 11 | E. Murray | 🇺🇸 USA | **4.5** | 0.5 | 1 | 0 | 1 | 2 | 0 |
 | 12 | G. Dixson | 🇺🇸 USA | **2** | 0 | 0 | 2 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 1991-2002
 
@@ -122,6 +126,7 @@ _Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning._
 | 10 | N. Stowers | 🇺🇸 USA | **3** | 0 | 2 | 0 | 0 | 0 | 1 |
 | 11 | E. Murray | 🇺🇸 USA | **0** | 0 | 0 | 0 | 0 | 0 | 0 |
 | 12 | G. Dixson | 🇺🇸 USA | **0** | 0 | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 1961-1990
 
@@ -143,6 +148,7 @@ _Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning._
 | 10 | N. Stowers | 🇺🇸 USA | **3** | 0 | 2 | 0 | 0 | 0 | 1 |
 | 11 | E. Murray | 🇺🇸 USA | **0** | 0 | 0 | 0 | 0 | 0 | 0 |
 | 12 | G. Dixson | 🇺🇸 USA | **0** | 0 | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### MotoGP
 
@@ -164,6 +170,7 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 | 10 | S. Belliveau | 🇨🇦 CAN | **35.5** | 0 | 10 | 0 | 12.5 | 13 | 0 |
 | 11 | N. Stowers | 🇺🇸 USA | **29** | 0 | 11 | 8 | 0 | 0 | 10 |
 | 12 | G. Dixson | 🇺🇸 USA | **25** | 6 | 0 | 9 | 3 | 7 | 0 |
+{: .sortable }
 
 ### MotoGP Extended
 
@@ -185,6 +192,7 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 10 | N. Stowers | 🇺🇸 USA | **41** | 4 | 11 | 8 | 4 | 4 | 10 |
 | 11 | E. Murray | 🇺🇸 USA | **38.5** | 7.5 | 8 | 6 | 8 | 9 | 0 |
 | 12 | G. Dixson | 🇺🇸 USA | **27.5** | 6 | 0 | 9 | 5.5 | 7 | 0 |
+{: .sortable }
 
 ## Winner Flip Analysis
 

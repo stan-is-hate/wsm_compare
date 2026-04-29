@@ -22,6 +22,7 @@ nav_order: 150
 | P. Kordiyaka | 🇺🇦 UKR | 9 | 5 | T8 | 9 | T3 | 6 | 0 | 1 |
 | L. Stoltman | 🇬🇧 GBR | 5 | 8 | 10 | 7 | T6 | 8 | 0 | 0 |
 | E. Williams | 🇦🇺 AUS | 10 | 6 | T8 | 1 | DNS | 9 | 1 | 1 |
+{: .sortable }
 
 ## Podium Per System
 
@@ -55,6 +56,7 @@ _World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps._
 | 8 | P. Kordiyaka | 🇺🇦 UKR | **25** | 2 | 6 | 2.5 | 2 | 7.5 | 5 |
 | 9 | L. Stoltman | 🇬🇧 GBR | **21.5** | 6 | 3 | 1 | 4 | 4.5 | 3 |
 | 10 | E. Williams | 🇦🇺 AUS | **20.5** | 1 | 5 | 2.5 | 10 | 0 | 2 |
+{: .sortable }
 
 ### F1 2010-present
 
@@ -74,6 +76,7 @@ _Formula 1 (2010+). Steep top, drops off after 10th._
 | 8 | E. Williams | 🇦🇺 AUS | **39** | 1 | 8 | 3 | 25 | 0 | 2 |
 | 9 | P. Kordiyaka | 🇺🇦 UKR | **38.5** | 2 | 10 | 3 | 2 | 13.5 | 8 |
 | 10 | L. Stoltman | 🇬🇧 GBR | **32** | 10 | 4 | 1 | 6 | 7 | 4 |
+{: .sortable }
 
 ### F1 2003-2009
 
@@ -93,6 +96,7 @@ _Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)._
 | 8 | E. Williams | 🇦🇺 AUS | **13.5** | 0 | 3 | 0.5 | 10 | 0 | 0 |
 | 9 | P. Kordiyaka | 🇺🇦 UKR | **13** | 0 | 4 | 0.5 | 0 | 5.5 | 3 |
 | 10 | L. Stoltman | 🇬🇧 GBR | **10.5** | 4 | 1 | 0 | 2 | 2.5 | 1 |
+{: .sortable }
 
 ### F1 1991-2002
 
@@ -112,6 +116,7 @@ _Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning._
 | 8 | P. Kordiyaka | 🇺🇦 UKR | **6.5** | 0 | 2 | 0 | 0 | 3.5 | 1 |
 | 9 | S. Flowers | 🇬🇧 GBR | **4.5** | 0 | 0 | 2 | 2 | 0.5 | 0 |
 | 10 | L. Stoltman | 🇬🇧 GBR | **2.5** | 2 | 0 | 0 | 0 | 0.5 | 0 |
+{: .sortable }
 
 ### F1 1961-1990
 
@@ -131,6 +136,7 @@ _Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning._
 | 8 | P. Kordiyaka | 🇺🇦 UKR | **6.5** | 0 | 2 | 0 | 0 | 3.5 | 1 |
 | 9 | S. Flowers | 🇬🇧 GBR | **4.5** | 0 | 0 | 2 | 2 | 0.5 | 0 |
 | 10 | L. Stoltman | 🇬🇧 GBR | **2.5** | 2 | 0 | 0 | 0 | 0.5 | 0 |
+{: .sortable }
 
 ### MotoGP
 
@@ -150,6 +156,7 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 | 8 | S. Flowers | 🇬🇧 GBR | **56.3** | 9 | 6 | 11.8 | 11 | 9.5 | 9 |
 | 9 | E. Williams | 🇦🇺 AUS | **55.5** | 6 | 10 | 7.5 | 25 | 0 | 7 |
 | 10 | L. Stoltman | 🇬🇧 GBR | **51.5** | 11 | 8 | 6 | 9 | 9.5 | 8 |
+{: .sortable }
 
 ### MotoGP Extended
 
@@ -169,6 +176,7 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 8 | S. Flowers | 🇬🇧 GBR | **56.3** | 9 | 6 | 11.8 | 11 | 9.5 | 9 |
 | 9 | E. Williams | 🇦🇺 AUS | **55.5** | 6 | 10 | 7.5 | 25 | 0 | 7 |
 | 10 | L. Stoltman | 🇬🇧 GBR | **51.5** | 11 | 8 | 6 | 9 | 9.5 | 8 |
+{: .sortable }
 
 ## Winner Flip Analysis
 

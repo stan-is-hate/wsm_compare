@@ -22,6 +22,7 @@ nav_order: 250
 | B. Thompson | 🇺🇸 USA | 3 | 8 | 9 | T8 | 9 | DNS | 0 | 1 |
 | N. Guardione | 🇺🇸 USA | 9 | 9 | 7 | T8 | 8 | T7 | 0 | 0 |
 | M. Boudreault | 🇨🇦 CAN | DNS | 10 | 6 | DNS | DNS | DNS | 0 | 0 |
+{: .sortable }
 
 ## Podium Per System
 
@@ -55,6 +56,7 @@ _World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps._
 | 8 | B. Thompson | 🇺🇸 USA | **17.5** | 8 | 3 | 2 | 2.5 | 2 | 0 |
 | 9 | N. Guardione | 🇺🇸 USA | **17** | 2 | 2 | 4 | 2.5 | 3 | 3.5 |
 | 10 | M. Boudreault | 🇨🇦 CAN | **6** | 0 | 1 | 5 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 2010-present
 
@@ -74,6 +76,7 @@ _Formula 1 (2010+). Steep top, drops off after 10th._
 | 8 | B. Thompson | 🇺🇸 USA | **26** | 15 | 4 | 2 | 3 | 2 | 0 |
 | 9 | N. Guardione | 🇺🇸 USA | **22** | 2 | 2 | 6 | 3 | 4 | 5 |
 | 10 | M. Boudreault | 🇨🇦 CAN | **9** | 0 | 1 | 8 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 2003-2009
 
@@ -93,6 +96,7 @@ _Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)._
 | 8 | B. Thompson | 🇺🇸 USA | **7.5** | 6 | 1 | 0 | 0.5 | 0 | 0 |
 | 9 | N. Guardione | 🇺🇸 USA | **5** | 0 | 0 | 2 | 0.5 | 1 | 1.5 |
 | 10 | M. Boudreault | 🇨🇦 CAN | **3** | 0 | 0 | 3 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 1991-2002
 
@@ -112,6 +116,7 @@ _Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning._
 | 8 | B. Thompson | 🇺🇸 USA | **4** | 4 | 0 | 0 | 0 | 0 | 0 |
 | 9 | M. Boudreault | 🇨🇦 CAN | **1** | 0 | 0 | 1 | 0 | 0 | 0 |
 | 10 | N. Guardione | 🇺🇸 USA | **0** | 0 | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 1961-1990
 
@@ -131,6 +136,7 @@ _Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning._
 | 8 | B. Thompson | 🇺🇸 USA | **4** | 4 | 0 | 0 | 0 | 0 | 0 |
 | 9 | M. Boudreault | 🇨🇦 CAN | **1** | 0 | 0 | 1 | 0 | 0 | 0 |
 | 10 | N. Guardione | 🇺🇸 USA | **0** | 0 | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### MotoGP
 
@@ -150,6 +156,7 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 | 8 | N. Guardione | 🇺🇸 USA | **47** | 7 | 7 | 9 | 7.5 | 8 | 8.5 |
 | 9 | B. Thompson | 🇺🇸 USA | **45.5** | 16 | 8 | 7 | 7.5 | 7 | 0 |
 | 10 | M. Boudreault | 🇨🇦 CAN | **16** | 0 | 6 | 10 | 0 | 0 | 0 |
+{: .sortable }
 
 ### MotoGP Extended
 
@@ -169,6 +176,7 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 8 | N. Guardione | 🇺🇸 USA | **47** | 7 | 7 | 9 | 7.5 | 8 | 8.5 |
 | 9 | B. Thompson | 🇺🇸 USA | **45.5** | 16 | 8 | 7 | 7.5 | 7 | 0 |
 | 10 | M. Boudreault | 🇨🇦 CAN | **16** | 0 | 6 | 10 | 0 | 0 | 0 |
+{: .sortable }
 
 ## Winner Flip Analysis
 

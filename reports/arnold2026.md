@@ -21,6 +21,7 @@ nav_order: 240
 | T. Evans | 🇺🇸 USA | 6 | T5 | 6 | 5 | T2 | 8 | 0 | 1 |
 | N. Guardione | 🇺🇸 USA | 9 | T5 | 7 | 3 | T7 | 1 | 1 | 2 |
 | A. Burton | 🇺🇸 USA | 8 | DNS | DNS | 6 | DNS | 2 | 0 | 1 |
+{: .sortable }
 
 ## Podium Per System
 
@@ -53,6 +54,7 @@ _World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps._
 | 7 | T. Evans | 🇺🇸 USA | **27** | 4 | 4.5 | 4 | 5 | 7.5 | 2 |
 | 8 | N. Guardione | 🇺🇸 USA | **27** | 1 | 4.5 | 3 | 7 | 2.5 | 9 |
 | 9 | A. Burton | 🇺🇸 USA | **14** | 2 | 0 | 0 | 4 | 0 | 8 |
+{: .sortable }
 
 ### F1 2010-present
 
@@ -71,6 +73,7 @@ _Formula 1 (2010+). Steep top, drops off after 10th._
 | 7 | B. Johnson | 🇺🇸 USA | **59** | 15 | 0 | 15 | 18 | 5 | 6 |
 | 8 | T. Evans | 🇺🇸 USA | **55.5** | 8 | 9 | 8 | 10 | 16.5 | 4 |
 | 9 | A. Burton | 🇺🇸 USA | **30** | 4 | 0 | 0 | 8 | 0 | 18 |
+{: .sortable }
 
 ### F1 2003-2009
 
@@ -89,6 +92,7 @@ _Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)._
 | 7 | N. Guardione | 🇺🇸 USA | **23** | 0 | 3.5 | 2 | 6 | 1.5 | 10 |
 | 8 | T. Evans | 🇺🇸 USA | **21.5** | 3 | 3.5 | 3 | 4 | 7 | 1 |
 | 9 | A. Burton | 🇺🇸 USA | **12** | 1 | 0 | 0 | 3 | 0 | 8 |
+{: .sortable }
 
 ### F1 1991-2002
 
@@ -107,6 +111,7 @@ _Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning._
 | 7 | B. Johnson | 🇺🇸 USA | **14** | 4 | 0 | 4 | 6 | 0 | 0 |
 | 8 | T. Evans | 🇺🇸 USA | **10.5** | 1 | 1.5 | 1 | 2 | 5 | 0 |
 | 9 | A. Burton | 🇺🇸 USA | **7** | 0 | 0 | 0 | 1 | 0 | 6 |
+{: .sortable }
 
 ### F1 1961-1990
 
@@ -125,6 +130,7 @@ _Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning._
 | 7 | B. Johnson | 🇺🇸 USA | **14** | 4 | 0 | 4 | 6 | 0 | 0 |
 | 8 | T. Evans | 🇺🇸 USA | **10.5** | 1 | 1.5 | 1 | 2 | 5 | 0 |
 | 9 | A. Burton | 🇺🇸 USA | **7** | 0 | 0 | 0 | 1 | 0 | 6 |
+{: .sortable }
 
 ### MotoGP
 
@@ -143,6 +149,7 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 | 7 | B. Johnson | 🇺🇸 USA | **69.5** | 16 | 0 | 16 | 20 | 8.5 | 9 |
 | 8 | T. Evans | 🇺🇸 USA | **67.5** | 10 | 10.5 | 10 | 11 | 18 | 8 |
 | 9 | A. Burton | 🇺🇸 USA | **38** | 8 | 0 | 0 | 10 | 0 | 20 |
+{: .sortable }
 
 ### MotoGP Extended
 
@@ -161,6 +168,7 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 7 | B. Johnson | 🇺🇸 USA | **69.5** | 16 | 0 | 16 | 20 | 8.5 | 9 |
 | 8 | T. Evans | 🇺🇸 USA | **67.5** | 10 | 10.5 | 10 | 11 | 18 | 8 |
 | 9 | A. Burton | 🇺🇸 USA | **38** | 8 | 0 | 0 | 10 | 0 | 20 |
+{: .sortable }
 
 ## Winner Flip Analysis
 

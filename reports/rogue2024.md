@@ -22,6 +22,7 @@ nav_order: 360
 | B. Thompson | 🇺🇸 USA | T4 | 7 | 9 | 7 | 7 | 8 | 0 | 0 |
 | P. Kordiyaka | 🇺🇦 UKR | 10 | 8 | 4 | 4 | 10 | T9 | 0 | 0 |
 | T. Hoath | 🇨🇦 CAN | 9 | 10 | 7 | 8 | 9 | T9 | 0 | 0 |
+{: .sortable }
 
 ## Podium Per System
 
@@ -55,6 +56,7 @@ _World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps._
 | 8 | B. Thompson | 🇺🇸 USA | **23.5** | 6.5 | 4 | 2 | 4 | 4 | 3 |
 | 9 | P. Kordiyaka | 🇺🇦 UKR | **20.5** | 1 | 3 | 7 | 7 | 1 | 1.5 |
 | 10 | T. Hoath | 🇨🇦 CAN | **13.5** | 2 | 1 | 4 | 3 | 2 | 1.5 |
+{: .sortable }
 
 ### F1 2010-present
 
@@ -74,6 +76,7 @@ _Formula 1 (2010+). Steep top, drops off after 10th._
 | 8 | B. Thompson | 🇺🇸 USA | **35** | 11 | 6 | 2 | 6 | 6 | 4 |
 | 9 | P. Kordiyaka | 🇺🇦 UKR | **31.5** | 1 | 4 | 12 | 12 | 1 | 1.5 |
 | 10 | T. Hoath | 🇨🇦 CAN | **16.5** | 2 | 1 | 6 | 4 | 2 | 1.5 |
+{: .sortable }
 
 ### F1 2003-2009
 
@@ -93,6 +96,7 @@ _Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)._
 | 8 | B. Thompson | 🇺🇸 USA | **11.5** | 4.5 | 2 | 0 | 2 | 2 | 1 |
 | 9 | P. Kordiyaka | 🇺🇦 UKR | **11** | 0 | 1 | 5 | 5 | 0 | 0 |
 | 10 | T. Hoath | 🇨🇦 CAN | **3** | 0 | 0 | 2 | 1 | 0 | 0 |
+{: .sortable }
 
 ### F1 1991-2002
 
@@ -112,6 +116,7 @@ _Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning._
 | 8 | P. Kordiyaka | 🇺🇦 UKR | **6** | 0 | 0 | 3 | 3 | 0 | 0 |
 | 9 | B. Thompson | 🇺🇸 USA | **2.5** | 2.5 | 0 | 0 | 0 | 0 | 0 |
 | 10 | T. Hoath | 🇨🇦 CAN | **0** | 0 | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 1961-1990
 
@@ -131,6 +136,7 @@ _Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning._
 | 8 | P. Kordiyaka | 🇺🇦 UKR | **6** | 0 | 0 | 3 | 3 | 0 | 0 |
 | 9 | B. Thompson | 🇺🇸 USA | **2.5** | 2.5 | 0 | 0 | 0 | 0 | 0 |
 | 10 | T. Hoath | 🇨🇦 CAN | **0** | 0 | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### MotoGP
 
@@ -150,6 +156,7 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 | 8 | B. Thompson | 🇺🇸 USA | **54** | 12 | 9 | 7 | 9 | 9 | 8 |
 | 9 | P. Kordiyaka | 🇺🇦 UKR | **52.5** | 6 | 8 | 13 | 13 | 6 | 6.5 |
 | 10 | T. Hoath | 🇨🇦 CAN | **43.5** | 7 | 6 | 9 | 8 | 7 | 6.5 |
+{: .sortable }
 
 ### MotoGP Extended
 
@@ -169,6 +176,7 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 8 | B. Thompson | 🇺🇸 USA | **54** | 12 | 9 | 7 | 9 | 9 | 8 |
 | 9 | P. Kordiyaka | 🇺🇦 UKR | **52.5** | 6 | 8 | 13 | 13 | 6 | 6.5 |
 | 10 | T. Hoath | 🇨🇦 CAN | **43.5** | 7 | 6 | 9 | 8 | 7 | 6.5 |
+{: .sortable }
 
 ## Winner Flip Analysis
 

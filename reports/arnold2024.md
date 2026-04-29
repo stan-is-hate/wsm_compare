@@ -23,6 +23,7 @@ nav_order: 260
 | T. Evans | 🇺🇸 USA | 7 | 10 | 9 | DNS | DNS | 0 | 0 |
 | O. Ziółkowski | 🇵🇱 POL | 10 | 8 | 10 | DNS | DNS | 0 | 0 |
 | M. Boudreault | 🇨🇦 CAN | DNS | DNS | DNS | DNS | DNS | 0 | 0 |
+{: .sortable }
 
 ## Podium Per System
 
@@ -57,6 +58,7 @@ _World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps._
 | 9 | T. Evans | 🇺🇸 USA | **10** | 5 | 2 | 3 | 0 | 0 |
 | 10 | O. Ziółkowski | 🇵🇱 POL | **8** | 2 | 4 | 2 | 0 | 0 |
 | 11 | M. Boudreault | 🇨🇦 CAN | **0** | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 2010-present
 
@@ -77,6 +79,7 @@ _Formula 1 (2010+). Steep top, drops off after 10th._
 | 9 | T. Evans | 🇺🇸 USA | **9** | 6 | 1 | 2 | 0 | 0 |
 | 10 | O. Ziółkowski | 🇵🇱 POL | **6** | 1 | 4 | 1 | 0 | 0 |
 | 11 | M. Boudreault | 🇨🇦 CAN | **0** | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 2003-2009
 
@@ -97,6 +100,7 @@ _Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)._
 | 9 | T. Evans | 🇺🇸 USA | **2** | 2 | 0 | 0 | 0 | 0 |
 | 10 | O. Ziółkowski | 🇵🇱 POL | **1** | 0 | 1 | 0 | 0 | 0 |
 | 11 | M. Boudreault | 🇨🇦 CAN | **0** | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 1991-2002
 
@@ -117,6 +121,7 @@ _Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning._
 | 9 | T. Evans | 🇺🇸 USA | **0** | 0 | 0 | 0 | 0 | 0 |
 | 10 | O. Ziółkowski | 🇵🇱 POL | **0** | 0 | 0 | 0 | 0 | 0 |
 | 11 | M. Boudreault | 🇨🇦 CAN | **0** | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 1961-1990
 
@@ -137,6 +142,7 @@ _Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning._
 | 9 | T. Evans | 🇺🇸 USA | **0** | 0 | 0 | 0 | 0 | 0 |
 | 10 | O. Ziółkowski | 🇵🇱 POL | **0** | 0 | 0 | 0 | 0 | 0 |
 | 11 | M. Boudreault | 🇨🇦 CAN | **0** | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### MotoGP
 
@@ -157,6 +163,7 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 | 9 | T. Evans | 🇺🇸 USA | **22** | 9 | 6 | 7 | 0 | 0 |
 | 10 | O. Ziółkowski | 🇵🇱 POL | **20** | 6 | 8 | 6 | 0 | 0 |
 | 11 | M. Boudreault | 🇨🇦 CAN | **0** | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### MotoGP Extended
 
@@ -177,6 +184,7 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 9 | T. Evans | 🇺🇸 USA | **22** | 9 | 6 | 7 | 0 | 0 |
 | 10 | O. Ziółkowski | 🇵🇱 POL | **20** | 6 | 8 | 6 | 0 | 0 |
 | 11 | M. Boudreault | 🇨🇦 CAN | **0** | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ## Winner Flip Analysis
 

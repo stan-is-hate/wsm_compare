@@ -22,6 +22,7 @@ nav_order: 140
 | E. Williams | 🇦🇺 AUS | 4 | 4 | 4 | 8 | DNS | 9 | 0 | 0 |
 | N. Guardione | 🇺🇸 USA | 10 | 10 | T8 | 3 | T5 | 7 | 0 | 1 |
 | A. Andrade | 🇲🇽 MEX | 3 | 9 | T8 | DNS | DNS | DNS | 0 | 1 |
+{: .sortable }
 
 ## Podium Per System
 
@@ -55,6 +56,7 @@ _World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps._
 | 8 | E. Williams | 🇦🇺 AUS | **26** | 7 | 7 | 7 | 3 | 0 | 2 |
 | 9 | N. Guardione | 🇺🇸 USA | **21** | 1 | 1 | 2.5 | 8 | 4.5 | 4 |
 | 10 | A. Andrade | 🇲🇽 MEX | **12.5** | 8 | 2 | 2.5 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 2010-present
 
@@ -74,6 +76,7 @@ _Formula 1 (2010+). Steep top, drops off after 10th._
 | 8 | E. Williams | 🇦🇺 AUS | **42** | 12 | 12 | 12 | 4 | 0 | 2 |
 | 9 | N. Guardione | 🇺🇸 USA | **33** | 1 | 1 | 3 | 15 | 7 | 6 |
 | 10 | A. Andrade | 🇲🇽 MEX | **20** | 15 | 2 | 3 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 2003-2009
 
@@ -93,6 +96,7 @@ _Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)._
 | 8 | E. Williams | 🇦🇺 AUS | **16** | 5 | 5 | 5 | 1 | 0 | 0 |
 | 9 | N. Guardione | 🇺🇸 USA | **11** | 0 | 0 | 0.5 | 6 | 2.5 | 2 |
 | 10 | A. Andrade | 🇲🇽 MEX | **6.5** | 6 | 0 | 0.5 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 1991-2002
 
@@ -112,6 +116,7 @@ _Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning._
 | 8 | M. Licis | 🇱🇻 LAT | **7.2** | 0 | 0 | 1.5 | 1 | 0.8 | 4 |
 | 9 | N. Guardione | 🇺🇸 USA | **4.8** | 0 | 0 | 0 | 4 | 0.8 | 0 |
 | 10 | A. Andrade | 🇲🇽 MEX | **4** | 4 | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 1961-1990
 
@@ -131,6 +136,7 @@ _Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning._
 | 8 | M. Licis | 🇱🇻 LAT | **7.2** | 0 | 0 | 1.5 | 1 | 0.8 | 4 |
 | 9 | N. Guardione | 🇺🇸 USA | **4.8** | 0 | 0 | 0 | 4 | 0.8 | 0 |
 | 10 | A. Andrade | 🇲🇽 MEX | **4** | 4 | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### MotoGP
 
@@ -150,6 +156,7 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 | 8 | E. Williams | 🇦🇺 AUS | **54** | 13 | 13 | 13 | 8 | 0 | 7 |
 | 9 | N. Guardione | 🇺🇸 USA | **54** | 6 | 6 | 7.5 | 16 | 9.5 | 9 |
 | 10 | A. Andrade | 🇲🇽 MEX | **30.5** | 16 | 7 | 7.5 | 0 | 0 | 0 |
+{: .sortable }
 
 ### MotoGP Extended
 
@@ -169,6 +176,7 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 8 | E. Williams | 🇦🇺 AUS | **54** | 13 | 13 | 13 | 8 | 0 | 7 |
 | 9 | N. Guardione | 🇺🇸 USA | **54** | 6 | 6 | 7.5 | 16 | 9.5 | 9 |
 | 10 | A. Andrade | 🇲🇽 MEX | **30.5** | 16 | 7 | 7.5 | 0 | 0 | 0 |
+{: .sortable }
 
 ## Winner Flip Analysis
 

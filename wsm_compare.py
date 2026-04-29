@@ -663,6 +663,7 @@ def write_comp_report(path, out_dir):
         wins, top3 = count_wins_and_top3(events, a)
         row += f" {wins} | {top3} |"
         w(row)
+    w("{: .sortable }")
     w("")
 
     # Podium comparison — overview before details
@@ -704,6 +705,7 @@ def write_comp_report(path, out_dir):
             for ev in event_names:
                 row += f" {fmt(res.event_pts[ev][a])} |"
             w(row)
+        w("{: .sortable }")
         w("")
 
     # Winner-flip analysis
@@ -1114,6 +1116,7 @@ def write_combined_report(comps_dir, out_dir):
         ratio = scale_10[0] / scale_10[1] if scale_10[1] > 0 else float('inf')
         scale_str = "-".join(fmt(x) for x in scale_10)
         w(f"| **{system.name}** ({scale_str}) | {system.description} | {ratio:.2f}x |")
+    w("{: .sortable }")
     w("")
 
     # Cross-comp winner table
@@ -1153,6 +1156,7 @@ def write_combined_report(comps_dir, out_dir):
             gap = results[sn].sorted_totals[0][1] - results[sn].sorted_totals[1][1]
             row += f" {fmt(gap)} |"
         w(row)
+    w("{: .sortable }")
     w("")
 
     # Winner flip count per comp
@@ -1165,6 +1169,7 @@ def write_combined_report(comps_dir, out_dir):
     for comp_name, results in all_results:
         winners = {results[sn].sorted_totals[0][0] for sn in sys_names}
         w(f"| **{_pretty_comp_name(comp_name)}** | {len(winners)} | {', '.join(sorted(winners))} |")
+    w("{: .sortable }")
     w("")
 
     # Per-system: who wins the most comps

@@ -22,6 +22,7 @@ nav_order: 365
 | S. Belliveau | 🇨🇦 CAN | 10 | 10 | 8 | 6 | 1 | 5 | 1 | 1 |
 | A. Thompson | 🇬🇧 GBR | 2 | 2 | 10 | 9 | 9 | 8 | 0 | 2 |
 | D. Moore | 🇬🇧 GBR | 9 | 9 | 7 | 10 | 10 | DNS | 0 | 0 |
+{: .sortable }
 
 ## Podium Per System
 
@@ -55,6 +56,7 @@ _World's Strongest Man (current). N pts for 1st down to 1 for last. Equal gaps._
 | 8 | S. Belliveau | 🇨🇦 CAN | **26** | 1 | 1 | 3 | 5 | 10 | 6 |
 | 9 | A. Thompson | 🇬🇧 GBR | **26** | 9 | 9 | 1 | 2 | 2 | 3 |
 | 10 | D. Moore | 🇬🇧 GBR | **10** | 2 | 2 | 4 | 1 | 1 | 0 |
+{: .sortable }
 
 ### F1 2010-present
 
@@ -74,6 +76,7 @@ _Formula 1 (2010+). Steep top, drops off after 10th._
 | 8 | R. Roberts | 🇬🇧 GBR | **45** | 7 | 4 | 12 | 12 | 4 | 6 |
 | 9 | A. Thompson | 🇬🇧 GBR | **45** | 18 | 18 | 1 | 2 | 2 | 4 |
 | 10 | D. Moore | 🇬🇧 GBR | **12** | 2 | 2 | 6 | 1 | 1 | 0 |
+{: .sortable }
 
 ### F1 2003-2009
 
@@ -93,6 +96,7 @@ _Formula 1 (2003-2009). Top 8 only. Lower 1st/2nd ratio (1.25x)._
 | 8 | A. Thompson | 🇬🇧 GBR | **17** | 8 | 8 | 0 | 0 | 0 | 1 |
 | 9 | R. Roberts | 🇬🇧 GBR | **16.5** | 2.5 | 1 | 5 | 5 | 1 | 2 |
 | 10 | D. Moore | 🇬🇧 GBR | **2** | 0 | 0 | 2 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 1991-2002
 
@@ -112,6 +116,7 @@ _Formula 1 (1991-2002). Top 6 only. Schumacher era. 1.67x for winning._
 | 8 | R. Roberts | 🇬🇧 GBR | **6.5** | 0.5 | 0 | 3 | 3 | 0 | 0 |
 | 9 | H. Linzay | 🇺🇸 USA | **6** | 0 | 2 | 1 | 0 | 0 | 3 |
 | 10 | D. Moore | 🇬🇧 GBR | **0** | 0 | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### F1 1961-1990
 
@@ -131,6 +136,7 @@ _Formula 1 (1961-1990). Top 6 only. Senna/Prost era. 1.5x for winning._
 | 8 | R. Roberts | 🇬🇧 GBR | **6.5** | 0.5 | 0 | 3 | 3 | 0 | 0 |
 | 9 | H. Linzay | 🇺🇸 USA | **6** | 0 | 2 | 1 | 0 | 0 | 3 |
 | 10 | D. Moore | 🇬🇧 GBR | **0** | 0 | 0 | 0 | 0 | 0 | 0 |
+{: .sortable }
 
 ### MotoGP
 
@@ -150,6 +156,7 @@ _MotoGP (current). All 10 positions score well. 1.25x for winning._
 | 8 | R. Roberts | 🇬🇧 GBR | **60.5** | 9.5 | 8 | 13 | 13 | 8 | 9 |
 | 9 | H. Linzay | 🇺🇸 USA | **60** | 8 | 11 | 10 | 9 | 9 | 13 |
 | 10 | D. Moore | 🇬🇧 GBR | **35** | 7 | 7 | 9 | 6 | 6 | 0 |
+{: .sortable }
 
 ### MotoGP Extended
 
@@ -169,6 +176,7 @@ _MotoGP scale extended to 15 positions (5-4-3-2-1 tail) for larger fields._
 | 8 | R. Roberts | 🇬🇧 GBR | **60.5** | 9.5 | 8 | 13 | 13 | 8 | 9 |
 | 9 | H. Linzay | 🇺🇸 USA | **60** | 8 | 11 | 10 | 9 | 9 | 13 |
 | 10 | D. Moore | 🇬🇧 GBR | **35** | 7 | 7 | 9 | 6 | 6 | 0 |
+{: .sortable }
 
 ## Winner Flip Analysis
 
